@@ -99,8 +99,8 @@
 
 \begin{lemma}[compatibilidad transitiva a través de atlas]
   \label{lem:compat-trans-atlas}
-  Si \((W, \psi), (W', \psi')\) son compatibles con un atlas \(A\) de \(X\),
-  entonces son compatibles entre sí.
+  Si \((W, \psi)\) y \((W', \psi')\) son compatibles con un atlas \(A\) de
+  \(X\), entonces son compatibles entre sí.
 \end{lemma}
 
 \begin{proof}
@@ -111,7 +111,55 @@
   \item \(\psi \circ \psi'^{-1}\) es diferenciable.
   \item \(\psi' \circ \psi^{-1}\) es diferenciable.
   \end{enumerate}
-  % TODO
+
+  Hagámoslo:
+
+  \begin{subproof}[\(\psi(W \cap W')\) abierto]
+    Sea \(x \in \psi(W \cap W')\) y \(p = \psi^{-1}(x)\).
+    Entonces existe una carta \((U,\varphi) \in \mathcal{A}\) que contiene a
+    \(p\), i.e. tal que \(x \in \psi(U)\). Como esta carta es compatible con las
+    del enunciado, \(\varphi(U \cap W)\) y \(\varphi(U \cap W')\) son abiertos,
+    luego su intersección \(\varphi(U \cap W \cap W')\) también es abierta.
+    Entonces
+
+    \begin{align*}
+      x \in \psi(U \cap W \cap W')
+      &= \psi(\varphi^{-1}(\varphi(U \cap W \cap W')))\\
+      &= \underbracket{\underbracket{(\varphi \circ \psi^{-1})}_{\text{diferenciable}}{}^{-1} (
+        \underbracket{\varphi(U \cap W \cap W')}_{\text{abierto}}
+        )}_{\text{abierto}}
+    \end{align*}
+  \end{subproof}
+
+  \begin{subproof}[\(\psi'(W \cap W')\) abierto]
+    Totalmente análogo al apartado anterior
+  \end{subproof}
+
+  \begin{subproof}[\(\psi \circ \psi'^{-1}\) diferenciable]
+    Totalmente análogo al apartado siguiente.
+  \end{subproof}
+
+  \begin{subproof}[\(\psi' \circ \psi^{-1}\) diferenciable]
+    Tomamos \(x \in \psi(W \cap W')\) y \(p = \psi^{-1}(x)\) y \((U,\varphi)\)
+    con \(p \in U\). El siguiente diagrama nos permite asegurar la
+    diferenciabilidad local de \(\psi' \circ \psi^{-1}\):
+
+    \begin{figure}[h]
+      \centering
+      \begin{tikzcd}
+        \psi(U \cap W \cap W')
+        \arrow[rr, "\psi' \circ \psi^{-1}"]
+        \arrow[dr, "\varphi \circ \psi^{-1}"']&&
+        \psi'(U \cap W \cap W')\\
+        &\varphi(U \cap W \cap W')
+        \arrow[ur, "\psi' \circ \varphi^{-1}"']&
+      \end{tikzcd}
+    \end{figure}
+
+    En el diagrama se aprecia que todas las aplicaciones son diferenciables (la
+    que nos interesa lo es por composición). Como es diferenciable localmente
+    para todo \(x \in \psi(W \cap W')\), lo es globalmente en \(\psi(W \cap W')\).
+  \end{subproof}
 \end{proof}
 
 \begin{definition}[atlas compatibles]
@@ -246,18 +294,6 @@
   \end{subproof}
 \end{proof}
 
-\begin{lemma}
-  Para toda carta \((W, \psi)\) compatible con \(\mathcal{A}\), \(W \in
-  \mathcal{T}_{\mathcal{A}}\).
-\end{lemma}
-
-\begin{proof}
-  Por compatibilidad de \((W,\psi)\) con toda \((U,\varphi) \in \mathcal{A}\),
-  se tiene que \(\varphi(U \cap W) \subseteq \varphi(U) \subseteq \RealSet^{n}\) es abierto de
-  \(\RealSet^{n}\), y por tanto es abierto de \(\varphi(U)\), por lo que \(W \in
-  \mathcal{T}_{\mathcal{A}}\)
-\end{proof}
-
 \begin{lemma}[caracterización de abiertos en topología natural]
   \label{lem:topnat-caract}
   Son equivalentes:
@@ -276,7 +312,20 @@
 \begin{proof}\item
   
   \begin{subproof}[\(\ref{eq:topnat-caract-1} \implies \ref{eq:topnat-caract-2}\)]
-    % TODO
+    Sean \(p \in W \cap G\) y \(x = \psi(p)\). Sea \((U,\varphi) \in
+    \mathcal{A}\) con \(p \in U\). Por compatibilidad, \(\varphi(U \cap W)\) es
+    abierto de \(\RealSet^{n}\). Por hipótesis,
+    \begin{gather*}
+      \varphi(G \cap U) \text{ abierto de } \varphi(U) \subseteq \RealSet^{n}\\
+      \varphi(G \cap U) \cap \varphi(U \cap W) = \varphi(G \cap U \cap W) \text{
+        abierto}\\
+      \psi \circ \varphi^{-1} \text{
+        difeomorfismo} \implies \text{homeomorfismo}\\
+    \end{gather*}
+    
+    Por último, \(\varphi(G \cap U \cap W)\) abierto implica que \(\psi(G \cap U
+    \cap W) \subseteq \psi(G \cap W)\) es abierto de \(\psi(W) \subseteq
+    \RealSet^{n}\)
   \end{subproof}
 
   \begin{subproof}[\(\ref{eq:topnat-caract-2} \implies \ref{eq:topnat-caract-3}\)]
@@ -313,11 +362,51 @@
   Recíprocamente, si \(\mathcal{T}\) es una topología sobre \(X\) tal que
   \(\forall (U,\varphi) \in \mathcal{A} \quad U \in \mathcal{T}\) y \(\varphi
   \colon U \to \varphi(U)\) es homeomorfismo, entonces \(\mathcal{T} =
-  \mathcal{T}_{\mathcal{A}}\)
+  \mathcal{T}_{\mathcal{A}}\).
+
+  Dicho de otra forma, una topología \(\mathcal{T}\) es exactamente la
+  \nameref{def:topnat} \(\mathcal{T}_{\mathcal{A}}\) si y solo si los conjuntos
+  de las cartas son abiertos y sus funciones son homeomorfismos.
 \end{lemma}
 
-\begin{proof}
-  % TODO
+\begin{proof} \item
+  \begin{subproof}[\(\implies\)]
+    \(W\) es abierto de \(\mathcal{T}_{\mathcal{A}}\) por el lema de
+    \nameref{lem:topnat-caract} (por \(\eqref{eq:topnat-caract-2} \implies
+    \eqref{eq:topnat-caract-1}\)).
+
+    Falta ver que \(\psi\) es homeomorfismo: sea \(\Omega \subseteq \psi(W)
+    abierto\). Entonces \((\psi^{-1}(\Omega), \Restrict{\psi}{\psi(\Omega)})\)
+    es una carta compatible con \(\mathcal{A}\) por los
+    \cref{lem:compat-restriccion,lem:compat-subcartas}. Luego
+    \(\psi^{-1}(\Omega)\) es abierto.
+
+    Seea \(G\) abierto de \(W \in \mathcal{T}_{\mathcal{A}}\). Entonces \(G \in
+    \mathcal{T}_{\mathcal{A}}\). Por definición, \(\psi(G \cap W)=\psi(G)\) es
+    abierto de \(\RealSet^{n}\), luego \(\psi\) es abierta.
+
+    Como \(\psi\) es biyectiva, continua y abierta, es homeomorfismo.
+  \end{subproof}
+
+  La prueba del recíproco se hará por doble inclusión
+  
+  \begin{subproof}[\(\mathcal{T} \subseteq \mathcal{T}_{\mathcal{A}}\)]
+    Sea \(G\) abierto de \(\mathcal{T}\) y \((U,\varphi)\) una carta compatible
+    con \(\mathcal{A}\). Entonces \(G \cap U\) es un abierto de
+  \(\Restrict{\mathcal{T}}{U}\) y \(\varphi(G \cap U)\) es un abierto de
+  \(\varphi(U)\), luego \(G \in \mathcal{T}_{\mathcal{A}}\).
+  \end{subproof}
+
+  \begin{subproof}[\(\mathcal{T}_{\mathcal{A}} \subseteq \mathcal{T}\)]
+    Sea \(G \in \mathcal{T}_{\mathcal{A}}\). Entonces:
+    \begin{align*}
+      &\varphi(G \cap U) \text{ abierto de } \varphi(U)
+      \ \forall (U,\varphi) \in \mathcal{A}\\
+      \implies& U \cap G = \varphi^{-1}(\varphi(G \cap U)) \text{ abierto de } U\\
+      \implies& U \cap G \text{ abierto de } \mathcal{T}\\
+      \implies& G = \bigcup_{(U,\varphi) \in \mathcal{A}} (U \cap G) \text{ abierto de } \mathcal{T}
+    \end{align*}
+  \end{subproof}
 \end{proof}
 
 \section{Propiedades de la topología natural de una variedad diferenciable}
@@ -408,11 +497,16 @@
 \end{proof}
 
 \begin{proposition}
-  La \nameref{def:topnat} de \(M\) cumple la \nameref{def:Hausdorff}.
+  La \nameref{def:topnat} de cualquier \nameref{def:vd} \(M\) cumple la
+  propiedad de Hausdorff (en el sentido topológico).
 \end{proposition}
 
 \begin{proof}
-  % TODO
+  Por definición de \nameref{def:vd}, dados \(x, y \in X\) distintos, existen
+  cartas \((U,\varphi)\), \((V,\psi)\) con \(x \in U\), \(y \in V\) y \(U \cap V
+  = \emptyset\). En la \nameref{def:topnat}, los conjuntos de las cartas son
+  abiertos, luego \(U\) y \(V\) son los abiertos buscados que satisfacen la
+  propiedad de Hausdorff.
 \end{proof}
 
 \begin{proposition}
@@ -449,12 +543,14 @@
 \end{proof}
 
 \begin{proposition}
-  Todo abierto (de la \nameref{def:topnat}) de una \nameref{def:vd} \(M\) de
+  Todo abierto \(G\) (de la \nameref{def:topnat}) de una \nameref{def:vd} \(M\) de
   dimensión \(n\) es también una \nameref{def:vd} de dimensión \(n\).
 \end{proposition}
 
 \begin{proof}
-  % TODO
+  Basta tomar el atlas \(\mathcal{B} = \Set{(U_{\alpha} \cap G,
+    \Restrict{\varphi_{\alpha}}{G})}_{\alpha \in \NaturalSet}\), que sigue
+  siendo numerable y conserva la \nameref{def:Hausdorff}.
 \end{proof}
 
 \section{Ejercicios}
