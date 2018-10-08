@@ -4,6 +4,7 @@
 \setdefaultlanguage{spanish}
 
 \usepackage{subfiles}
+\usepackage{xr}
 
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage{amsthm,thmtools}
@@ -91,51 +92,69 @@
 \makeatother
 
 % thmrh
+
 \declaretheorem[
-  name=Teorema,
-  refname={Teorema,Teoremas}%,
-  % numberwithin=section]{theorem}
-  ]{theorem}
+name=Teorema,
+refname={teorema,teoremas},
+numberwithin=chapter%
+]{theorem}
   
 \declaretheorem[
-  name=Proposición,
-  refname={Proposición,Proposiciones}]{proposition}
+name=Proposición,
+refname={proposición,proposiciones},
+numberwithin=chapter%
+]{proposition}
 
 \declaretheorem[
-  name=Propiedad,
-  refname={Propiedad,Propiedades}]{property}
+name=Propiedad,
+refname={propiedad,propiedades},
+numberwithin=chapter%
+]{property}
   
 \declaretheorem[
-  name=Ejemplo,
-  refname={Ejemplo,Ejemplos}]{example}
+name=Ejemplo,
+refname={ejemplo,ejemplos},
+numberwithin=chapter%
+]{example}
 
 \declaretheorem[
-  name=Corolario,
-  refname={Corolario,Corolarios}]{corollary}
+name=Corolario,
+refname={corolario,corolarios},
+numberwithin=chapter%
+]{corollary}
 
 \declaretheorem[
-  name=Criterio,
-  refname={Criterio,Criterios}]{criterion}
+name=Criterio,
+refname={criterio,criterios},
+numberwithin=chapter%
+]{criterion}
 
 \declaretheorem[
-  name=Lema,
-  refname={Lema,Lemas}]{lemma}
+name=Lema,
+refname={lema,lemas},
+numberwithin=chapter%
+]{lemma}
 
 \declaretheorem[
-  name=Definición,
-  style=definition,
-  refname={Definición,Definiciones}]{definition}
+name=Definición,
+style=definition,
+refname={definición,definiciones},
+numberwithin=chapter%
+]{definition}
 
 \declaretheorem[
-  name=Observación,
-  style=remark,
-  refname={Observación,Observaciones}]{remark}
+name=Observación,
+style=remark,
+refname={observación,observaciones},
+numberwithin=chapter%
+]{remark}
   
 \declaretheorem[
-  name=Nota,
-  style=remark,
-  refname={Nota,Notas},
-  sibling=remark]{note}
+name=Nota,
+style=remark,
+refname={nota,notas},
+sibling=remark%
+]{note}
 
 \numberwithin{equation}{chapter}
 
@@ -154,13 +173,7 @@
 
 \maketitle
 
-\chapter{Cartas, atlas y compatibilidad}
-\label{chap:cartas}
-
 \subfile{temas/01-cartas}
-
-\chapter{Aplicaciones diferenciables entre variedades}
-\label{chap:app}
 
 \subfile{temas/02-aplicaciones}
 
