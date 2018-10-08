@@ -8,4 +8,32 @@
 \chapter{Aplicaciones diferenciables entre variedades}
 \label{chap:app}
 
+\begin{definition}[diferenciable]
+  \label{def:diferenciable}
+  Sea \(f \colon M \to N\) una aplicación entre variedades. Decimos que \(f\) es
+  \emph{diferenciable} en \(p \in M\) si para toda carta \((W,\psi)\) de \(N\) con \(f(p)
+  \in W\) existe una carta \((U,\varphi)\) de \(M\) tal que \(p \in U, f(U)
+  \subseteq W\) y \(\psi \circ f \circ \varphi^{-1} \colon \varphi(U) \to
+  \psi(W)\) es diferenciable en \(\varphi(p)\). Se dice que \(f\) es \emph{diferenciable}
+  si lo es para todo \(p \in M\).
+\end{definition}
+
+\begin{lemma}
+  Toda \(f\) \nameref{def:diferenciable} es continua para las topologías
+  asociadas a las correspondientes estructuras diferenciables.
+\end{lemma}
+
+\begin{proof}
+  Sea \(G \subset N\) abierto. Veamos que \(f^{-1}(G)\) es abierto de \(M\).
+
+  Sea \(p \in f^{-1}(G)\) y sea \((W,\psi)\) una carta de \(N\) con \(f(p) \in W
+  \subseteq G\). Aquí usamos que \(G\) es abierto. Habrá que usar un lema del
+  \cref{chap:cartas}.
+
+  Como \(f\) es \nameref{def:diferenciable}, existe una carta \((U,\varphi)\) de
+  \(M\) con \(p \in U, f(U) \subseteq W \subseteq G\) y \(\psi \circ f \circ
+  \varphi^{-1} \colon \varphi(U) \to \psi(W)\) diferenciable.
+  Por tanto, \(\psi \circ f \circ \varphi^{-1}\) es continua. 
+\end{proof}
+
 \end{document}
