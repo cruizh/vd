@@ -1,0 +1,732 @@
+\documentclass[ebook,oneside]{memoir}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{spanish}
+
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{amsthm,thmtools}
+\usepackage{faktor} % Espacios cociente
+\usepackage{exercise}
+\usepackage{cool}
+\usepackage[inline]{enumitem}
+\usepackage{subcaption}
+\usepackage{mathrsfs}
+
+\usepackage{tikz, tikz-cd, pgfplots}
+\usetikzlibrary{decorations.markings,arrows, shapes.geometric}
+
+\usepackage[unicode]{hyperref}
+\usepackage{nameref,cleveref}
+
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+% rhcool
+\newcommand{\NaturalSet}{\ensuremath{\mathbb{N}}}   % Naturales
+\newcommand{\IntegerSet}{\ensuremath{\mathbb{Z}}}   % Enteros
+\newcommand{\RationalSet}{\ensuremath{\mathbb{Q}}}  % Racionales
+\newcommand{\RealSet}{\ensuremath{\mathbb{R}}}      % Reales
+\newcommand{\ComplexSet}{\ensuremath{\mathbb{C}}} % Complejos
+\newcommand{\Parts}[1]{\ensuremath{\mathcal{P}(#1)}} % Partes de un conjunto
+\newcommand{\Field}{\ensuremath{\mathbb{K}}}        % Cuerpo arbitrario
+\newcommand{\ProjectiveSpace}{\ensuremath{\mathbb{P}}} % Espacio proyectivo
+\DeclarePairedDelimiter{\Norm}{\lVert}{\rVert}
+\makeatletter
+\newcommand{\Set}[2][]{%
+\listval{#1}{0}% Record length of list
+\setcounter{COOL@listlen}{\value{COOL@listpointer}}
+\ifthenelse{\value{COOL@listlen} = 0}{%
+  \{#2\}%
+}{% else
+  \ifthenelse{\value{COOL@listlen} = 1}{%
+    \{ #2 \}_{#1}%
+  }{% else
+    \ifthenelse{\value{COOL@listlen} = 3}{%
+      \{ #2 \}_{\listval{#1}{1} = \listval{#1}{2}}^{\listval{#1}{3}}%
+    }{% else
+      \PackageError{cool}{Invalid list length for ‘Set’}%
+      {can only have none, one or three elements for second argument}%
+    }%
+  }%
+}%
+}
+\makeatother
+
+
+% rhtopology
+\makeatletter
+\newcommand{\COOL@notation@InteriorParen}{p}
+\newcommand{\Interior}[1]{\operatorname{int}\COOL@decide@paren{Interior}{#1}}
+\newcommand{\Exterior}[1]{\operatorname{ext}\COOL@decide@paren{Interior}{#1}}
+\newcommand{\Clausura}[1]{\overline{#1}}
+\newcommand{\Frontera}[1]{\partial{}#1}
+\newcommand{\Dist}[2]{\operatorname{d}\left( #1,\, #2 \right)}
+\newcommand{\Bola}[2]{\operatorname{B}\left( #1,\, #2 \right)}
+\newcommand{\Id}[1]{\mathbf{1}_{#1}}
+\newcommand{\Restrict}[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace{}% automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+}} % Source: https://tex.stackexchange.com/questions/22252
+\newcommand{\T}[1]{T_{#1}} % Clases de espacio topológico
+\newcommand{\sumacon}{\mathop{\#}} % Suma conexa
+\newcommand{\homeo}{\cong} % Homeomorfo
+\newcommand{\homotop}{\simeq} % Homotópico
+\newcommand{\COOL@notation@GFParen}{p}
+\newcommand{\GF}[1]{\operatorname{\pi_{1}}\COOL@decide@paren{GF}{#1}} % Grupo
+% fundamental
+\newcommand{\Free}[1]{\operatorname{F}\left(#1\right)}
+\newcommand{\normal}{\lhd} % Subgrupo normal
+\DeclarePairedDelimiter{\SG}{\langle}{\rangle} % Subgrupo generado
+\DeclarePairedDelimiter{\SGN}{\lhd}{\rhd} % Subgrupo normal generado
+\DeclareMathOperator{\Ker}{Ker}
+\makeatother
+
+% thmrh
+\declaretheorem[
+  name=Teorema,
+  refname={Teorema,Teoremas}%,
+  % numberwithin=section]{theorem}
+  ]{theorem}
+  
+\declaretheorem[
+  name=Proposición,
+  refname={Proposición,Proposiciones}]{proposition}
+
+\declaretheorem[
+  name=Propiedad,
+  refname={Propiedad,Propiedades}]{property}
+  
+\declaretheorem[
+  name=Ejemplo,
+  refname={Ejemplo,Ejemplos}]{example}
+
+\declaretheorem[
+  name=Corolario,
+  refname={Corolario,Corolarios}]{corollary}
+
+\declaretheorem[
+  name=Criterio,
+  refname={Criterio,Criterios}]{criterion}
+
+\declaretheorem[
+  name=Lema,
+  refname={Lema,Lemas}]{lemma}
+
+\declaretheorem[
+  name=Definición,
+  style=definition,
+  refname={Definición,Definiciones}]{definition}
+
+\declaretheorem[
+  name=Observación,
+  style=remark,
+  refname={Observación,Observaciones}]{remark}
+  
+\declaretheorem[
+  name=Nota,
+  style=remark,
+  refname={Nota,Notas},
+  sibling=remark]{note}
+
+\numberwithin{equation}{chapter}
+
+\newenvironment{subproof}[1][\proofname]{%
+  \renewcommand{\qedsymbol}{$\blacksquare$}%
+  \begin{proof}[#1]%
+}{%
+  \end{proof}%
+}
+
+\title{Variedades Diferenciables}
+\author{Carlos José Ruiz-Henestrosa Ruiz}
+\date{2018}
+
+\begin{document}
+
+\maketitle
+
+\chapter{Cartas, atlas y compatibilidad}
+\label{chap:cartas}
+
+
+\begin{definition}[carta]
+  Dado un conjunto \(X\), una \emph{carta} de \(X\) es un par \((\mathcal{U},
+  \varphi)\) con \(\mathcal{U} \subseteq X\) y \(\varphi \colon \mathcal{U} \to
+  \RealSet^{n}\) inyectiva y su imagen \(\varphi(\mathcal{U})\) es un abierto de
+  \(\RealSet^{n}\).
+\end{definition}
+
+\begin{definition}[cartas compatibles]
+  Dos cartas de \(X\) \((\mathcal{U}, \varphi)\), \((\mathcal{W}, \psi)\) se
+  dicen \emph{compatibles} si \(\mathcal{U} \cap \mathcal{W} = \emptyset\) o, en
+  caso contrario, \(\varphi(\mathcal{U} \cap \mathcal{W})\) y \(\psi(\mathcal{U}
+  \cap \mathcal{W})\) son abiertos y además \(\psi \circ \varphi^{-1} \colon
+  \varphi(\mathcal{U} \cap \mathcal{W}) \to \psi(\mathcal{U} \cap \mathcal{W})\)
+  y su inversa \(\varphi \circ \psi^{-1}\) son diferenciables (son
+  difeomorfismos).
+
+  Una carta se dice compatible con un atlas si es compatible con todas las
+  cartas del atlas.
+\end{definition}
+
+\begin{definition}[atlas]
+  Un \emph{atlas} de \(X\) es una colección de cartas compatibles de la misma
+  dimensión \(\Set{(U_{i},\varphi_{i})}_{i \in \Lambda}\) con \(X = \bigcup_{i
+    \in \Lambda} U_{i}\).
+\end{definition}
+
+\begin{lemma}[compatibilidad de la carta restricción]
+  \label{lem:compat-restriccion}
+  Si \((U,\varphi)\) una carta de \(X\) y \(\Omega \subseteq \varphi(U)\) es
+  abierto de \(\RealSet^{n}\). Entonces si \(V = \varphi^{-1}(\Omega)\) y
+  \(\varphi' = \Restrict{\varphi}{V}\) tenemos que \((V,\varphi')\) es carta de
+  \(X\) compatible con \((U,\varphi)\).
+\end{lemma}
+
+\begin{proof}
+  Nótese que \(U \cap V = V\). \(\varphi(U \cap V) = \varphi(V) = \Omega\) es
+  abierto de \(\RealSet^{n}\) y \(\varphi'(U \cap V) = \varphi(U \cap V)\), por
+  lo que las cartas son compatibles.
+\end{proof}
+
+\begin{lemma}[compatibilidad heredada de subcartas]
+  \label{lem:compat-subcartas}
+  Sean \((W,\psi), (U,\varphi)\) cartas compatibles de \(X\) con \(W \subseteq
+  U\). Entonces \((W,\psi)\) es compatible con toda carta \((V,\rho)\)
+  compatible con \((U,\varphi)\).
+\end{lemma}
+
+\begin{proof}
+  Supongamos \(V \cap U \neq \emptyset\), porque de lo contrario no habría nada
+  que demostrar.
+
+  Entonces conocemos que
+  \begin{itemize}
+  \item \(\psi(W \cap U) = \psi(W)\) y \(\varphi(W \cap U) = \varphi(W)\) son
+    abiertos.
+  \item \(\psi \circ \varphi^{-1} \colon \varphi(W \cap U) \to \psi(W \cap U)\)
+    y \(\varphi \circ \psi^{-1} \colon \psi(W \cap U) \to \varphi(W \cap U)\)
+    son diferenciables.
+  \item \(\rho(U \cap V)\) y \(\varphi(U \cap V)\) son abiertos.
+  \item \(\rho \circ \varphi^{-1} \colon \varphi(U \cap V) \to \rho(U \cap V)\)
+    y \(\varphi \circ \rho^{-1} \colon \rho(U \cap V) \to \varphi(U \cap V)\)
+    son diferenciables.
+  \end{itemize}
+
+  Hay que probar lo siguiente:
+  \begin{enumerate}
+  \item \(\rho \circ \psi^{-1}\) es diferenciable.
+  \item \(\psi \circ \rho^{-1}\) es diferenciable.
+  \item \(\psi(V \cap W)\) es abierto.
+  \item \(\rho(V \cap W)\) es abierto.
+  \end{enumerate}
+
+  Prueba:
+  \begin{enumerate}
+  \item \(\rho \circ \psi^{-1} = (\rho \circ \varphi^{-1}) \circ (\varphi \circ
+    \psi^{-1})\) que es diferenciable por ser composición de diferenciables
+    (teniendo en cuenta las restricciones necesarias).
+  \item \(\psi \circ \rho^{-1} = (\psi \circ \varphi^{-1}) \circ (\varphi \circ
+    \rho^{-1})\) que es diferenciable por ser composición de diferenciables.
+  \item \(\rho(V \cap W) = \rho(V \cap W \cap U) = \rho(V) \cap \rho(U \cap W)\)
+    que es intersección de abiertos, luego es abierto (el último paso puede
+    hacerse porque \(\rho\) es inyectiva). El último término es abierto porque
+    es imagen inversa de un abierto.
+  \item \(\psi(V \cap W) = \psi(V) \cap \psi(W)\) que es intersección de
+    abiertos, luego es abierto. \(\psi(V)\) es abierto porque \(\psi(V) =
+    \psi{(\varphi^{-1}{(\varphi{(V)})})} = (\psi \circ \varphi^{-1}){(\varphi{(V)})} =
+    {(\varphi \circ \psi^{-1})}^{-1}{(\varphi{(V)})}\), i.e.\ es imagen inversa de un abierto.
+  \end{enumerate}
+\end{proof}
+
+\begin{lemma}[compatibilidad transitiva a través de atlas]
+  \label{lem:compat-trans-atlas}
+  Si \((W, \psi), (W', \psi')\) son compatibles con un atlas \(A\) de \(X\),
+  entonces son compatibles entre sí.
+\end{lemma}
+
+\begin{proof}
+  Hay que probar que
+  \begin{enumerate}
+  \item \(\psi(W \cap W')\) es abierto.
+  \item \(\psi'(W \cap W')\) es abierto.
+  \item \(\psi \circ \psi'^{-1}\) es diferenciable.
+  \item \(\psi' \circ \psi^{-1}\) es diferenciable.
+  \end{enumerate}
+  % TODO
+\end{proof}
+
+\begin{definition}[atlas compatibles]
+  Dos atlas \(\mathcal{A}\) y \(\mathcal{B}\) sobre \(X\) se dicen
+  \emph{compatibles} si cada carta de \(\mathcal{A}\) es compatible con cada
+  carta de \(\mathcal{B}\) y recíprocamente.
+\end{definition}
+
+\begin{definition}[estructura diferenciable]
+  Dado un atlas \(\mathcal{A}\) sobre \(X\), se llama \emph{estructura
+    diferenciable} generada por \(\mathcal{A}\) a la familia de todas las cartas
+  compatibles con \(\mathcal{A}\).
+
+  También se denomina \emph{atlas maximal} que contiene a \(\mathcal{A}\).
+\end{definition}
+
+\begin{lemma}
+  Las estructuras diferenciables generadas por \(\mathcal{A}\) y \(\mathcal{B}\)
+  coinciden si y solo si \(\mathcal{A}\) y \(\mathcal{B}\) son compatibles.
+\end{lemma}
+
+\begin{proof}
+  Utilizaremos la notación \(\langle  \mathcal{A} \rangle\) para denotar la estructura
+  diferenciable generada por el atlas \(\mathcal{A}\).
+
+  \begin{subproof}[\(\implies\)]
+    Supongamos que \(\langle \mathcal{A} \rangle = \langle \mathcal{B} \rangle = M\). Entonces, como
+    \(\mathcal{A} \subseteq M\) y \(\mathcal{B} \subseteq M\), \(\mathcal{A}\) y
+    \(\mathcal{B}\) son compatibles porque \(M\) es un atlas (por el
+    \cref{lem:compat-subcartas} de \nameref{lem:compat-subcartas} aplicado a
+    cada carta de los atlas).
+  \end{subproof}
+
+  \begin{subproof}[\(\impliedby\)]
+    Supongamos que \(\mathcal{A}\) y \(\mathcal{B}\) son compatibles. Hay que
+    probar que \(\langle \mathcal{A} \rangle = \langle \mathcal{B} \rangle\). Lo
+    haremos por doble contención. Haremos la prueba para \(\langle \mathcal{A}
+    \rangle \subseteq \langle \mathcal{B} \rangle\), porque la contención
+    contraria es completamente análoga.
+
+    Sea \((U, \varphi) \in
+    \langle \mathcal{A} \rangle\). Hay que probar que es compatible con
+    cualquier carta \((V,\psi) \in \mathcal{B}\).
+
+      Si \(U \cap V = \emptyset\), ya está probado. En caso contrario,
+      \((U,\varphi)\) es compatible con \(\mathcal{A}\). Además, como suponemos
+      que \(\mathcal{A}\) y \(\mathcal{B}\) son compatibles, \((V,\psi)\)
+      también es compatible con \(\mathcal{A}\). Por el
+      \cref{lem:compat-trans-atlas}, \((U,\varphi)\) y \((V,\psi)\) son
+      compatibles.
+  \end{subproof}
+\end{proof}
+
+\begin{definition}[variedad diferenciable]
+  \label{def:vd}
+  Una \emph{variedad diferenciable} de dimensión \(n\) es un conjunto \(X\) con
+  un atlas \(\mathcal{A}\) numerable cumpliendo la \nameref{def:Hausdorff}.
+
+\end{definition}
+
+\begin{definition}[propiedad de Hausdorff]
+  \label{def:Hausdorff}
+  Se dice que \(\mathcal{A}\) cumple la propiedad de Hausdorff si, dados \(x,y
+  \in X\), existen cartas compatibles con \(\mathcal{A}\) \((U, \varphi)\) y
+  \((V, \psi)\) con \(x \in U, y \in V, U \cap V = \emptyset\).
+\end{definition}
+
+\begin{example}
+  \(\RealSet^{n}\) con \(\Id \colon \RealSet^{n} \to \RealSet^{n}\):
+  \((\RealSet^{n}, \Id)\) es una carta que lo hace \(n\)-variedad.
+
+  Cualquier \(U \subseteq \RealSet^{n}\) abierto proporciona una carta \((U,
+  i)\) compatible con \(\mathcal{A}\), con \(i \colon U \to \RealSet^{n}\) la
+  inclusión.
+\end{example}
+
+\begin{example}
+  En \(\RealSet\), la carta anterior no es compatible con la carta \((\RealSet,
+  f)\), \(f(x) = x^{3}\), porque \(\Id \circ f^{-1}\) no es diferenciable.
+\end{example}
+
+\begin{example}
+  \(\ComplexSet^{n}\) es una \(2n\)-variedad:
+  Dados \(a_{j} + \I b_{j}, j = 1,\dots,n \mapsto
+  (a_{1},\dots,a_{n},b_{1},\dots,b_{n}) \in \RealSet^{2n}\), luego \(\mathcal{A}
+  = \Set{(\ComplexSet^{n}, \varphi)}\) es un atlas de una \(2n\)-variedad.
+\end{example}
+
+\begin{example}
+  El espacio de matrices reales \(m \times n\) es una \(mn\)-variedad con la
+  aplicación \(\varphi(A) =
+  (a_{11},\dots,a_{1n},a_{21},\dots,a_{2n},\dots,a_{mn})\).
+
+  Análogamente, las matrices complejas \(m \times n\) forman una \(2mn\)-variedad.
+\end{example}
+
+\begin{definition}[topología natural]
+  \label{def:topnat}
+  Sea \(\mathcal{A}\) un atlas de \(X\). Se define la famila \(\mathcal{T}_{\mathcal{A}}\)
+  como la de aquellos conjuntos \(G \subseteq X\) tales que
+  \[
+    \varphi(G \cap U) \text{ es abierto de } \varphi(U) \forall (U,\varphi) \in \mathcal{A}
+  \]
+
+  A \(\mathcal{T}_{\mathcal{A}}\) la llamamos \emph{topología natural} del atlas \(\mathcal{A}\)
+\end{definition}
+
+\begin{lemma}
+  \(\mathcal{T}_{\mathcal{A}}\) es topología sobre \(X\).
+\end{lemma}
+
+\begin{proof}\item
+  \begin{subproof}[\(\emptyset, X \in \mathcal{A}\)]
+    Trivial.
+  \end{subproof}
+
+  \begin{subproof}[\(\Set{G_{\alpha}}_{\alpha \in \Gamma} \subseteq
+    \mathcal{T}_{\mathcal{A}} \implies \bigcup_{\alpha \in \Gamma} G_{\alpha}
+    \in \mathcal{T}_{\mathcal{A}}\)]
+    Sea \((U,\varphi)\) una carta de \(\mathcal{A}\).
+    \begin{align*}
+      &\varphi(U \cap G_{\alpha}) \text{ es abierto de } \varphi(U)\\
+      \implies & \bigcup_{\alpha \in \Gamma} \varphi(U \cap G_{\alpha}) \text{ es abierto de } \varphi(U)\\
+      \implies & \varphi(U \cap G) \text{ es abierto de } \varphi(U)
+    \end{align*}
+  \end{subproof}
+
+  \begin{subproof}[\(G_{1}, \dots, G_{n} \in \mathcal{T}_{\mathcal{A}} \implies
+    \bigcap_{i = 1}^{n} G_{i} \in \mathcal{T}_{\mathcal{A}}\)]
+    La prueba es análoga a la del apartado anterior.
+  \end{subproof}
+\end{proof}
+
+\begin{lemma}
+  Para toda carta \((W, \psi)\) compatible con \(\mathcal{A}\), \(W \in
+  \mathcal{T}_{\mathcal{A}}\).
+\end{lemma}
+
+\begin{proof}
+  Por compatibilidad de \((W,\psi)\) con toda \((U,\varphi) \in \mathcal{A}\),
+  se tiene que \(\varphi(U \cap W) \subseteq \varphi(U) \subseteq \RealSet^{n}\) es abierto de
+  \(\RealSet^{n}\), y por tanto es abierto de \(\varphi(U)\), por lo que \(W \in
+  \mathcal{T}_{\mathcal{A}}\)
+\end{proof}
+
+\begin{lemma}
+  \label{lem:topnat-caract}
+  Son equivalentes:
+  \begin{gather}
+    \label{eq:topnat-caract-1}
+    G \in \mathcal{T}_{\mathcal{A}}\\
+    \label{eq:topnat-caract-2}
+    (W, \psi) \in \langle \mathcal{A} \rangle \implies \psi(W \cap G) \text{ abierto
+      de } \psi(W)\\
+    \label{eq:topnat-caract-3}
+    \forall p \in G \  \exists (V,\rho) \text{ compatible con } \mathcal{A}
+    \text{ con } p \in V \subseteq G
+  \end{gather}
+\end{lemma}
+
+\begin{proof}\item
+  
+  \begin{subproof}[\(\ref{eq:topnat-caract-1} \implies \ref{eq:topnat-caract-2}\)]
+    % TODO
+  \end{subproof}
+
+  \begin{subproof}[\(\ref{eq:topnat-caract-2} \implies \ref{eq:topnat-caract-3}\)]
+    Sea \(p \in G\). Entonces \(\exists (U,\varphi) \in \mathcal{A}\) con \(p
+    \in U\). Por \ref{eq:topnat-caract-2}, \(\varphi(U \cap G)\) es abierto de
+    \(\varphi(U)\).
+
+    Sea \(V = U \cap G\). \((V, \rho) = (U \cap G), \Restrict{\varphi}{U \cap
+      G}\) es compatible con \(\mathcal{A}\).
+
+    Por los \cref{lem:compat-restriccion,lem:compat-subcartas} y \(p \in U \cap
+    G = V \subseteq G\).
+  \end{subproof}
+
+  \begin{subproof}[\(\ref{eq:topnat-caract-3} \implies
+    \ref{eq:topnat-caract-1}\)]
+    Sea \((U,\varphi) \in \mathcal{A}\). Sea \(x \in \varphi(G \cap U)\).
+    Entonces \(\exists p \in G \cap U : \varphi(p) = x\). Por
+    \eqref{eq:topnat-caract-3}, \(\exists (V,\rho)\) compatible con
+    \(\mathcal{A}\), luego \(\varphi(V \cap U)\) es abierto de \(\RealSet^{n}\)
+    (o de \(\varphi(U)\)).
+    \(p \in V \subseteq G \implies p \in V \cap U \subseteq G \cap U \implies x
+    \in \varphi(V \cap U) \subseteq \varphi(G \cap U) \implies x\) es punto
+    interior de \(\varphi(G \cap U)\), por lo que \(\varphi(G \cap U)\) es
+    abierto (todos sus puntos son interiores).
+  \end{subproof}
+\end{proof}
+
+\begin{lemma}
+  Para toda carta \((W,\psi) \in \mathcal{A}\) (de hecho basta que sea
+  compatible con \(\mathcal{A}\)), \(W \in
+  \mathcal{T}_{\mathcal{A}}\) y \(\psi \colon W \to \psi(W)\) es homeomorfismo.
+
+  Recíprocamente, si \(\mathcal{T}\) es una topología sobre \(X\) tal que
+  \(\forall (U,\varphi) \in \mathcal{A} \quad U \in \mathcal{T}\) y \(\varphi
+  \colon U \to \varphi(U)\) es homeomorfismo, entonces \(\mathcal{T} =
+  \mathcal{T}_{\mathcal{A}}\)
+\end{lemma}
+
+\begin{proof}
+  % TODO
+\end{proof}
+
+\section{Propiedades de la topología natural de una variedad diferenciable}
+
+\begin{definition}[base]
+  Sea \((X,\mathcal{T})\) un espacio topológico. Una subfamilia de abiertos
+  \(\mathcal{B} \subseteq \mathcal{T}\) se dice \emph{base} de la topología si
+  \(\forall G \in \mathcal{T}, x \in G, \ \exists B \in \mathcal{B} : x \in B
+  \subseteq G\)
+\end{definition}
+
+\begin{definition}[1ºN]
+  \label{def:1n}
+  Se dice que \((X,\mathcal{T})\) \emph{cumple el 1º axioma de numerabilidad} o
+  que es \emph{1-numerable} si existe una familia numerable \(\mathcal{B}_{x}\)
+  de abiertos (depende de \(x\)) que contienen a \(x\) y tal que para todo \(G \in \mathcal{T}\)
+  con \(x \in G\) existe \(B \in \mathcal{B}_{x}\) con \(x \in B \subseteq G\).
+\end{definition}
+
+\begin{definition}[2ºN]
+  \label{def:2n}
+  Se dice que \((X,\mathcal{T})\) \emph{cumple el 2º axioma de numerabilidad} o
+  que es \emph{2-numerable} si existe una base numerable de la topología.
+\end{definition}
+
+\begin{remark}
+  Si \((X,\mathcal{T})\) es \nameref{def:2n}, entonces es \nameref{def:1n}.
+\end{remark}
+
+\begin{proof}
+  Basta tomar \(\mathcal{B}_{x} = \Set{B \in \mathcal{B} : x \in B}\)
+\end{proof}
+
+\begin{proposition}
+  \(\RealSet^{n}\) cumple \nameref{def:2n}.
+\end{proposition}
+
+\begin{proof}
+  Tomamos \(\mathcal{B}\) como sigue (es numerable):
+  \[
+    \mathcal{B} = \Set{B(q,\frac{1}{n}),\ n \geq 1,\ q \in \RationalSet^{n}}
+  \]
+
+  Sea \(G\) abierto de \(\RealSet^{n}\) y \(x \in G\). Por definición, existe
+  \(\varepsilon > 0\) tal que \(\Bola{x}{\varepsilon} \subseteq G\). Sea
+  \(n_{0}\) con \(\frac{1}{n_{0}} < \frac{\varepsilon}{2}\). Sea \(q \in
+  \RationalSet^{n}\) con \(\Dist{q}{x} < \frac{1}{n_{0}}\). Entonces \(x \in
+  \Bola{q_{0}}{\frac{1}{n_{0}}}\). Afirmamos que \(\Bola{q_{0}}{\frac{1}{n_{0}}}
+  \subseteq \Bola{x,\varepsilon} \subseteq G\). Probémoslo.
+
+  Sea \(y \in \Bola{q_{0}}{\frac{1}{n_{0}}}\). Entonces \(\Dist{x}{y} \leq
+  \Dist{x}{q_{0}} + \Dist{q_{0}}{y} < \frac{1}{n_{0}} + \frac{1}{n_{0}} < \varepsilon\).
+\end{proof}
+
+\begin{lemma}
+  Si \((X,\mathcal{T})\) cumple \nameref{def:2n}, entonces \(\forall A \subseteq
+  X\), \((A,\mathcal{T}_{\mathcal{A}})\) lo cumple también.
+\end{lemma}
+
+\begin{proof}
+  Sea \(\mathcal{B}\) base numerable de \((X,\mathcal{T})\). Entonces
+  \(\mathcal{B}_{A} = \Set{B \cap A : B \in \mathcal{B}}\) es base numerable de
+  \((A,\mathcal{T}_{A})\).
+\end{proof}
+
+\begin{lemma}
+  La \nameref{def:topnat} de una variedad diferenciable \(M\) cumple \nameref{2n}.
+\end{lemma}
+
+\begin{proof}
+  Sea \(\mathcal{A} = \Set{(U_{j}, \varphi_{j})}_{j \in J}\) un atlas numerable
+  de \(M\). Cada \(\varphi_{j}(U_{j})\) abierto de \(\RealSet^{n}\) cumple
+  \nameref{2n}. Existe \(\mathcal{B}_{j} = \Set{B_{k}^{j}}_{k \geq 1}\) base
+  numerable de abiertos de \(\varphi_{j}(U_{j})\).
+  \(\varphi_{j}^{-1}(B_{k}^{j})\) abierto de \(U_{j}\), luego es abierto de
+  \(\mathcal{T}_{\mathcal{A}}\). Por tanto \(\varphi_{j} \colon U_{j} \to
+  \varphi(U_{j})\) es homeomorfismo.
+
+  Sea \(\mathcal{B}_{M} = \Set{\varphi^{-1}(B_{k}^{j})}_{j \in J, k \geq 1}\).
+  \(\mathcal{B}_{M}\) es numerable y veamos que es base de
+  \(\mathcal{T}_{\mathcal{A}}\):
+
+  Sea \(G \in \mathcal{T}_{\mathcal{A}}\) y \(p \in G\). Entonces,
+  \(\varphi_{j}(p) \in \varphi_{j}(G \cap U_{j})\), que es abierto de
+  \(\varphi_{j}(U_{j})\). Por tanto, \(\exists k_{0}\) con \(\varphi_{j}(p) \in
+  B_{k_{0}} \subseteq \varphi_{j}(G \cap U_{j})\), lo que implica que \(p \in
+  \varphi_{j}^{-1}(B_{k_{0}}^{j}) \subseteq G \cap U_{j} \subseteq G\).
+\end{proof}
+
+\begin{proposition}
+  La \nameref{def:topnat} de \(M\) cumple la \nameref{def:Hausdorff}.
+\end{proposition}
+
+\begin{proof}
+  % TODO
+\end{proof}
+
+\begin{proposition}
+  En todo espacio topológico \((X,\mathcal{T})\) que cumpla \nameref{def:2n},
+  cualquier \(A \subseteq X\) cumple la \nameref{def:Lindelöff}.
+\end{proposition}
+
+\begin{definition}[propiedad de Lindelöff]
+  \label{def:Lindelöff}
+  Si \(A \subseteq \bigcup_{\alpha \in \Lambda} G_{\alpha}\) una familia de
+  abiertos, entonces \(\exists \Set{\alpha_{i}}_{i \geq 1}\) numerable con \(A
+  \subseteq \bigcup_{i=1}^{\Infinity} G_{\alpha_{i}}\).
+\end{definition}
+
+\begin{corollary}
+  Todo \(A \subseteq M\) con \(M\) \nameref{def:vd} cumple la
+  \nameref{def:Lindelöff} para la \nameref{def:topnat}.
+\end{corollary}
+
+\begin{proof}
+  Sea \(\Set{B_{i}}_{i \geq 1}\) una base numerable de \(\mathcal{T}\).
+  Para cada \(n \geq 1\) sea \(\Lambda_{n} = \Set{\alpha : B_{n} \subseteq
+    G_{\alpha}}\).
+
+  Si \(\Lambda_{n} \neq \emptyset\) elegimos un \(\alpha(n) \in \Lambda_{n}\).
+  Afirmamos que \(A \subseteq \bigcup_{n=1}^{\Infinity} G_{\alpha(n)}\).
+  Probémoslo:
+
+  Sea \(a \in A\). Entonces \(\exists \alpha_{a}\) con \(a \in G_{\alpha_{a}}\).
+  Como \(\mathcal{B}\) es base, \(\exists n_{a}\) con \(a \in B_{n_{a}}
+  \subseteq G_{\alpha_{a}}\). Por tanto, \(\alpha_{a} \in \Lambda_{n_{a}}\), por
+  lo que \(\Lambda_{n_{a}} \neq \emptyset\) y hemos elegido \(\alpha(n_{a}) =
+  \alpha_{a}\). Por tanto, \(a \in B_{n_{a}} \subseteq G_{\alpha(n_{a})}\).
+\end{proof}
+
+\begin{proposition}
+  Todo abierto (de la \nameref{def:topnat}) de una \nameref{def:vd} \(M\) de
+  dimensión \(n\) es también una \nameref{def:vd} de dimensión \(n\).
+\end{proposition}
+
+\begin{proof}
+  % TODO
+\end{proof}
+
+\section{Ejercicios}
+\label{sec:r1}
+
+\begin{Answer}[number=1]
+  \Question Llamamos \(V_{n} = \Set{(x_{1},\dots,x_{n+1}) \in S^{n} \colon
+    x_{n+1} \neq 1}\) y \(V_{s} = \Set{(x_{1},\dots,x_{n+1}) \in S^{n} \colon
+    x_{n+1} \neq -1}\).
+
+  Considerando los hemisferios \(U_{i}^{+}\) y \(U_{i}^{-}\), para cada \(i\) se
+  consideran las proyecciones \(\varphi_{i} \colon U_{i}^{+} \to B^{n}\) y
+  \(\psi_{i} \colon U_{i}^{-1} \to B^{n}\) consistentes en eliminar la
+  coordenada \(i\) del vector (proyectan el hemisferio sobre la bola unidad).
+  \(\varphi_{i}^{-1}(y_{1},\dots,y_{n}) =
+  (y_{1},\dots,y_{i-1},\sqrt{1-\Norm{y}^{2}},y_{i},\dots,y_{n})\) y análogamente
+  tenemos \(\psi_{i}^{-1}\).
+
+  Este apartado será consecuencia del siguiente por el
+  \cref{lem:compat-trans-atlas}.
+
+  \Question
+  Hay que probar lo siguiente:
+  \begin{enumerate}
+  \item \(\varphi_{i} \circ \rho_{n}^{-1} \colon \rho_{n}(V_{n} \cap U_{i}^{+})
+    \to \varphi_{i}(V_{n} \cap U_{i}^{+})\) es diferenciable.
+  \item \(\rho_{n}(V_{n} \cap U_{i}^{+})\) es abierto de \(\RealSet^{n}\).
+  \item \(\varphi_{i}(V_{n} \cap U_{i}^{+})\) es abierto de \(\RealSet^{n}\).
+  \end{enumerate}
+
+  \begin{proof}
+    \begin{enumerate}
+    \item
+      \begin{align*}
+        \rho_{n}^{-1}(y_{1},\dots,y_{n})
+        &= \left( \frac{2y_{1}}{1+\Norm{y}^{2}},\dots, \frac{2y_{n}}{1+\Norm{y}^{2}},
+          \frac{\Norm{y}^{2}}{1+\Norm{y}^{2}} \right)\\
+        (\varphi_{i} \circ \rho_{n}^{-1})(y_{1},\dots,y_{n})
+        &= \left( \frac{2y_{1}}{1+\Norm{y}^{2}},\dots, \underbrace{\frac{2y_{i}}{1+\Norm{y}^{2}}}_{\text{eliminado}},\dots,
+          \frac{\Norm{y}^{2}}{1+\Norm{y}^{2}} \right)
+      \end{align*}
+      Esta función es claramente diferenciable.
+
+    \item \(\rho_{n}(V_{n} \cap U_{n+1}^{+}) = \rho_{n}(U_{n+1}^{+} \setminus
+      \Set{N}) = \RealSet^{n} \setminus D^{n}\), que es abierto.
+
+      Si \(i \neq 1, n+1\), la imagen es un semi-\(\RealSet^{n}\) abierto.
+
+      Si \(i = 1\), la imagen es \(B^{n}\), que es abierta.
+
+      Análogamente con \(\rho_{s}\) cambiando \(1\) por \(n+1\).
+    \item \(\varphi_{n+1}(V_{n} \cap U_{i}^{+}) = \varphi_{n+1}(U_{i}^{+} \setminus
+      \Set{N}) = B^{n} \setminus \Set{\vec{0}}\), que es abierto.
+
+      \(U_{i}^{+} \cap V_{norte} = U_{i}^{+} \  \forall i \neq n+1\).
+      \(\varphi_{i}(U_{i}^{+}) = B^{n}\) que es abierto.
+    \end{enumerate}
+  \end{proof}
+\end{Answer}
+
+\begin{Answer}[number=2]
+  Consideramos la siguiente aplicación para la carta de \(U_{i}\):
+  \begin{align*}
+    \varphi_{i} \colon U_{i} &\to \RealSet^{n}\\
+    [x_{1}, \dots, x_{n+1}] &\mapsto \left(
+                              \frac{x_{1}}{x_{i}},
+                              \dots,
+                              \frac{x_{i-1}}{x_{i}},
+                              \frac{x_{i+1}}{x_{i}},
+                              \dots,
+                              \frac{x_{n}}{x_{i}}
+                              \right)
+  \end{align*}
+
+  Para comprobar que efectivamente \(\mathcal{A} \coloneqq \Set{(U_{i},\varphi_{i})}\) es un atlas
+  debemos comprobar que las cartas son compatibles dos a dos.
+  Comprobemos que \(\varphi_{i}(U_{i} \cap U_{j})\) es abierto de
+  \(\RealSet^{n}\): la imagen es \(\RealSet^{n} \setminus H_{j}\),
+  con
+  \[
+    H_{j} =
+    \begin{cases}
+      \Set{x_{j} = 0} & \text{si } j < i\\
+      \Set{x_{j-1} = 0} & \text{si } j > i
+    \end{cases}
+  \]
+
+  luego es abierto.
+
+  Hay que ver que \(\varphi_{j} \circ \varphi_{i}^{-1} \colon \varphi_{i}(U_{i}
+  \cap U_{j}) \to \varphi_{j}(U_{i} \cap U_{j})\) es diferenciable:
+
+  \begin{align*}
+    (y_{1},\dots,y_{n})
+    &\mapsto [y_{1},\dots,y_{i-1},1,y_{i},\dots,y_{n}]\\
+    &\mapsto \left(
+      \frac{y_{1}}{y_{j}},
+      \dots,
+      \frac{y_{j-1}}{y_{j}},
+      \frac{y_{j+1}}{y_{j}},
+      \dots,
+      \frac{y_{i-1}}{y_{j}},
+      \frac{1}{y_{j}},
+      \frac{y_{i+1}}{y_{j}},
+      \dots,
+      \frac{y_{n}}{y_{j}}
+      \right)
+  \end{align*}
+  que es diferenciable.
+
+  Probemos que la \nameref{def:topnat} del atlas es la cociente:
+  sea \(G \in \mathcal{T}_{\mathcal{A}}\). Entonces \(\varphi_{i}(G \cap
+  U_{i})\) es abierto de \(\RealSet^{n}\). Veamos que \(\pi^{-1}(G)\) es abierto
+  de \(\RealSet^{n+1}\setminus\Set{0}\).
+  \[
+    \pi^{-1}(U_{i}) = \RealSet^{n+1} \setminus \Set{x_{i} = 0}
+  \]
+\end{Answer}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% mode: flyspell
+%%% mode: outline
+%%% ispell-local-dictionary: "castellano"
+%%% End:
