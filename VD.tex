@@ -19,6 +19,15 @@
 % \usepackage{pgfplots}
 \usetikzlibrary{decorations.markings,arrows, shapes.geometric}
 
+% Permite añadir símbolos de relación centrados en lugar de flechas
+\tikzset{
+  symbol/.style={
+    draw=none,
+    every to/.append style={
+      edge node={node [sloped, allow upside down, auto=false]{$#1$}}}
+  }
+}
+
 \usepackage[unicode]{hyperref}
 \usepackage{nameref,cleveref}
 
