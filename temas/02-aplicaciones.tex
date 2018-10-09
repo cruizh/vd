@@ -83,22 +83,37 @@
   \cref{fig:factorizacion-diferenciable} es diferenciable.
 \end{lemma}
 
-\begin{proof}
-  \begin{subproof}[\(\implies\)]
-    Sea \(x \in \varphi(U \cap f^{-1}(W))\). Entonces existe \(p \in U \cap
-    f^{-1}(W)\) con \(\varphi(p)=x\). Dado \((W,\psi)\), existe \((V,\xi)\)
-    carta de \(M\) con \(p \in V\), \(f(V) \subseteq W\) y \(\psi \circ f \circ
-    \xi^{-1} \colon \xi(V) \to \psi(W)\) es diferenciable.
-    
-    Sea \(\Omega \coloneqq U \cap V \subseteq U \cap f^{-1}(W)\). Sea
-    \((\Omega,\xi)\).
-  
-    % TODO
-  \end{subproof}
+\begin{proof}\item 
+\begin{subproof}[\(\impliedby\)]
+ Sea \(W',\psi'\) una carta con \(f(p)\in W' \). Como \(W\) y \(W'\) son abiertos de \(N\), es claro que \(W\cap W'\) también es abierto de \(N\). Por ser \(f\) continua su inversa conserva los abiertos, es decir, \(f^{-1}(W\cap W')\) es abierto en \(W\), con \(p \in f^{-1}(W\cap W') \).
 
-  \begin{subproof}[\(\impliedby\)]
-    % TODO
-  \end{subproof}
+Como \(U\) es abierto de \(M\) podemos definir el abierto \(U'\) de \(M\) como \(U\cap f^{-1}(W\cap W')\). Entonces \((U',\varphi')\) con \(\Restrict{\varphi'}{U'}\) es una carta de \(M\) (por el
+\cref{lem:compat-subcartas} de \nameref{lem:compat-subcartas} y ser \(\varphi\colon U \to \varphi(U)\) homeomorfismo).
+
+Además \(p\in U'\) y \(f(U')\subseteq W' \), entonces considerar la aplicación \(\psi \circ f \circ \varphi^{-1} \) restringida a \(\varphi'(U') \) es lo mismo que considerar \(\psi' \circ f \circ (\varphi')^{-1} \) en dicho conjunto.
+
+Finalmente:
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzcd}		
+		\varphi'(U')
+		\arrow[rr,"	\varphi^{-1} \circ \psi'"]
+		\arrow[d, "(\varphi')^{-1}\circ \varphi"]&&
+		\psi'( W')
+		\arrow[d, "(\psi')^{-1} \circ \psi"]\\
+		\varphi(U)
+		\arrow[rr, "\varphi^{-1}\circ \psi"]&&
+		\psi(W)
+	\end{tikzcd}
+\end{figure}
+
+Este diagrama nos permite escribir  \(\psi' \circ f \circ (\varphi')^{-1}=\varphi^{-1} \circ \psi \circ (\varphi')^{-1}\circ \varphi \circ \psi^{-1} \circ \psi' \) que es composición de funciones diferenciales como hemos visto anteriormente.
+\end{subproof}
+
+\begin{subproof}[\(\implies\)]
+Para dos cartas \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p\in U\) y \(f(U)\subseteq W\), la composición \(\psi\circ f \circ \varphi^{-1}\) es diferenciable.
+\end{subproof}
 \end{proof}
 
 \end{document}
