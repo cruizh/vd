@@ -11,24 +11,27 @@
 \begin{definition}[diferenciable]
   \label{def:diferenciable}
   Sea \(f \colon M \to N\) una aplicación entre variedades. Decimos que \(f\) es
-  \emph{diferenciable} en \(p \in M\) si para toda carta \((W,\psi)\) de \(N\) con \(f(p)
-  \in W\) existe una carta \((U,\varphi)\) de \(M\) tal que \(p \in U, f(U)
-  \subseteq W\) y \(\psi \circ f \circ \varphi^{-1} \colon \varphi(U) \to
-  \psi(W)\) es diferenciable en \(\varphi(p)\). Nótese que, en el siguiente
-  diagrama, \(\widetilde{f} = \psi \circ f \circ \varphi^{-1}\).
+  \emph{diferenciable} en \(p \in M\) si para toda carta \((W,\psi)\) de \(N\)
+  con \(f(p) \in W\) existe una carta \((U,\varphi)\) de \(M\) tal que \(p \in
+  U, f(U) \subseteq W\) y \(\psi \circ f \circ \varphi^{-1} \colon \varphi(U)
+  \to \psi(W)\) es diferenciable en \(\varphi(p)\). Nótese que, en la
+  \cref{fig:factorizacion-diferenciable}, \(\widetilde{f} = \psi \circ f \circ
+  \varphi^{-1}\).
 
   Se dice que \(f\) es \emph{diferenciable} si lo es para todo \(p \in M\).
-
-  \begin{figure}[h]
-    \centering
-    \begin{tikzcd}
-      U \arrow[r, "f"] \arrow[d, "\varphi"']
-      & W \arrow[d, "\psi"] \\
-      \varphi(U) \arrow[r, "\widetilde{f}"]
-      & \psi(W)
-    \end{tikzcd}
-  \end{figure}
 \end{definition}
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzcd}
+    U \arrow[r, "f"] \arrow[d, "\varphi"']
+    & W \arrow[d, "\psi"] \\
+    \varphi(U) \arrow[r, "\widetilde{f}"]
+    & \psi(W)
+  \end{tikzcd}
+  \caption{Factorización de una aplicación diferenciable entre variedades}
+  \label{fig:factorizacion-diferenciable}
+\end{figure}
 
 \begin{lemma}
   Toda \(f\) \nameref{def:diferenciable} es continua para las topologías
@@ -53,7 +56,7 @@
 \end{lemma}
 
 \begin{proof}
-  %TODO
+  % TODO
 \end{proof}
 
 \begin{definition}[difeomorfismo]
@@ -61,5 +64,41 @@
   \(f \colon M \to N\) se dice \emph{difeomorfismo} entre variedades si \(f\) es
   biyectiva y \(f\) y \(f^{-1}\) son \hyperref[def:diferenciable]{diferenciables}.
 \end{definition}
+
+\begin{lemma}
+  \(f\) es \nameref{def:diferenciable} en \(p\) si y solo si existen cartas
+  \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p \in U\), \(f(U)
+  \subseteq W\) y \(\widetilde{f} = \psi \circ f \circ \varphi^{-1}\) es
+  diferenciable (la misma de la \cref{fig:factorizacion-diferenciable}).
+\end{lemma}
+
+\begin{proof}
+  % TODO
+\end{proof}
+
+\begin{lemma}
+  Supongamos que \(f \colon M \to N\) es continua. Entonces \(f\) es
+  \nameref{def:diferenciable} si y solo si para todas las cartas \((W,\psi)\) de
+  \(N\)y \((U,\varphi)\) de \(M\), la aplicación \(\widetilde{f}\) de la
+  \cref{fig:factorizacion-diferenciable} es diferenciable.
+\end{lemma}
+
+\begin{proof}
+  \begin{subproof}[\(\implies\)]
+    Sea \(x \in \varphi(U \cap f^{-1}(W))\). Entonces existe \(p \in U \cap
+    f^{-1}(W)\) con \(\varphi(p)=x\). Dado \((W,\psi)\), existe \((V,\xi)\)
+    carta de \(M\) con \(p \in V\), \(f(V) \subseteq W\) y \(\psi \circ f \circ
+    \xi^{-1} \colon \xi(V) \to \psi(W)\) es diferenciable.
+    
+    Sea \(\Omega \coloneqq U \cap V \subseteq U \cap f^{-1}(W)\). Sea
+    \((\Omega,\xi)\).
+  
+    % TODO
+  \end{subproof}
+
+  \begin{subproof}[\(\impliedby\)]
+    % TODO
+  \end{subproof}
+\end{proof}
 
 \end{document}
