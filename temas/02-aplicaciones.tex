@@ -56,7 +56,7 @@
 \end{lemma}
 
 \begin{proof}
-  % TODO
+%TODO
 \end{proof}
 
 \begin{definition}[difeomorfismo]
@@ -73,7 +73,53 @@
 \end{lemma}
 
 \begin{proof}
-  % TODO
+\begin{subproof}[\(\implies\)]
+Es cierto pues que existan esas cartas es un caso particular de que \(f\) sea
+diferenciable.
+\end{subproof}
+\begin{subproof}[\(\impliedby\)]
+Sea \((\Omega,\rho)\) carta cualquiera de \(N\) con \(f(p)\in\Omega\). Se tiene
+que \(\Omega\cap W\) es abto de \(N\) y \(f(p)\cap\Omega\cap W\subseteq W\).
+Como además \((W,\psi)\) y \((\Omega,\rho)\) son comp entonces \(\psi(\Omega\cap
+W),\rho(\Omega\cap W)\) son abtos y \(\psi\circ\rho^{-1},\rho\circ\psi^{-1}\)
+son dif.
+
+Sabemos que \(f:U\rightarrow W\) es continua, y que \(W,\Omega\) son abtos de
+\(N\) por lo que su intersección también, luego \(f^{-1}(\Omega\cap W)\) es abto
+de \(M\), entonces \(f^{-1}(\Omega\cap W)\cap U:=\Gamma\subseteq U\) abto de
+\(M\).
+
+Sabemos por el \cref{lem:compat-restriccion}, que
+\(\Gamma,\Restrict{\varphi}{\Gamma}\) es carta de \(M\). Entonces:
+
+\[\Gamma\overset{f}{\rightarrow}\Omega\cap W\subseteq W,\Omega\]
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzcd}	
+		\Gamma
+		\arrow[rr,"	f "]
+		\arrow[d, "\varphi"]&&
+		\Omega
+		\arrow[d, "\rho"]\\
+		\varphi(p) \ar[d, symbol=\in]
+		\arrow[rr, "\tilde{f}=\rho\circ f\circ\varphi^{-1}"]&&
+		\rho(\Gamma)\\
+    \varphi(\Gamma)
+	\end{tikzcd}
+
+Y \(\varphi(\Gamma)\) es abto pues \(\varphi\) es homeom y \(\Gamma\) abto.
+
+Con el anterior diagrama y la definición que hemos hecho de \(\tilde{f}=\rho\circ
+f\circ\varphi^{-1}=(\rho\circ\psi^{-1})\circ(\psi\circ f\circ\varphi^{-1})\) que
+es diferenciable pues \((\rho\circ\psi^{-1})\) lo es por comp y \((\psi\circ
+f\circ\varphi^{-1})\) lo es por hipótesis, luego se tiene que \(f\) es diferenciable.
+
+ 
+\end{figure}
+
+
+\end{subproof}
 \end{proof}
 
 \begin{lemma}
@@ -128,6 +174,10 @@ diferenciable por definición.
 
 \begin{definition}[algo]
   Esto es una prueba guay.
+\end{definition}
+
+\begin{definition}[trabajo por mi cuenta]
+  Algo que no debería tocar nadie más.
 \end{definition}
 
 \end{document}
