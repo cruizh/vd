@@ -85,34 +85,43 @@
 
 \begin{proof}\item 
 \begin{subproof}[\(\impliedby\)]
- Sea \(W',\psi'\) una carta con \(f(p)\in W' \). Como \(W\) y \(W'\) son abiertos de \(N\), es claro que \(W\cap W'\) también es abierto de \(N\). Por ser \(f\) continua su inversa conserva los abiertos, es decir, \(f^{-1}(W\cap W')\) es abierto en \(W\), con \(p \in f^{-1}(W\cap W') \).
+  Sea \((W',\psi')\) una carta con \(f(p) \in W'\).
+  Como \(W\) y \(W'\) son abiertos de \(N\), es claro que \(W \cap W'\) también
+  es abierto de \(N\).
+  Por ser \(f\) continua, \(f^{-1}(W\cap W')\) es abierto en \(M\),
+  con \(p \in f^{-1}(W \cap W')\).
 
-Como \(U\) es abierto de \(M\) podemos definir el abierto \(U'\) de \(M\) como \(U\cap f^{-1}(W\cap W')\). Entonces \((U',\varphi')\) con \(\Restrict{\varphi'}{U'}\) es una carta de \(M\) (por el
-\cref{lem:compat-subcartas} de \nameref{lem:compat-subcartas} y ser \(\varphi\colon U \to \varphi(U)\) homeomorfismo).
+  Como \(U\) es abierto de \(M\) podemos definir el abierto \(U'\) de \(M\) como
+  \(U \cap f^{-1}(W \cap W')\). Entonces \((U',\varphi')\) con \(\varphi'
+  \coloneqq \Restrict{\varphi}{U'}\) es una carta de \(M\) por el
+  \cref{lem:compat-subcartas} de \nameref{lem:compat-subcartas} y ser \(\varphi
+  \colon U \to \varphi(U)\) homeomorfismo.
 
-Además \(p\in U'\) y \(f(U')\subseteq W' \), entonces considerar la aplicación \(\psi \circ f \circ \varphi^{-1} \) restringida a \(\varphi'(U') \) es lo mismo que considerar \(\psi' \circ f \circ (\varphi')^{-1} \) en dicho conjunto.
+  Además \(p \in U'\) y \(f(U') \subseteq W' \).
 
-Finalmente:
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}
+      U' \ar[r, "f"] \ar[d, "\varphi'"'] & W' \ar[d, "\psi'"]\\
+      \varphi'(U') \ar[d, hook, "i_{U'}"']
+      \ar[r, "\hat{f}"] & \psi'(W') \ar[d, hook, "i_{W'}"]\\
+      \varphi(U) \ar[r, "\widetilde{f}"'] & \psi(W')
+    \end{tikzcd}
+  \end{figure}
 
-\begin{figure}[h]
-	\centering
-	\begin{tikzcd}		
-		\varphi'(U')
-		\arrow[rr,"	\varphi^{-1} \circ \psi'"]
-		\arrow[d, "(\varphi')^{-1}\circ \varphi"]&&
-		\psi'( W')
-		\arrow[d, "(\psi')^{-1} \circ \psi"]\\
-		\varphi(U)
-		\arrow[rr, "\varphi^{-1}\circ \psi"]&&
-		\psi(W)
-	\end{tikzcd}
-\end{figure}
-
-Este diagrama nos permite escribir  \(\psi' \circ f \circ (\varphi')^{-1}=\varphi^{-1} \circ \psi \circ (\varphi')^{-1}\circ \varphi \circ \psi^{-1} \circ \psi' \) que es composición de funciones diferenciales como hemos visto anteriormente.
+  Por construcción de \((W',\psi')\) y definición de
+  \nameref{def:diferenciable}, \(f\) es diferenciable si y solo si \(\hat{f} =
+  \psi' \circ f \circ (\varphi')^{-1}\)
+  lo es, y efectivamente lo es porque \(\hat{f} = \Restrict{\widetilde{f}\,}{\varphi(U')}\), que es
+  restricción de una aplicación diferenciable luego es diferenciable (recordemos
+  que \(\widetilde{f} = \psi \circ f \circ \varphi^{-1}\), que es diferenciable
+  por ser \(f\) diferenciable).
 \end{subproof}
 
 \begin{subproof}[\(\implies\)]
-Para dos cartas \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p\in U\) y \(f(U)\subseteq W\), la composición \(\psi\circ f \circ \varphi^{-1}\) es diferenciable.
+Para dos cartas \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p\in U\)
+y \(f(U)\subseteq W\), la composición \(\psi\circ f \circ \varphi^{-1}\) es
+diferenciable por definición.
 \end{subproof}
 \end{proof}
 
