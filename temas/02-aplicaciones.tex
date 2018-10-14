@@ -99,25 +99,25 @@
   diferenciable (la misma de la \cref{fig:factorizacion-diferenciable}).
 \end{lemma}
 
-\begin{proof}
+\begin{proof}\item
 \begin{subproof}[\(\implies\)]
 Es cierto pues que existan esas cartas es un caso particular de que \(f\) sea
 diferenciable.
 \end{subproof}
 \begin{subproof}[\(\impliedby\)]
-Sea \((\Omega,\rho)\) carta cualquiera de \(N\) con \(f(p)\in\Omega\). Se tiene
-que \(\Omega\cap W\) es abto de \(N\) y \(f(p)\cap\Omega\cap W\subseteq W\).
-Como además \((W,\psi)\) y \((\Omega,\rho)\) son comp entonces \(\psi(\Omega\cap
-W),\rho(\Omega\cap W)\) son abtos y \(\psi\circ\rho^{-1},\rho\circ\psi^{-1}\)
-son dif.
+  Sea \((\Omega,\rho)\) carta cualquiera de \(N\) con \(f(p)\in\Omega\). Se
+  tiene que \(\Omega\cap W\) es abierto de \(N\) y \(f(p) \in \Omega\cap
+  W \subseteq W\). Como además \((W,\psi)\) y \((\Omega,\rho)\) son compatibles,
+  entonces \(\psi(\Omega\cap W),\rho(\Omega\cap W)\) son abiertos y
+  \(\psi\circ\rho^{-1},\rho\circ\psi^{-1}\) son diferenciables.
 
-Sabemos que \(f \colon U\rightarrow W\) es continua, y que \(W,\Omega\) son abtos de
-\(N\) por lo que su intersección también, luego \(f^{-1}(\Omega\cap W)\) es abto
-de \(M\), entonces \(f^{-1}(\Omega\cap W)\cap U:=\Gamma\subseteq U\) abto de
-\(M\).
+  Sabemos que \(f \colon U \to W\) es continua, y que \(W,\Omega\) son abiertos
+  de \(N\) por lo que su intersección también, luego \(f^{-1}(\Omega \cap W)\)
+  es abierto de \(M\), entonces \(f^{-1}(\Omega \cap W)\cap U \eqqcolon \Gamma
+  \subseteq U\) es abierto de \(M\).
 
 Sabemos por el \cref{lem:compat-restriccion}, que
-\(\Gamma,\Restrict{\varphi}{\Gamma}\) es carta de \(M\). Entonces:
+\((\Gamma,\Restrict{\varphi}{\Gamma})\) es carta de \(M\). Entonces:
 
 \[\Gamma\overset{f}{\rightarrow}\Omega\cap W\subseteq W,\Omega\]
 
@@ -129,18 +129,19 @@ Sabemos por el \cref{lem:compat-restriccion}, que
 		\arrow[d, "\varphi"]&&
 		\Omega
 		\arrow[d, "\rho"]\\
-		\varphi(p) \ar[d, symbol=\in]
+		\varphi(\Gamma) \ar[d, symbol=\ni]
 		\arrow[rr, "\tilde{f}=\rho\circ f\circ\varphi^{-1}"]&&
-		\rho(\Gamma)\\
-    \varphi(\Gamma)
+		\rho(\Omega)\\
+    \varphi(p)
 	\end{tikzcd}
 
-Y \(\varphi(\Gamma)\) es abto pues \(\varphi\) es homeom y \(\Gamma\) abto.
+Y \(\varphi(\Gamma)\) es abierto pues \(\varphi\) es homeomorfismo y \(\Gamma\) abierto.
 
-Con el anterior diagrama y la definición que hemos hecho de \(\tilde{f}=\rho\circ
-f\circ\varphi^{-1}=(\rho\circ\psi^{-1})\circ(\psi\circ f\circ\varphi^{-1})\) que
-es diferenciable pues \((\rho\circ\psi^{-1})\) lo es por comp y \((\psi\circ
-f\circ\varphi^{-1})\) lo es por hipótesis, luego se tiene que \(f\) es diferenciable.
+Con el anterior diagrama y la definición que hemos hecho de
+\(\tilde{f}=\rho\circ f\circ\varphi^{-1}=(\rho\circ\psi^{-1})\circ(\psi\circ
+f\circ\varphi^{-1})\) que es diferenciable pues \((\rho\circ\psi^{-1})\) lo es
+por compatbilidad y \((\psi\circ f\circ\varphi^{-1})\) lo es por hipótesis,
+luego se tiene que \(f\) es diferenciable.
 
  
 \end{figure}
