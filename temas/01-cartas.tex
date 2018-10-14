@@ -8,18 +8,18 @@
 \label{chap:cartas}
 
 \begin{definition}[carta]
-  Dado un conjunto \(X\), una \emph{carta} de \(X\) es un par \((\mathcal{U},
-  \varphi)\) con \(\mathcal{U} \subseteq X\) y \(\varphi \colon \mathcal{U} \to
-  \RealSet^{n}\) inyectiva y su imagen \(\varphi(\mathcal{U})\) es un abierto de
+  Dado un conjunto \(X\), una \emph{carta} de \(X\) es un par \((U,
+  \varphi)\) con \(U \subseteq X\) y \(\varphi \colon U \to
+  \RealSet^{n}\) inyectiva y su imagen \(\varphi(U)\) es un abierto de
   \(\RealSet^{n}\).
 \end{definition}
 
 \begin{definition}[cartas compatibles]
-  Dos cartas de \(X\) \((\mathcal{U}, \varphi)\), \((\mathcal{W}, \psi)\) se
-  dicen \emph{compatibles} si \(\mathcal{U} \cap \mathcal{W} = \emptyset\) o, en
-  caso contrario, \(\varphi(\mathcal{U} \cap \mathcal{W})\) y \(\psi(\mathcal{U}
-  \cap \mathcal{W})\) son abiertos y además \(\psi \circ \varphi^{-1} \colon
-  \varphi(\mathcal{U} \cap \mathcal{W}) \to \psi(\mathcal{U} \cap \mathcal{W})\)
+  Dos cartas de \(X\) \((U, \varphi)\), \((W, \psi)\) se
+  dicen \emph{compatibles} si \(U \cap W = \emptyset\) o, en
+  caso contrario, \(\varphi(U \cap W)\) y \(\psi(U
+  \cap W)\) son abiertos y además \(\psi \circ \varphi^{-1} \colon
+  \varphi(U \cap W) \to \psi(U \cap W)\)
   y su inversa \(\varphi \circ \psi^{-1}\) son diferenciables (son
   difeomorfismos).
 
@@ -228,8 +228,8 @@
 \end{definition}
 
 \begin{example}
-  \(\RealSet^{n}\) con \(\Id \colon \RealSet^{n} \to \RealSet^{n}\):
-  \((\RealSet^{n}, \Id)\) es una carta que lo hace \(n\)-variedad.
+  \(\RealSet^{n}\) con \(\Id{} \colon \RealSet^{n} \to \RealSet^{n}\):
+  \((\RealSet^{n}, \Id{})\) es una carta que lo hace \(n\)-variedad.
 
   Cualquier \(U \subseteq \RealSet^{n}\) abierto proporciona una carta \((U,
   i)\) compatible con \(\mathcal{A}\), con \(i \colon U \to \RealSet^{n}\) la
@@ -238,7 +238,7 @@
 
 \begin{example}
   En \(\RealSet\), la carta anterior no es compatible con la carta \((\RealSet,
-  f)\), \(f(x) = x^{3}\), porque \(\Id \circ f^{-1}\) no es diferenciable.
+  f)\), \(f(x) = x^{3}\), porque \(\Id{} \circ f^{-1}\) no es diferenciable.
 \end{example}
 
 \begin{example}
@@ -671,3 +671,7 @@
 \end{Answer}
 
 \end{document}
+
+%%% Local Variables:
+%%% TeX-master: "../VD"
+%%% End:
