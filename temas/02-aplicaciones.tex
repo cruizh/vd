@@ -152,9 +152,11 @@ luego se tiene que \(f\) es diferenciable.
 
 \begin{lemma}
   Supongamos que \(f \colon M \to N\) es continua. Entonces \(f\) es
-  \nameref{def:diferenciable} si y solo si para todas las cartas \((U,\varphi)\)
-  de \(M\) y \((W,\psi)\) de \(N\), la aplicación \(\widetilde{f}\) de la
-  \cref{fig:factorizacion-diferenciable} es diferenciable.
+  \nameref{def:diferenciable} en \(p\) si y solo si para todas las cartas
+  \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p \in U\) y \(f(U)
+  \subseteq W\), la aplicación \(\widetilde{f} \coloneqq \psi \circ f \circ
+  \varphi^{-1}\) (la misma de la \cref{fig:factorizacion-diferenciable}) es
+  diferenciable.
 \end{lemma}
 
 \begin{proof}\item 
