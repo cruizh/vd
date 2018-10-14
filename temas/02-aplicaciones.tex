@@ -86,12 +86,6 @@
   diferenciables (por hipótesis), luego es diferenciable.
 \end{proof}
 
-\begin{definition}[difeomorfismo]
-  \label{def:difeomorfismo}
-  \(f \colon M \to N\) se dice \emph{difeomorfismo} entre variedades si \(f\) es
-  biyectiva y \(f\) y \(f^{-1}\) son \hyperref[def:diferenciable]{diferenciables}.
-\end{definition}
-
 \begin{lemma}
   \(f\) es \nameref{def:diferenciable} en \(p\) si y solo si existen cartas
   \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p \in U\), \(f(U)
@@ -201,6 +195,29 @@ y \(f(U)\subseteq W\), la composición \(\psi\circ f \circ \varphi^{-1}\) es
 diferenciable por definición.
 \end{subproof}
 \end{proof}
+
+\section{Difeomorfismo}
+\label{sec:difeo}
+
+\begin{definition}[difeomorfismo]
+  \label{def:difeo}
+  \(f \colon M \to N\) se dice \emph{difeomorfismo} entre variedades si \(f\) es
+  biyectiva y \(f\) y \(f^{-1}\) son \hyperref[def:diferenciable]{diferenciables}.
+\end{definition}
+
+\begin{lemma}
+  Si \(f \colon M \to N\) es un \nameref{def:difeo} y \(\mathcal{A}\) y
+  \(\mathcal{B}\) son atlas de \(M\) y \(N\) respectivamente, entonces
+  \begin{equation}
+    \label{eq:atlas-difeo}
+    f(\mathcal{A}) = \Set{
+      (f(U), \varphi \circ f^{-1})
+      :
+      (U,\varphi) \in \mathcal{A}
+    }
+  \end{equation}
+  es un atlas de \(N\) compatible con \(\mathcal{B}\).
+\end{lemma}
 
 \end{document}
 
