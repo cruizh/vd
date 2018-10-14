@@ -228,6 +228,59 @@ A \(\varphi_{i}:U\to\mathbb{R}\) se le llama \underline{función coordenada} de
 la carta \((U,\varphi)\). Se denota \(x_{i}:U\to\mathbb{R}\).
 \end{definition}
 
+\begin{definition}[\(\pderiv{\cdot}{x_{i}}\)]
+Sea \(\pderiv{\cdot}{x_{i}}:\mathcal{F}(U)\to\mathcal{F}(U), 1\leq i\leq
+m=\operatorname{dim}_{M}\), con \((U,\varphi)\) carta de \(M\), el operador tal
+que si \(f\in\mathcal{F}(U),p\in U\) entonces:
+\[
+\Restrict{\pderiv{f}{x_{i}}}{p}=\Restrict{\pderiv{f\circ\varphi^{-1}}{x_{i}}}{\varphi(p)}\in\mathbb{R}
+\]
+\end{definition}
+
+\begin{lemma}
+  \(\pderiv{}{x_{i}}\) está bien definida \(\leftrightarrow\)
+  \(\pderiv{f}{x_{i}}\) es diferenciable \(\forall f\in\mathcal{F}(U)\)
+\end{lemma}
+\begin{proof}
+\end{proof}
+
+\begin{lemma}
+\(\forall f\in\mathcal{F}(U\cap V)\), con \((U,\varphi),(V,\psi)\) cartas de
+\(M\) con \(U\cap V\neq\emptyset\), \(x_{i},y_{i}\equiv f\) coordenadas de cada
+carta respectivamente, entonces:
+\[\Restrict{\pderiv{f}{y_{i}}}{p}=\sum_{j=1}^{m}\Restrict{\pderiv{f}{x_{j}}}{p}\cdot\Restrict{\pderiv{(\varphi\circ\psi^{-1})_{j}}{y_{i}}}{\psi(p)}\]
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+
+\section{Extensión de funciones diferenciables}
+
+\begin{lemma}
+La función \[\alpha:\mathbb{R}\to\mathbb{R}\]
+\[\alpha(t) =
+\begin{dcases}
+0 & t \leq 0 \\
+e^{-1/t} & t > 0
+\end{dcases}\]
+es diferenciable.
+\end{lemma}
+\begin{proof}
+  Ejercicio.
+\end{proof}
+
+\begin{lemma}
+  \(\exists\lambda:\mathbb{R}^{n}\to\mathbb{R}\) diferenciable tal que \[\lambda(x) =
+\begin{dcases}
+  1 & \Norm{x} \leq 1 \\
+  \lambda(x)\in(0,1) & 1<\Norm{x}<2 \\
+  0 & \Norm{x} \geq 2
+\end{dcases}\]
+\end{lemma}
+\begin{proof}
+\end{proof}
+
+
 \end{document}
 
 %%% Local Variables:
