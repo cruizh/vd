@@ -56,7 +56,34 @@
 \end{lemma}
 
 \begin{proof}
-%TODO
+  Sean \(p \in M\) y \((\Omega,\rho)\) una carta de \(Z\) con \((g \circ f)(p)
+  \in \Omega\). Como \(g\) es diferenciable, existe una carta \((W,\psi)\) de
+  \(N\) con \(f(p) \in W\), \(g(W) \subseteq \Omega\) y \(\widetilde{g}
+  \coloneqq \rho \circ g \circ \psi^{-1}\) diferenciable. Por otra parte, como
+  \(f\) es diferenciable, existe una carta \((U,\varphi)\) de \(M\) con \(p \in
+  U\), \(f(U) \subseteq W\) y \(\widetilde{f} \coloneqq \psi \circ f \circ
+  \varphi^{-1}\) diferenciable. Tenemos el diagrama de la \cref{fig:comp-dif-cd}.
+
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}
+      U \ar[d, "\varphi"] \ar[r, "f"] &
+      W \ar[d, "\psi"] \ar[r, "g"] &
+      \Omega \ar[d, "\rho"]\\
+      \varphi(U) \ar[r, "\widetilde{f}"] &
+      \psi(W) \ar[r, "\widetilde{g}"] &
+      \rho(\Omega)
+    \end{tikzcd}
+    \caption{Composición de aplicaciones diferenciables}
+    \label{fig:comp-dif-cd}
+  \end{figure}
+
+  Ya hemos encontrado una carta \((U,\varphi)\) de \(M\) con \(p \in U\) y \((g
+  \circ f)(U) \subseteq \Omega\).
+  Para ver que \(g \circ f\) es diferenciable, queda probar que
+  \(h \coloneqq \rho \circ g \circ f \circ \varphi^{-1}\) lo es, y resulta que
+  \(h = \widetilde{g} \circ \widetilde{f}\), i.e. es composición de aplicaciones
+  diferenciables (por hipótesis), luego es diferenciable.
 \end{proof}
 
 \begin{definition}[difeomorfismo]
