@@ -4,4 +4,4 @@
 
 Apuntes de la asignatura Variedades Diferenciables del Grado en Matemáticas en la Universidad de Sevilla.
 
-Los apuntes se compilan automáticamente y están disponibles para descargar en el apartado [Releases][https://github.com/cruizh/vd/releases].
+Los apuntes se compilan automáticamente y están disponibles para descargar en el apartado [Releases](https://github.com/cruizh/vd/releases).
