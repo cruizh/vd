@@ -8,6 +8,10 @@
 
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage{amsthm,thmtools}
+\usepackage{xpatch}
+\renewcommand{\listtheoremname}{Lista de Teoremas}
+\xpatchcmd{\listoftheorems}{\@fileswfalse}{}{\typeout{yes}}{\typeout{no}}
+
 \usepackage{faktor} % Espacios cociente
 \usepackage{exercise}
 \usepackage{cool}
@@ -38,6 +42,8 @@
     citecolor={blue!50!black},
     urlcolor={blue!80!black}
 }
+
+\newcommand{\nphantom}[1]{\sbox0{#1}\hspace{-\the\wd0}}
 
 % rhcool
 \newcommand{\NaturalSet}{\ensuremath{\mathbb{N}}}   % Naturales
@@ -99,7 +105,12 @@
 \DeclarePairedDelimiter{\SG}{\langle}{\rangle} % Subgrupo generado
 \DeclarePairedDelimiter{\SGN}{\lhd}{\rhd} % Subgrupo normal generado
 \DeclareMathOperator{\Ker}{Ker}
+\newcommand{\Fdif}[1]{\operatorname{\mathcal{F}}\left(#1\right)} % Funciones diferenciables.
+\DeclareMathOperator{\rango}{rango}
 \makeatother
+
+% rhanalysis
+\newcommand{\J}[2][]{\operatorname{J}_{#1}#2} % Matriz jacobiana
 
 % thmrh
 
@@ -183,6 +194,10 @@ Carlos Méndez García-Barroso}
 \begin{document}
 
 \maketitle
+
+\tableofcontents
+
+\listoftheorems[ignore=example]
 
 \subfile{temas/01-cartas}
 
