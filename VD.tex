@@ -8,6 +8,10 @@
 
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage{amsthm,thmtools}
+\usepackage{xpatch}
+\renewcommand{\listtheoremname}{Lista de Teoremas}
+\xpatchcmd{\listoftheorems}{\@fileswfalse}{}{\typeout{yes}}{\typeout{no}}
+
 \usepackage{faktor} % Espacios cociente
 \usepackage{exercise}
 \usepackage{cool}
@@ -183,6 +187,10 @@ Carlos Méndez García-Barroso}
 \begin{document}
 
 \maketitle
+
+\tableofcontents
+
+\listoftheorems[ignore=example]
 
 \subfile{temas/01-cartas}
 
