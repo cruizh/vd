@@ -91,6 +91,7 @@
 \end{proof}
 
 \begin{lemma}
+  \label{lem:dif-caract-exists}
   \(f\) es \nameref{def:diferenciable} en \(p\) si y solo si existen cartas
   \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p \in U\), \(f(U)
   \subseteq W\) y \(\widetilde{f} = \psi \circ f \circ \varphi^{-1}\) es
@@ -143,7 +144,6 @@ luego se tiene que \(f\) es diferenciable.
 
  
 \end{figure}
-
 
 \end{subproof}
 \end{proof}
@@ -302,7 +302,7 @@ diferenciable por definición.
   \end{enumerate}
 \end{note}
 
-\section{Funciones reales y derivadas parciales}
+\section{Funciones reales}
 \label{sec:partial}
 
 \begin{definition}
@@ -350,6 +350,7 @@ diferenciable por definición.
 \]
 es diferenciable por serlo el cambio de carta.
 \end{proof}
+
 \begin{definition}[derivada parcial]
 Sea \(\pderiv{}{x_{i}} \colon \mathcal{F}(U)\to\mathcal{F}(U)\), \(1 \leq i\leq
 m \coloneqq\operatorname{dim}_{M}\), con \((U,\varphi)\) carta de \(M\), el operador tal
@@ -379,9 +380,9 @@ que si \(f \in \mathcal{F}(U),\ p\in U\), entonces:
 
 \begin{note}
   Si \((U,\varphi)\) es una carta y \(U' \subseteq U\) es un abierto, tenemos
-  una proyección:
+  una aplicación:
   \begin{align*}
-    \rho_{UU'} \colon \Fdif{U} &\mapsto \Fdif{U'}\\
+    \rho_{UU'} \colon \Fdif{U} &\to \Fdif{U'}\\
     f &\mapsto \Restrict{f}{U'}
   \end{align*}
 
@@ -407,6 +408,36 @@ respectivas. Entonces:
     \Restrict{\pderiv{(\varphi\circ\psi^{-1})_{j}}{y_{i}}}{\psi(p)}}{j,1,m}
 \]
 \end{lemma}
+
+\section{Extensión de funciones diferenciables}
+
+\begin{lemma}
+La función \[\alpha:\RealSet\to\RealSet\]
+\[\alpha(t) =
+\begin{dcases}
+0 & t \leq 0 \\
+e^{-1/t} & t > 0
+\end{dcases}\]
+es diferenciable.
+\end{lemma}
+\begin{proof}
+  % TODO
+\end{proof}
+
+\begin{lemma}
+  \(\exists\lambda:\RealSet^{n}\to\RealSet\) diferenciable tal que \[\lambda(x) =
+\begin{dcases}
+  1 & \Norm{x} \leq 1 \\
+  \lambda(x)\in(0,1) & 1<\Norm{x}<2 \\
+  0 & \Norm{x} \geq 2
+\end{dcases}\]
+\end{lemma}
+\begin{proof}
+  % TODO
+\end{proof}
+
+\section{Rango de una aplicación diferenciable. Inmersiones y submersiones.}
+\label{sec:inmersion}
 
 \begin{definition}[rango]
   Sea \(f \colon M \to N\) una aplicación diferenciable en \(p \in M\). Por ser
@@ -455,11 +486,20 @@ respectivas. Entonces:
     \label{fig:rango-indep-carta}
   \end{figure}
 
-  % TODO
-\end{proof}
+  Por la regla de la cadena y la conmutatividad del diagrama, tenemos:
+  \[
+    \underbracket{\J[\psi f(p)]{(\xi \psi^{-1})}}_{A}
+    \cdot
+    \J[\varphi(p)]{(\psi f \varphi^{-1})}
+    =
+    \J[\rho(p)]{(\xi f \rho^{-1})}
+    \cdot
+    \underbracket{\J[\varphi(p)]{(\rho \varphi^{-1})}}_{B}
+  \]
 
-\section{Inmersiones}
-\label{sec:inmersion}
+  Como \(A\) y \(B\) tienen rango máximo, los rangos de las matrices restantes
+  son iguales.
+\end{proof}
 
 \begin{definition}[inmersión]
   \label{def:inmersión}
@@ -500,7 +540,7 @@ respectivas. Entonces:
 \end{theorem}
 
 \begin{proof}
-  De acuerdo con el \cref{lem:dif-caract-forall} % CHECK,
+  De acuerdo con el \cref{lem:dif-caract-exists},
   podemos elegir cartas \((U,\varphi)\) y \((V,\psi)\) con \(p \in U\) y \(f(U)
   \subseteq V\). Podemos suponer que \(\varphi(p)=0=\psi(f(p))\). Ahora
   consideramos \(\widetilde{f} = \psi \circ f \circ \varphi^{-1}\), la misma de
@@ -548,33 +588,6 @@ respectivas. Entonces:
   donde \(\J[2]{\widetilde{F}}\) está formado por
   \(\pderiv{\widetilde{f}_{i}}{x_{j}}\) con \(m+1 \leq i \leq n\) y \(1 \leq j
   \leq m\).
-\end{proof}
-
-\section{Extensión de funciones diferenciables}
-
-\begin{lemma}
-La función \[\alpha:\RealSet\to\RealSet\]
-\[\alpha(t) =
-\begin{dcases}
-0 & t \leq 0 \\
-e^{-1/t} & t > 0
-\end{dcases}\]
-es diferenciable.
-\end{lemma}
-\begin{proof}
-  % TODO
-\end{proof}
-
-\begin{lemma}
-  \(\exists\lambda:\RealSet^{n}\to\RealSet\) diferenciable tal que \[\lambda(x) =
-\begin{dcases}
-  1 & \Norm{x} \leq 1 \\
-  \lambda(x)\in(0,1) & 1<\Norm{x}<2 \\
-  0 & \Norm{x} \geq 2
-\end{dcases}\]
-\end{lemma}
-\begin{proof}
-  % TODO
 \end{proof}
 
 \end{document}
