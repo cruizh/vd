@@ -7,6 +7,9 @@
 \chapter{Cartas, atlas y compatibilidad}
 \label{chap:cartas}
 
+\section{Cartas y atlas}
+\label{sec:cartas-atlas}
+
 \begin{definition}[carta]
   Dado un conjunto \(X\), una \emph{carta} de \(X\) es un par \((U,
   \varphi)\) con \(U \subseteq X\) y \(\varphi \colon U \to
@@ -28,6 +31,7 @@
 \end{definition}
 
 \begin{definition}[atlas]
+  \label{def:atlas}
   Un \emph{atlas} de \(X\) es una colección de cartas compatibles de la misma
   dimensión \(\Set{(U_{i},\varphi_{i})}_{i \in \Lambda}\) con \(X = \bigcup_{i
     \in \Lambda} U_{i}\).
@@ -163,12 +167,14 @@
 \end{proof}
 
 \begin{definition}[atlas compatibles]
+  \label{def:atlas-compat}
   Dos atlas \(\mathcal{A}\) y \(\mathcal{B}\) sobre \(X\) se dicen
   \emph{compatibles} si cada carta de \(\mathcal{A}\) es compatible con cada
   carta de \(\mathcal{B}\) y recíprocamente.
 \end{definition}
 
 \begin{definition}[estructura diferenciable]
+  \label{def:estructura-dif}
   Dado un atlas \(\mathcal{A}\) sobre \(X\), se llama \emph{estructura
     diferenciable} generada por \(\mathcal{A}\) a la familia de todas las cartas
   compatibles con \(\mathcal{A}\).
@@ -255,6 +261,9 @@
 
   Análogamente, las matrices complejas \(m \times n\) forman una \(2mn\)-variedad.
 \end{example}
+
+\section{Topología natural}
+\label{sec:topnat}
 
 \begin{definition}[topología natural]
   \label{def:topnat}
