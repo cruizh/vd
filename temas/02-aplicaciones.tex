@@ -302,7 +302,7 @@ diferenciable por definición.
   \end{enumerate}
 \end{note}
 
-\section{Derivadas parciales}
+\section{Funciones reales y derivadas parciales}
 \label{sec:partial}
 
 \begin{definition}
@@ -311,36 +311,53 @@ diferenciable por definición.
   \coloneqq C^{\infty}(U; \RealSet)\).
 \end{definition}
 
-Para cada carta \((U,\varphi)\), si vemos \(U\) como variedad, existen funciones
-\(\Fdif{U}\): exactamente las funciones coordenadas de \(\varphi\), i.e. si
-\(\varphi \colon U \to \varphi(U) \subseteq \RealSet^{n}\) y escribimos
-\(\varphi(p) = (x_{1}(p),\dots,x_{n}(p))\), entonces \(x_{i} \in \Fdif{U}\). En
-efecto, \(x_{i} \colon U \to \RealSet\) es diferenciable porque para una carta
-relativa a \(U\), \((W \cap U, \Restrict{\psi}{W \cap U})\), tenemos que
+\begin{definition}[función coordenada]
+  Sea \((U,\varphi)\) carta de \(M\). Consideramos el diagrama de la
+  \cref{fig:fact-coord}.
+
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}
+      U \ar[r,"\varphi"] \ar[dr, "x_{i}"'] &
+      \varphi(U) \ar[r, symbol=\subseteq] \ar[d, "\pi_{i}"] & \RealSet^{m}\\
+      & \RealSet
+    \end{tikzcd}
+    \caption{Función coordenada}
+    \label{fig:fact-coord}
+  \end{figure}
+
+  Consideramos la función \(x_{i} \colon U \to \RealSet\), que actúa de la
+  siguiente forma:
+  \[
+    p \mapsto (\varphi_{i}(p), \dots, \varphi_{m}(p)) \mapsto \varphi_{i}(p)
+  \]
+  
+  A esta función se le llama \emph{función coordenada} de la carta
+  \((U,\varphi)\).
+\end{definition}
+
+\begin{proposition}
+  Dada una carta \((U,\varphi)\), si vemos \(U\) como variedad, las funciones
+  coordenadas de \(\varphi\) son diferenciables, i.e. \(x_{i} \in \Fdif{U},\ i=1,\dots,m\).
+\end{proposition}
+
+\begin{proof}
+  Para una carta relativa a \(U\), \((W \cap U, \Restrict{\psi}{W \cap U})\),
+  tenemos que
 \[
   x_{i} \circ \left( \Restrict{\psi}{W \cap U} \right)^{-1} \colon
   \psi(W \cap U) \to \varphi(W \cap U) \to \RealSet
 \]
 es diferenciable por serlo el cambio de carta.
-
+\end{proof}
 \begin{definition}[derivada parcial]
-  A partir de las \(x_{1},\dots,x_{n}\) anteriores, se definen unos operadores
-  locales para cada carta \((U,\varphi)\), que son las \emph{derivadas
-    parciales}:
-  \[
-    \pderiv{}{x_{i}} \colon \Fdif{U} \to \Fdif{U}
-  \]
-\end{definition}
-
-\begin{definition}[derivada parcial en un punto]
-  \(\pderiv{}{x_{i}}\) es un operador que actúa sobre funciones, luego
-  \(\pderiv{}{x_{i}}(f) \colon U \to \RealSet\), así que podemos considerar
-  aplicar esta función en un punto \(p \in U\). Usaremos la siguiente notación:
-  \[
-    \pderiv{}{x_{i}}(f)(p) \eqqcolon \left( \pderiv{f}{x_{i}} \right)_{p}
-    = \pderiv{(f \circ \varphi^{-1})}{u_{i}}(\varphi(p))
-    \eqqcolon \Restrict{\pderiv{(f \circ \varphi^{-1})}{u_{i}}}{\varphi(p)}
-  \]
+Sea \(\pderiv{}{x_{i}} \colon \mathcal{F}(U)\to\mathcal{F}(U)\), \(1 \leq i\leq
+m \coloneqq\operatorname{dim}_{M}\), con \((U,\varphi)\) carta de \(M\), el operador tal
+que si \(f \in \mathcal{F}(U),\ p\in U\), entonces:
+\[
+\Restrict{\pderiv{f}{x_{i}}}{p}=\Restrict{\pderiv{f\circ\varphi^{-1}}{x_{i}}}{\varphi(p)}
+\in \RealSet
+\]
 \end{definition}
 
 \begin{lemma}
@@ -379,42 +396,17 @@ es diferenciable por serlo el cambio de carta.
   \]
 \end{note}
 
-Sean ahora \((U,\varphi)\) y \((W,\psi)\) dos cartas compatibles y consideremos
-las cartas restringidas a la intersección \((U \cap W, \Restrict{\varphi}{U \cap
-W})\) y \((W \cap U, \Restrict{\psi}{U \cap W})\). Si
-\(y_{1},\dots,y_{n}\) denotan las funciones coordenadas de \(\psi\), ¿qué
-relación hay entre los operadores \(
-\pderiv{}{x_{i}}, \pderiv{}{y_{i}} \colon \Fdif{U \cap W} \to \Fdif{U \cap W}
-\)?
-
-Para \(f \in \Fdif{U \cap W}\), tenemos
+\begin{lemma}
+Sea \(f\in\mathcal{F}(U\cap V)\), con \((U,\varphi),(V,\psi)\) cartas
+compatibles de
+\(M\) con \(U\cap V\neq\emptyset\), \(x_{i},y_{i}\) coordenadas de las cartas
+respectivas. Entonces:
 \[
-  \Restrict{\pderiv{f}{y_{i}}}{p}
-  = \Restrict{\pderiv{(f \circ \psi^{-1})}{w_{i}}}{\psi(p)}
+  \Restrict{\pderiv{f}{y_{i}}}{p} =
+  \Sum{\Restrict{\pderiv{f}{x_{j}}}{p} \cdot
+    \Restrict{\pderiv{(\varphi\circ\psi^{-1})_{j}}{y_{i}}}{\psi(p)}}{j,1,m}
 \]
-donde \(w_{i}\) son las coordenadas de \(\psi(W)\).
-\[
-  \Restrict{\pderiv{f}{x_{i}}}{p}
-  = \Restrict{\pderiv{(f \circ \varphi^{-1})}{u_{i}}}{\varphi(p)}
-\]
-donde \(u_{i}\) son las coordenadas de \(\varphi(U)\).
-
-Ahora tomamos \(\varphi \circ \psi^{-1}(w_{1}, \dots, w_{n})\) (cambio de
-variable). La regla de la cadena nos da
-\[
-  \Restrict{\pderiv{
-      ((f \circ \varphi^{-1}) \circ \varphi \circ \psi^{-1})
-    }{w_{i}}}{\psi(p)}
-  =
-  \Sum{
-    \Restrict{\pderiv{(f \circ \varphi^{-1})}{u_{j}}}{\varphi(p)}
-    \cdot
-    \Restrict{\pderiv{(\varphi \circ \psi^{-1})_{j}}{w_{i}}}{\psi(p)}
-  }{j,1,n}
-\]
-
-Ahora veremos cómo el cálculo en varias variables se extiende a las aplicaciones
-diferenciables entre variedades.
+\end{lemma}
 
 \begin{definition}[rango]
   Sea \(f \colon M \to N\) una aplicación diferenciable en \(p \in M\). Por ser
@@ -556,6 +548,33 @@ diferenciables entre variedades.
   donde \(\J[2]{\widetilde{F}}\) está formado por
   \(\pderiv{\widetilde{f}_{i}}{x_{j}}\) con \(m+1 \leq i \leq n\) y \(1 \leq j
   \leq m\).
+\end{proof}
+
+\section{Extensión de funciones diferenciables}
+
+\begin{lemma}
+La función \[\alpha:\RealSet\to\RealSet\]
+\[\alpha(t) =
+\begin{dcases}
+0 & t \leq 0 \\
+e^{-1/t} & t > 0
+\end{dcases}\]
+es diferenciable.
+\end{lemma}
+\begin{proof}
+  % TODO
+\end{proof}
+
+\begin{lemma}
+  \(\exists\lambda:\RealSet^{n}\to\RealSet\) diferenciable tal que \[\lambda(x) =
+\begin{dcases}
+  1 & \Norm{x} \leq 1 \\
+  \lambda(x)\in(0,1) & 1<\Norm{x}<2 \\
+  0 & \Norm{x} \geq 2
+\end{dcases}\]
+\end{lemma}
+\begin{proof}
+  % TODO
 \end{proof}
 
 \end{document}
