@@ -12,6 +12,9 @@
 \renewcommand{\listtheoremname}{Lista de Teoremas}
 \xpatchcmd{\listoftheorems}{\@fileswfalse}{}{\typeout{yes}}{\typeout{no}}
 
+\usepackage{graphicx} 
+\graphicspath{{figures/}}
+
 \usepackage{faktor} % Espacios cociente
 \usepackage{exercise}
 \usepackage{cool}
@@ -199,6 +202,8 @@ Carlos Méndez García-Barroso}
 \tableofcontents
 
 \listoftheorems[ignore=example]
+
+\subfile{temas/00-intro}
 
 \subfile{temas/01-cartas}
 
