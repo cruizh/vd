@@ -1,3 +1,4 @@
 *.eps binary
-*.pdf binary
 *.png binary
+
+*.tex diff=tex
