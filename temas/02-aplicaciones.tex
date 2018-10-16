@@ -412,55 +412,148 @@ respectivas. Entonces:
 \section{Extensión de funciones diferenciables}
 
 \begin{lemma}
-La función \[\alpha:\RealSet\to\RealSet\]
+La función \[\alpha \colon \RealSet\to\RealSet\]
 \[\alpha(t) =
 \begin{dcases}
 0 & t \leq 0 \\
 e^{-1/t} & t > 0
-\end{dcases}\]
+\end{dcases}
+\]
 es diferenciable.
 \end{lemma}
 \begin{proof}
   % TODO
 \end{proof}
 
-\begin{lemma}
-  \(\exists\lambda:\RealSet^{n}\to\RealSet\) diferenciable tal que \[\lambda(x) =
-\begin{dcases}
-  1 & \Norm{x} \leq 1 \\
-  \lambda(x)\in(0,1) & 1<\Norm{x}<2 \\
-  0 & \Norm{x} \geq 2
-\end{dcases}\]
+\begin{lemma}[extensión en \(\RealSet^{n}\)]
+  \label{lem:ext-lambda}
+  \(\exists \lambda \colon \RealSet^{n}\to\RealSet\) diferenciable tal que
+  \[
+    \lambda(x) =
+    \begin{dcases}
+      1 & \Norm{x} \leq 1 \\
+      \lambda(x)\in(0,1) & 1<\Norm{x}<2 \\
+      0 & \Norm{x} \geq 2
+    \end{dcases}
+  \]
 \end{lemma}
 \begin{proof}
   % TODO
 \end{proof}
 
-\section{Rango de una aplicación diferenciable. Inmersiones y submersiones.}
-\label{sec:inmersion}
+\begin{lemma}
+  \label{lem:ext-exists-vi}
+  Sea \(M\) \hyperref[def:vd]{variedad}.
+  Dados \(p \in M\) y un abierto \(U \subseteq M\) con \(p \in U\),
+  existen abiertos \(V_{1} \subseteq V_{2} \subseteq V_{3} \subseteq U\)
+  con \(\Clausura{V_{1}} \subseteq V_{2} \subseteq \Clausura{V_{2}} \subseteq
+  V_{3}\)
+  y una función diferenciable \(\mu \colon M \to \RealSet\) con
+  \(\Restrict{\mu}{\Clausura{V_{1}}} = 1\), \(0 < \mu(q) \leq 1\) si \(q \in
+  V_{2} \setminus \Clausura{V_{1}}\) y \(\Restrict{\mu}{M \setminus V_{2}}=0\)
+\end{lemma}
+
+\begin{proof}
+  Sea \(p \in U\). Entonces existe \((V,\varphi)\) una carta con \(p \in V
+  \subseteq U\) y \(\varphi(V) = \RealSet^{m}\) con \(\varphi(p)=0\).
+  Sean \(\Omega_{1} \subseteq \Omega_{2} \subseteq \Omega_{3} \RealSet^{m}\)
+  bolas abiertas de radio \(1,2,3\) respectivamente.
+
+  Sean \(V_{i} \coloneqq \varphi^{-1}(\Omega_{i})\).
+  Son abiertos de \(M\).
+  Además \(\varphi \colon V \to \varphi(V) = \RealSet^{m}\).
+  \(\varphi\left( \Clausura[V]{V_{i}} \right) = \Clausura{\Omega_{i}}\), que es
+  bola cerrada y compacta, luego \(\Clausura[V]{V_{i}}\) es compacto, luego es
+  cerrado en \(M\) y \(V_{i} \subseteq \Clausura[V]{V}\), luego
+  \(\Clausura[M]{V_{i}} \subseteq \Clausura[M]{\Clausura[V]{V}} =
+  \Clausura[M]{V}\).
+  Además, siempre tenemos que \(\Clausura[V]{V_{i}} \subseteq
+  \Clausura[M]{V_{i}}\), luego se da la igualdad.
+
+  Aplicando el lema de \nameref{lem:ext-lambda}, existe
+  \begin{align*}
+    \lambda \colon \RealSet^{m} &\to \RealSet\\
+    \lambda(x) &=
+                 \begin{cases}
+                   1 & x \in \Clausura{\Omega_{1}}\\
+                   0 & x \in \RealSet^{m} \setminus \Omega_{2}
+                 \end{cases}
+  \end{align*}
+
+  También definimos:
+  \begin{align*}
+    \mu \colon M &\to \RealSet\\
+    \mu(q) &=
+             \begin{cases}
+               \lambda(\varphi(q)) & q \in V_{3}\\
+               0 & q \in M \setminus \Clausura{V_{2}}
+             \end{cases}
+  \end{align*}
+
+  \(\mu\) es diferenciable % NEEDS REF
+  y cumple las propiedades del enunciado.
+\end{proof}
+
+\begin{lemma}[lema de extensión]
+  Sea \(M\) una \nameref{def:vd} y \(U \subseteq M\) un abierto con \(p \in U\).
+  Sea \(f \colon U \to \RealSet^{n}\) diferenciable.
+  Entonces existen abiertos \(V_{i}\) con
+  \(V_{1} \subseteq \Clausura{V_{1}} \subseteq V_{2} \subseteq \Clausura{V_{2}}
+  \subseteq V_{3} \subseteq U\)
+  de forma que existe \(\widetilde{f} \colon M \to \RealSet\) diferenciable con
+  \(\widetilde{f} = f\) en \(V_{1}\) y \(\widetilde{f}=0\) en \(M \setminus
+  V_{2}\).
+\end{lemma}
+
+\begin{proof}
+  Sean los \(V_{i}\) del \cref{lem:ext-exists-vi}. Se define
+  \begin{align*}
+    \widetilde{f} \colon M &\to \RealSet\\
+    \widetilde{f}(q) &=
+                       \begin{cases}
+                         \mu(q) \cdot f(q) & q \in V_{3}\\
+                         0 & q \in M \setminus \Clausura{V_{2}}
+                       \end{cases}
+  \end{align*}
+
+  Si \(q \in \Clausura{V_{1}}\), entonces \(\mu(q) = 1\), luego
+  \(\widetilde{f}(q) = f(q)\).
+
+  Si \(q \in V_{3} \setminus \Clausura{V_{2}}\), entonces \(\mu(q)=0\), luego
+  \(\widetilde{f}(q)=0\), así que está bien definida y ya hemos probado el
+  resultado.
+\end{proof}
+
+\section[Rango e inmersiones]{Rango de una aplicación diferenciable. Inmersiones y submersiones.}
+\label{sec:rango-inmersion}
+
+\subsection[Rango]{Rango de una aplicación diferenciable}
+\label{sec:rango}
+
+
 
 \begin{definition}[rango]
   Sea \(f \colon M \to N\) una aplicación diferenciable en \(p \in M\). Por ser
   \(f\) diferenciable, podemos encontrar cartas \((U,\varphi)\) y \((W,\psi)\)
   de \(M\) y \(N\) respectivamente con \(p \in U\), \(f(U) \subseteq W\) y
-  \(\psi \circ f \circ \varphi^{-1} \colon \varphi(U) \to \psi(W)\)
-  diferenciable en \(\varphi(p)\).
+  \(\widetilde{f} \coloneqq \psi \circ f \circ \varphi^{-1} \colon \varphi(U)
+  \to \psi(W)\) diferenciable en \(\varphi(p)\).
 
   Se llama \emph{rango} de \(f\) en \(p\), notado \(\rango{f(p)}\), al rango del
   determinante de la matriz jacobiana \(n \times m\) (se trabaja por columnas),
 
   \begin{equation}
     \label{eq:def-rango}
-    \J[\varphi(p)]{\psi f \varphi^{-1}} =
+    \J[\varphi(p)]{\widetilde{f}} =
     \left(
       \Restrict{\pderiv{(\psi \circ f \circ \varphi^{-1})_{i}}{x_{j}}}{\varphi(p)}
     \right)_{\substack{1 \leq i \leq n\\\\1 \leq j \leq m}}
   \end{equation}
 \end{definition}
 
-\begin{note}
-  Este rango no depende de las cartas usadas.
-\end{note}
+\begin{lemma}
+  Este rango no depende de las cartas elegidas.
+\end{lemma}
 
 \begin{proof}
   Si \((\Omega,\rho)\) y \((V,\xi)\) son otras cartas con \(p \in \Omega\),
@@ -501,6 +594,45 @@ es diferenciable.
   son iguales.
 \end{proof}
 
+\begin{theorem}[teorema de la función inversa]
+  Sean \(f \colon M^{n} \to N^{n}\) diferenciable entre variedades de la misma
+  dimensión. Supongamos que para \(p \in M\), \(\rango{f(p)} = n\). Entonces
+  existe \(\Omega\) abierto de \(M\) tal que \(p \in \Omega\), \(f(\Omega)\) es
+  abierto de \(N\) y la aplicación \(f \colon \Omega \to f(\Omega)\) es
+  difeomorfismo.
+\end{theorem}
+
+\begin{proof}
+  Por ser \(f\) diferenciable, existen \((U,\varphi),\ (W,\psi)\) cartas de
+  \(M\) y \(N\) respectivamente con \(p \in U\), \(f(U) \subseteq W\) y
+  \(\widetilde{f}\) diferenciable. Se tiene el diagrama de la
+  \cref{fig:factorizacion-diferenciable}. Por definición, \(\rango{f(p)} =
+  \rango{\J[\varphi(p)]{\widetilde{f}}} = n\).
+
+  Por el teorema de la función inversa en \(\RealSet^{n}\), existe \(G
+  \subseteq \varphi(U)\) abierto tal que \(\widetilde{f}(G)\) es abierto de
+  \(\psi(W)\). Se tiene el siguiente diagrama:
+
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}
+      \varphi^{-1}(G) \ar[r, "f"] \ar[d, "\varphi"]&
+      f(\varphi^{-1}(G))
+      = \psi^{-1}(\widetilde{f}(G))
+      \nphantom{\(= \psi^{-1}(\widetilde{f}(G))\)}
+      \ar[d, "\psi"]\\
+      G \ar[r, "\widetilde{f}"] & \widetilde{f}(G)
+    \end{tikzcd}
+    \caption{Teorema de la función inversa}
+    \label{fig:func-inv}
+  \end{figure}
+
+  Así, \(\Omega = \varphi^{-1}(G)\) y hemos terminado.
+\end{proof}
+
+\subsection{Inmersiones y submersiones}
+\label{sec:inmersiones}
+
 \begin{definition}[inmersión]
   \label{def:inmersión}
   Una aplicación diferenciable \(f \colon M \to N\) se dice que es una
@@ -513,12 +645,12 @@ es diferenciable.
   \(f\) es \emph{submersión}en \(p\), entonces \(\dim N \leq \dim M\).
 \end{note}
 
-\begin{theorem}
+\begin{theorem}[coordenadas adaptadas]
   Si \(f\) es una \nameref{def:inmersión} en \(p\), entonces existen cartas
   \((U,\varphi)\) de \(p\) y \((V,\psi)\) de \(f(p)\) verificando el diagrama
   conmutativo de la \cref{fig:inmersion-cd}, con \(m =
   \dim M\) y \(n = \dim N\). Es decir, realmente \(f\) se comporta alrededor de
-  \(p\)como la inclusión canónica \(x \mapsto (x,0)\).
+  \(p\) como la inclusión canónica \(x \mapsto (x,0)\).
 
   \begin{figure}[h]
     \centering
@@ -577,17 +709,64 @@ es diferenciable.
     \widetilde{f}_{n}(x)+y_{n-m})
   \end{multline*}
   
-  Entonces el jacobiano de \(\widetilde{F}\) es
+  Entonces el jacobiano de \(\widetilde{F}\) en \((\varphi(p),0)\) es
   \[
-    \J{\widetilde{F}} =
+    \J[(\varphi(p),0)]{\widetilde{F}} =
     \begin{pmatrix}
-      \J[1]{\widetilde{F}} & 0 \\
-      \J[2]{\widetilde{F}} & I
+      \J[1]{\widetilde{f}} & 0 \\
+      \J[2]{\widetilde{f}} & I
     \end{pmatrix}
   \]
-  donde \(\J[2]{\widetilde{F}}\) está formado por
-  \(\pderiv{\widetilde{f}_{i}}{x_{j}}\) con \(m+1 \leq i \leq n\) y \(1 \leq j
-  \leq m\).
+  donde
+  \begin{align*}
+    \J[1]{\widetilde{F}} &= \left( \pderiv{\widetilde{f}_{i}}{x_{j}}
+    \right)_{\substack{1 \leq i \leq m\\\\1 \leq j \leq m}}
+    \J[2]{\widetilde{F}} &= \left( \pderiv{\widetilde{f}_{i}}{x_{j}}
+    \right)_{\substack{m+1 \leq i \leq n\\\\1 \leq j \leq m}}
+  \end{align*}
+
+  Por el teorema de la función inversa en \(\RealSet^{n}\), existe \(\Omega\) un
+  abierto de \(\varphi(U) \times \RealSet^{n-m}\) tal que \((\varphi(p),0) \in
+  \Omega\), \(\widetilde{F}(\Omega)\) es abierto de \(\RealSet^{n}=\psi(V)\) y
+  \(\widetilde{F} \colon \Omega \to \widetilde{F}(\Omega)\) es difeomorfismo.
+% CHECK FROM HERE
+  Sea \(V_{0} \coloneqq \psi^{-1}(\widetilde{F}(\Omega)) \subseteq V\).
+  Sea \(\psi_{0} = \widetilde{F}^{-1} \circ \psi\).
+  Entonces \((V_{0},\psi_{0})\) es carta de \(N\). En efecto:
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}[row sep=large, column sep=large]
+      V_{0} \ar[d, "\Restrict{\psi}{V_{0}}"']\ar[r, "\psi_{0}"]&
+      \Omega \ar[dl, dashed, "\widetilde{F}"]\\
+      \widetilde{F}(\Omega) \ar[ur, dashed, "\widetilde{F}^{-1}", shift right=2]
+    \end{tikzcd}
+  \end{figure}
+
+  Sea \(U_{0} \coloneqq U \cap f^{-1}(V_{0})\) abierto. Se tiene el siguiente
+  diagrama:
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}
+      U_{0} \ar[d, "\varphi_{0} = \Restrict{\varphi}{U_{0}}"'] \ar[r, "f"]&
+      V_{0} \ar[d, "\psi_{0} = \widetilde{F}^{-1} \circ \psi"]\\
+      \varphi(U_{0}) \ar[r, dashed, "\psi_{0} \circ f \circ \varphi^{-1}"]
+      \ar[d, symbol=\subseteq]&
+      \Omega \ar[r, "\widetilde{F}"]
+      \ar[d, symbol=\subseteq]&
+      \widetilde{F}(\Omega)\\
+      \RealSet^{m} &
+      \psi(V) = \RealSet^{n} \nphantom{\(= \RealSet^{n}\)}
+    \end{tikzcd}
+  \end{figure}
+
+  Entonces
+
+  \[
+    \psi_{0} \circ f \circ \varphi_{0}^{-1} (x_{1},\dots,x_{n}) =
+    \widetilde{F}^{-1} \circ \underbracket{\psi \circ f \circ
+      \varphi^{-1}}_{\widetilde{f}} = (x_{1},\dots,x_{n},0,\dots,0)
+  \]
+% TODO
 \end{proof}
 
 \end{document}
