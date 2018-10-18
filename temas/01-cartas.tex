@@ -267,41 +267,52 @@
 \end{example}
 
 \begin{example}
- \(\mathcal{M}_{n\times n}(\mathbb{R})(\cong)_{\varphi}\mathbb{R}^{n^{2}}\) con
-\(\operatorname{det}:\mathbb{R}^{n^{2}}\rightarrow\mathbb{R}\) es un polinomio y por ello
-función continua. \(U=(\operatorname{det})^{-1}(\mathbb{R}\textbackslash\{0\})\) abto. De
-hecho, \(U\equiv\operatorname{GL}(n,\mathbb{R})\) por la biyección \(\varphi\) de 5.
+ \(\mathcal{M}_{n \times n}(\RealSet)\overset{\varphi}{\cong} \RealSet^{n^{2}}\) con
+\(\det \colon \RealSet^{n^{2}} \to \RealSet\) es un polinomio y por ello
+función continua. \(U=(\det^{-1})(\RealSet \setminus \Set{0})\) abto. De
+hecho, \(U\equiv\operatorname{GL}(n,\RealSet)\) por la biyección \(\varphi\).
 \end{example}
 
 \begin{example}
-\(S^{1}\subseteq \mathbb{R}^{2}\) es \(2\)-variedad con un atlas formado por dos
+\(S^{1}\subseteq \RealSet^{2}\) es \(2\)-variedad con un atlas formado por dos
 proyecciones estereográficas.
-\end{example}
 
-\begin{example}
-De hecho \(S^{n}\subseteq\mathbb{R}^{n+1}\) tiene un atlas con 2 cartas (nos apoyamos en la proyección
+De hecho \(S^{n}\subseteq\RealSet^{n+1}\) tiene un atlas con 2 cartas (nos apoyamos en la proyección
 estereográfica):
 
-\vline
+Sea \(U_{+} \coloneqq \Set{(x_{1},\dots,x_{n+1})=x:x\neq
+  (0,\dots,0,1)}\overset{\substack{\varphi_{+}\\{}}}{\to}\RealSet^{n}\) tal que
+\begin{align*}
+  \varphi_{+}(x_{1},\dots,x_{n+1})
+  &=
+  \left(
+    \frac{x_{1}}{1-x_{n+1}},\cdots,\frac{x_{n}}{1-x_{n+1}}
+  \right)\\
+  \varphi_{+}^{-1}(y_{1},\dots,y_{n})
+  &=
+    \left(
+    \frac{2y_{1}}{1+\Norm{y}^{2}},\cdots,\frac{2y_{n}}{1+\Norm{y}^{2}},\frac{\Norm{y}^{2}-1}{1+\Norm{y}^{2}}
+    \right)
+\end{align*}
 
-Sea \(U_{+}=\{(x_{1},\cdots,x_{n+1})=x:x\neq
-(0,\cdots,1)\}\overset{\varphi_{+}}{\rightarrow}\mathbb{R}^{n}\) tal que \[
-\varphi_{+}(x_{1},x_{n+1})=(\frac{x_{1}}{1-x_{n+1}},\cdots,\frac{x_{n}}{1-x_{n+1}})\]
-y \[
-\varphi_{+}^{-1}(y_{1},\cdots,y_{n})=(\frac{2y_{1}}{1+\Norm{y}^{2}},\cdots,\frac{2y_{n}}{1+\Norm{y}^{2}},\frac{\Norm{y}^{2}-1}{1+\Norm{y}^{2}})\] 
+Sea \(U_{-} \coloneqq \Set{(x_{1},\dots,x_{n+1})=x :
+  x\neq (0,\dots,0,-1)}\overset{\substack{\varphi_{-}\\{}}}{\to}\RealSet^{n}\)
+tal que
+\begin{align*}
+  \varphi_{-}(x_{1},\dots,x_{n+1})
+  &=
+    \left(
+    \frac{x_{1}}{1+x_{n+1}},\dots,\frac{x_{n}}{1+x_{n+1}}
+    \right)\\
+  \varphi_{-}^{-1}(y_{1},\dots,y_{n})
+  &=
+    \left(
+    \frac{2y_{1}}{1+\Norm{y}^{2}},\dots,\frac{2y_{n}}{1+\Norm{y}^{2}},\frac{1-\Norm{y}^{2}}{1+\Norm{y}^{2}}
+    \right)
+\end{align*}
 
-\vline
-
-Sea \(U_{-}=\{(x_{1},\cdots,x_{n+1})=x:x\neq
-(0,\cdots,-1)\}\overset{\varphi_{-}}{\rightarrow}\mathbb{R}^{n}\) tal que \[
-\varphi_{-}(x_{1},x_{n+1})=(\frac{x_{1}}{1+x_{n+1}},\cdots,\frac{x_{n}}{1+x_{n+1}})\]
-y \[
-\varphi_{-}^{-1}(y_{1},\cdots,y_{n})=(\frac{2y_{1}}{1+\Norm{y}^{2}},\cdots,\frac{2y_{n}}{1+\Norm{y}^{2}},\frac{1-\Norm{y}^{2}}{1+\Norm{y}^{2}})\]
-
-\vline
-
-Por lo tanto, \(\mathcal{A}=\{(U_{+},\varphi_{+}),(U_{-},\varphi_{-})\}\) es un
-atlas de \(S^{n}\subseteq\mathbb{R}^{n}\), pues se comprueba fácilmente que
+Por lo tanto, \(\mathcal{A}=\Set{(U_{+},\varphi_{+}),(U_{-},\varphi_{-})}\) es un
+atlas de \(S^{n}\subseteq\RealSet^{n}\), pues se comprueba fácilmente que
 estas cartas son compatibles y recubren la \(n\)-esfera.
 \end{example}
 
