@@ -7,19 +7,22 @@
 \chapter{Cartas, atlas y compatibilidad}
 \label{chap:cartas}
 
+\section{Cartas y atlas}
+\label{sec:cartas-atlas}
+
 \begin{definition}[carta]
-  Dado un conjunto \(X\), una \emph{carta} de \(X\) es un par \((\mathcal{U},
-  \varphi)\) con \(\mathcal{U} \subseteq X\) y \(\varphi \colon \mathcal{U} \to
-  \RealSet^{n}\) inyectiva y su imagen \(\varphi(\mathcal{U})\) es un abierto de
+  Dado un conjunto \(X\), una \emph{carta} de \(X\) es un par \((U,
+  \varphi)\) con \(U \subseteq X\) y \(\varphi \colon U \to
+  \RealSet^{n}\) inyectiva y su imagen \(\varphi(U)\) es un abierto de
   \(\RealSet^{n}\).
 \end{definition}
 
 \begin{definition}[cartas compatibles]
-  Dos cartas de \(X\) \((\mathcal{U}, \varphi)\), \((\mathcal{W}, \psi)\) se
-  dicen \emph{compatibles} si \(\mathcal{U} \cap \mathcal{W} = \emptyset\) o, en
-  caso contrario, \(\varphi(\mathcal{U} \cap \mathcal{W})\) y \(\psi(\mathcal{U}
-  \cap \mathcal{W})\) son abiertos y además \(\psi \circ \varphi^{-1} \colon
-  \varphi(\mathcal{U} \cap \mathcal{W}) \to \psi(\mathcal{U} \cap \mathcal{W})\)
+  Dos cartas de \(X\) \((U, \varphi)\), \((W, \psi)\) se
+  dicen \emph{compatibles} si \(U \cap W = \emptyset\) o, en
+  caso contrario, \(\varphi(U \cap W)\) y \(\psi(U
+  \cap W)\) son abiertos y además \(\psi \circ \varphi^{-1} \colon
+  \varphi(U \cap W) \to \psi(U \cap W)\)
   y su inversa \(\varphi \circ \psi^{-1}\) son diferenciables (son
   difeomorfismos).
 
@@ -28,6 +31,7 @@
 \end{definition}
 
 \begin{definition}[atlas]
+  \label{def:atlas}
   Un \emph{atlas} de \(X\) es una colección de cartas compatibles de la misma
   dimensión \(\Set{(U_{i},\varphi_{i})}_{i \in \Lambda}\) con \(X = \bigcup_{i
     \in \Lambda} U_{i}\).
@@ -163,12 +167,14 @@
 \end{proof}
 
 \begin{definition}[atlas compatibles]
+  \label{def:atlas-compat}
   Dos atlas \(\mathcal{A}\) y \(\mathcal{B}\) sobre \(X\) se dicen
   \emph{compatibles} si cada carta de \(\mathcal{A}\) es compatible con cada
   carta de \(\mathcal{B}\) y recíprocamente.
 \end{definition}
 
 \begin{definition}[estructura diferenciable]
+  \label{def:estructura-dif}
   Dado un atlas \(\mathcal{A}\) sobre \(X\), se llama \emph{estructura
     diferenciable} generada por \(\mathcal{A}\) a la familia de todas las cartas
   compatibles con \(\mathcal{A}\).
@@ -213,13 +219,6 @@
   \end{subproof}
 \end{proof}
 
-\begin{definition}[variedad diferenciable]
-  \label{def:vd}
-  Una \emph{variedad diferenciable} de dimensión \(n\) es un conjunto \(X\) con
-  un atlas \(\mathcal{A}\) numerable cumpliendo la \nameref{def:Hausdorff}.
-
-\end{definition}
-
 \begin{definition}[propiedad de Hausdorff]
   \label{def:Hausdorff}
   Se dice que \(\mathcal{A}\) cumple la propiedad de Hausdorff si, dados \(x,y
@@ -227,9 +226,20 @@
   \((V, \psi)\) con \(x \in U, y \in V, U \cap V = \emptyset\).
 \end{definition}
 
+\begin{definition}[variedad diferenciable]
+  \label{def:vd}
+  Una \emph{variedad diferenciable} de dimensión \(n\) es un conjunto \(X\) con
+  un atlas \(\mathcal{A}\) numerable cumpliendo la \nameref{def:Hausdorff}.
+\end{definition}
+
+\begin{definition}[carta de una variedad]
+  Dada una \nameref{def:vd} \(M\), diremos que \((U,\varphi)\) es \emph{carta de
+  \(M\)} si es una carta de la \nameref{def:estructura-dif} de \(M\).
+\end{definition}
+
 \begin{example}
-  \(\RealSet^{n}\) con \(\Id \colon \RealSet^{n} \to \RealSet^{n}\):
-  \((\RealSet^{n}, \Id)\) es una carta que lo hace \(n\)-variedad.
+  \(\RealSet^{n}\) con \(\Id{} \colon \RealSet^{n} \to \RealSet^{n}\):
+  \((\RealSet^{n}, \Id{})\) es una carta que lo hace \(n\)-variedad.
 
   Cualquier \(U \subseteq \RealSet^{n}\) abierto proporciona una carta \((U,
   i)\) compatible con \(\mathcal{A}\), con \(i \colon U \to \RealSet^{n}\) la
@@ -238,7 +248,7 @@
 
 \begin{example}
   En \(\RealSet\), la carta anterior no es compatible con la carta \((\RealSet,
-  f)\), \(f(x) = x^{3}\), porque \(\Id \circ f^{-1}\) no es diferenciable.
+  f)\), \(f(x) = x^{3}\), porque \(\Id{} \circ f^{-1}\) no es diferenciable.
 \end{example}
 
 \begin{example}
@@ -255,6 +265,59 @@
 
   Análogamente, las matrices complejas \(m \times n\) forman una \(2mn\)-variedad.
 \end{example}
+
+\begin{example}
+ \(\mathcal{M}_{n \times n}(\RealSet)\overset{\varphi}{\cong} \RealSet^{n^{2}}\) con
+\(\det \colon \RealSet^{n^{2}} \to \RealSet\) es un polinomio y por ello
+función continua. \(U=(\det^{-1})(\RealSet \setminus \Set{0})\) abto. De
+hecho, \(U\equiv\operatorname{GL}(n,\RealSet)\) por la biyección \(\varphi\).
+\end{example}
+
+\begin{example}
+\(S^{1}\subseteq \RealSet^{2}\) es \(2\)-variedad con un atlas formado por dos
+proyecciones estereográficas.
+
+De hecho \(S^{n}\subseteq\RealSet^{n+1}\) tiene un atlas con 2 cartas (nos apoyamos en la proyección
+estereográfica):
+
+Sea \(U_{+} \coloneqq \Set{(x_{1},\dots,x_{n+1})=x:x\neq
+  (0,\dots,0,1)}\overset{\substack{\varphi_{+}\\{}}}{\to}\RealSet^{n}\) tal que
+\begin{align*}
+  \varphi_{+}(x_{1},\dots,x_{n+1})
+  &=
+  \left(
+    \frac{x_{1}}{1-x_{n+1}},\cdots,\frac{x_{n}}{1-x_{n+1}}
+  \right)\\
+  \varphi_{+}^{-1}(y_{1},\dots,y_{n})
+  &=
+    \left(
+    \frac{2y_{1}}{1+\Norm{y}^{2}},\cdots,\frac{2y_{n}}{1+\Norm{y}^{2}},\frac{\Norm{y}^{2}-1}{1+\Norm{y}^{2}}
+    \right)
+\end{align*}
+
+Sea \(U_{-} \coloneqq \Set{(x_{1},\dots,x_{n+1})=x :
+  x\neq (0,\dots,0,-1)}\overset{\substack{\varphi_{-}\\{}}}{\to}\RealSet^{n}\)
+tal que
+\begin{align*}
+  \varphi_{-}(x_{1},\dots,x_{n+1})
+  &=
+    \left(
+    \frac{x_{1}}{1+x_{n+1}},\dots,\frac{x_{n}}{1+x_{n+1}}
+    \right)\\
+  \varphi_{-}^{-1}(y_{1},\dots,y_{n})
+  &=
+    \left(
+    \frac{2y_{1}}{1+\Norm{y}^{2}},\dots,\frac{2y_{n}}{1+\Norm{y}^{2}},\frac{1-\Norm{y}^{2}}{1+\Norm{y}^{2}}
+    \right)
+\end{align*}
+
+Por lo tanto, \(\mathcal{A}=\Set{(U_{+},\varphi_{+}),(U_{-},\varphi_{-})}\) es un
+atlas de \(S^{n}\subseteq\RealSet^{n}\), pues se comprueba fácilmente que
+estas cartas son compatibles y recubren la \(n\)-esfera.
+\end{example}
+
+\section{Topología natural}
+\label{sec:topnat}
 
 \begin{definition}[topología natural]
   \label{def:topnat}
@@ -355,6 +418,7 @@
 \end{proof}
 
 \begin{lemma}
+  \label{lem:caract-topnat-2}
   Para toda carta \((W,\psi) \in \mathcal{A}\) (de hecho basta que sea
   compatible con \(\mathcal{A}\)), \(W \in
   \mathcal{T}_{\mathcal{A}}\) y \(\psi \colon W \to \psi(W)\) es homeomorfismo.
@@ -671,3 +735,7 @@
 \end{Answer}
 
 \end{document}
+
+%%% Local Variables:
+%%% TeX-master: "../VD"
+%%% End:

@@ -8,6 +8,9 @@
 \chapter{Aplicaciones diferenciables entre variedades}
 \label{chap:app}
 
+\section{Aplicaciones diferenciables}
+\label{sec:app-dif}
+
 \begin{definition}[diferenciable]
   \label{def:diferenciable}
   Sea \(f \colon M \to N\) una aplicación entre variedades. Decimos que \(f\) es
@@ -34,6 +37,7 @@
 \end{figure}
 
 \begin{lemma}
+  \label{lem:dif-implies-cont}
   Toda \(f\) \nameref{def:diferenciable} es continua para las topologías
   asociadas a las correspondientes estructuras diferenciables.
 \end{lemma}
@@ -56,64 +60,750 @@
 \end{lemma}
 
 \begin{proof}
-  % TODO
+  Sean \(p \in M\) y \((\Omega,\rho)\) una carta de \(Z\) con \((g \circ f)(p)
+  \in \Omega\). Como \(g\) es diferenciable, existe una carta \((W,\psi)\) de
+  \(N\) con \(f(p) \in W\), \(g(W) \subseteq \Omega\) y \(\widetilde{g}
+  \coloneqq \rho \circ g \circ \psi^{-1}\) diferenciable. Por otra parte, como
+  \(f\) es diferenciable, existe una carta \((U,\varphi)\) de \(M\) con \(p \in
+  U\), \(f(U) \subseteq W\) y \(\widetilde{f} \coloneqq \psi \circ f \circ
+  \varphi^{-1}\) diferenciable. Tenemos el diagrama de la \cref{fig:comp-dif-cd}.
+
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}
+      U \ar[d, "\varphi"] \ar[r, "f"] &
+      W \ar[d, "\psi"] \ar[r, "g"] &
+      \Omega \ar[d, "\rho"]\\
+      \varphi(U) \ar[r, "\widetilde{f}"] &
+      \psi(W) \ar[r, "\widetilde{g}"] &
+      \rho(\Omega)
+    \end{tikzcd}
+    \caption{Composición de aplicaciones diferenciables}
+    \label{fig:comp-dif-cd}
+  \end{figure}
+
+  Ya hemos encontrado una carta \((U,\varphi)\) de \(M\) con \(p \in U\) y \((g
+  \circ f)(U) \subseteq \Omega\).
+  Para ver que \(g \circ f\) es diferenciable, queda probar que
+  \(h \coloneqq \rho \circ g \circ f \circ \varphi^{-1}\) lo es, y resulta que
+  \(h = \widetilde{g} \circ \widetilde{f}\), i.e. es composición de aplicaciones
+  diferenciables (por hipótesis), luego es diferenciable.
 \end{proof}
 
-\begin{definition}[difeomorfismo]
-  \label{def:difeomorfismo}
-  \(f \colon M \to N\) se dice \emph{difeomorfismo} entre variedades si \(f\) es
-  biyectiva y \(f\) y \(f^{-1}\) son \hyperref[def:diferenciable]{diferenciables}.
-\end{definition}
-
 \begin{lemma}
+  \label{lem:dif-caract-exists}
   \(f\) es \nameref{def:diferenciable} en \(p\) si y solo si existen cartas
   \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p \in U\), \(f(U)
   \subseteq W\) y \(\widetilde{f} = \psi \circ f \circ \varphi^{-1}\) es
   diferenciable (la misma de la \cref{fig:factorizacion-diferenciable}).
 \end{lemma}
 
-\begin{proof}
-  % TODO
+\begin{proof}\item
+\begin{subproof}[\(\implies\)]
+Es cierto pues que existan esas cartas es un caso particular de que \(f\) sea
+diferenciable.
+\end{subproof}
+\begin{subproof}[\(\impliedby\)]
+  Sea \((\Omega,\rho)\) carta cualquiera de \(N\) con \(f(p)\in\Omega\). Se
+  tiene que \(\Omega\cap W\) es abierto de \(N\) y \(f(p) \in \Omega\cap
+  W \subseteq W\). Como además \((W,\psi)\) y \((\Omega,\rho)\) son compatibles,
+  entonces \(\psi(\Omega\cap W),\rho(\Omega\cap W)\) son abiertos y
+  \(\psi\circ\rho^{-1},\rho\circ\psi^{-1}\) son diferenciables.
+
+  Sabemos que \(f \colon U \to W\) es continua, y que \(W,\Omega\) son abiertos
+  de \(N\) por lo que su intersección también, luego \(f^{-1}(\Omega \cap W)\)
+  es abierto de \(M\), entonces \(f^{-1}(\Omega \cap W)\cap U \eqqcolon \Gamma
+  \subseteq U\) es abierto de \(M\).
+
+Sabemos por el \cref{lem:compat-restriccion}, que
+\((\Gamma,\Restrict{\varphi}{\Gamma})\) es carta de \(M\). Entonces:
+
+\[\Gamma\overset{f}{\rightarrow}\Omega\cap W\subseteq W,\Omega\]
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzcd}	
+		\Gamma
+		\arrow[rr,"	f "]
+		\arrow[d, "\varphi"]&&
+		\Omega
+		\arrow[d, "\rho"]\\
+		\varphi(\Gamma) \ar[d, symbol=\ni]
+		\arrow[rr, "\tilde{f}=\rho\circ f\circ\varphi^{-1}"]&&
+		\rho(\Omega)\\
+    \varphi(p)
+	\end{tikzcd}
+
+Y \(\varphi(\Gamma)\) es abierto pues \(\varphi\) es homeomorfismo y \(\Gamma\) abierto.
+
+Con el anterior diagrama y la definición que hemos hecho de
+\(\tilde{f}=\rho\circ f\circ\varphi^{-1}=(\rho\circ\psi^{-1})\circ(\psi\circ
+f\circ\varphi^{-1})\) que es diferenciable pues \((\rho\circ\psi^{-1})\) lo es
+por compatbilidad y \((\psi\circ f\circ\varphi^{-1})\) lo es por hipótesis,
+luego se tiene que \(f\) es diferenciable.
+
+ 
+\end{figure}
+
+\end{subproof}
 \end{proof}
 
 \begin{lemma}
+  \label{lem:dif-caract-forall}
   Supongamos que \(f \colon M \to N\) es continua. Entonces \(f\) es
-  \nameref{def:diferenciable} si y solo si para todas las cartas \((W,\psi)\) de
-  \(N\)y \((U,\varphi)\) de \(M\), la aplicación \(\widetilde{f}\) de la
-  \cref{fig:factorizacion-diferenciable} es diferenciable.
+  \nameref{def:diferenciable} en \(p\) si y solo si para todas las cartas
+  \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p \in U\) y \(f(U)
+  \subseteq W\), la aplicación \(\widetilde{f} \coloneqq \psi \circ f \circ
+  \varphi^{-1}\) (la misma de la \cref{fig:factorizacion-diferenciable}) es
+  diferenciable.
 \end{lemma}
 
 \begin{proof}\item 
 \begin{subproof}[\(\impliedby\)]
- Sea \(W',\psi'\) una carta con \(f(p)\in W' \). Como \(W\) y \(W'\) son abiertos de \(N\), es claro que \(W\cap W'\) también es abierto de \(N\). Por ser \(f\) continua su inversa conserva los abiertos, es decir, \(f^{-1}(W\cap W')\) es abierto en \(W\), con \(p \in f^{-1}(W\cap W') \).
+  Sea \((W',\psi')\) una carta con \(f(p) \in W'\).
+  Como \(W\) y \(W'\) son abiertos de \(N\), es claro que \(W \cap W'\) también
+  es abierto de \(N\).
+  Por ser \(f\) continua, \(f^{-1}(W\cap W')\) es abierto en \(M\),
+  con \(p \in f^{-1}(W \cap W')\).
 
-Como \(U\) es abierto de \(M\) podemos definir el abierto \(U'\) de \(M\) como \(U\cap f^{-1}(W\cap W')\). Entonces \((U',\varphi')\) con \(\Restrict{\varphi'}{U'}\) es una carta de \(M\) (por el
-\cref{lem:compat-subcartas} de \nameref{lem:compat-subcartas} y ser \(\varphi\colon U \to \varphi(U)\) homeomorfismo).
+  Como \(U\) es abierto de \(M\) podemos definir el abierto \(U'\) de \(M\) como
+  \(U \cap f^{-1}(W \cap W')\). Entonces \((U',\varphi')\) con \(\varphi'
+  \coloneqq \Restrict{\varphi}{U'}\) es una carta de \(M\) por el
+  \cref{lem:compat-subcartas} de \nameref{lem:compat-subcartas} y ser \(\varphi
+  \colon U \to \varphi(U)\) homeomorfismo.
 
-Además \(p\in U'\) y \(f(U')\subseteq W' \), entonces considerar la aplicación \(\psi \circ f \circ \varphi^{-1} \) restringida a \(\varphi'(U') \) es lo mismo que considerar \(\psi' \circ f \circ (\varphi')^{-1} \) en dicho conjunto.
+  Además \(p \in U'\) y \(f(U') \subseteq W' \).
+  Finalmente
 
-Finalmente:
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}
+      U' \ar[r, "f"] \ar[d, "\varphi'"'] & W' \ar[d, "\psi'"]\\
+      \varphi'(U') \ar[d, hook, "i_{U'}"']
+      \ar[r, "\hat{f}"] & \psi'(W') \ar[d, hook, "i_{W'}"]\\
+      \varphi(U) \ar[r, "\widetilde{f}"'] & \psi(W')
+    \end{tikzcd}
+  \end{figure}
 
-\begin{figure}[h]
-	\centering
-	\begin{tikzcd}		
-		\varphi'(U')
-		\arrow[rr,"	\varphi^{-1} \circ \psi'"]
-		\arrow[d, "(\varphi')^{-1}\circ \varphi"]&&
-		\psi'( W')
-		\arrow[d, "(\psi')^{-1} \circ \psi"]\\
-		\varphi(U)
-		\arrow[rr, "\varphi^{-1}\circ \psi"]&&
-		\psi(W)
-	\end{tikzcd}
-\end{figure}
-
-Este diagrama nos permite escribir  \(\psi' \circ f \circ (\varphi')^{-1}=\varphi^{-1} \circ \psi \circ (\varphi')^{-1}\circ \varphi \circ \psi^{-1} \circ \psi' \) que es composición de funciones diferenciales como hemos visto anteriormente.
+  Por construcción de \((W',\psi')\) y definición de
+  \nameref{def:diferenciable}, \(f\) es diferenciable si y solo si \(\hat{f} =
+  \psi' \circ f \circ (\varphi')^{-1}\)
+  lo es, y efectivamente lo es porque \(\hat{f} = \Restrict{\widetilde{f}\,}{\varphi(U')}\), que es
+  restricción de una aplicación diferenciable luego es diferenciable (recordemos
+  que \(\widetilde{f} = \psi \circ f \circ \varphi^{-1}\) es diferenciable
+  por ser \(f\) diferenciable).
 \end{subproof}
 
 \begin{subproof}[\(\implies\)]
-Para dos cartas \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p\in U\) y \(f(U)\subseteq W\), la composición \(\psi\circ f \circ \varphi^{-1}\) es diferenciable.
+Para dos cartas \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p\in U\)
+y \(f(U)\subseteq W\), la composición \(\psi\circ f \circ \varphi^{-1}\) es
+diferenciable por definición.
 \end{subproof}
 \end{proof}
 
+\begin{corollary}
+  Una aplicación \(f \colon M \to \RealSet\) es \nameref{def:diferenciable} si y
+  solo si para cualquier carta \((U,\varphi)\) de \(M\), la aplicación \(f \circ
+  \varphi^{-1} \colon \varphi(U) \subseteq \RealSet^{m} \to \RealSet\) es
+  diferenciable.
+\end{corollary}
+
+\begin{proof}
+  Basta usar la carta \((\RealSet, \Id{\RealSet})\) en
+  \hyperref[lem:dif-caract-forall]{el lema anterior}, pues se tiene que
+  \(\widetilde{f} = \Id{\RealSet} \circ f \circ \varphi^{-1} = f \circ
+  \varphi^{-1}\).
+\end{proof}
+
+\section{Difeomorfismo}
+\label{sec:difeo}
+
+\begin{definition}[difeomorfismo]
+  \label{def:difeo}
+  \(f \colon M \to N\) se dice \emph{difeomorfismo} entre variedades si \(f\) es
+  biyectiva y \(f\) y \(f^{-1}\) son \hyperref[def:diferenciable]{diferenciables}.
+\end{definition}
+
+\begin{lemma}
+  Si \(f \colon M \to N\) es un \nameref{def:difeo} y \(\mathcal{A}\) y
+  \(\mathcal{B}\) son atlas de \(M\) y \(N\) respectivamente, entonces
+  \begin{equation}
+    \tag{L2.5.1}
+    \label{eq:atlas-difeo}
+    f(\mathcal{A}) = \Set{
+      (f(U), \varphi \circ f^{-1})
+      :
+      (U,\varphi) \in \mathcal{A}
+    }
+  \end{equation}
+  es un \nameref{def:atlas} de \(N\) \hyperref[def:atlas-compat]{compatible} con
+  \(\mathcal{B}\).
+\end{lemma}
+
+\begin{proof}\item
+  \begin{subproof}[\(f(\mathcal{A})\) es atlas]
+    \(f(\mathcal{A})\) es numerable y \((\varphi \circ f^{-1})(f(U)) =
+    \varphi(U)\) es un abierto de \(\RealSet^{m}\). Además, si \(f(U) \cap f(V)
+    = f(U \cap V) \neq \emptyset\) con \((U,\varphi), (V,\psi) \in
+    \mathcal{A}\), entonces
+    \[
+      (\psi \circ f^{-1}) \circ (\varphi \circ f^{-1})^{-1} = \psi \circ f^{-1}
+      \circ f \circ \varphi^{-1} = \psi \circ \varphi^{-1}
+    \]
+    que va de \((\varphi \circ f^{-1})(f(U \cap V)) = \varphi(U \cap V)\) a
+    \(\psi(U \cap V) = (\psi \circ f^{-1})(f(U \cap V))\), y es diferenciable
+    por hipótesis, luego todas las cartas de \(f(\mathcal{A})\) es compatibles
+    entre sí.
+  \end{subproof}
+
+  \begin{subproof}[\(f(\mathcal{A})\) es compatible con \(\mathcal{B}\)]
+    Sean \((f(U), \varphi f^{-1}) \in f(\mathcal{A})\) y \((W,\rho) \in
+    \mathcal{B}\) con \(f(U) \cap W \neq \emptyset\). Tenemos que ver que
+    \[
+      \rho \circ (\varphi \circ f^{-1})^{-1}
+      \colon
+      \varphi f^{-1}(f(U) \cap W)
+      \to
+      \rho(f(U) \cap W)
+    \]
+    es diferenciable. Nótese que \(\rho \circ (\varphi \circ f^{-1})^{-1} = \rho
+    \circ f \circ \varphi^{-1}\). Para ello, sea \(x \in \varphi f^{-1}(f(U)
+    \cap W) = \varphi(U \cap f^{-1}(W))\). Sea \(p \in U \cap f^{-1}(W)\) con
+    \(x = \varphi(p)\).
+
+    Por ser \(f\) diferenciable, también es continua por el
+    \cref{lem:dif-implies-cont} y \(\Omega \coloneqq U \cap f^{-1}(W)\) es
+    abierto de \(M\). Tenemos que \(f(\Omega) \subseteq W\). Como \(f\) es
+    diferenciable en \(p\), para la carta \((\Omega, \varphi_{0})\) con
+    \(\varphi_{0} \coloneqq \Restrict{\varphi}{\Omega}\), la composición \(\rho
+    \circ f \circ \varphi_{0}^{-1} \colon \varphi_{0}(\Omega) \to \rho(W)\) es
+    diferenciable. Como \(\varphi_{0}(\Omega) = \varphi(\Omega)\) es abierto de
+    \(\varphi(U)\), tenemos que \(\rho \circ f \circ \varphi^{-1}\) es
+    diferenciable en todos sus puntos.
+
+    Análogamente, como \(f^{-1}\) es diferenciable se tiene que \(\varphi \circ
+    f^{-1} \circ \rho^{-1} \colon \rho(f(U) \cap W) \to \varphi f^{-1}(f(U) \cap
+    W)\) es diferenciable.
+  \end{subproof}
+\end{proof}
+
+\begin{note}
+  la primera parte prueba que si tenemos \(\mathcal{A}\) un atlas sobre \(M\) y
+  \(f \colon M \to X\) es una biyección (con \(X\) un conjunto cualquiera),
+  entonces \(X\) puede verse dotado de una estructura diferenciable con atlas
+  \(f(\mathcal{A})\) que cumple las siguientes propiedades:
+
+  \begin{enumerate}
+  \item Una carta \((\Omega,\xi)\) es compatible con \(f(\mathcal{A})\) si y
+    solo si la carta \((f^{-1}(\Omega), \xi \circ f)\) es compatible con
+    \(\mathcal{A}\). De aquí se sigue la \nameref{def:Hausdorff} para la
+    estructura inducida por \(f(\mathcal{A})\).
+  \item \(f\) se convierte en un \nameref{def:difeo}.
+  \end{enumerate}
+\end{note}
+
+\section{Funciones reales}
+\label{sec:partial}
+
+\begin{definition}
+  Llamamos \(\Fdif{U}\) al conjunto de funciones (infinitamente)
+  diferenciables del tipo \(f \colon U \to \RealSet\), i.e. \(\Fdif{U}
+  \coloneqq C^{\infty}(U; \RealSet)\).
+\end{definition}
+
+\begin{definition}[función coordenada]
+  Sea \((U,\varphi)\) carta de \(M\). Consideramos el diagrama de la
+  \cref{fig:fact-coord}.
+
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}
+      U \ar[r,"\varphi"] \ar[dr, "x_{i}"'] &
+      \varphi(U) \ar[r, symbol=\subseteq] \ar[d, "\pi_{i}"] & \RealSet^{m}\\
+      & \RealSet
+    \end{tikzcd}
+    \caption{Función coordenada}
+    \label{fig:fact-coord}
+  \end{figure}
+
+  Consideramos la función \(x_{i} \colon U \to \RealSet\), que actúa de la
+  siguiente forma:
+  \[
+    p \mapsto (\varphi_{i}(p), \dots, \varphi_{m}(p)) \mapsto \varphi_{i}(p)
+  \]
+  
+  A esta función se le llama \emph{función coordenada} de la carta
+  \((U,\varphi)\).
+\end{definition}
+
+\begin{proposition}
+  Dada una carta \((U,\varphi)\), si vemos \(U\) como variedad, las funciones
+  coordenadas de \(\varphi\) son diferenciables, i.e. \(x_{i} \in \Fdif{U},\ i=1,\dots,m\).
+\end{proposition}
+
+\begin{proof}
+  Para una carta relativa a \(U\), \((W \cap U, \Restrict{\psi}{W \cap U})\),
+  tenemos que
+\[
+  x_{i} \circ \left( \Restrict{\psi}{W \cap U} \right)^{-1} \colon
+  \psi(W \cap U) \to \varphi(W \cap U) \to \RealSet
+\]
+es diferenciable por serlo el cambio de carta.
+\end{proof}
+
+\begin{definition}[derivada parcial]
+Sea \(\pderiv{}{x_{i}} \colon \mathcal{F}(U)\to\mathcal{F}(U)\), \(1 \leq i\leq
+m \coloneqq\operatorname{dim}_{M}\), con \((U,\varphi)\) carta de \(M\), el operador tal
+que si \(f \in \mathcal{F}(U),\ p\in U\), entonces:
+\[
+\Restrict{\pderiv{f}{x_{i}}}{p}=\Restrict{\pderiv{f\circ\varphi^{-1}}{x_{i}}}{\varphi(p)}
+\in \RealSet
+\]
+\end{definition}
+
+\begin{lemma}
+  \(\pderiv{}{x_{i}}\) está bien definido.
+\end{lemma}
+
+\begin{proof}
+  Si \((W,\psi)\) es una carta de \(M\), hay que comprobar que la composición
+  \(\pderiv{f}{x_{i}} \circ \Restrict{\psi^{-1}}{W \cap U}\) sea diferenciable.
+
+  Sea \(q \in \psi(W \cap U)\). Entonces
+  \begin{align*}
+    \pderiv{f}{x_{i}}(\psi^{-1}(q))
+    &= \pderiv{(f \circ \varphi^{-1})}{u_{i}}(\varphi \psi^{-1}(q))\\
+    &= \pderiv{(f \circ \varphi^{-1})}{u_{i}} \circ \Restrict{(\varphi \circ \psi^{-1})}{U \cap W}
+  \end{align*}
+  que es diferenciable.
+\end{proof}
+
+\begin{note}
+  Si \((U,\varphi)\) es una carta y \(U' \subseteq U\) es un abierto, tenemos
+  una aplicación:
+  \begin{align*}
+    \rho_{UU'} \colon \Fdif{U} &\to \Fdif{U'}\\
+    f &\mapsto \Restrict{f}{U'}
+  \end{align*}
+
+  Si tomamos \(\varphi' = \Restrict{\varphi}{U'}\), entonces para la carta
+  \((U',\varphi')\), el operador
+  \[
+    \pderiv{}{x_{i}} \colon \Fdif{U'} \to \Fdif{U'}
+  \]
+  está definido como el operador
+  \[
+    \pderiv{}{x_{i}} \colon \Fdif{U} \to \Fdif{U}
+  \]
+\end{note}
+
+\begin{lemma}
+Sea \(f\in\mathcal{F}(U\cap V)\), con \((U,\varphi),(V,\psi)\) cartas
+compatibles de
+\(M\) con \(U\cap V\neq\emptyset\), \(x_{i},y_{i}\) coordenadas de las cartas
+respectivas. Entonces:
+\[
+  \Restrict{\pderiv{f}{y_{i}}}{p} =
+  \Sum{\Restrict{\pderiv{f}{x_{j}}}{p} \cdot
+    \Restrict{\pderiv{(\varphi\circ\psi^{-1})_{j}}{y_{i}}}{\psi(p)}}{j,1,m}
+\]
+\end{lemma}
+
+\section{Extensión de funciones diferenciables}
+
+\begin{lemma}
+La función \[\alpha \colon \RealSet\to\RealSet\]
+\[\alpha(t) =
+\begin{dcases}
+0 & t \leq 0 \\
+e^{-1/t} & t > 0
+\end{dcases}
+\]
+es diferenciable.
+\end{lemma}
+\begin{proof}
+  % TODO
+
+
+
+  
+\end{proof}
+
+\begin{lemma}[extensión en \(\RealSet^{n}\)]
+  \label{lem:ext-lambda}
+  \(\exists \lambda \colon \RealSet^{n}\to\RealSet\) diferenciable tal que
+  \[
+    \lambda(x) =
+    \begin{dcases}
+      1 & \Norm{x} \leq 1 \\
+      \lambda(x)\in(0,1) & 1<\Norm{x}<2 \\
+      0 & \Norm{x} \geq 2
+    \end{dcases}
+  \]
+\end{lemma}
+\begin{proof}
+  Sea \(\beta(t)=\alpha(t-1)\cdot\alpha(2-t),\quad
+  \beta\colon\mathbb{R}\to\mathbb{R}\), tal que:
+  \[
+    \beta(t)=
+    \begin{dcases}
+      0 & t\leq 1\equiv\alpha(t-1\leq 0)=0 \\
+      0 & t\geq 2\equiv\alpha(2-t\leq 0)=0 \\
+      0<\beta(t)<1 & 1<t<2
+    \end{dcases}
+  \]
+
+  Sea \(\tau\colon\mathbb{R}\to\mathbb{R}\), tal que:
+  \[
+    \tau(s)=\frac{\int_{s}^{\infty} \beta(t) \cdot dt}{\int_{-\infty}^{\infty}\beta(t) \cdot dt}\overset{\beta(t\not\in(1,2))=0}{=}
+           \frac{\int_{s}^{2} \beta(t) \cdot dt}{\int_{1}^{2} \beta(t) \cdot dt}=
+  \]
+  \[
+    =\begin{dcases}
+      0 & s\geq 2 \\
+      1 & s\leq 1 \\
+      0<\tau(s)<1 & 1<s<2
+     \end{dcases}
+  \]
+  \[
+    \longrightarrow \begin{array}{c}
+                      \lambda\colon\mathbb{R}^{n}\to\mathbb{R} \\
+                      \lambda(x)=\tau(\Norm{x})
+                     \end{array} 
+  \]
+   
+\end{proof}
+
+\begin{lemma}
+  \label{lem:ext-exists-vi}
+  Sea \(M\) \hyperref[def:vd]{variedad}.
+  Dados \(p \in M\) y un abierto \(U \subseteq M\) con \(p \in U\),
+  existen abiertos \(V_{1} \subseteq V_{2} \subseteq V_{3} \subseteq U\)
+  con \(\Clausura{V_{1}} \subseteq V_{2} \subseteq \Clausura{V_{2}} \subseteq
+  V_{3}\)
+  y una función diferenciable \(\mu \colon M \to \RealSet\) con
+  \(\Restrict{\mu}{\Clausura{V_{1}}} = 1\), \(0 < \mu(q) \leq 1\) si \(q \in
+  V_{2} \setminus \Clausura{V_{1}}\) y \(\Restrict{\mu}{M \setminus V_{2}}=0\)
+\end{lemma}
+
+\begin{proof}
+  Sea \(p \in U\). Entonces existe \((V,\varphi)\) una carta con \(p \in V
+  \subseteq U\) y \(\varphi(V) = \RealSet^{m}\) con \(\varphi(p)=0\).
+  Sean \(\Omega_{1} \subseteq \Omega_{2} \subseteq \Omega_{3} \RealSet^{m}\)
+  bolas abiertas de radio \(1,2,3\) respectivamente.
+
+  Sean \(V_{i} \coloneqq \varphi^{-1}(\Omega_{i})\).
+  Son abiertos de \(M\).
+  Además \(\varphi \colon V \to \varphi(V) = \RealSet^{m}\).
+  \(\varphi\left( \Clausura[V]{V_{i}} \right) = \Clausura{\Omega_{i}}\), que es
+  bola cerrada y compacta, luego \(\Clausura[V]{V_{i}}\) es compacto, luego es
+  cerrado en \(M\) y \(V_{i} \subseteq \Clausura[V]{V}\), luego
+  \(\Clausura[M]{V_{i}} \subseteq \Clausura[M]{\Clausura[V]{V}} =
+  \Clausura[M]{V}\).
+  Además, siempre tenemos que \(\Clausura[V]{V_{i}} \subseteq
+  \Clausura[M]{V_{i}}\), luego se da la igualdad.
+
+  Aplicando el lema de \nameref{lem:ext-lambda}, existe
+  \begin{align*}
+    \lambda \colon \RealSet^{m} &\to \RealSet\\
+    \lambda(x) &=
+                 \begin{cases}
+                   1 & x \in \Clausura{\Omega_{1}}\\
+                   0 & x \in \RealSet^{m} \setminus \Omega_{2}
+                 \end{cases}
+  \end{align*}
+
+  También definimos:
+  \begin{align*}
+    \mu \colon M &\to \RealSet\\
+    \mu(q) &=
+             \begin{cases}
+               \lambda(\varphi(q)) & q \in V_{3}\\
+               0 & q \in M \setminus \Clausura{V_{2}}
+             \end{cases}
+  \end{align*}
+
+  \(\mu\) es diferenciable % NEEDS REF
+  y cumple las propiedades del enunciado.
+\end{proof}
+
+\begin{lemma}[lema de extensión]
+  Sea \(M\) una \nameref{def:vd} y \(U \subseteq M\) un abierto con \(p \in U\).
+  Sea \(f \colon U \to \RealSet^{n}\) diferenciable.
+  Entonces existen abiertos \(V_{i}\) con
+  \(V_{1} \subseteq \Clausura{V_{1}} \subseteq V_{2} \subseteq \Clausura{V_{2}}
+  \subseteq V_{3} \subseteq U\)
+  de forma que existe \(\widetilde{f} \colon M \to \RealSet\) diferenciable con
+  \(\widetilde{f} = f\) en \(V_{1}\) y \(\widetilde{f}=0\) en \(M \setminus
+  V_{2}\).
+\end{lemma}
+
+\begin{proof}
+  Sean los \(V_{i}\) del \cref{lem:ext-exists-vi}. Se define
+  \begin{align*}
+    \widetilde{f} \colon M &\to \RealSet\\
+    \widetilde{f}(q) &=
+                       \begin{cases}
+                         \mu(q) \cdot f(q) & q \in V_{3}\\
+                         0 & q \in M \setminus \Clausura{V_{2}}
+                       \end{cases}
+  \end{align*}
+
+  Si \(q \in \Clausura{V_{1}}\), entonces \(\mu(q) = 1\), luego
+  \(\widetilde{f}(q) = f(q)\).
+
+  Si \(q \in V_{3} \setminus \Clausura{V_{2}}\), entonces \(\mu(q)=0\), luego
+  \(\widetilde{f}(q)=0\), así que está bien definida y ya hemos probado el
+  resultado.
+\end{proof}
+
+\section[Rango e inmersiones]{Rango de una aplicación diferenciable. Inmersiones y submersiones.}
+\label{sec:rango-inmersion}
+
+\subsection[Rango]{Rango de una aplicación diferenciable}
+\label{sec:rango}
+
+
+
+\begin{definition}[rango]
+  Sea \(f \colon M \to N\) una aplicación diferenciable en \(p \in M\). Por ser
+  \(f\) diferenciable, podemos encontrar cartas \((U,\varphi)\) y \((W,\psi)\)
+  de \(M\) y \(N\) respectivamente con \(p \in U\), \(f(U) \subseteq W\) y
+  \(\widetilde{f} \coloneqq \psi \circ f \circ \varphi^{-1} \colon \varphi(U)
+  \to \psi(W)\) diferenciable en \(\varphi(p)\).
+
+  Se llama \emph{rango} de \(f\) en \(p\), notado \(\rango{f(p)}\), al rango del
+  determinante de la matriz jacobiana \(n \times m\) (se trabaja por columnas),
+
+  \begin{equation}
+    \label{eq:def-rango}
+    \J[\varphi(p)]{\widetilde{f}} =
+    \left(
+      \Restrict{\pderiv{(\psi \circ f \circ \varphi^{-1})_{i}}{x_{j}}}{\varphi(p)}
+    \right)_{\substack{1 \leq i \leq n\\\\1 \leq j \leq m}}
+  \end{equation}
+\end{definition}
+
+\begin{lemma}
+  Este rango no depende de las cartas elegidas.
+\end{lemma}
+
+\begin{proof}
+  Si \((\Omega,\rho)\) y \((V,\xi)\) son otras cartas con \(p \in \Omega\),
+  \(f(\Omega) \subseteq V\) y \(\xi \circ f \circ \rho^{-1}\) diferenciable en
+  \(\rho(p)\), entonces \(f(\Omega \cap U) \subseteq V \cap W\) y, por
+  compatibilidad,
+
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}
+      \varphi(U) \ar[rr, "\psi \circ f \circ \varphi^{-1}"] &&
+      \psi(W) \\
+      \varphi(\Omega \cap U) \ar[u, symbol=\subseteq] \ar[rr, "\psi \circ f \circ
+      \varphi^{-1}"] \ar[d, "\rho \circ \varphi^{-1}"'] &&
+      \psi(W \cap V) \ar[u, symbol=\subseteq] \ar[d, "\xi \circ \psi^{-1}"]\\
+      \rho(\Omega \cap U) \ar[rr, "\xi \circ f \circ \rho^{-1}"] \ar[d,
+      symbol=\subseteq] &&
+      \xi(W \cap V) \ar[d, symbol=\subseteq]\\
+      \rho(\Omega) \ar[rr, "\xi \circ f \circ \rho^{-1}"] &&
+      \xi(V)
+    \end{tikzcd}
+    \caption{Cambio de cartas}
+    \label{fig:rango-indep-carta}
+  \end{figure}
+
+  Por la regla de la cadena y la conmutatividad del diagrama, tenemos:
+  \[
+    \underbracket{\J[\psi f(p)]{(\xi \psi^{-1})}}_{A}
+    \cdot
+    \J[\varphi(p)]{(\psi f \varphi^{-1})}
+    =
+    \J[\rho(p)]{(\xi f \rho^{-1})}
+    \cdot
+    \underbracket{\J[\varphi(p)]{(\rho \varphi^{-1})}}_{B}
+  \]
+
+  Como \(A\) y \(B\) tienen rango máximo, los rangos de las matrices restantes
+  son iguales.
+\end{proof}
+
+\begin{theorem}[teorema de la función inversa]
+  Sean \(f \colon M^{n} \to N^{n}\) diferenciable entre variedades de la misma
+  dimensión. Supongamos que para \(p \in M\), \(\rango{f(p)} = n\). Entonces
+  existe \(\Omega\) abierto de \(M\) tal que \(p \in \Omega\), \(f(\Omega)\) es
+  abierto de \(N\) y la aplicación \(f \colon \Omega \to f(\Omega)\) es
+  difeomorfismo.
+\end{theorem}
+
+\begin{proof}
+  Por ser \(f\) diferenciable, existen \((U,\varphi),\ (W,\psi)\) cartas de
+  \(M\) y \(N\) respectivamente con \(p \in U\), \(f(U) \subseteq W\) y
+  \(\widetilde{f}\) diferenciable. Se tiene el diagrama de la
+  \cref{fig:factorizacion-diferenciable}. Por definición, \(\rango{f(p)} =
+  \rango{\J[\varphi(p)]{\widetilde{f}}} = n\).
+
+  Por el teorema de la función inversa en \(\RealSet^{n}\), existe \(G
+  \subseteq \varphi(U)\) abierto tal que \(\widetilde{f}(G)\) es abierto de
+  \(\psi(W)\). Se tiene el siguiente diagrama:
+
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}
+      \varphi^{-1}(G) \ar[r, "f"] \ar[d, "\varphi"]&
+      f(\varphi^{-1}(G))
+      = \psi^{-1}(\widetilde{f}(G))
+      \nphantom{\(= \psi^{-1}(\widetilde{f}(G))\)}
+      \ar[d, "\psi"]\\
+      G \ar[r, "\widetilde{f}"] & \widetilde{f}(G)
+    \end{tikzcd}
+    \caption{Teorema de la función inversa}
+    \label{fig:func-inv}
+  \end{figure}
+
+  Así, \(\Omega = \varphi^{-1}(G)\) y hemos terminado.
+\end{proof}
+
+\subsection{Inmersiones y submersiones}
+\label{sec:inmersiones}
+
+\begin{definition}[inmersión]
+  \label{def:inmersión}
+  Una aplicación diferenciable \(f \colon M \to N\) se dice que es una
+  \emph{inmersión} en \(p \in M\) si \(\rango{f(p)} = \dim M\). Igualmente se
+  dice una \emph{submersión} en \(p\) si \(\rango{f(p)} = \dim N\).
+\end{definition}
+
+\begin{note}
+  Si \(f\) es \emph{inmersión} en \(p\), entonces \(\dim M \leq \dim N\). Si
+  \(f\) es \emph{submersión}en \(p\), entonces \(\dim N \leq \dim M\).
+\end{note}
+
+\begin{theorem}[coordenadas adaptadas]
+  Si \(f\) es una \nameref{def:inmersión} en \(p\), entonces existen cartas
+  \((U,\varphi)\) de \(p\) y \((V,\psi)\) de \(f(p)\) verificando el diagrama
+  conmutativo de la \cref{fig:inmersion-cd}, con \(m =
+  \dim M\) y \(n = \dim N\). Es decir, realmente \(f\) se comporta alrededor de
+  \(p\) como la inclusión canónica \(x \mapsto (x,0)\).
+
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}[column sep = large, row sep = scriptsize]
+      U \ar[r, "f"] \ar[d, "\varphi"']&
+      V \ar[d, "\psi"]\\
+      \varphi(U) \ar[r, dashed, "\psi \circ f \circ \varphi^{-1}"']
+      \ar[d, symbol=\subseteq]&
+      \psi(V)
+      \ar[d, symbol=\subseteq]\\
+      \RealSet^{m} \ar[r, hook]&
+      \RealSet^{n} = \RealSet^{m} \times \RealSet^{n-m}%
+      \nphantom{\(= \RealSet^{m} \times \RealSet^{n-m}\)}\\
+      x \ar[r, mapsto] & (x,0)
+    \end{tikzcd}
+    \caption{Inmersión}
+    \label{fig:inmersion-cd}
+  \end{figure}
+\end{theorem}
+
+\begin{proof}
+  De acuerdo con el \cref{lem:dif-caract-exists},
+  podemos elegir cartas \((U,\varphi)\) y \((V,\psi)\) con \(p \in U\) y \(f(U)
+  \subseteq V\). Podemos suponer que \(\varphi(p)=0=\psi(f(p))\). Ahora
+  consideramos \(\widetilde{f} = \psi \circ f \circ \varphi^{-1}\), la misma de
+  la \cref{fig:factorizacion-diferenciable}.
+
+  Si \(f\) es una \nameref{def:inmersión} en \(p\), entonces \(\rango{f(p)} =
+  m\). Elegimos \(i_{1},\dots,i_{m} \in \Set{1,\dots,n}\) tales que el menor \(m
+  \times m\) de la matriz jacobiana \(\left( \pderiv{\widetilde{f}_{i}}{x_{j}}
+  \right)\) tiene determinante no nulo.
+
+  \[
+    \J[1]{\widetilde{f}} =
+    \begin{pmatrix}
+      \pderiv{\widetilde{f}_{i_{1}}}{x_{1}} & \cdots &
+      \pderiv{\widetilde{f}_{i_{1}}}{x_{m}}\\
+      \vdots & \ddots & \vdots\\
+      \pderiv{\widetilde{f}_{i_{m}}}{x_{1}} & \cdots &
+      \pderiv{\widetilde{f}_{i_{m}}}{x_{m}}
+    \end{pmatrix}
+  \]
+
+  Con el fin de simplificar la notación podemos suponer \(i_{k} = k\) para todo
+  \(1 \leq k \leq m\). Si no, hacemos una permutación de coordenadas en
+  \(\RealSet^{n}\) adecuada y la componemos con \(\psi\) para crear una carta
+  con la propiedad deseada.
+
+  Ahora consideramos una nueva función
+  \(\widetilde{F} \colon \underbracket{\varphi(U)}_{\subseteq \RealSet^{m}}
+  \times \RealSet^{n-m}\) dada por
+  \begin{multline*}
+    \widetilde{F}(x_{1},\dots,x_{m},y_{1},\dots,y_{n-m}) =
+    (\widetilde{f}_{1}(x),\dots,\widetilde{f}_{m}(x),\\
+    \widetilde{f}_{m+1}(x)+y_{1},\dots,
+    \widetilde{f}_{n}(x)+y_{n-m})
+  \end{multline*}
+  
+  Entonces el jacobiano de \(\widetilde{F}\) en \((\varphi(p),0)\) es
+  \[
+    \J[(\varphi(p),0)]{\widetilde{F}} =
+    \begin{pmatrix}
+      \J[1]{\widetilde{f}} & 0 \\
+      \J[2]{\widetilde{f}} & I
+    \end{pmatrix}
+  \]
+  donde
+  \begin{align*}
+    \J[1]{\widetilde{F}} &= \left( \pderiv{\widetilde{f}_{i}}{x_{j}}
+    \right)_{\substack{1 \leq i \leq m\\\\1 \leq j \leq m}}
+    \J[2]{\widetilde{F}} &= \left( \pderiv{\widetilde{f}_{i}}{x_{j}}
+    \right)_{\substack{m+1 \leq i \leq n\\\\1 \leq j \leq m}}
+  \end{align*}
+
+  Por el teorema de la función inversa en \(\RealSet^{n}\), existe \(\Omega\) un
+  abierto de \(\varphi(U) \times \RealSet^{n-m}\) tal que \((\varphi(p),0) \in
+  \Omega\), \(\widetilde{F}(\Omega)\) es abierto de \(\RealSet^{n}=\psi(V)\) y
+  \(\widetilde{F} \colon \Omega \to \widetilde{F}(\Omega)\) es difeomorfismo.
+% CHECK FROM HERE
+  Sea \(V_{0} \coloneqq \psi^{-1}(\widetilde{F}(\Omega)) \subseteq V\).
+  Sea \(\psi_{0} = \widetilde{F}^{-1} \circ \psi\).
+  Entonces \((V_{0},\psi_{0})\) es carta de \(N\). En efecto:
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}[row sep=large, column sep=large]
+      V_{0} \ar[d, "\Restrict{\psi}{V_{0}}"']\ar[r, "\psi_{0}"]&
+      \Omega \ar[dl, dashed, "\widetilde{F}"]\\
+      \widetilde{F}(\Omega) \ar[ur, dashed, "\widetilde{F}^{-1}", shift right=2]
+    \end{tikzcd}
+  \end{figure}
+
+  Sea \(U_{0} \coloneqq U \cap f^{-1}(V_{0})\) abierto. Se tiene el siguiente
+  diagrama:
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}
+      U_{0} \ar[d, "\varphi_{0} = \Restrict{\varphi}{U_{0}}"'] \ar[r, "f"]&
+      V_{0} \ar[d, "\psi_{0} = \widetilde{F}^{-1} \circ \psi"]\\
+      \varphi(U_{0}) \ar[r, dashed, "\psi_{0} \circ f \circ \varphi^{-1}"]
+      \ar[d, symbol=\subseteq]&
+      \Omega \ar[r, "\widetilde{F}"]
+      \ar[d, symbol=\subseteq]&
+      \widetilde{F}(\Omega)\\
+      \RealSet^{m} &
+      \psi(V) = \RealSet^{n} \nphantom{\(= \RealSet^{n}\)}
+    \end{tikzcd}
+  \end{figure}
+
+  Entonces
+
+  \[
+    \psi_{0} \circ f \circ \varphi_{0}^{-1} (x_{1},\dots,x_{n}) =
+    \widetilde{F}^{-1} \circ \underbracket{\psi \circ f \circ
+      \varphi^{-1}}_{\widetilde{f}} = (x_{1},\dots,x_{n},0,\dots,0)
+  \]
+% TODO
+\end{proof}
+
 \end{document}
+
+%%% Local Variables:
+%%% TeX-master: "../VD"
+%%% End:

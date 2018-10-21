@@ -8,6 +8,13 @@
 
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage{amsthm,thmtools}
+\usepackage{xpatch}
+\renewcommand{\listtheoremname}{Lista de Teoremas}
+\xpatchcmd{\listoftheorems}{\@fileswfalse}{}{\typeout{yes}}{\typeout{no}}
+
+\usepackage{graphicx} 
+\graphicspath{{figures/}}
+
 \usepackage{faktor} % Espacios cociente
 \usepackage{exercise}
 \usepackage{cool}
@@ -28,7 +35,7 @@
   }
 }
 
-\usepackage[unicode]{hyperref}
+\usepackage[unicode,breaklinks=true]{hyperref}
 \usepackage{nameref,cleveref}
 
 \usepackage{xcolor}
@@ -38,6 +45,8 @@
     citecolor={blue!50!black},
     urlcolor={blue!80!black}
 }
+
+\newcommand{\nphantom}[1]{\sbox0{#1}\hspace{-\the\wd0}}
 
 % rhcool
 \newcommand{\NaturalSet}{\ensuremath{\mathbb{N}}}   % Naturales
@@ -76,7 +85,7 @@
 \newcommand{\COOL@notation@InteriorParen}{p}
 \newcommand{\Interior}[1]{\operatorname{int}\COOL@decide@paren{Interior}{#1}}
 \newcommand{\Exterior}[1]{\operatorname{ext}\COOL@decide@paren{Interior}{#1}}
-\newcommand{\Clausura}[1]{\overline{#1}}
+\newcommand{\Clausura}[2][]{\overline{#2}^{#1}}
 \newcommand{\Frontera}[1]{\partial{}#1}
 \newcommand{\Dist}[2]{\operatorname{d}\left( #1,\, #2 \right)}
 \newcommand{\Bola}[2]{\operatorname{B}\left( #1,\, #2 \right)}
@@ -99,7 +108,12 @@
 \DeclarePairedDelimiter{\SG}{\langle}{\rangle} % Subgrupo generado
 \DeclarePairedDelimiter{\SGN}{\lhd}{\rhd} % Subgrupo normal generado
 \DeclareMathOperator{\Ker}{Ker}
+\newcommand{\Fdif}[1]{\operatorname{\mathcal{F}}\left(#1\right)} % Funciones diferenciables.
+\DeclareMathOperator{\rango}{rango}
 \makeatother
+
+% rhanalysis
+\newcommand{\J}[2][]{\operatorname{J}_{#1}#2} % Matriz jacobiana
 
 % thmrh
 
@@ -177,12 +191,19 @@ sibling=remark%
 
 \title{Variedades Diferenciables}
 \author{Carlos José Ruiz-Henestrosa Ruiz \\
+Adrián Gutiérrez Camacho \\
 Carlos Méndez García-Barroso}
 \date{2018}
 
 \begin{document}
 
 \maketitle
+
+\tableofcontents
+
+\listoftheorems[ignore=example]
+
+\subfile{temas/00-intro}
 
 \subfile{temas/01-cartas}
 
