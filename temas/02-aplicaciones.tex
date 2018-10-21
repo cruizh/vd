@@ -423,6 +423,10 @@ es diferenciable.
 \end{lemma}
 \begin{proof}
   % TODO
+
+
+
+  
 \end{proof}
 
 \begin{lemma}[extensión en \(\RealSet^{n}\)]
@@ -438,7 +442,36 @@ es diferenciable.
   \]
 \end{lemma}
 \begin{proof}
-  % TODO
+  Sea \(\beta(t)=\alpha(t-1)\cdot\alpha(2-t),\quad
+  \beta\colon\mathbb{R}\to\mathbb{R}\), tal que:
+  \[
+    \beta(t)=
+    \begin{dcases}
+      0 & t\leq 1\equiv\alpha(t-1\leq 0)=0 \\
+      0 & t\geq 2\equiv\alpha(2-t\leq 0)=0 \\
+      0<\beta(t)<1 & 1<t<2
+    \end{dcases}
+  \]
+
+  Sea \(\tau\colon\mathbb{R}\to\mathbb{R}\), tal que:
+  \[
+    \tau(s)=\frac{\int_{s}^{\infty} \beta(t) \cdot dt}{\int_{-\infty}^{\infty}\beta(t) \cdot dt}\overset{\beta(t\not\in(1,2))=0}{=}
+           \frac{\int_{s}^{2} \beta(t) \cdot dt}{\int_{1}^{2} \beta(t) \cdot dt}=
+  \]
+  \[
+    =\begin{dcases}
+      0 & s\geq 2 \\
+      1 & s\leq 1 \\
+      0<\tau(s)<1 & 1<s<2
+     \end{dcases}
+  \]
+  \[
+    \longrightarrow \begin{array}{c}
+                      \lambda\colon\mathbb{R}^{n}\to\mathbb{R} \\
+                      \lambda(x)=\tau(\Norm{x})
+                     \end{array} 
+  \]
+   
 \end{proof}
 
 \begin{lemma}
