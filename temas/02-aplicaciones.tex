@@ -422,11 +422,30 @@ e^{-1/t} & t > 0
 es diferenciable.
 \end{lemma}
 \begin{proof}
-  % TODO
+  Sea \(\alpha \colon \RealSet\to\RealSet\) definida como en el lema, entonces
+  su derivada tiene la expresión:
+  \[\alpha '(t)=
+\begin{dcases}
+0 & t \leq 0 \\
+e^{-1/t}\cdot\frac{1}{t^{2}} & t > 0 (*)
+\end{dcases}
+  \]
 
+Para que la función sea diferenciable se debe cumplir que los límites laterales
+de esa derivada en el \(0\) sean iguales. El límite en \(0^{-}\) es claramente
+\(0\) luego debe serlo también en \(0^{+}\). Para verlo apliquemos en \((*)\) el
+cambio de variables \(u=1/t\), con lo cual el límite queda:
+\[
+\begin{array}{c}
+\lim_{t\to
+  0^{+}}(e^{-1/t}\cdot\frac{1}{t^{2}})=\operatorname{lim}_{u\to +\infty}(e^{-u}\cdot u^{2})= \\
+  =\lim_{u\to +\infty}(\frac{u^{2}}{e^{u}})=0  
+\end{array}
+\]
 
-
-  
+pues la función exponcencial tiende mucho más rápido a infinito que el polinomio
+\(u^{2}\). Por tanto el límite lateral derecho también se anula y la función es
+diferenciable.
 \end{proof}
 
 \begin{lemma}[extensión en \(\RealSet^{n}\)]
@@ -802,8 +821,49 @@ es diferenciable.
 % TODO
 \end{proof}
 
+\section{Ejercicios Interesantes de la Relación 2}
+
+\begin{Exercise}[number=16]
+  
+\end{Exercise}
+
+\begin{Answer}[number=16]
+  1. \(\forall p\in B,\, \exists U_{p}\ni p\) cumpliendo el dicho diagrama
+  conmutativo. Entonces \(\exists(V_{p},\varphi_{p})\) carta con \(p\in
+  V_{p}\subseteq U_{p}\) (abierto) cumpliendo:
+% \begin{figure}[h]
+%    \centering
+%    \begin{tikzcd}
+%      \pi^{-1}(V_{p}) \ar[rr, "\rho_{V_{p}}"]\ar[rd, "\pi"] &&
+%      V_{p}\times F \ar[ld, "\pi_{1}"] \\
+%      U 
+%    \end{tikzcd}
+%    \caption{Diagrama Conmutativo}
+%  \end{figure}
+
+%   \begin{figure}[h]
+%    \centering
+%    \begin{tikzcd}
+%      \pi^{-1}(V_{p}) \ar[r,"\rho"] \ar[dr, "\pi"'] &
+%      U\times F \ar[d, "\pi_{1}"] \\
+%      & U
+%    \end{tikzcd}
+%    \caption{Diagrama Conmutativo}
+%  \end{figure}
+  
+  Como \(\rho_{_{V_{p}}}\) es difeomorfismo en \(U_{p}\), su restricción a
+  \(V_{p}\) también lo es. Por la \cref{propiedad de Lindeloff},
+  \(B=\bigcup_{p\in B}V_{p}\). Entonces \(\exists\) una cantidad numerable
+  cubriendo \(B\) y \({(V_{p},\varphi_{p})\colon p\in B}\) es el atlas que buscábamos.
+
+  2. \(U\) tiene estructura diferenciable... 
+
+
+\end{Answer}
+  
 \end{document}
 
 %%% Local Variables:
-%%% TeX-master: "../VD"
+%%% TeX-master: "../VD"  
+%%% TeV_pr\times F: "../VD"
 %%% End:
