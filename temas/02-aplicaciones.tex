@@ -856,11 +856,63 @@ diferenciable.
   \(B=\bigcup_{p\in B}V_{p}\). Entonces \(\exists\) una cantidad numerable
   cubriendo \(B\) y \({(V_{p},\varphi_{p})\colon p\in B}\) es el atlas que buscábamos.
 
-  2. \(U\) tiene estructura diferenciable... 
+  2. \(U\) tiene estructura diferenciable y además cumple el diagrama
+  conmutativo de la hipótesis, donde observamos que \(\pi_{1}\) es una submersión (es
+  la primera proyección). Sea \(p\in B\), entonces existen cartas
+  \((W,\varphi)\) de \(U\) (de \(B\)) y \((V,\psi)\) de \(\pi^{-1}(U)\) (de
+  \(E\)) tal que:
 
+%  \begin{figure}[h]
+%    \centering
+%    \begin{tikzcd}
+%      V \ar[rr,"pi"]\ar[dd,"\psi"] & W \ar[dd,"\varphi"] \\
+%      \psi(V) \ar[rr] & \varphi(W)
+%    \end{tikzcd}
+%    \caption{Diagrama Conmutativo 2}
+%  \end{figure}
+  
+  Como \(\varphi\circ\pi\circ\psi^{-1}\) tiene como rango la dimensión de \(B\)
+  que es menor que la de \(E\), entonces \(\pi\) es submersión.
+
+  El recíproco es falso: Sea \(\pi\colon\RealSet^{2}\backslash
+  {0}\to\RealSet\) tal que \(\pi(x,y)=x\), que claramente es submersión. Por
+  reducción al absurdo, si fuera fibración, \(\exists U\) abierto de
+  \(\RealSet\) con \(0\in U\), \(U\) cumpliendo el diagrama del enunciado. Como
+  \(p\in U\), podemos tomar el mismo diagrama cambiando \(U\) por \(p\):
+
+  % Diagrama Conmutativo 3
+  %   \pi^{-1}(p)--\rho_p-->{p}xF
+  %        \               /   
+  %     \pi \             / \pi_1
+  %               p
+
+  Como \(\rho_{p}\) es difeomorfismo, en particular es homeomorfismo. Por ello,
+  del diagrama se obtiene que \(\{p\}\times F\homeo F\). Sin embargo, \(\pi^{-1}(0)\)
+  es no conexa mientras que \(\pi^{-1}(x),\,x\neq 0\) es conexa, luego
+  contradicción y \(\pi\) NO es fibración.
+
+  3. Sea \(\pi\colon\RealSet\to S^{1},\,\pi(t)=(\cos{t},\sin{t})\). Tomaremos
+  como \(U_{p}=S^{1}\backslash\{(1,0)\}\). Tal y como hicimos en otro ejercicio
+  de clase, dividiremos la circunferencia en \(n\) partes de ángulo \(2\pi/n\).
+  Luego \(\pi^{-1}(U_{p})=\bigcup_{k\in\IntegerSet}(2\pi k,2\pi (k+1))\). Se
+  tiene que los intervalos dentro de la unión son todos homeomorfos a la recta
+  real, y que su unión en los \(k\in\IntegerSet\) es difeomorfa a
+  \(S^{1}\backslash\{(1,0)\}\times\IntegerSet\) por el difeomorfismo \(x\mapsto
+  (\pi(x),k)\), con \(x\in (2\pi k,2\pi (k+1))\). Para el punto \((1,0)\) cojo
+  \(U_{(1,0)}=S^{1}\backslash\{(-1,0)\},\,
+  \pi^{-1}(U_{(1,0)})=\bigcup_{k\in\IntegerSet}(-\pi+2\pi k,\pi+2\pi k)\). Así
+  que \(\pi\) es fibración de fibra \(\IntegerSet\).  
+\end{Answer}
+
+\begin{Exercise}[number=17]
+
+\end{Exercise}
+
+\begin{Answer}[number=17]
 
 \end{Answer}
-  
+
+
 \end{document}
 
 %%% Local Variables:
