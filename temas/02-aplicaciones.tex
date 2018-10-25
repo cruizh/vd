@@ -769,6 +769,52 @@ es diferenciable.
 % TODO
 \end{proof}
 
+\section[Medida e invarianza]{Conjuntos de medida nula en variedades. Invarianza de la dimensión.}
+\label{sec:medida-invarianza}
+
+\begin{definition}[Medida nula]\label{def:med-nula}
+	Sea $A\subseteq \mathbb{R}^n$ se dice de medida nula si $\forall \epsilon>0$ existen $\{C_i\}_{i\geq 1}$ cubos de $\mathbb{R}^n$ tal que $A\subseteq \bigcup_{i=1}^\infty C_i\;,\quad \sum_{i=1}^{\infty}vol(C_i)<\epsilon$
+\end{definition}
+
+\begin{lemma}\label{lem:prop-med}
+	\begin{enumerate}
+		\item [(1)] Si $A\subseteq B$ y $m(B)=0$ entonces $m(A)=0$
+		\item [(2)] Si $A=\bigcup_{n=1}^\infty A_n$ y $m(A_n)=0$, entonces $m(A)=0$.
+		\item [(3)] Si  $f\colon\mathbb{R}^n\to \mathbb{R}^n$ es diferenciable y $A\subseteq\mathbb{R}^n$ con $m(A)=0$, entonces $m(f(A))=0$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item [(1)] Daremos por conocido este resultado básico de teoría de la medida.
+		\item [(2)] Dado $\epsilon>0$ tenemos que $\forall j\geq 1$ $A_j\subseteq \bigcup_{i=1}^\infty C_i^j$ con $\sum_{i=1}^{\infty} vol(C_i^j)<\dfrac{\epsilon}{2^j}$. Entonces
+		\begin{align*}
+		A\subseteq \bigcup_{j=1}^\infty \bigcup_{j=1}^\infty C_i^j && \text{y} && \sum_{j=1}^{\infty}\sum_{i=1}^{\infty} vol(C_i^j)<\sum_{j=1}^\infty \dfrac{\epsilon}{2^j}=\epsilon
+		\end{align*}
+		\item [(3)] Dados $x,y\in \mathbb{R}^n$ consideramos la función asociada 
+		\begin{align*}
+		h_i\colon & [0,1] \to \mathbb{R}\\
+		& t \mapsto  f_i((1-t)x+ty)
+		\end{align*}
+		Es claro que $h$ es derivable y el teorema del valor medio nos dice que existe un $t_i\in [0,1]$ con $h_i'(t_i)=h_i(1)-h_i(0)=f_i(y)-f_i(x)$. Además si llamamos $w_i=(1-t_i)x-t_iy$ llegamos a
+		\begin{align*}
+		h_i'(t_i)= & \sum_{j=1}^{n}\pderiv{f_i}{x_j}(w_i)\Restrict{\deriv{(1-t)x_j+ty_j}{t}}{t=t_i}\\
+		& =\sum_{j=1}^{n}\pderiv{f_i}{x_j}(w_i)(y_j-x_j)
+		\end{align*}
+		Por tanto $f_i(y)-f_i(x)=\sum_{j=1}^{n}\pderiv{f_i}{x_j}(w_i)(y_j-x_j)$. Así pues, si $x,y$ están en un conjunto $\Gamma$ convexo y compacto se cumple
+		\[
+		\Norm{f(x)-f(y)}\leq K\Norm{y-x} \quad K\geq \max_{x\in \Gamma,\; 1\leq i,j\leq n}\Norm{\pderiv{f_i}{x_j}(x)}
+		\]
+		Si aplicamos el apartado $(2)$ de este resultado \cref{lem:prop-med} podemos suponer que $A\subseteq \Gamma$. Si $A\subseteq \bigcup_{s=1}^\infty C_s$ siendo $C_s$ cubos de volumen $\sqrt{s}$ con $\sum_{s=1}^{\infty}v_s <\dfrac{\epsilon}{K^n}$\\
+		Sea $l_s$ el lado del cubo $C_s$ y $y_s$ su centro, todo punto cumple
+		\[
+		\Norm{y_s-x}\leq \dfrac{\sqrt{n}l_s}{2}
+		\]
+		y por tanto, los puntos de $f(A\cap C_s)$ están contenidos en los cubos $C_s'$ de centro $f(y_s)$, lado $Kl_s$ y volumen $K^nl_s^n=K^nv_s$. Entonces $\sum_{s=1}^{\infty} vol(C_s')=K^n\sum_{s=1}^{\infty}v_s<\epsilon$.
+	\end{enumerate}
+\end{proof}
+
+
 \end{document}
 
 %%% Local Variables:
