@@ -769,10 +769,10 @@ es diferenciable.
 % TODO
 \end{proof}
 
-\section[Medida e invarianza]{Conjuntos de medida nula en variedades. Invarianza de la dimensión.}
+\section[medida e invarianza]{Conjuntos de medida nula en variedades. Invarianza de la dimensión.}
 \label{sec:medida-invarianza}
 
-\begin{definition}[Medida nula]\label{def:med-nula}
+\begin{definition}[medida nula]\label{def:med-nula}
 	Sea $A\subseteq \mathbb{R}^n$ se dice de medida nula si $\forall \epsilon>0$ existen $\{C_i\}_{i\geq 1}$ cubos de $\mathbb{R}^n$ tal que $A\subseteq \bigcup_{i=1}^\infty C_i\;,\quad \sum_{i=1}^{\infty}vol(C_i)<\epsilon$
 \end{definition}
 
@@ -798,7 +798,7 @@ es diferenciable.
 		\end{align*}
 		Es claro que $h$ es derivable y el teorema del valor medio nos dice que existe un $t_i\in [0,1]$ con $h_i'(t_i)=h_i(1)-h_i(0)=f_i(y)-f_i(x)$. Además si llamamos $w_i=(1-t_i)x-t_iy$ llegamos a
 		\begin{align*}
-		h_i'(t_i)= & \sum_{j=1}^{n}\pderiv{f_i}{x_j}(w_i)\Restrict{\deriv{(1-t)x_j+ty_j}{t}}{t=t_i}\\
+		h_i'(t_i)= & \sum_{j=1}^{n}\pderiv{f_i}{x_j}(w_i)\Restrict{\D{((1-t)x_j+ty_j)}{t}}{t=t_i}\\
 		& =\sum_{j=1}^{n}\pderiv{f_i}{x_j}(w_i)(y_j-x_j)
 		\end{align*}
 		Por tanto $f_i(y)-f_i(x)=\sum_{j=1}^{n}\pderiv{f_i}{x_j}(w_i)(y_j-x_j)$. Así pues, si $x,y$ están en un conjunto $\Gamma$ convexo y compacto se cumple
@@ -814,7 +814,37 @@ es diferenciable.
 	\end{enumerate}
 \end{proof}
 
+Ahora extenderemos el concepto de conjunto de medida nula a variedades
 
+\begin{definition}[variedad de medida nula]\label{def:var-med-nula}
+Sea $M$ una m-variedad, decimos que $A\subseteq M$ tiene \emph{medida nula} si para toda carta $(U,\varphi)$ de $M$ se tiene que $\varphi(A\cap U)$ tiene medida nula en $\RealSet^m$.
+\end{definition}
+
+Después de esta definición completamente natural tenemos un resultado directo
+
+\begin{lemma}\label{lem:denso}
+Si $A\subseteq M$ es una \nameref{def:var-med-nula} entonces $M-A$ es denso en $M$.
+\end{lemma}
+
+\begin{proof}
+Por reducción al absurdo supongamos que existe un $x\notin \Clausura{M-A}$ y $(U,\varphi)$ una carta con $x\in U\subseteq M-\Clausura{M-A}$. Destacar que este conjunto es un abierto en $M$ dado que le estamos quitando un cerrado y de hecho es el $\Interior{A}$ por su propia construcción.\\
+Entonces $\varphi(A\cap U)=\varphi(U)$ abierto de $\RealSet^m$ con medida nula, pero esto es una contradicción pues contiene un cubo $D$ de un cierto volumen $\delta$ y si $D\subseteq \bigcup_{s=1}^\infty C_s$ con $\sum_{s=1}^{\infty}vol(C_s)<\dfrac{\delta}{2}$ tendríamos que $\delta=vol(D)\leq \sum_{s=1}^{\infty}vol(C_s)<\dfrac{\delta}{2}$.
+\end{proof}
+
+Ahora podemos ampliar las variedades de medida nula al aplicarles una cierta función diferenciable.
+
+\begin{lemma}
+Si $f\colon M \to N$ es diferenciable con $\dim(N)=\dim(M)$ y $A\subseteq M$  tiene medida nula, entonces $f(A)$ tiene medida nula en $N$. 
+\end{lemma}
+
+\begin{proof}
+Sea \( (W,\psi) \) una carta de \( N \). Para cada \( p\in f^{-1}(f(A)\cap M) \) elegimos una carta \( (U_p,\varphi_p) \) con \( f(U_p)\subseteq W \) y \( \psi \circ f\circ \varphi^{-1}_p\colon \varphi_p(U)\to \psi(W) \) diferenciable (por ser composición de funciones diferenciables). 
+Sea \( \{U_s,\varphi_s\} \) una cantidad numerable de las cartas definidas anteriormente cumpliendo \(   f^{-1}(f(A)\cap M) \subseteq \bigcup_{s=1}^\infty\)
+
+Entonces cada \( \varphi_s(U_s\cap A)\subseteq A \) \nameref{def:var-med-nula} y por tanto si componemos \( \psi(f(\varphi^{-1}_s(\varphi_s(U_s\cap A)))) =\psi(f(\varphi_s(U_s\cap A)))\) tiene medida nula en \( \psi(W) \) y también lo tendrá \( \bigcup_{s=1}^\infty \psi(f(\varphi_s(U_s\cap A))) \).
+
+Por construcción \( \psi(f(A)\cap W	) \subseteq  \bigcup_{s=1}^\infty \psi(f(\varphi_s(U_s\cap A)))\) y aplicando de forma directa la propiedad \( (1) \) \ref{lem:prop-med} tenemos \( m(\psi(f(A)\cap W))=0 \) y \( f(A) \) tiene medida nula.
+\end{proof}
 \end{document}
 
 %%% Local Variables:
