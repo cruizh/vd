@@ -905,11 +905,92 @@ diferenciable.
 \end{Answer}
 
 \begin{Exercise}[number=17]
+Probar que \(h\colon\RealSet^{4}\backslash\{0\}\to\RealSet^{3}\backslash\{0\}\)
+dada por
+\[
+  h(a,b,c,d)=(2(ac+bd),2(ad-bc),c^{2}+d^{2}-a^{2}-b^{2})
+\]
+es una submersión que envía la \(3\)-esfera de radio \(r\) en la \(2\)-esfera de radio
+\(r^{2}\), por 1o que para \(r=1\) tenemos \(h\colon S^{3}\to S^{2}\).
 
+Probar que \(h\) es de hecho una \underline{fibración} de fibra \(S^{1}\), llamada la
+fibración de \underline{Hopf}.
+
+Considerar los conjuntos
+\(OZ_{+}=\{(x,y,z)\in\RealSet^{3}\backslash\{0\}: z>0\}\) y 
+\(OZ_{-}=\{(x,y,z)\in\RealSet^{3}\backslash\{0\}: z<0\}\)
+y las aplicaciones
+\[
+\psi_{+}\colon((\RealSet^{3}\backslash\{0\})\backslash OZ_{+})\times S^{1}\to
+h^{-1}((\RealSet^{3}\backslash\{0\})\backslash OZ_{+})
+\]
+y
+\[
+\psi_{-}\colon((\RealSet^{3}\backslash\{0\})\backslash OZ_{-})\times S^{1}\to
+h^{-1}((\RealSet^{3}\backslash\{0\})\backslash OZ_{-})
+\]
+dadas por
+\[\begin{array}{l}
+  \psi_{+}(x,y,z,(p,q))= \\
+  (\sqrt{\frac{r-z}{2}}p,\sqrt{\frac{r-z}{2}}q,
+  (xp-yq)\sqrt{\frac{1}{2(r-z)}},(xq+yp)\sqrt{\frac{1}{2(r-z)}})
+\end{array}\]
+y por
+\[\begin{array}{l}
+  \psi_{-}(x,y,z,(p,q))= \\
+  ((xp+yq)\sqrt{\frac{1}{2(r+z)}},(xq-yp)\sqrt{\frac{1}{2(r+z)}},
+  \sqrt{\frac{r+z}{2}}p,\sqrt{\frac{r+z}{2}})
+\end{array}\]
+donde, en ambas igualdades, \(r=\sqrt{x^{2}+y^{2}+z^{2}}\). Probar que
+ambas son diferenciables con inversas
+\[
+\psi_{+}^{-1}(a,b,c,d)=(h(a,b,c,d),\frac{a}{\sqrt{a^{2}+b^{2}}},\frac{b}{\sqrt{a^{2}+b^{2}}})
+\]
+y
+\[
+\psi_{-}^{-1}(a,b,c,d)=(h(a,b,c,d),\frac{c}{\sqrt{c^{2}+d^{2}}},\frac{d}{\sqrt{c^{2}+d^{2}}})
+\]
 \end{Exercise}
 
 \begin{Answer}[number=17]
+  1. Primero vamos a probar que \(h\) es en efecto una submersión.
 
+  Observemos primero que \(h\) es una función diferenciable pues sus 3
+  componentes son polinomios. Veamos ahora que es diferenciable:
+
+  Sea \(p\in U\), con \(U\) abierto de \(\RealSet^{4}\backslash\{0\}\),
+  cualquiera. Entonces podemos encontrar una carta de mi espacio de salida
+  \((V,\varphi=i_{\RealSet^{4}\backslash\{0\}}=id_{4})\) tal que \(p\in V\subseteq U\),
+  y una carta de mi espacio de llegada
+  \((W,\psi=i_{\RealSet^{3}\backslash\{0\}}=id_{3})\) tal que \(h(p)\in
+  h(V)\subseteq W\).
+
+  Luego tenemos el diagrama
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}
+      V \ar[r, "h"] \ar[d, "id_4"]&
+      W \ar[d, "id_3"]\\
+      id_4(V)=V \ar[r, "\widetilde{h}"] & id_3(W)=W
+    \end{tikzcd}
+  \end{figure}
+
+  Y \(\widetilde{h}=id_{3}\circ h\circ id_{4}^{-1}\) es diferenciable pues es
+  composición de funciones diferenciables. Luego \(h\) es diferenciable y lleva
+  la \(4\)-variedad \(\RealSet^{4}\backslash\{0\}\) en la \(3\)-variedad
+  \(\RealSet^{3}\backslash\{0\}\).
+
+  Para ver que es submersión debemos calcular su jacobiano (matriz \(4\times
+  3\)) y ver que su rango es máximo (es decir, \(3\)):
+
+  \[
+    J_{id_{4}(p)}(id_{3}\circ h\circ id_{4}^{-1})=J_{p}(h)=
+    \begin{bmatrix}
+      2c & 2d & 2a & 2b \\
+      2d & -2c & -2b & 2a \\
+      -2a & -2b & 2c & 2d 
+    \end{bmatrix}
+  \]
 \end{Answer}
 
 
