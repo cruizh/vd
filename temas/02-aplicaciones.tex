@@ -960,8 +960,8 @@ y
 
   Sea \(p\in U\), con \(U\) abierto de \(\RealSet^{4}\backslash\{0\}\),
   cualquiera. Entonces podemos encontrar una carta de mi espacio de salida
-  \((V,\varphi=i_{\RealSet^{4}\backslash\{0\}}=id_{4})\) tal que \(p\in V\subseteq U\),
-  y una carta de mi espacio de llegada
+  \((V,\varphi=i_{\RealSet^{4}\backslash\{0\}}=id_{4})\) tal que \(p\in
+  V\subseteq U\), y una carta de mi espacio de llegada
   \((W,\psi=i_{\RealSet^{3}\backslash\{0\}}=id_{3})\) tal que \(h(p)\in
   h(V)\subseteq W\).
 
@@ -991,6 +991,42 @@ y
       -2a & -2b & 2c & 2d 
     \end{bmatrix}
   \]
+
+  Si efectuamos los cálculos de todos los menores de orden \(3\), veremos que
+  todos son nulos sii
+  \((a,b,c,d)=(0,0,0,0)\not\in\RealSet^{4}\backslash\{0\}\). Luego el rango es
+  máximo y nuestra aplicación es submersión.
+
+  2. Sea \(E\) la \(3\)-esfera de radio \(r\) dentro de
+  \(\RealSet^{4}\backslash\{0\}\). Un punto de la misma será de la forma
+  \((a,b,c,\sqrt{r^{2}-a^{2}-b^{2}-c^{2}})=(a,b,c,d_{*})\). Si le aplicamos \(h\)
+  nos queda:
+  \[
+    h(a,b,c,d_{*})=(2(ac+bd_{*}),2(ad_{*}-bc),c^{2}+d_{*}^{2}-a^{2}-b^{2})
+  \]
+
+  Y si elevamos cada componente al cuadrado y lo sumamos, obtendremos (tras unos
+  cálculos) \(r^{4}\). Por tanto \(h(E)\) es una \(2\)-esfera de radio
+  \(r^{2}\). Obviamente, \(h\colon S^{3}\to S^{2}\).
+
+  3. Veamos que \(h\) es una fibración.
+
+  Nuestro difeomorfismo (necesario para la
+  fibración como vimos en el \cref{Ejercicio 16}) será el dado por
+  \(\psi_{\pm}\) y \(\psi_{\pm}^{-1}\), para ello basta probar que es biyectiva,
+  diferenciable y la inversa es diferenciable. Es fácil comprobar que lo son por
+  el hecho de cómo están definidos los conjuntos de definición.
+
+  Así, podemos encajar en el diagrama conmutativo los conjuntos
+  \(h^{-1}(\RealSet^{3}\backslash\{0\}\backslash OZ_{\pm}),\,((\RealSet^{3}
+  \backslash\{0\})\backslash OZ_{\pm})\times S^{1},\,((\RealSet^{3}
+  \backslash\{0\})\backslash OZ_{\pm})\) (en orden de lectura) con las
+  aplicaciones \(\psi_{\pm}^{-1},\, h,\, \pi_{1}\) (en sus correspondientes
+  lugares). Es conmutativo por la forma en la que está definida
+  \(\psi_{\pm}^{-1}\), que guarda su primera componente para la imagen por \(h\)
+  del punto \((a,b,c,d)\).
+
+  Luego \(h\) es la llamada \underline{fibración de Hopf} de fibra \(S^{1}\).
 \end{Answer}
 
 
