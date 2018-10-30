@@ -1,0 +1,15 @@
+# Comillas correctas
+QuoteStyle = Logical
+
+
+MathEnvir
+{
+  tikzcd equation align gather multline
+}
+
+CmdLine
+{
+  -n18 # Ignore " from tikzcd
+  -n34 # Ignore primes with quotes in tikzcd
+  -n24 # Ignore space before \label
+}
