@@ -594,7 +594,7 @@ es diferenciable.
   son iguales.
 \end{proof}
 
-\begin{theorem}[teorema de la función inversa]
+\begin{theorem}[teorema de la función inversa]\label{thm:inversa}
   Sean \(f \colon M^{n} \to N^{n}\) diferenciable entre variedades de la misma
   dimensión. Supongamos que para \(p \in M\), \(\rango{f(p)} = n\). Entonces
   existe \(\Omega\) abierto de \(M\) tal que \(p \in \Omega\), \(f(\Omega)\) es
@@ -772,11 +772,11 @@ es diferenciable.
 \section[medida e invarianza]{Conjuntos de medida nula en variedades. Invarianza de la dimensión.}
 \label{sec:medida-invarianza}
 
-\begin{definition}[medida nula]\label{def:med-nula}
+\begin{definition}[medida nula]\label{def:med-nula-var}
 	Sea $A\subseteq \mathbb{R}^n$ se dice de medida nula si $\forall \epsilon>0$ existen $\{C_i\}_{i\geq 1}$ cubos de $\mathbb{R}^n$ tal que $A\subseteq \bigcup_{i=1}^\infty C_i\;,\quad \sum_{i=1}^{\infty}vol(C_i)<\epsilon$
 \end{definition}
 
-\begin{lemma}\label{lem:prop-med}
+\begin{lemma}\label{lem:prop-med-var}
 	\begin{enumerate}
 		\item [(1)] Si $A\subseteq B$ y $m(B)=0$ entonces $m(A)=0$
 		\item [(2)] Si $A=\bigcup_{n=1}^\infty A_n$ y $m(A_n)=0$, entonces $m(A)=0$.
@@ -805,7 +805,7 @@ es diferenciable.
 		\[
 		\Norm{f(x)-f(y)}\leq K\Norm{y-x} \quad K\geq \max_{x\in \Gamma,\; 1\leq i,j\leq n}\Norm{\pderiv{f_i}{x_j}(x)}
 		\]
-		Si aplicamos el apartado $(2)$ de este resultado \cref{lem:prop-med} podemos suponer que $A\subseteq \Gamma$. Si $A\subseteq \bigcup_{s=1}^\infty C_s$ siendo $C_s$ cubos de volumen $\sqrt{s}$ con $\sum_{s=1}^{\infty}v_s <\dfrac{\epsilon}{K^n}$\\
+		Si aplicamos el apartado $(2)$ de este resultado \cref{lem:prop-med-var} podemos suponer que $A\subseteq \Gamma$. Si $A\subseteq \bigcup_{s=1}^\infty C_s$ siendo $C_s$ cubos de volumen $\sqrt{s}$ con $\sum_{s=1}^{\infty}v_s <\dfrac{\epsilon}{K^n}$\\
 		Sea $l_s$ el lado del cubo $C_s$ y $y_s$ su centro, todo punto cumple
 		\[
 		\Norm{y_s-x}\leq \dfrac{\sqrt{n}l_s}{2}
@@ -833,7 +833,7 @@ Entonces $\varphi(A\cap U)=\varphi(U)$ abierto de $\RealSet^m$ con medida nula, 
 
 Ahora podemos ampliar las variedades de medida nula al aplicarles una cierta función diferenciable.
 
-\begin{lemma}
+\begin{lemma}\label{lem:med-eqdim}
 Si $f\colon M \to N$ es diferenciable con $\dim(N)=\dim(M)$ y $A\subseteq M$  tiene medida nula, entonces $f(A)$ tiene medida nula en $N$. 
 \end{lemma}
 
@@ -843,8 +843,42 @@ Sea \( \{U_s,\varphi_s\} \) una cantidad numerable de las cartas definidas anter
 
 Entonces cada \( \varphi_s(U_s\cap A)\subseteq A \) \nameref{def:var-med-nula} y por tanto si componemos \( \psi(f(\varphi^{-1}_s(\varphi_s(U_s\cap A)))) =\psi(f(\varphi_s(U_s\cap A)))\) tiene medida nula en \( \psi(W) \) y también lo tendrá \( \bigcup_{s=1}^\infty \psi(f(\varphi_s(U_s\cap A))) \).
 
-Por construcción \( \psi(f(A)\cap W	) \subseteq  \bigcup_{s=1}^\infty \psi(f(\varphi_s(U_s\cap A)))\) y aplicando de forma directa la propiedad \( (1) \) \ref{lem:prop-med} tenemos \( m(\psi(f(A)\cap W))=0 \) y \( f(A) \) tiene medida nula.
+Por construcción \( \psi(f(A)\cap W	) \subseteq  \bigcup_{s=1}^\infty \psi(f(\varphi_s(U_s\cap A)))\) y aplicando de forma directa la propiedad \( (1) \) \ref{lem:prop-med-var} tenemos \( m(\psi(f(A)\cap W))=0 \) y \( f(A) \) tiene medida nula.
 \end{proof}
+
+Como consecuencia de lo anterior tenemos un resultado similar de acotación sobre variedades.
+
+\begin{proposition}\label{prop:med-ldim}
+	Sea \( f\colon M\to N \) una aplicación diferenciable con \( m=\dim (M) < \dim (N)=n \). Entonces \( f(M) \) tiene medida nula sobre \( N \).
+\end{proposition}
+
+\begin{proof}
+Sea \( V=M\times \RealSet ^{n-m} \) y \( g\colon V \overset{\pi}{\to} M\overset{f}{\to} N\) donde \( \pi \) es la proyección. De acuerdo con \ref{lem:med-eqdim} la medida de \( g(V)=f(M) \) que es nula.
+\end{proof}
+
+\begin{proposition}\label{prop:med-iso}
+Si \( f\colon M\to N \) es diferenciable, sobreyectiva y \( df_p \) es inyectiva, entonces \( df_p \) es isomorfismo.
+\end{proposition}
+
+\begin{proof}
+Por el resultado \ref{prop:med-ldim} y \ref{lem:denso} tenemos que \( \dim (M) \geq \dim (N) \). Como siempre ocurre la otra desigualdad nos queda \( \dim (M)=\dim (N) \) y por tanto \( df_p \) es isomorfismo.
+\end{proof}
+
+\begin{proposition}\label{prop:med-difeo}
+Si \( f\colon M\to N \) ds una inmersión biyectiva en cada \( p\in M \), entonces \( f \) es un difeomorfismo.
+\end{proposition}
+
+\begin{proof}
+Estamos en las condiciones de la proposición \ref{prop:med-iso} por lo que ya sabemos que \( df_p \) es isomorfismo. Por el \nameref{thm:inversa}
+para cada punto \( p\in M \) se cumple que \( f\colon U_p\to f(U_p) \) es un difeomorfismo para cierto abierto \( p\in U\subseteq M \).
+
+Por tanto \( f^{-1}\colon N\to M \) es diferenciable pues \( \forall q\in N \) \( f^{-1}\colon f(U_p)\to U_p \) lo es si hacemos \( p=f^{-1}(q) \).
+\end{proof}
+
+\begin{note}
+De los resultados anteriores se deduce que dos variedades difeomorfas tienen necesariamente la misma dimensión, ya que si razonásemos por reducción al absurdo tendríamos \( f\colon M \to N \) difeomorfismo con \( \dim (M) < \dim (N) \) y como hemos visto \( f(M)=N \) ambos de medida nula, lo que contradice el lema \ref{lem:denso}.
+\end{note}
+
 \end{document}
 
 %%% Local Variables:
