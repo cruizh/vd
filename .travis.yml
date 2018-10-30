@@ -14,4 +14,3 @@ deploy:
   skip_cleanup: true
   on:
     repo: cruizh/vd
-    tags: true
