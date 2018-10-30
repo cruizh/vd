@@ -86,7 +86,7 @@
   \circ f)(U) \subseteq \Omega\).
   Para ver que \(g \circ f\) es diferenciable, queda probar que
   \(h \coloneqq \rho \circ g \circ f \circ \varphi^{-1}\) lo es, y resulta que
-  \(h = \widetilde{g} \circ \widetilde{f}\), i.e. es composición de aplicaciones
+  \(h = \widetilde{g} \circ \widetilde{f}\), i.e.\ es composición de aplicaciones
   diferenciables (por hipótesis), luego es diferenciable.
 \end{proof}
 
@@ -187,7 +187,7 @@ luego se tiene que \(f\) es diferenciable.
 
   Por construcción de \((W',\psi')\) y definición de
   \nameref{def:diferenciable}, \(f\) es diferenciable si y solo si \(\hat{f} =
-  \psi' \circ f \circ (\varphi')^{-1}\)
+  \psi' \circ f \circ {(\varphi')}^{-1}\)
   lo es, y efectivamente lo es porque \(\hat{f} = \Restrict{\widetilde{f}\,}{\varphi(U')}\), que es
   restricción de una aplicación diferenciable luego es diferenciable (recordemos
   que \(\widetilde{f} = \psi \circ f \circ \varphi^{-1}\) es diferenciable
@@ -247,7 +247,7 @@ diferenciable por definición.
     = f(U \cap V) \neq \emptyset\) con \((U,\varphi), (V,\psi) \in
     \mathcal{A}\), entonces
     \[
-      (\psi \circ f^{-1}) \circ (\varphi \circ f^{-1})^{-1} = \psi \circ f^{-1}
+      (\psi \circ f^{-1}) \circ {(\varphi \circ f^{-1})}^{-1} = \psi \circ f^{-1}
       \circ f \circ \varphi^{-1} = \psi \circ \varphi^{-1}
     \]
     que va de \((\varphi \circ f^{-1})(f(U \cap V)) = \varphi(U \cap V)\) a
@@ -260,13 +260,13 @@ diferenciable por definición.
     Sean \((f(U), \varphi f^{-1}) \in f(\mathcal{A})\) y \((W,\rho) \in
     \mathcal{B}\) con \(f(U) \cap W \neq \emptyset\). Tenemos que ver que
     \[
-      \rho \circ (\varphi \circ f^{-1})^{-1}
+      \rho \circ {(\varphi \circ f^{-1})}^{-1}
       \colon
       \varphi f^{-1}(f(U) \cap W)
       \to
       \rho(f(U) \cap W)
     \]
-    es diferenciable. Nótese que \(\rho \circ (\varphi \circ f^{-1})^{-1} = \rho
+    es diferenciable. Nótese que \(\rho \circ {(\varphi \circ f^{-1})}^{-1} = \rho
     \circ f \circ \varphi^{-1}\). Para ello, sea \(x \in \varphi f^{-1}(f(U)
     \cap W) = \varphi(U \cap f^{-1}(W))\). Sea \(p \in U \cap f^{-1}(W)\) con
     \(x = \varphi(p)\).
@@ -345,7 +345,7 @@ diferenciable por definición.
   Para una carta relativa a \(U\), \((W \cap U, \Restrict{\psi}{W \cap U})\),
   tenemos que
 \[
-  x_{i} \circ \left( \Restrict{\psi}{W \cap U} \right)^{-1} \colon
+  x_{i} \circ {\left( \Restrict{\psi}{W \cap U} \right)}^{-1} \colon
   \psi(W \cap U) \to \varphi(W \cap U) \to \RealSet
 \]
 es diferenciable por serlo el cambio de carta.
@@ -353,7 +353,7 @@ es diferenciable por serlo el cambio de carta.
 
 \begin{definition}[derivada parcial]
 Sea \(\pderiv{}{x_{i}} \colon \mathcal{F}(U)\to\mathcal{F}(U)\), \(1 \leq i\leq
-m \coloneqq\operatorname{dim}_{M}\), con \((U,\varphi)\) carta de \(M\), el operador tal
+m \coloneqq \dim{M}\), con \((U,\varphi)\) carta de \(M\), el operador tal
 que si \(f \in \mathcal{F}(U),\ p\in U\), entonces:
 \[
 \Restrict{\pderiv{f}{x_{i}}}{p}=\Restrict{\pderiv{f\circ\varphi^{-1}}{x_{i}}}{\varphi(p)}
@@ -405,7 +405,7 @@ respectivas. Entonces:
 \[
   \Restrict{\pderiv{f}{y_{i}}}{p} =
   \Sum{\Restrict{\pderiv{f}{x_{j}}}{p} \cdot
-    \Restrict{\pderiv{(\varphi\circ\psi^{-1})_{j}}{y_{i}}}{\psi(p)}}{j,1,m}
+    \Restrict{\pderiv{{(\varphi\circ\psi^{-1})}_{j}}{y_{i}}}{\psi(p)}}{j,1,m}
 \]
 \end{lemma}
 
@@ -438,7 +438,7 @@ cambio de variables \(u=1/t\), con lo cual el límite queda:
 \[
 \begin{array}{c}
 \lim_{t\to
-  0^{+}}(e^{-1/t}\cdot\frac{1}{t^{2}})=\operatorname{lim}_{u\to +\infty}(e^{-u}\cdot u^{2})= \\
+  0^{+}}(e^{-1/t}\cdot\frac{1}{t^{2}})=\lim_{u\to +\infty}(e^{-u}\cdot u^{2})= \\
   =\lim_{u\to +\infty}(\frac{u^{2}}{e^{u}})=0  
 \end{array}
 \]
@@ -597,9 +597,9 @@ diferenciable.
   \begin{equation}
     \label{eq:def-rango}
     \J[\varphi(p)]{\widetilde{f}} =
-    \left(
-      \Restrict{\pderiv{(\psi \circ f \circ \varphi^{-1})_{i}}{x_{j}}}{\varphi(p)}
-    \right)_{\substack{1 \leq i \leq n\\\\1 \leq j \leq m}}
+    {\left(
+      \Restrict{\pderiv{{(\psi \circ f \circ \varphi^{-1})}_{i}}{x_{j}}}{\varphi(p)}
+    \right)}_{\substack{1 \leq i \leq n\\\\1 \leq j \leq m}}
   \end{equation}
 \end{definition}
 
@@ -771,10 +771,10 @@ diferenciable.
   \]
   donde
   \begin{align*}
-    \J[1]{\widetilde{F}} &= \left( \pderiv{\widetilde{f}_{i}}{x_{j}}
-    \right)_{\substack{1 \leq i \leq m\\\\1 \leq j \leq m}}
-    \J[2]{\widetilde{F}} &= \left( \pderiv{\widetilde{f}_{i}}{x_{j}}
-    \right)_{\substack{m+1 \leq i \leq n\\\\1 \leq j \leq m}}
+    \J[1]{\widetilde{F}} &= {\left( \pderiv{\widetilde{f}_{i}}{x_{j}}
+    \right)}_{\substack{1 \leq i \leq m\\\\1 \leq j \leq m}}
+    \J[2]{\widetilde{F}} &= {\left( \pderiv{\widetilde{f}_{i}}{x_{j}}
+    \right)}_{\substack{m+1 \leq i \leq n\\\\1 \leq j \leq m}}
   \end{align*}
 
   Por el teorema de la función inversa en \(\RealSet^{n}\), existe \(\Omega\) un
@@ -825,7 +825,8 @@ diferenciable.
 \label{sec:medida-invarianza}
 
 \begin{definition}[medida nula]\label{def:med-nula-var}
-	Sea $A\subseteq \mathbb{R}^n$ se dice de medida nula si $\forall \epsilon>0$ existen $\{C_i\}_{i\geq 1}$ cubos de $\mathbb{R}^n$ tal que $A\subseteq \bigcup_{i=1}^\infty C_i\;,\quad \sum_{i=1}^{\infty}vol(C_i)<\epsilon$
+	Sea $A\subseteq \mathbb{R}^n$ se dice de medida nula si $\forall \epsilon>0$
+  existen $\Set{C_i}_{i \geq 1}$ cubos de $\mathbb{R}^n$ tal que $A\subseteq \bigcup_{i=1}^\infty C_i\;,\quad \sum_{i=1}^{\infty}vol(C_i)<\epsilon$
 \end{definition}
 
 \begin{lemma}\label{lem:prop-med-var}
@@ -848,7 +849,9 @@ diferenciable.
 		h_i\colon & [0,1] \to \mathbb{R}\\
 		& t \mapsto  f_i((1-t)x+ty)
 		\end{align*}
-		Es claro que $h$ es derivable y el teorema del valor medio nos dice que existe un $t_i\in [0,1]$ con $h_i'(t_i)=h_i(1)-h_i(0)=f_i(y)-f_i(x)$. Además si llamamos $w_i=(1-t_i)x-t_iy$ llegamos a
+		Es claro que $h$ es derivable y el teorema del valor medio nos dice que
+    existe un $t_i\in [0,1]$ con $h_i'(t_i)=h_i(1)-h_i(0)=f_i(y)-f_i(x)$. Además
+    si llamamos \(w_i = (1-t_i) x -t_{i} y\) llegamos a
 		\begin{align*}
 		h_i'(t_i)= & \sum_{j=1}^{n}\pderiv{f_i}{x_j}(w_i)\Restrict{\D{((1-t)x_j+ty_j)}{t}}{t=t_i}\\
 		& =\sum_{j=1}^{n}\pderiv{f_i}{x_j}(w_i)(y_j-x_j)
@@ -860,9 +863,11 @@ diferenciable.
 		Si aplicamos el apartado $(2)$ de este resultado \cref{lem:prop-med-var} podemos suponer que $A\subseteq \Gamma$. Si $A\subseteq \bigcup_{s=1}^\infty C_s$ siendo $C_s$ cubos de volumen $\sqrt{s}$ con $\sum_{s=1}^{\infty}v_s <\dfrac{\epsilon}{K^n}$\\
 		Sea $l_s$ el lado del cubo $C_s$ y $y_s$ su centro, todo punto cumple
 		\[
-		\Norm{y_s-x}\leq \dfrac{\sqrt{n}l_s}{2}
+		\Norm{y_{s}-x}\leq \dfrac{\sqrt{n}l_{s}}{2}
 		\]
-		y por tanto, los puntos de $f(A\cap C_s)$ están contenidos en los cubos $C_s'$ de centro $f(y_s)$, lado $Kl_s$ y volumen $K^nl_s^n=K^nv_s$. Entonces $\sum_{s=1}^{\infty} vol(C_s')=K^n\sum_{s=1}^{\infty}v_s<\epsilon$.
+		y por tanto, los puntos de $f(A\cap C_{s})$ están contenidos en los cubos
+    $C_{s}'$ de centro $f(y_{s})$, lado $Kl_{s}$ y volumen $K^{n}l_{s}^{n}=K^{n}v_{s}$. Entonces
+    $\sum_{s=1}^{\infty} vol(C_s')=K^n\sum_{s=1}^{\infty}v_s<\epsilon$.
 	\end{enumerate}
 \end{proof}
 
@@ -895,7 +900,8 @@ Sea \( \{U_s,\varphi_s\} \) una cantidad numerable de las cartas definidas anter
 
 Entonces cada \( \varphi_s(U_s\cap A)\subseteq A \) \nameref{def:var-med-nula} y por tanto si componemos \( \psi(f(\varphi^{-1}_s(\varphi_s(U_s\cap A)))) =\psi(f(\varphi_s(U_s\cap A)))\) tiene medida nula en \( \psi(W) \) y también lo tendrá \( \bigcup_{s=1}^\infty \psi(f(\varphi_s(U_s\cap A))) \).
 
-Por construcción \( \psi(f(A)\cap W	) \subseteq  \bigcup_{s=1}^\infty \psi(f(\varphi_s(U_s\cap A)))\) y aplicando de forma directa la propiedad \( (1) \) \ref{lem:prop-med-var} tenemos \( m(\psi(f(A)\cap W))=0 \) y \( f(A) \) tiene medida nula.
+Por construcción \( \psi(f(A)\cap W	) \subseteq  \bigcup_{s=1}^\infty
+\psi(f(\varphi_s(U_s\cap A)))\) y aplicando de forma directa el \cref{lem:prop-med-var} tenemos \( m(\psi(f(A)\cap W))=0 \) y \( f(A) \) tiene medida nula.
 \end{proof}
 
 Como consecuencia de lo anterior tenemos un resultado similar de acotación sobre variedades.
@@ -905,7 +911,8 @@ Como consecuencia de lo anterior tenemos un resultado similar de acotación sobr
 \end{proposition}
 
 \begin{proof}
-Sea \( V=M\times \RealSet ^{n-m} \) y \( g\colon V \overset{\pi}{\to} M\overset{f}{\to} N\) donde \( \pi \) es la proyección. De acuerdo con \ref{lem:med-eqdim} la medida de \( g(V)=f(M) \) que es nula.
+Sea \( V=M\times \RealSet ^{n-m} \) y \( g\colon V \overset{\pi}{\to}
+M\overset{f}{\to} N\) donde \( \pi \) es la proyección. De acuerdo con el \cref{lem:med-eqdim} la medida de \( g(V)=f(M) \) que es nula.
 \end{proof}
 
 \begin{proposition}\label{prop:med-iso}
@@ -913,7 +920,7 @@ Si \( f\colon M\to N \) es diferenciable, sobreyectiva y \( df_p \) es inyectiva
 \end{proposition}
 
 \begin{proof}
-Por el resultado \ref{prop:med-ldim} y \ref{lem:denso} tenemos que \( \dim (M) \geq \dim (N) \). Como siempre ocurre la otra desigualdad nos queda \( \dim (M)=\dim (N) \) y por tanto \( df_p \) es isomorfismo.
+Por la \cref{prop:med-ldim} y el \cref{lem:denso} tenemos que \( \dim (M) \geq \dim (N) \). Como siempre ocurre la otra desigualdad nos queda \( \dim (M)=\dim (N) \) y por tanto \( df_p \) es isomorfismo.
 \end{proof}
 
 \begin{proposition}\label{prop:med-difeo}
@@ -921,14 +928,14 @@ Si \( f\colon M\to N \) ds una inmersión biyectiva en cada \( p\in M \), entonc
 \end{proposition}
 
 \begin{proof}
-Estamos en las condiciones de la proposición \ref{prop:med-iso} por lo que ya sabemos que \( df_p \) es isomorfismo. Por el \nameref{thm:inversa}
+Estamos en las condiciones de la \cref{prop:med-iso} por lo que ya sabemos que \( df_p \) es isomorfismo. Por el \nameref{thm:inversa}
 para cada punto \( p\in M \) se cumple que \( f\colon U_p\to f(U_p) \) es un difeomorfismo para cierto abierto \( p\in U\subseteq M \).
 
 Por tanto \( f^{-1}\colon N\to M \) es diferenciable pues \( \forall q\in N \) \( f^{-1}\colon f(U_p)\to U_p \) lo es si hacemos \( p=f^{-1}(q) \).
 \end{proof}
 
 \begin{note}
-De los resultados anteriores se deduce que dos variedades difeomorfas tienen necesariamente la misma dimensión, ya que si razonásemos por reducción al absurdo tendríamos \( f\colon M \to N \) difeomorfismo con \( \dim (M) < \dim (N) \) y como hemos visto \( f(M)=N \) ambos de medida nula, lo que contradice el lema \ref{lem:denso}.
+De los resultados anteriores se deduce que dos variedades difeomorfas tienen necesariamente la misma dimensión, ya que si razonásemos por reducción al absurdo tendríamos \( f\colon M \to N \) difeomorfismo con \( \dim (M) < \dim (N) \) y como hemos visto \( f(M)=N \) ambos de medida nula, lo que contradice el \cref{lem:denso}.
 \end{note}
 
 \section{Ejercicios Interesantes de la Relación 2}
