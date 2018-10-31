@@ -29,6 +29,38 @@
   \end{enumerate}
 \end{lemma}
 
+%Cosas varias
+
+\begin{theorem}[Sin demostración]%Dijo que no lo demostraria pero si lo probo
+	Sea \( f\colon M^m\to N^n \) diferenciable. Sea \( X^k\subseteq N^n \) subvariedad. Supongamos \( f \) submersión en un \( p\in f^{-1}(X) \) cualquiera. Entonces, \( f^{-1}(X) \) es subvariedad de \textit{dim} \( m-(n-k) \) .
+\end{theorem}
+
+\begin{example}
+	\begin{itemize}
+		\item Caso particular \( X=\{q\} \) y \( f \) es submersión en \( f^{-1}(q) \) entonces \( f^{-1}(q) \) es subvariedad de \textit{dim} \( m-n \)
+		\item Sea \( f\colon \RealSet^n\to \RealSet \) definida como \( f(x_1,\ldots,x_n)= \sum x_i^2 \) es submersión en \( \RealSet^n-\{0\} \) con \( X= \{1\} \) entonces \( f^{-1}(1)=S^{n-1} \)
+	\end{itemize}
+\end{example}
+
+\begin{lemma}
+	Sea \( f\colon M^m\to N^n \) submersión en \( p \). Para toda carta \( (W,\psi) \) de \( N \) con \( f(p)\in W \) se pueden encontrar cartas \( (U_0,\varphi_0) \) en \( M \) y \( (W_0,\psi_{0}) \) en \( N \) con \( p\in U_0 \), \( f(U_0)\subseteq W_0\subseteq W \) y \( \psi_0=\Restrict{\psi}{W_0} \)  tales que:
+	\[
+	\varphi_0(U_0)=\psi_{0}(W_0)\times \Omega
+	\]
+	donde \( \Omega \) es un abierto de \( \RealSet^{n-m} \). Además el siguiente diagrama es conmutativo
+	\begin{figure}[h]
+		\centering
+		\begin{tikzcd}
+		U_0 \arrow[r, "f"] \arrow[d, "\varphi_{0}"']
+		& W_0 \arrow[d, "\psi_{0}"] \\
+		\varphi_0(U_0) \arrow[r, "\psi_0\circ f\circ \varphi^{-1}" ']
+		& \psi_0(W_0)
+		\end{tikzcd}
+		\caption{Diagrama submersión}
+		\label{fig:sub}
+	\end{figure}
+\end{lemma}
+
 \end{document}
 
 %%% Local Variables:
