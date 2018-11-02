@@ -3,7 +3,7 @@ services: docker
 script:
   # We use the docker image from https://hub.docker.com/r/cludch/tectonic/
   - docker pull cludch/tectonic
-  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind cludch/tectonic tectonic VD.tex
+  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind cludch/tectonic tectonic --web-bundle "https://tectonic.newton.cx/bundles/tlextras-2018.1r0/bundle.tar" VD.tex
 
 before_deploy:
   - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
