@@ -2,8 +2,8 @@ sudo: required
 services: docker
 script:
   # We use the docker image from https://hub.docker.com/r/cludch/tectonic/
-  - docker pull dxjoke/tectonic-docker
-  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind dxjoke/tectonic-docker /bin/sh -c "tectonic VD.tex; biber VD; tectonic VD.tex"
+  - docker pull cludch/tectonic
+  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind cludch/tectonic tectonic VD.tex
 
 before_deploy:
   - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
