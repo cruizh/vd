@@ -126,61 +126,61 @@ numberwithin=chapter%
 \declaretheorem[
 name=Proposición,
 refname={proposición,proposiciones},
-numberwithin=chapter%
+sibling=theorem
 ]{proposition}
 
 \declaretheorem[
 name=Propiedad,
 refname={propiedad,propiedades},
-numberwithin=chapter%
+sibling=theorem
 ]{property}
   
 \declaretheorem[
 name=Ejemplo,
 refname={ejemplo,ejemplos},
-numberwithin=chapter%
+sibling=theorem
 ]{example}
 
 \declaretheorem[
 name=Corolario,
 refname={corolario,corolarios},
-numberwithin=chapter%
+sibling=theorem
 ]{corollary}
 
 \declaretheorem[
 name=Criterio,
 refname={criterio,criterios},
-numberwithin=chapter%
+sibling=theorem
 ]{criterion}
 
 \declaretheorem[
 name=Lema,
 refname={lema,lemas},
-numberwithin=chapter%
+sibling=theorem
 ]{lemma}
 
 \declaretheorem[
 name=Definición,
 style=definition,
 refname={definición,definiciones},
-numberwithin=chapter%
+sibling=theorem
 ]{definition}
 
 \declaretheorem[
 name=Observación,
 style=remark,
 refname={observación,observaciones},
-numberwithin=chapter%
+sibling=theorem
 ]{remark}
   
 \declaretheorem[
 name=Nota,
 style=remark,
 refname={nota,notas},
-sibling=remark%
+sibling=theorem
 ]{note}
 
-\numberwithin{equation}{chapter}
+\numberwithin{equation}{theorem}
 
 \newenvironment{subproof}[1][\proofname]{%
   \renewcommand{\qedsymbol}{$\blacksquare$}%
