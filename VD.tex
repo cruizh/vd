@@ -110,10 +110,13 @@
 \DeclareMathOperator{\Ker}{Ker}
 \newcommand{\Fdif}[1]{\operatorname{\mathcal{F}}\left(#1\right)} % Funciones diferenciables.
 \DeclareMathOperator{\rango}{rango}
+\newcommand{\Clase}[1]{\left[#1\right]} % Clase de equivalencia
+\newcommand{\Tangente}[2][]{\operatorname{T}_{#1} {#2}} % Espacio tangente
 \makeatother
 
 % rhanalysis
-\newcommand{\J}[2][]{\operatorname{J}_{#1}#2} % Matriz jacobiana
+\newcommand{\J}[2][]{\operatorname{J}_{#1} {#2}} % Matriz jacobiana
+\newcommand{\dif}[1]{\operatorname{d}\!{#1}} % Diferencial
 
 % thmrh
 
@@ -210,6 +213,8 @@ sibling=theorem
 \subfile{temas/02-aplicaciones}
 
 \subfile{temas/03-subvariedades}
+
+\subfile{temas/04-tangente}
 
 \end{document}
 
