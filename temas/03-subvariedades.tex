@@ -367,8 +367,8 @@ fuera.
 
 \begin{lemma}
   Si \(f \colon M \to N\) es una \nameref{def:inmersión} inyectiva y \(f(M)\) es
-  una subvariedad de \(N\) con la estructura inducida por \(f\), entonces \(f\)
-  es \nameref{def:incrustación}.
+  una \nameref{def:subvd} de \(N\) con la estructura inducida por \(f\),
+  entonces \(f\) es \nameref{def:incrustación}.
 \end{lemma}
 
 \begin{proof}
@@ -386,12 +386,91 @@ fuera.
   en \(\RealSet^{2}\).
 \end{example}
 
-\begin{definition}[name={incrustaciones equivalentes},
-  label={def:incrust-equiv}, refname={equivalentes}]
+\begin{definition}[{name=[equivalentes]{incrustaciones equivalentes}},
+  label={def:incrust-equiv}]
   Dos \hyperref[def:incrustación]{incrustaciones} \(f,g \colon M \to N\) se
   dicen \emph{equivalentes} si existe un difeomorfismo \(h \colon N \to N\) tal
   que \(h \circ f = g\).
 \end{definition}
+
+\section{Ejercicios Interesantes de la Relación 3}
+
+\begin{Exercise}[number=1]\label{ex:3.1}
+Si \(M\) es una variedad compacta, probar que toda inmersión inyectiva \(f\colon M \to N\) es incrustación.
+\end{Exercise}
+
+\begin{Answer}[number=1]
+En primer lugar recordemos que en un espacio topológico cualquiera si tenemos una función \(f\colon X\to Y\) biyectiva con \(X\) compacto y Hausdorff e \(Y\) Hausdorff, entonces \(f\) es homeomorfismo.
+
+Si aplicamos este resultado a \(\tilde{f}=\Restrict{f}{M}\) tenemos que
+\[\tilde{f}\colon(M,\text{topología natural})\to(f(M),\text{topología relativa})
+\]
+cumple las hipótesis y por tanto \(\tilde{f}\) es homeomorfismo. Esto significa que ambas topologías son equivalentes. 
+\end{Answer}
+
+\begin{Exercise}[number=2]
+Probar que el "ocho" con cualquiera de las dos estructuras vistas en %\nameref{ex:1.4} NO SE SI HAY REF DE ESE EJERCICIO
+es la imagen de una inmersión inyectiva de \(\RealSet\) en \(\RealSet ^2\). ¿Puede ser la imagen de una incrustación.
+\end{Exercise}
+
+\begin{Answer}[number=2]
+%Idea de resolución
+Parametrizamos la curva como \(f(t)=(\sin(t),\sin(2t)\) claramente inyectiva y \(f'(t)=(\cos(t),2\cos(2t)\neq 0\) que prueba el carácter de inmersión. Pero la topología relativa da problemas en el punto de cruce.
+\end{Answer}
+
+\begin{Exercise}[number=5]
+Sean \(M_0\subseteq M\) y \(N_0\subseteq N\) subvariedades. Probar que \(M_0\times N_0\) es subvariedad de \(M\times N\).
+\end{Exercise}
+
+\begin{Answer}[number=5]
+Escribimos la definición de subvariedad en cada caso:
+\begin{itemize}
+	\item \(\exists (U,\varphi)\) carta de \(M\) con \(p\in U\) tal que \(\varphi(U\cap M_0=\varphi(U)\cap \RealSet^k)\) pudiendo escribir \(\RealSet^k\) como \(\RealSet^k\times \{0\}\subseteq \RealSet ^m\).
+		\item \(\exists (W,\psi)\) carta de \(N\) con \(q\in U\) tal que \(\psi(W\cap N_0=\psi(W)\cap \RealSet^s)\) pudiendo escribir \(\RealSet^s\) como \(\RealSet^s\times \{0\}\subseteq \RealSet ^s\)
+\end{itemize}
+Luego \((U\times W,\varphi\times \psi)\) es carta de \(M\times N\) con \((p,q)\in U\times W\). Basta ver que ocurre con la imagen por \(\varphi\times \psi\)
+\begin{align*}
+(\varphi\times \psi )((U\times W) \cap & (M_0\times N_0))=\varphi(U\cap M_0)\times \psi(W\cap N_0)\\
+&=(\varphi(U)\cap \RealSet^k)\times (\psi(W)\cap \RealSet^s)\\
+&=(\varphi(U)\times \psi(W))\cap (\RealSet^k\times\{0\}\:\mathbf{\times}\:\RealSet^s\times \{0\})
+\end{align*}
+\end{Answer}
+
+\begin{Exercise}[number=12]
+Para cada \(a\in \RealSet\), sea \(M_a=\{(x,y)\in\RealSet^2\colon y² =x(x-1)(x-a)\}\).
+\begin{enumerate}
+\item Usando la aplicación adecuada \(f_a\colon \RealSet^2\to \RealSet\), para cada \(a\), probar que \(M_a\) es subvariedad incrustada de \(\RealSet^2\) salvo posiblemente para \(a=0,1\).
+\item Probar que, también para \(a=0\), \(M_0\) sigue siendo una subvariedad, pero \(M_1\) no lo es.
+\item Dar una estructura diferenciable sobre \(M_1\) que la haga imagen de una variedad por una inmersión inyectiva.
+\end{enumerate}
+\end{Exercise}
+
+\begin{Answer}[number=12]
+\begin{enumerate}
+\item Definimos la función como
+\begin{align*}
+f_a\colon &\RealSet^2\to \RealSet\\
+&(x,y)\mapsto y^2-x(x-1)(x-a)
+\end{align*}
+e imponemos que sea subvariedad incrustada en la matriz Jacobiana (en este caso un vector)
+\[
+(-(x-1)(x-a)-x(x-a)-x(x-1),2y)
+\]
+que para tener rango nulo ha de cumplirse el sistema
+\[
+\left\{
+	\begin{array}{ll}
+	y=0 & \\
+	x=0=a & \text{ó} x=1=a
+	\end{array}
+\right.
+\]
+\item En el caso de \(a\neq 0,1\) el rango es \(1\), por lo que \(dim(M_a)=1\).\\
+Para \(a=0\) la subvariedad es \(M_0=\{(x,y)\colon y^2=x^2(x-1)\}\) que salvo en el \((0,0)\) se puede ver que de hecho es homeomorfo a \(\RealSet\) %TODO: Incluir imagen.\\
+Para \(a=1\) tenemos \(M_1=\{(x,y)\colon y^2=x(x-1)^2\}\) que la curva se corta a si misma. %TODO: incluir imagen
+\item Para dotar a \(M_1\) de estructura diferenciable basta seguir el procedimiento para el "ocho".
+\end{enumerate}
+\end{Answer}
 
 \end{document}
 
