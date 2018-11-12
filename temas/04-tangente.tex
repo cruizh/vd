@@ -232,6 +232,53 @@
   % TODO Terminar
 \end{proof}
 
+\begin{proposition}
+
+  La submersión \(\pi\colon TM\to M\) admite una \emph{sección} \(s\colon M\to
+  TM\), es decir, \(\pi\circ s=id_{M}\), dada por
+  \(p\overset{s}{\mapsto}\theta_{p}\in T_{p}M\) \textbf{neutro}. Además, \(s\) es
+  \textbf{incrustación} (\(s(M)\) subvariedad de \(TM\) con la topología
+  inducida).
+  
+\end{proposition}
+
+\begin{proof}
+  Obviamente, \(\pi\circ s=id_{M}\).
+  
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}[column sep = large]
+      \Tangente{U}
+      \ar[d, "\widetilde{\varphi}"']
+      &
+      U
+      \ar[l, "s"]
+      \ar[d, "\varphi"]\\
+      \varphi(U) \times \RealSet^{m}
+      &
+      \varphi(U)
+      \ar[l, dashed, "\widetilde{s}"']\\
+      (x,0) & x \ar[l, maps to]
+    \end{tikzcd}
+    \caption{Diagrama de s}
+    \label{fig:diagrama de s}
+  \end{figure}
+  
+  Luego se tiene \(\widetilde{s}=\widetilde{\varphi}\circ s\circ\varphi^{-1}\),
+  y entonces \(\widetilde{s}(x)=(x,0)\) diferenciable y de rango \(m\), luego
+  \(s\) es \underline{inmersión} (además de inyectiva). Veamos que \(s(M)\) es
+  subvariedad:
+
+  \[\begin{array}{l}
+      \widetilde{\varphi}(\Tangente{U}\cap s(M))=\varphi(U)\times\{0\}= \\
+      (\varphi(U)\times\RealSet^{m})\cap(\RealSet^{m}\times\{0\})=
+      \widetilde{\varphi}(\Tangente{U})\cap\RealSet^{m}\times\{0\} 
+    \end{array}\]
+
+  Luego es subvariedad, inmersión inyectiva, y la topología es la inducida, por
+  tanto es incrustación. 
+\end{proof}
+
 \section{Diferencial de una aplicación diferenciable}
 \label{sec:dif}
 
