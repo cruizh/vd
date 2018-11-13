@@ -422,29 +422,39 @@ e^{-1/t} & t > 0
 es diferenciable.
 \end{lemma}
 \begin{proof}
-  Sea \(\alpha \colon \RealSet\to\RealSet\) definida como en el lema, entonces
-  su derivada tiene la expresión:
-  \[\alpha '(t)=
-\begin{dcases}
-0 & t \leq 0 \\
-e^{-1/t}\cdot\frac{1}{t^{2}} & t > 0 (*)
-\end{dcases}
-  \]
 
-Para que la función sea diferenciable se debe cumplir que los límites laterales
-de esa derivada en el \(0\) sean iguales. El límite en \(0^{-}\) es claramente
-\(0\) luego debe serlo también en \(0^{+}\). Para verlo apliquemos en \((*)\) el
-cambio de variables \(u=1/t\), con lo cual el límite queda:
+Claramente, la función es diferenciable en \(\RealSet\setminus\{0\}\). Por ello,
+sólo necesitamos ver que todas las derivadas de \(\alpha\) existen y son
+continuas en el origen.
+
+Comenzaremos observando que \(\alpha\) es continua en el origen pues
+\(\lim_{t\to 0}e^{-1/t}=0\). De hecho, aplicando \emph{l'Hôpital} y haciendo
+inducción, se comprueba que para todo entero \(k\geq 0\),
 \[
-\begin{array}{c}
-\lim_{t\to
-  0^{+}}(e^{-1/t}\cdot\frac{1}{t^{2}})=\lim_{u\to +\infty}(e^{-u}\cdot u^{2})= \\
-  =\lim_{u\to +\infty}(\frac{u^{2}}{e^{u}})=0  
-\end{array}
+(1)\quad \lim_{t\to 0}\frac{e^{-1/t}}{t^{k}}=\lim_{t\to 0}\frac{t^{-k}}{e^{1/t}}=0.
 \]
 
-pues la función exponcencial tiende mucho más rápido a infinito que el polinomio
-\(u^{2}\). Por tanto el límite lateral derecho también se anula y la función es
+Además, se comprueba, también por inducción que la \(k\)-ésima derivada de
+\(\alpha\) es de la forma:
+\[
+(2)\quad \alpha^{(k)}(t)=\frac{p_{k}}{t^{2k}}e^{-1/t}
+\]
+para algún polinomio \(p_{k}\). De \((1)\) y \((2)\) obtenemos que
+\[
+(3)\quad \lim_{t\to 0}\alpha^{(k)}(t)=0.
+\]
+Finalmente, deducimos que \(\alpha^{(k)}(0)=0\) para todo \(k\geq 0\):
+
+Para \(k=0\) es cierto por definición. Asumimos que lo es para \(k\geq 0\). Es
+suficiente probar que \(\alpha\) tiene derivadas unilaterales desde ambos lados
+y son iguales. Claramente, desde el lado izquierdo, la derivada es \(0\). Usando
+\((1)\) otra vez, se tiene que
+\[
+  \alpha^{(k+1)}(0)=\lim_{t\to
+    0}\frac{\alpha^{(k)}(t)-\alpha^{(k)}(0)}{t-0}=\lim_{t\to
+    0}\frac{p_{k}(t)}{t^{2k+1}}e^{-1/t}=0.
+\]
+Por \((3)\), esto implica que cada \(\alpha^{(k)}\) es continua, luego es
 diferenciable.
 \end{proof}
 
@@ -694,7 +704,7 @@ diferenciable.
 
 \begin{note}
   Si \(f\) es \emph{inmersión} en \(p\), entonces \(\dim M \leq \dim N\). Si
-  \(f\) es \emph{submersión}en \(p\), entonces \(\dim N \leq \dim M\).
+  \(f\) es \emph{submersión} en \(p\), entonces \(\dim N \leq \dim M\).
 \end{note}
 
 \begin{theorem}[coordenadas adaptadas]
@@ -985,8 +995,34 @@ De los resultados anteriores se deduce que dos variedades difeomorfas tienen nec
 
 \section{Ejercicios Interesantes de la Relación 2}
 
-\begin{Exercise}[number=16]
-  
+\begin{Exercise}[number=16,label={ex:2.16}]
+  Sean \(E,\, B\) y \(F\) variedades diferenciables. Una aplicación
+  diferenciable \(\pi\colon E\to B\) se llama \emph{fibración} si para cada
+  \(p\in B\) existen un abierto \(U\subseteq B\) con \(p\in U\) y un
+  difeomorfismo \(\rho_{U}\colon\pi^{-1}(U)\to U\times F\) tal que el diagrama
+  % (0.0.1)   \pi^{-1}(U)--\rho_{U}-->U\times F
+  %                   -   -  \pi  -  -    \pi_{1}      
+  %                                 ->   U
+  es conmutativo, donde \(\pi_{1}\) denota la primera proyección. Los
+  difeomorfismos \(\rho_{U}\) son llamados \emph{trivializaciones} de \(\pi\)
+  y a la variedad \(F\) se le llama la \emph{fibra} de \(\pi\). Las variedades
+  \(B\) y \(E\) se llaman \emph{espacio base} y \emph{espacio total} de la
+  fibración, respectivamente.
+
+  \begin{enumerate}
+    \item Probar que podemos encontrar un atlas \(\mathcal{A}\) de \(B\) tal que
+      para cada carta \((U,\varphi)\) de \(\mathcal{A}\) se tiene un diagrama
+      análogo a (0.0.1).
+    \item Probar que toda fibración es una submersión. Probar que la restricción
+      a \(\RealSet^{2}\setminus\{(0,0)\}\) de la proyección
+      \(\pi_{2}\colon\RealSet^{2}\to\RealSet\) es una submersión pero no es una
+      fibración.
+    \item Probar que \(f\colon\RealSet\to S^{1}\) dada por
+      \(f(t)=(\cos{t},\sin{t})\)
+      es una fibración de fibra \(\IntegerSet\).
+    \item Probar que la proyección \(\pi\colon S^{n}\to P_{n}\RealSet\) es una
+      fibración de fibra la \(0\)-variedad \(\{\pm 1\}\).
+    \end{enumerate}
 \end{Exercise}
 
 \begin{Answer}[number=16]
@@ -1014,7 +1050,7 @@ De los resultados anteriores se deduce que dos variedades difeomorfas tienen nec
 %  \end{figure}
   
   Como \(\rho_{_{V_{p}}}\) es difeomorfismo en \(U_{p}\), su restricción a
-  \(V_{p}\) también lo es. Por la \cref{propiedad de Lindeloff},
+  \(V_{p}\) también lo es. Por la \cref{def:Lindelöff},
   \(B=\bigcup_{p\in B}V_{p}\). Entonces \(\exists\) una cantidad numerable
   cubriendo \(B\) y \({(V_{p},\varphi_{p})\colon p\in B}\) es el atlas que buscábamos.
 
@@ -1174,7 +1210,7 @@ y
   3. Veamos que \(h\) es una fibración.
 
   Nuestro difeomorfismo (necesario para la
-  fibración como vimos en el \cref{Ejercicio 16}) será el dado por
+  fibración como vimos en el \cref{ex:2.16}) será el dado por
   \(\psi_{\pm}\) y \(\psi_{\pm}^{-1}\), para ello basta probar que es biyectiva,
   diferenciable y la inversa es diferenciable. Es fácil comprobar que lo son por
   el hecho de cómo están definidos los conjuntos de definición.

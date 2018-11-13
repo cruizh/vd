@@ -1,0 +1,299 @@
+\documentclass[../VD.tex]{subfiles}
+
+\externaldocument{../VD}
+
+\begin{document}
+
+\setcounter{chapter}{3}
+\chapter{Espacio tangente}\label{chap:tangente}
+
+\begin{definition}[{name=[curva]{curva diferenciable}}, label={def:curva}]
+  Una \emph{curva diferenciable} en una variedad \(M\) \emph{con origen en} \(p
+  \in M\) es una aplicación \(\alpha \colon (-\varepsilon,\varepsilon) \to M\)
+  diferenciable con \(\alpha(0) = p\).
+\end{definition}
+
+\begin{remark}
+  Si \((U,\varphi)\) es carta de \(M\) con \(p \in U\), dada una
+  \nameref{def:curva} con origen en \(p\), siempre
+  \begin{equation}
+    \label{eq:exists-curva-carta}
+    \exists \varepsilon' \in (0,\varepsilon) : \alpha(-\varepsilon',\varepsilon') \subseteq U
+  \end{equation}
+\end{remark}
+
+\begin{definition}[{name=[equivalentes]{curvas equivalentes}},
+  label={def:curvas-equiv}]
+  Dadas dos \hyperref[def:curva]{curvas diferenciables} con origen en \(p\) en
+  \(M\),
+  \begin{align*}
+    \alpha &\colon (-\varepsilon, \varepsilon) \to M\\
+    \beta &\colon (-\delta,\delta) \to M
+  \end{align*}
+  se dicen \emph{equivalentes} si existe una carta \((U,\varphi)\) con \(p \in
+  U\) de forma que \((\varphi \circ \alpha)'(0) = (\varphi \circ \beta)'(0)\).
+\end{definition}
+
+\begin{lemma}[label={lem:curva-equiv-bien-definido}]
+  La definición de \nameref{def:curvas-equiv} no depende de la elección de carta.
+\end{lemma}
+
+\begin{proof}
+  Sea \((V,\psi)\) otra carta con \(p \in V\). \(p \in U \cap V\), por lo que
+  podemos restringir \(\alpha\) y \(\beta\) a la intersección, teniendo
+  \begin{align*}
+    (\psi \circ \alpha)'(0)
+    &= (\psi \circ \varphi^{-1} \circ \varphi \circ \alpha)'(0)\\
+    &= \J[\varphi(p)]{(\psi \circ \varphi^{-1})}(\varphi \circ \alpha)'(0)\\
+    &= \J[\varphi(p)]{(\psi \circ \varphi^{-1})}(\varphi \circ \beta)'(0)\\
+    &= (\psi \circ \varphi^{-1} \circ \varphi \circ \beta)'(0)\\
+    &= (\psi \circ \beta)'(0)
+  \end{align*}
+\end{proof}
+
+\begin{note}
+  La relación ``ser \nameref{def:curvas-equiv}'' es de equivalencia.
+\end{note}
+
+\begin{definition}[name={clase de equivalencia},label={def:curva-clase}]
+  Notaremos \(\Clase{a}\) a la clase de equivalencia de la curva \(\alpha\) por
+  la relación anterior.
+\end{definition}
+
+\begin{definition}[name={espacio tangente}, label={def:tangente}]
+  Sea \(p \in M\). Se llama \emph{espacio tangente} de \(M\) en \(p\) a
+  \begin{equation}
+    \label{eq:def-tangente}
+    \Tangente[p]{M} = \Set{\Clase{\alpha} : \alpha \text{ curva con origen en } p}
+  \end{equation}
+\end{definition}
+
+\begin{lemma}
+  \(\Tangente[p]{M}\) es un espacio vectorial de dimensión \(\dim M\).
+\end{lemma}
+
+\begin{proof}
+  Sea \((U,\varphi)\) carta de \(M\) con \(p \in U\). Definimos \(\Clase{\gamma}
+  \coloneqq \Clase{\alpha} + \Clase{\beta}\) como sigue:
+  \[
+    \gamma(t) = \varphi^{-1}(\varphi \alpha(t) + \varphi \beta(t) - \varphi(p))
+  \]
+
+  Aquí, \(t \in (-\mu, \mu)\) con \(\mu\) elegido para que
+  \[
+    \varphi \alpha(t) + \varphi \beta(t) - \varphi(p) \in \varphi(U)
+  \]
+
+  \(\gamma(0) = p\), y \(\gamma\) es diferenciable (se deja como ejercicio).
+
+  Hay que ver que \(\Clase{\gamma}\) está bien definida, i.e.\ que no depende de
+  las representantes de \(\Clase{\alpha}\) y \(\Clase{\beta}\):
+  \[
+    (\varphi \circ \gamma)'(0) = (\varphi \circ \alpha)'(0) + (\varphi \circ \beta)'(0)
+  \]
+  que solo depende de la clase de equivalencia.
+\end{proof}
+
+\begin{note}
+  El elemento neutro es \(\theta_{p} = \Clase{c_{p}}\) con \(c_{p}(t) = p
+  \forall t\).
+
+  La multiplicación por escalares se realiza como \(\lambda \Clase{\alpha}
+  \eqqcolon \Clase{\eta}\) donde \(\eta = \alpha(\lambda t)\), con \(t \in
+  (-\xi,\xi)\) con \(\xi\) elegido para que \(\alpha(\lambda t) \in \varphi(U)\).
+\end{note}
+
+\begin{definition}[name={isomorfismo del espacio tangente}, label={def:tang-iso}]
+  Dada una carta \((U,\varphi)\) de \(M\) con \(p \in U\), definimos
+
+  \begin{align*}
+    \tau_{\varphi}^{p} \colon \Tangente[p]{M} &\to \RealSet^{m}\\
+    \Clase{\alpha} &\mapsto (\varphi \circ \alpha)'(0)
+  \end{align*}
+\end{definition}
+
+\begin{note}
+  Esta aplicación es lineal y es isomorfismo.
+\end{note}
+
+\begin{proof}
+  Es lineal e inyectiva por definición. Falta ver que es sobreyectiva: sea
+  \(\Set{e_{i}}_{i=1}^{m}\) base de \(\RealSet^{m}\). Definimos
+  \[
+    \varepsilon_{i}^{p}(t) = \varphi^{-1}(\varphi(p) + t e_{i})
+  \]
+  con \(t\) elegido para que \(\varphi(p) + t e_{i} \in \varphi(U)\). Estas
+  curvas son diferenciables y \((\varphi \circ \varepsilon_{i}^{p})'(0) =
+  e_{i}\). Por tanto \(\tau_{\varphi}^{p}\) es sobreyectiva.
+\end{proof}
+
+\begin{lemma}[name={cambio de cartas en espacio
+    tangente},label={lem:tang-cambio-cartas}]
+  Sean \((U,\varphi)\) y \((W,\psi)\) cartas de \(M\) con \(p \in U \cap W\). Se
+  tiene el diagrama conmutativo de la \cref{fig:tang-cambio-cartas}, i.e.\ se
+  tiene que
+  \[
+    \tau_{\psi}^{p} = \J[\varphi(p)]{(\psi \circ \varphi^{-1})} \circ
+    \tau_{\varphi}^{p}
+  \]
+
+  Nótese que la relación del jacobiano se tiene por el
+  \cref{lem:curva-equiv-bien-definido}.
+  
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}
+      \Clase{\alpha}
+      \ar[r,  mapsto, "\tau_{\varphi}^{p}"]
+      \ar[dr, mapsto, "\tau_{\psi}^{p}"]&
+      (\varphi \circ \alpha)'(0)
+      \ar[d, mapsto, "{\J[\varphi](p){(\psi \circ \varphi^{-1})}}"]\\
+      & (\psi \circ \alpha)'(0)
+    \end{tikzcd}
+    \caption{Cambio de cartas en espacio tangente}
+    \label{fig:tang-cambio-cartas}
+  \end{figure}
+\end{lemma}
+
+\begin{definition}[{name=[espacio tangente global]{espacio tangente de una variedad}},
+  label={def:tangente-global}]
+  Se llama \emph{espacio tangente} de \(M^{m}\) a \(\Tangente{M} = \bigcup_{p
+    \in M} \Tangente[p]{M}\).
+\end{definition}
+
+\begin{proposition}
+  \(\Tangente{M}\) es \nameref{def:vd} de dimensión \(2m\).
+\end{proposition}
+
+\begin{proof}
+  Sea \(\Tangente{U} = \bigcup_{p \in U} \Tangente[p]{M}\). Se tiene
+  \begin{center}
+    \begin{tikzcd}
+      \Tangente{(U \cap V)}
+      \ar[r, equals]
+      \ar[d, equals] &
+      \Tangente{U} \cap \T{V}
+      \ar[d, equals]\\
+      \bigcup_{q \in U \cap V} \Tangente[q]{M}
+      \ar[r, equals] &
+      (\bigcup_{p \in U} \Tangente[p]{M}) \cap (\bigcup_{p' \in V} \Tangente[p']{M})
+    \end{tikzcd}
+  \end{center}
+
+  Se define la siguiente aplicación:
+  \begin{align*}
+    \widetilde{\varphi} \colon \Tangente{U} &\to \varphi(U) \times \RealSet^{m} \subseteq \RealSet^{m} \times \RealSet^{m} = \RealSet^{2m}\\
+    \widetilde{\varphi}(v_{p}) &= (\varphi(p), \tau_{\varphi}^{p}(v_{p})) = (\varphi(p), (\varphi \circ \alpha)'(0))
+  \end{align*}
+  con \(v_{p} = \Clase{\alpha} \in \Tangente[p]{M}\).
+
+  Si \((V,\psi)\) es otra carta,
+  \[
+    \widetilde{\varphi}(\Tangente{U} \cap \Tangente{V})
+    = \widetilde{\varphi}(\Tangente{(U \cap V)}) =  \varphi(U \cap V) \times \RealSet^{m}
+  \]
+  \[
+    \widetilde{\varphi} \circ \widetilde{\psi}^{-1}(x,y) =
+    (\varphi \circ \psi^{-1}(x),
+    \underbracket{\tau_{\varphi}^{p} \circ
+      {(\tau_{\psi}^{p})}^{-1}(y)}_{\J[x]{(\varphi \circ \psi^{-1})}(y)})
+  \]
+\end{proof}
+
+\begin{proposition}
+  Existe una aplicación
+  \begin{align*}
+    \pi \colon \Tangente{M} &\to M\\
+    \Clase{\alpha} &\overset{\pi}{\mapsto} p \quad \forall p \in M
+  \end{align*}
+  que es submersión.
+\end{proposition}
+
+\begin{proof}
+  Sea \((U,\varphi)\) carta de \(M\). Se tiene el diagrama de la
+  \cref{fig:submersion-tangente}.
+
+    \begin{figure}[h]
+    \centering
+    \begin{tikzcd}[column sep = large]
+      \Tangente{U}
+      \ar[d, "\widetilde{\varphi}"']
+      \ar[r, "\pi"] &
+      U
+      \ar[d, "\varphi"]\\
+      \varphi(U) \times \RealSet^{m}
+      \ar[r, dashed, "\widetilde{\pi}"'] &
+      \varphi(U)\\
+      (x,y) \ar[r, maps to] & x
+    \end{tikzcd}
+    \caption{Submersión del espacio tangente}
+    \label{fig:submersion-tangente}
+  \end{figure}
+  % TODO Terminar
+\end{proof}
+
+\begin{proposition}
+
+  La submersión \(\pi\colon TM\to M\) admite una \emph{sección} \(s\colon M\to
+  TM\), es decir, \(\pi\circ s=id_{M}\), dada por
+  \(p\overset{s}{\mapsto}\theta_{p}\in T_{p}M\) \textbf{neutro}. Además, \(s\) es
+  \textbf{incrustación} (\(s(M)\) subvariedad de \(TM\) con la topología
+  inducida).
+  
+\end{proposition}
+
+\begin{proof}
+  Obviamente, \(\pi\circ s=id_{M}\).
+  
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}[column sep = large]
+      \Tangente{U}
+      \ar[d, "\widetilde{\varphi}"']
+      &
+      U
+      \ar[l, "s"]
+      \ar[d, "\varphi"]\\
+      \varphi(U) \times \RealSet^{m}
+      &
+      \varphi(U)
+      \ar[l, dashed, "\widetilde{s}"']\\
+      (x,0) & x \ar[l, maps to]
+    \end{tikzcd}
+    \caption{Diagrama de s}
+    \label{fig:diagrama de s}
+  \end{figure}
+  
+  Luego se tiene \(\widetilde{s}=\widetilde{\varphi}\circ s\circ\varphi^{-1}\),
+  y entonces \(\widetilde{s}(x)=(x,0)\) diferenciable y de rango \(m\), luego
+  \(s\) es \underline{inmersión} (además de inyectiva). Veamos que \(s(M)\) es
+  subvariedad:
+
+  \[\begin{array}{l}
+      \widetilde{\varphi}(\Tangente{U}\cap s(M))=\varphi(U)\times\{0\}= \\
+      (\varphi(U)\times\RealSet^{m})\cap(\RealSet^{m}\times\{0\})=
+      \widetilde{\varphi}(\Tangente{U})\cap\RealSet^{m}\times\{0\} 
+    \end{array}\]
+
+  Luego es subvariedad, inmersión inyectiva, y la topología es la inducida, por
+  tanto es incrustación. 
+\end{proof}
+
+\section{Diferencial de una aplicación diferenciable}
+\label{sec:dif}
+
+\begin{definition}
+  Sea \(f \colon M^{m} \to N^{n}\) una aplicación diferenciable. Llamaremos
+  \(\dif{f_{p}}\) a la \emph{diferencial} de \(f\) en \(p\).
+
+  \begin{align*}
+    \Tangente[p]{M} &\overset{\dif{f_{p}}}{\to} \Tangente[f(p)]{M}\\
+    \Clase{\alpha} &\mapsto \Clase{f \circ \alpha}
+  \end{align*}
+\end{definition}
+
+\end{document}
+
+%%% Local Variables:
+%%% TeX-master: "../VD"
+%%% End:
