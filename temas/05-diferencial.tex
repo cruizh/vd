@@ -1,0 +1,153 @@
+\documentclass[../VD.tex]{subfiles}
+
+\externaldocument{../VD}
+
+\begin{document}
+
+\setcounter{chapter}{4}
+\chapter{La diferencial de una aplicación diferenciable}\label{chap:diferenciable}
+
+Si \(f\colon M \to N\) es una aplicación diferenciable, se tiene para todo \(p\in M\) una aplicación lineal
+\[
+\dif{f_p}\colon \Tangente[p]{M}\to \Tangente[f(p)]{N}
+\]
+que lleva el vector \(v\in \Tangente[p]{M}\) representado por la curva \(\alpha\colon (-\epsilon,\epsilon)\to M\) en el vector \(\dif{f_f(v)}\) representado por la función composición \(f\circ \alpha \colon (-\epsilon,\epsilon)\to N\).
+
+Estas aplicaciones están bien definidas y son lineales, cosa que se puede ver a partir del siguiente diagrama conmutativo para cartas \((u,\varphi)\) y \((W,\psi)\) de \(M\) y \(N\) con \(p\in U\) y \(f(U)\subseteq W\)
+%\begin{figure}[h]
+%\centering
+%	\begin{tikzcd}
+%	\Tangente[p]{M}
+%	\ar[r, "\dif{f_p}"]
+%	\ar[d, "\cong"]["\tau_{\varphi}"'] &
+%	\Tangente[f(p)]{N}
+%	\ar[d, "\tau_{\psi}"]["\cong"']\\
+%	\RealSet^m
+%	\ar[r, "\J[\varphi(p)]{f}"] &
+%	\RealSet^n
+%	\end{tikzcd}
+%	\caption{Diferencial de aplicación diferenciable}
+%	\label{fig:dif-app}
+%\end{figure}
+donde \(\tau_{\varphi}\) y \(\tau_{\psi}\) son isomorfismos lineales vistos en 
+\cref{def:tang-iso} que lleva \(v\) en el vector velocidad \((\varphi\circ \alpha)(0)\) y \(\widetilde{f}=\psi\circ f\circ \varphi^{-1}\). Así pues definimos la diferencial como sigue:
+
+\begin{definition}[{name=[diferencial]{diferencial de una aplicación diferenciable}},
+	label={def:dif-app}]
+	Sea \(f \colon M^{m} \to N^{n}\) una aplicación diferenciable. Llamaremos
+	\(\dif{f_{p}}\) a la \emph{diferencial} de \(f\) en \(p\).
+	
+	\begin{align*}
+	\Tangente[p]{M} &\overset{\dif{f_{p}}}{\to} \Tangente[f(p)]{M}\\
+	\Clase{\alpha} &\mapsto \Clase{f \circ \alpha}
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+La aplicación \(\dif{f}\colon\Tangente{M}\to \Tangente{N}\) definida al unir todos los \(\dif{f_p}\) con \(p\in M\) cuando consideramos a \(\Tangente{M}\) y \(\Tangente{N}\) como variedades es diferenciable (ver \cref{def:tang-iso})
+\end{proposition}
+
+\begin{proof}
+En efecto, si \(\widetilde{\varphi}\colon\Tangente{U}\to \varphi(U)\times\RealSet^m\) y \(\widetilde{\psi}\colon\Tangente{W}\to \psi(W)\times\RealSet^n\) son las cartas asociadas a \((U,\varphi)\) y \((W,\psi)\) respectivamente con \(f(U)\subseteq W\), tenemos por el diagrama anterior 
+\[
+\widetilde{\psi}\circ \dif{f}\circ \widetilde{\varphi}^{-1}(x,y)=(\psi \circ f\circ  \varphi^{-1}(x),\J[X]{\psi\circ f\circ \varphi^{-1}})
+\]
+que es diferenciable.
+\end{proof}
+
+\begin{remark}
+Es inmediato a partir de la definición que \(\dif{f}\circ \dif{g}=\dif{f\circ g}\)
+\end{remark}
+
+\begin{example}
+Si \(U\subseteq \RealSet^m\) es cualquier abierto visto como variedad (y en general cualquier variedad con abiertos euclídeos) ya vimos en \cref{def:tang-iso} que hay un difeomorfismo
+\[
+\Tangente{U}\cong U\times \RealSet^m
+\]
+que lleva \([\gamma]\in \Tangente[X]{U}\) en \((x,\gamma'(0))\).
+\end{example}
+
+\begin{note}
+	De acuerdo con el diagrama \ref{fig:dif-app} podemos redefinir las nociones de inmersión y submersión en \(p\) diciendo que \(f\colon M \to N\) es inmersión (resp. submersión en \(p\)) si \(\dif{f_p}\colon \Tangente[p]{M}\to\Tangente[f(p)]{N}\) es inyectiva (sobreyectiva, resp.).1
+\end{note}
+
+Vamos a dar unas definiciones que nombren a los puntos según el rango en ellos de una aplicación diferenciable.
+
+\begin{definition}[{name=[regularidad de puntos]{regularidad de puntos}},
+	label={def:punto-reg}]
+Sea \(f\colon M^m\to N^n\) una aplicación diferenciable. Decimos que \(p\in M\) es un \emph{punto regular} si \(\dif{f_p}\) es sobreyectiva, es decir, el rango de \(f\) es \(p\) es \(n\)
+
+Si \(p\) no es regular se dice que s un \emph{punto crítico o singular}
+\end{definition}
+
+\begin{definition}
+En las condiciones de \cref{def:punto-reg} un punto \(q\in N\) se dice un \emph{valor regular} si todos los puntos \(p\in f^{-1}(q)\) son regulares.
+
+En caso contrario se dice que es un \emph{valor crítico o singular}
+\end{definition}
+
+\begin{definition}
+En las condiciones de \cref{def:punto-reg} si \(q\) es valor regular a \(f^{-1}(q)\) se le llama conjunto de \emph{nivel regular}.
+\end{definition}
+
+\begin{remark}
+En particular, en toda inmersión los puntos son críticos y en toda submersión todos los puntos son regulares.
+
+Además el teorema %TODO: need ref
+nos dice que los niveles regulares son subvariedades de \(M\) de dimensión \(m-n\).
+\end{remark}
+
+El sigiente teorema se dará sin demostración, que puede encontrarse en %TODO: need ref Teorema 6.10
+
+\begin{theorem}%[name={teorema de }, label={thm:}]
+Sea \(f\colon M\to N\) una aplicación diferenciable, entonces el conjunto de valores críticos tiene medida nula en \(N\).
+\end{theorem}
+
+\begin{example}
+Sea \(M(m)\equiv \RealSet^{n^2}\) las matrices cuadradas de orden \(n\) vistas como \(\RealSet^{n^2}\) para el orden lexicográfico. Sea \(Sim(n)\equiv \RealSet^{\frac{n(n+1)}{2}}\) las matrices simétricas se orden \(n\) (con el orden lexicográfico por encima de la diagonal).
+
+Sea \begin{align*}
+f\colon & \RealSet^{n^2}\to  \RealSet^{\frac{n(n+1)}{2}}\\
+& X  \mapsto X^t X
+\end{align*}
+
+Nótese que \((X^tX)^t=X^tX\). Esta aplicación es una submersión en las matrices \(X\in f^{-1}(I_n)=\mathcal{O}(n)\) (recordar que \(X\in \mathcal{O}(n)\iff X^tX=I_n\) ya que la inversa coincide con la traspuesta).
+
+Veamos que \(\dif{f_X}\colon\Tangente[X]{\RealSet^{n^2}}\to \Tangente[I_n]{\RealSet^{\frac{n(n+1)}{2}}}\) es sobreyectiva para todo \(X\in \mathcal{O}(n)\).
+
+En efecto, dada cualquier matriz \(A\) tomamos \(\gamma_A\colon(-\epsilon,\epsilon)\to \RealSet^{n^2}\) la curva de matrices definida como
+\[
+\gamma_A(s)=X+sA
+\]
+Tenemos que \(\gamma_A(0)=X\) y \(\gamma_A'(0)=A\). Además \(\dif{f_X}([\gamma_A])\) está representada por la curva
+\begin{align*}
+f\circ \gamma_A(s)&=(X+sA)^t(X+sA)\\
+&=(X^t+sA^t)(X+sA)\\
+&=X^tX+sA^tX+sX^tA+s^2A^tA\\
+&=I_n+sA^tX+sX^tA+s^2A^tA
+\end{align*}
+Así pues, tras identificar \(\Tangente[X]{\RealSet^{n^2}}\cong \RealSet^{n^2}\) y \(\Tangente[I_n]{\RealSet^{\frac{n(n+1)}{2}}}\cong \RealSet^{\frac{n(n+1)}{2}}\) la diferencial \(\dif{f_X}\) lleva \(\gamma_A'(0)=A\) en
+\[
+(f\circ \gamma_A)'(0)=A^tX+X^tA=A^tX+X^{-1}A
+\]
+Ahora bien, dada \(B\) una matriz simétrica cualquiera elegimos \(A=\frac{1}{2}XB\), y tenemos para esta \(A\)
+\begin{align*}
+(f\circ \gamma_A)'(0)&=\frac{1}{2}B^tX^tX+\frac{1}{2}X^{-1}XB\\
+&=\frac{1}{2}B^tX^{-1}X+\frac{1}{2}X^{-1}XB\\
+&=\frac{1}{2}B^t+\frac{1}{2}B\\
+&=B
+\end{align*}
+Así pues, \(\dif{f_X}\) es sobreyectiva si \(X\in \mathcal{O}(n)\).
+
+Por %TODO:Referencia al teorema anterior
+\(\mathcal{O}(n)\) se convierte en una variedad de dimensión
+\[
+n^2 -\dfrac{n(n+1)}{2}=\dfrac{n^2-n}{2}=\dfrac{n(n-1)}{2}
+\]
+\end{example}
+
+\end{document}
+
+%%% Local Variables:
+%%% TeX-master: "../VD"
+%%% End:
