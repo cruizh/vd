@@ -93,13 +93,13 @@ En las condiciones de \cref{def:punto-reg} si \(q\) es valor regular a \(f^{-1}(
 \begin{remark}
 En particular, en toda inmersión los puntos son críticos y en toda submersión todos los puntos son regulares.
 
-Además el teorema %TODO: need ref
+Además el teorema \ref{thm:dim-inv-sub}
 nos dice que los niveles regulares son subvariedades de \(M\) de dimensión \(m-n\).
 \end{remark}
 
 El sigiente teorema se dará sin demostración, que puede encontrarse en %TODO: need ref Teorema 6.10
 
-\begin{theorem}%[name={teorema de }, label={thm:}]
+\begin{theorem}%[name={teorema de Sard}, label={thm:sard}]
 Sea \(f\colon M\to N\) una aplicación diferenciable, entonces el conjunto de valores críticos tiene medida nula en \(N\).
 \end{theorem}
 
@@ -139,12 +139,43 @@ Ahora bien, dada \(B\) una matriz simétrica cualquiera elegimos \(A=\frac{1}{2}
 \end{align*}
 Así pues, \(\dif{f_X}\) es sobreyectiva si \(X\in \mathcal{O}(n)\).
 
-Por %TODO:Referencia al teorema anterior
+Por \ref{dim-sub-pto} como caso particular del teorema \ref{thm:dim-inv-sub} 
 \(\mathcal{O}(n)\) se convierte en una variedad de dimensión
 \[
 n^2 -\dfrac{n(n+1)}{2}=\dfrac{n^2-n}{2}=\dfrac{n(n-1)}{2}
 \]
 \end{example}
+
+\begin{note}
+	Si \(N^n\subseteq M^m\) es una subvariedad para cada punto \(p\in N\) la inclusión \(i\colon N\to M\) lleva \(\Tangente[p]{N}\) en el subespacio generado por los vectores 
+	\[
+	e_i^p=[\epsilon_i^p] \quad \text{con} \; i\leq n
+	\]
+	si vemos \(\RealSet^n\subseteq \RealSet^m\) como el subespacio con las últimas \(m.n\) coordenadas nulas
+\end{note}
+
+Este resultado se puede refinar más aún como veremos en el siguiente lema.
+
+\begin{lemma}
+Sea \(i\colon N\to M\) la inclusión, \(\dif{i}\colon\Tangente{N}\to\Tangente{M}\) es una incrustación de \(\Tangente{N}\) en \(\Tangente{M}\)
+\end{lemma}
+
+\begin{proof}
+Si tenemos un altas de \(N\) formado por cartas \((U,\varphi)\) con \(U=U'\cap N\) y \(\varphi'=\Restrict{\varphi}{N}\) siendo \((U',\varphi')\) cartas de \(M\) cumpliendo \(\varphi'(U'\cap N)=\varphi'(U')\cap \RealSet^n\).
+
+Entonces las cartas \(\dif{i}(\Tangente{U},\widetilde{\varphi})\) y \((\Tangente{U'},\widetilde{\varphi'})\) están ligadas por las igualdades
+\begin{align*}
+\widetilde{\varphi'}(\Tangente{U'}\cap \dif{i}(\Tangente{N}))&=\widetilde{\varphi'}(\dif{i}(\Tangente{(U'\cap N)}))\\
+&=\varphi'(U'\cap N)\times (\RealSet^n\times \{0\})\\
+&=(\varphi'(U')\cap \RealSet^n)\times(\RealSet^n\times \{0\})\\
+&=\widetilde{\varphi'}(\Tangente{U'})\cap(\RealSet^n\!\times\!\{0\}\;\times \;\RealSet^n\!\times \!\{0\})
+\end{align*}
+Es decir, la estructura inducida coincide con la relativa.
+\end{proof}
+
+En particular, por el teorema de \cref{thm:Whitney} tenemos que para todo \(p\in M\), \(\Tangente[p]{M}\) se puede identificar con un subespacio de \(\Tangente[p]{\RealSet^{2m+1}}\cong\RealSet^{2m+1}\) de dimensión \(m\), permitiéndonos así ver las rectas tangentes de \(M\) como vectores de \(\RealSet^{2m+1}\).
+
+Esta es la representación de \(\Tangente{M}\) más intuitiva habitualmente.
 
 \end{document}
 
