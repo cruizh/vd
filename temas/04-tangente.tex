@@ -279,6 +279,32 @@
   tanto es incrustación. 
 \end{proof}
 
+\begin{example}
+  Si \(M=U\overset{\operatorname{abierto}}{\subseteq}\RealSet^{m},\, p\in M\).
+  Entonces \(\Tangente[p]{M}\homeo\RealSet^{m},\, [\gamma]\mapsto\gamma'(0).\)
+  Lo cual podemos extender a un difeomorfismo:
+  \[\begin{array}{c}
+      \Tangente[p]{M}\overset{\homeo}{\to} M\times\RealSet^{m} \\
+      \Clase{\gamma}\overset{\homeo}{\mapsto} (\gamma(0),\gamma'(0))
+    \end{array}
+  \]
+
+  donde podemos considerar que el vector \((\gamma(0),\gamma'(0))\) indica la
+  posición y la velocidad.
+
+  Más generalmente, si \(M\) es una variedad con una única carta
+  \((M,\varphi)\), entonces:
+  \[\begin{array}{c}
+      \Tangente[p]{M}\homeo\RealSet^{m} \\
+      \Clase{\gamma}\mapsto(\varphi\circ\gamma)'(0)
+    \end{array}\]
+  se extiende al difeomorfismo:
+  \[\begin{array}{c}
+      \Tangente{M}\to M\times\RealSet^{m} \\
+      \Clase{\gamma}\mapsto(\gamma(0),(\varphi\circ\gamma)'(0))
+    \end{array}\]
+\end{example}
+
 \section{Diferencial de una aplicación diferenciable}
 \label{sec:dif}
 
