@@ -7,30 +7,40 @@
 \setcounter{chapter}{4}
 \chapter{La diferencial de una aplicación diferenciable}\label{chap:diferenciable}
 
-Si \(f\colon M \to N\) es una aplicación diferenciable, se tiene para todo \(p\in M\) una aplicación lineal
-\[
-\dif{f_p}\colon \Tangente[p]{M}\to \Tangente[f(p)]{N}
-\]
-que lleva el vector \(v\in \Tangente[p]{M}\) representado por la curva \(\alpha\colon (-\epsilon,\epsilon)\to M\) en el vector \(\dif{f_f(v)}\) representado por la función composición \(f\circ \alpha \colon (-\epsilon,\epsilon)\to N\).
+Si \(f\colon M \to N\) es una aplicación diferenciable, se tiene para todo
+\(p\in M\) una aplicación lineal \(\dif{f_p}\colon \Tangente[p]{M}\to
+\Tangente[f(p)]{N}\) que lleva el vector \(v\in \Tangente[p]{M}\) representado
+por la curva \(\alpha\colon (-\epsilon,\epsilon)\to M\) en el vector
+\(\dif{f_p(v)}\) representado por la función \(f\circ\alpha \colon (-\epsilon,\epsilon)\to N\). 
 
-Estas aplicaciones están bien definidas y son lineales, cosa que se puede ver a partir del siguiente diagrama conmutativo para cartas \((u,\varphi)\) y \((W,\psi)\) de \(M\) y \(N\) con \(p\in U\) y \(f(U)\subseteq W\)
-%\begin{figure}[h]
-%\centering
-%	\begin{tikzcd}
-%	\Tangente[p]{M}
-%	\ar[r, "\dif{f_p}"]
-%	\ar[d, "\cong"]["\tau_{\varphi}"'] &
-%	\Tangente[f(p)]{N}
-%	\ar[d, "\tau_{\psi}"]["\cong"']\\
-%	\RealSet^m
-%	\ar[r, "\J[\varphi(p)]{f}"] &
-%	\RealSet^n
-%	\end{tikzcd}
-%	\caption{Diferencial de aplicación diferenciable}
-%	\label{fig:dif-app}
-%\end{figure}
-donde \(\tau_{\varphi}\) y \(\tau_{\psi}\) son isomorfismos lineales vistos en 
-\cref{def:tang-iso} que lleva \(v\) en el vector velocidad \((\varphi\circ \alpha)(0)\) y \(\widetilde{f}=\psi\circ f\circ \varphi^{-1}\). Así pues definimos la diferencial como sigue:
+\begin{center}
+    \centering
+    \begin{tikzcd}[column sep = large]
+      \Tangente[p]{M}
+      \ar[d, "\cong\tau_{\varphi}^p"']
+      \ar[r, "\dif{f_p}"]
+      &
+      \Tangente[f(p)]{N}
+      \ar[d, "\tau_{\psi}^{f(p)}\cong"] \\
+      \RealSet^{m}
+      \ar[r, dashed, "\widetilde{\dif{f_p}}"']
+      &
+      \RealSet^{n} \\
+      x \ar[r, maps to]
+      &
+      (\tau_{\psi}^{f(p)}\circ\dif{f_p}\circ(\tau_{\varphi}^{p})^{-1})(x) 
+    \end{tikzcd}
+  \end{center}
+  
+  Estas aplicaciones están bien definidas y son lineales, cosa que se puede ver
+  a partir del anterior diagrama conmutativo para cartas \((U,\varphi)\) y
+  \((W,\psi)\) de \(M\) y \(N\) con \(p\in U\) y \(f(U)\subseteq W\) de la
+  figura anterior,   
+  donde \(\tau_{\varphi}^{p}\) y
+  \(\tau_{\psi}^{f(p)}\)
+  son isomorfismos lineales vistos en la \cref{def:tang-iso} que llevan \(v\) en
+  el vector velocidad \((\varphi\circ \alpha)'(0)\). Así pues definimos la
+  diferencial como sigue:  
 
 \begin{definition}[{name=[diferencial]{diferencial de una aplicación diferenciable}},
 	label={def:dif-app}]
