@@ -7,6 +7,69 @@
 \setcounter{chapter}{5}
 \chapter{Campos (de vectores) tangentes}\label{chap:campos}
 
+\section{Introducción}
+
+\begin{definition}[name=campo tangente]\label{def:campo-tangente}
+  Dada \(M^{m}\) variedad, un \emph{campo tangente} de \(M\) es una aplicación
+  diferenciable \(X\colon M\to\Tangente{M}\) con
+  \(\pi\circ X=\Id{M}\) (\(X\) es una sección de \(\pi\colon\Tangente{M}\to M\)).
+\end{definition}
+
+\begin{remark}
+  Sea \((U,\varphi)\) carta de \(M\), entonces se tiene el diagrama:
+  \begin{center}
+    \centering
+    \begin{tikzcd}[column sep = large]
+      U
+      \ar[d, "\varphi"']
+      \ar[r, "X"]
+      &
+      \Tangente{U}
+      \ar[d, "\widetilde{\varphi}=\varphi\times\tau_{\varphi}^{p}"] \\
+      \varphi(U)
+      \ar[r, "X_{\varphi}"']
+      &
+      \ \ \varphi(U)\times\RealSet^{m} \\
+    \end{tikzcd}
+  \end{center}
+
+  donde \(X_{\varphi}(x)=(\widetilde{\varphi}\circ X\circ
+  \varphi^{-1})(x)=(x,g^{U}(x))\) y \(g^{U}:\varphi(U)\to\RealSet^{m}\) se denomina
+  \emph{componente local del campo X en la carta \((U,\varphi)\)}.
+
+  Nótese que \(g^{U}(\varphi(p))=(\varphi\circ\alpha)'(0)\) si \(X(p)\) está
+  representada por la curva \(\alpha\).
+
+  El campo nulo, \(\theta\colon M\to\Tangente{M}\) es aquel que lleva \(p\in M\)
+  en el vector nulo \(\theta_{p}\in\Tangente[p]{M}\) representado por la curva
+  constante \(c_{p}(t)=p\) si \(t\in(-\epsilon,\epsilon)\).
+
+  Veamos que ocurre si tomamos otra carta \((V,\psi)\) compatible con
+  \((U,\varphi)\), con su correspondiente componente local
+  \(g^{V}:\psi(V)\to\RealSet^{m}\), y nos preguntamos qué ocurre en \(U\cap V\)
+  (que suponemos no vacío). 
+
+  Montando dos diagramas como el anterior pero para \(U\cap V\), vistos
+  mediante las funciones coordenada \(\varphi,\psi\), que sabemos que forman un
+  difeomorfismo, se llega a la siguiente relación de compatibilidad (nos
+  interesa la última línea):
+
+  \[\begin{array}{l}
+    \widetilde{\psi}\widetilde{\varphi}^{-1}X_{\varphi}=X_{\psi}\psi\varphi^{-1}\iff \\
+    \widetilde{\psi}\widetilde{\varphi}^{-1}(x,g^{U}(x))=X_{\psi}\psi\varphi^{-1}(x)\iff
+      \\
+    (\psi\varphi^{-1}(x),\J[x]{\psi\varphi^{-1}}(g^{U}(x)))=(\psi\varphi^{-1}(x),
+      g^{V}(\psi\varphi^{-1}(x)))\iff \\
+      g^{V}(\psi\varphi^{-1}(x))=\J[x]{\psi\varphi^{-1}}(g^{U}(x))
+    \end{array}\]
+
+  Luego dar un campo tangente sobre \(M\) con atlas
+  \(\{(U,\varphi)\}=\mathcal{A}\) es dar funciones
+  \(g^{U}\colon\varphi(U)\to\RealSet^{m}\) sujetas a la relación de
+  compatibilidad anterior.
+  
+\end{remark}
+  
 \end{document}
 
 %%% Local Variables:
