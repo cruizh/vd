@@ -13,7 +13,7 @@ Si \(f\colon M \to N\) es una aplicación diferenciable, se tiene para todo
 por la curva \(\alpha\colon (-\epsilon,\epsilon)\to M\) en el vector
 \(\dif{f_p(v)}\) representado por la curva \(f\circ\alpha \colon (-\epsilon,\epsilon)\to N\). 
 
-\begin{center}
+\begin{figure}[h]
     \centering
     \begin{tikzcd}[column sep = large]
       \Tangente[p]{M}
@@ -30,19 +30,21 @@ por la curva \(\alpha\colon (-\epsilon,\epsilon)\to M\) en el vector
       &
       (\tau_{\psi}^{f(p)}\circ\dif{f_p}\circ(\tau_{\varphi}^{p})^{-1})(x) 
     \end{tikzcd}
+    \caption{Diagrama de la aplicación diferenciable en un punto}
     \label{fig:dif-diag-dif}
-    \captionof{figure}{Diagrama de la aplicación diferenciable en un punto}
-  \end{center}
+  \end{figure}
   
   Estas aplicaciones están bien definidas y son lineales, cosa que se puede ver
   a partir del anterior diagrama conmutativo para cartas \((U,\varphi)\) y
   \((W,\psi)\) de \(M\) y \(N\) con \(p\in U\) y \(f(U)\subseteq W\) de la
-  figura anterior,   
-  donde \(\tau_{\varphi}^{p}\) y
-  \(\tau_{\psi}^{f(p)}\)
-  son isomorfismos lineales vistos en la \cref{def:tang-iso} que llevan \(v\) en
-  el vector velocidad \((\varphi\circ \alpha)'(0)\). Así pues definimos la
-  diferencial como sigue:  
+  \cref{fig:dif-diag-dif},   
+  donde \(\tau_{\varphi}^{p}\) (análogamente \(\tau_{\psi}^{f(p)}\))
+  es un isomorfismo lineal visto en la \cref{def:tang-iso} que lleva \(v\) en
+  el vector velocidad \((\varphi\circ \alpha)'(0)\).
+
+  Además, se tiene que \(\widetilde{\dif{f_{p}}}=\J[\varphi(p)]{\widetilde{f}}\), con
+  \(\widetilde{f}=\psi\circ f\circ\varphi^{-1}\), y esto significa que
+  localmente la diferencial corresponde con la matriz jacobiana de \(f\). 
 
 \begin{definition}[{name=[diferencial]{diferencial de una aplicación diferenciable}},
 	label={def:dif-app}]
@@ -98,7 +100,7 @@ que es diferenciable pues \(f\) debe serlo y \(\dif{f_{p}}\) también.
 \end{proof}
 
 \begin{remark}
-Es inmediato a partir de la definición que \(\dif{f}\circ \dif{g}=\dif{f\circ g}\)
+Es inmediato a partir de la definición que hemos dado que \(\dif{f}\circ \dif{g}=\dif{f\circ g}\)
 \end{remark}
 
 \begin{example}
@@ -139,16 +141,19 @@ En las condiciones de \cref{def:punto-reg} si \(q\) es valor regular a \(f^{-1}(
 \end{definition}
 
 \begin{remark}
-En particular, en toda inmersión los puntos son críticos y en toda submersión todos los puntos son regulares.
+En particular, en toda inmersión \(f\colon M\to N\) los puntos son críticos y en
+toda submersión \(f\colon M\to N\) todos los puntos son regulares. 
 
-Además el teorema \ref{thm:dim-inv-sub}
+
+Además, el \cref{thm:dim-inv-sub}
 nos dice que los niveles regulares son subvariedades de \(M\) de dimensión \(m-n\).
 \end{remark}
 
-El sigiente teorema se dará sin demostración, que puede encontrarse en %TODO: need ref Teorema 6.10
+El siguiente teorema se dará sin demostración, que puede encontrarse en (FALTA COMPLETAR).
 
-\begin{theorem}%[name={teorema de Sard}, label={thm:sard}]
-Sea \(f\colon M\to N\) una aplicación diferenciable, entonces el conjunto de valores críticos tiene medida nula en \(N\).
+\begin{theorem}[name={teorema de Sard}, label={thm:sard}]
+Sea \(f\colon M\to N\) una aplicación diferenciable, entonces el conjunto de
+valores críticos de \(f\) tiene medida nula en \(N\).
 \end{theorem}
 
 \begin{example}
@@ -194,34 +199,76 @@ n^2 -\dfrac{n(n+1)}{2}=\dfrac{n^2-n}{2}=\dfrac{n(n-1)}{2}
 \]
 \end{example}
 
+\begin{proposition}\label{prop:df-iso}
+  Si \(\dif{f_{p}}\colon\Tangente[p]{M}\to\Tangente[f(p)]{N}\) es inyectiva y
+  \(f\) es sobreyectiva, entonces \(\dim{M}=\dim{N}\) (i.e \(\dif{f_{p}}\) es
+  isomorfismo).
+\end{proposition}
+
+\begin{proof}
+  Como \(\dif{f_{p}}\) inyectiva entonces \(\dim{M}\leq\dim{N}\).
+  Como \(f\) es sobreyectiva entonces \(f(M)=N\) y por el \cref{lem:denso} y la
+  \cref{prop:med-ldim} se tiene que \(m(f(M))\neq 0\) y \(\dim{M}\geq\dim{N}\)
+  (pues si fuese \(<\) tendría medida nula).
+  Finalmente, se tiene el resultado. 
+\end{proof}
+
+\begin{proposition}\label{prop:df-iny-f-biy-difeo}
+Si \( f\colon M\to N \) es una inmersión biyectiva en cada \( p\in M \),
+entonces \( f \) es un difeomorfismo.
+\end{proposition}
+
+\begin{proof}
+Estamos en las condiciones de la \cref{prop:df-iso} por lo que ya sabemos que \(
+df_p \) es isomorfismo. Por el \nameref{thm:inversa} para cada punto \( p\in M
+\) se cumple que \( f\colon U_p\to f(U_p) \) es un difeomorfismo para cierto
+abierto \( p\in U\subseteq M \).
+
+Por tanto \( f^{-1}\colon N\to M \) es diferenciable pues se tiene que, \(\ \forall q\in N \), \( f^{-1}\colon f(U_p)\to U_p \) lo es si hacemos \( p=f^{-1}(q) \).
+\end{proof}
+
 \begin{note}
-	Si \(N^n\subseteq M^m\) es una subvariedad para cada punto \(p\in N\) la inclusión \(i\colon N\to M\) lleva \(\Tangente[p]{N}\) en el subespacio generado por los vectores 
+De los resultados anteriores se deduce que dos variedades difeomorfas tienen
+necesariamente la misma dimensión, ya que si razonásemos por reducción al
+absurdo tendríamos \( f\colon M \to N \) difeomorfismo con \(\dim{M}<\dim{N}\) y
+como hemos visto \( f(M)=N \) ambos de medida nula, lo que contradice el
+\cref{lem:denso} que utilizábamos en la prueba de la \cref{prop:df-iso}.
+\end{note}
+
+\begin{note}
+	Si \(N^n\subseteq M^m\) es una subvariedad para cada punto \(p\in N\) la
+  inclusión \(i\colon N\to M\) lleva \(\Tangente[p]{N}\) en el subespacio
+  generado por los vectores 
 	\[
 	e_i^p=[\epsilon_i^p] \quad \text{con} \; i\leq n
 	\]
-	si vemos \(\RealSet^n\subseteq \RealSet^m\) como el subespacio con las últimas \(m.n\) coordenadas nulas
+	si vemos \(\RealSet^n\subseteq \RealSet^m\) como el subespacio con las últimas
+  \(m-n\) coordenadas nulas.
 \end{note}
 
-Este resultado se puede refinar más aún como veremos en el siguiente lema.
+Este resultado se puede refinar más aún como veremos en el siguiente lema:
 
 \begin{lemma}
-Sea \(i\colon N\to M\) la inclusión, \(\dif{i}\colon\Tangente{N}\to\Tangente{M}\) es una incrustación de \(\Tangente{N}\) en \(\Tangente{M}\)
+Sea \(i\colon N\to M\) la inclusión,
+\(\dif{i}\colon\Tangente{N}\to\Tangente{M}\) es una incrustación de
+\(\Tangente{N}\) en \(\Tangente{M}\).
 \end{lemma}
 
 \begin{proof}
-Si tenemos un altas de \(N\) formado por cartas \((U,\varphi)\) con \(U=U'\cap N\) y \(\varphi'=\Restrict{\varphi}{N}\) siendo \((U',\varphi')\) cartas de \(M\) cumpliendo \(\varphi'(U'\cap N)=\varphi'(U')\cap \RealSet^n\).
+Si tenemos un atlas de \(N\) formado por cartas \((U,\varphi)\) con \(U=U'\cap N\) y \(\varphi'=\Restrict{\varphi}{N}\) siendo \((U',\varphi')\) cartas de \(M\) cumpliendo \(\varphi'(U'\cap N)=\varphi'(U')\cap \RealSet^n\).
 
-Entonces las cartas \(\dif{i}(\Tangente{U},\widetilde{\varphi})\) y \((\Tangente{U'},\widetilde{\varphi'})\) están ligadas por las igualdades
+Entonces las cartas \((\dif{i}\Tangente{U},\widetilde{\varphi})\) y \((\Tangente{U'},\widetilde{\varphi'})\) están ligadas por las igualdades
 \begin{align*}
-\widetilde{\varphi'}(\Tangente{U'}\cap \dif{i}(\Tangente{N}))&=\widetilde{\varphi'}(\dif{i}(\Tangente{(U'\cap N)}))\\
+\widetilde{\varphi'}(\Tangente{U'}\cap (\dif{i}\Tangente{N}))&=\widetilde{\varphi'}(\dif{i}\Tangente{(U'\cap N)})\\
 &=\varphi'(U'\cap N)\times (\RealSet^n\times \{0\})\\
 &=(\varphi'(U')\cap \RealSet^n)\times(\RealSet^n\times \{0\})\\
-&=\widetilde{\varphi'}(\Tangente{U'})\cap(\RealSet^n\!\times\!\{0\}\;\times \;\RealSet^n\!\times \!\{0\})
+                                                             &=\widetilde{\varphi'}(\Tangente{U'})\cap(\RealSet^n\!\times\!\{0\}\;\times \;\RealSet^n\!\times \!\{0\})\\
+  &\subseteq\widetilde{\varphi'}(\Tangente{U'})\cap(\RealSet^{m}\times\RealSet^{m}) 
 \end{align*}
 Es decir, la estructura inducida coincide con la relativa.
 \end{proof}
 
-En particular, por el teorema de \cref{thm:Whitney} tenemos que para todo \(p\in M\), \(\Tangente[p]{M}\) se puede identificar con un subespacio de \(\Tangente[p]{\RealSet^{2m+1}}\cong\RealSet^{2m+1}\) de dimensión \(m\), permitiéndonos así ver las rectas tangentes de \(M\) como vectores de \(\RealSet^{2m+1}\).
+En particular, por el teorema de \nameref{thm:Whitney} tenemos que para todo \(p\in M\), \(\Tangente[p]{M}\) se puede identificar con un subespacio de \(\Tangente[p]{\RealSet^{2m+1}}\cong\RealSet^{2m+1}\) de dimensión \(m\), permitiéndonos así ver las rectas tangentes de \(M\) como vectores de \(\RealSet^{2m+1}\).
 
 Esta es la representación de \(\Tangente{M}\) más intuitiva habitualmente.
 

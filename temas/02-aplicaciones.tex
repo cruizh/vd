@@ -970,29 +970,6 @@ Sea \( V=M\times \RealSet ^{n-m} \) y \( g\colon V \overset{\pi}{\to}
 M\overset{f}{\to} N\) donde \( \pi \) es la proyección. De acuerdo con el \cref{lem:med-eqdim} la medida de \( g(V)=f(M) \) que es nula.
 \end{proof}
 
-\begin{proposition}\label{prop:med-iso}
-Si \( f\colon M\to N \) es diferenciable, sobreyectiva y \( df_p \) es inyectiva, entonces \( df_p \) es isomorfismo.
-\end{proposition}
-
-\begin{proof}
-Por la \cref{prop:med-ldim} y el \cref{lem:denso} tenemos que \( \dim (M) \geq \dim (N) \). Como siempre ocurre la otra desigualdad nos queda \( \dim (M)=\dim (N) \) y por tanto \( df_p \) es isomorfismo.
-\end{proof}
-
-\begin{proposition}\label{prop:med-difeo}
-Si \( f\colon M\to N \) ds una inmersión biyectiva en cada \( p\in M \), entonces \( f \) es un difeomorfismo.
-\end{proposition}
-
-\begin{proof}
-Estamos en las condiciones de la \cref{prop:med-iso} por lo que ya sabemos que \( df_p \) es isomorfismo. Por el \nameref{thm:inversa}
-para cada punto \( p\in M \) se cumple que \( f\colon U_p\to f(U_p) \) es un difeomorfismo para cierto abierto \( p\in U\subseteq M \).
-
-Por tanto \( f^{-1}\colon N\to M \) es diferenciable pues \( \forall q\in N \) \( f^{-1}\colon f(U_p)\to U_p \) lo es si hacemos \( p=f^{-1}(q) \).
-\end{proof}
-
-\begin{note}
-De los resultados anteriores se deduce que dos variedades difeomorfas tienen necesariamente la misma dimensión, ya que si razonásemos por reducción al absurdo tendríamos \( f\colon M \to N \) difeomorfismo con \( \dim (M) < \dim (N) \) y como hemos visto \( f(M)=N \) ambos de medida nula, lo que contradice el \cref{lem:denso}.
-\end{note}
-
 \section{Ejercicios Interesantes de la Relación 2}
 
 \begin{Exercise}[number=16,label={ex:2.16}]
