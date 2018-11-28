@@ -29,7 +29,7 @@
       \varphi(U)
       \ar[r, "X_{\varphi}"']
       &
-      \ \ \varphi(U)\times\RealSet^{m} \\
+      \ \ \varphi(U)\times\RealSet^{m}
     \end{tikzcd}
   \end{center}
 
@@ -48,30 +48,112 @@
   \((U,\varphi)\), con su correspondiente componente local
   \(g^{V}:\psi(V)\to\RealSet^{m}\), y nos preguntamos qué ocurre en \(U\cap V\)
   (que suponemos no vacío). 
+  
 
-  Montando dos diagramas como el anterior pero para \(U\cap V\), vistos
-  mediante las funciones coordenada \(\varphi,\psi\), que sabemos que forman un
-  difeomorfismo, se llega a la siguiente relación de compatibilidad (nos
-  interesa la última línea):
+\end{remark}
 
-  \[\begin{array}{l}
-    \widetilde{\psi}\widetilde{\varphi}^{-1}X_{\varphi}=X_{\psi}\psi\varphi^{-1}\iff \\
-    \widetilde{\psi}\widetilde{\varphi}^{-1}(x,g^{U}(x))=X_{\psi}\psi\varphi^{-1}(x)\iff
-      \\
-    (\psi\varphi^{-1}(x),\J[x]{\psi\varphi^{-1}}(g^{U}(x)))=(\psi\varphi^{-1}(x),
-      g^{V}(\psi\varphi^{-1}(x)))\iff \\
-      g^{V}(\psi\varphi^{-1}(x))=\J[x]{\psi\varphi^{-1}}(g^{U}(x))
-    \end{array}\]
+\begin{proposition}[name=componentes locales compatibles]\label{prop:comp-local}
+  Sean \((U,\varphi),(V,\psi)\) dos cartas del atlas \(\mathcal{A}\) de la
+  \(m\)-variedad \(M\). Si \(X\colon M\to\Tangente{M}\) es un campo de
+  vectores tangentes, entonces se tiene la siguiente relación de compatibilidad
+  entre las componentes locales de \(X\) en \(U\) y \(V\):
+  
+  \[
+    (*) g^{V}(\psi\varphi^{-1}(x))=\J[x]{\psi\varphi^{-1}}(g^{U}(x))
+  \]
+  
+  Recíprocamente, si tenemos un atlas \(\mathcal{A}\) de \(M^{m}\) y una
+  colección de funciones diferenciables
+  \(g^{U}\colon\varphi(U)\to\RealSet^{m}\ \forall(U,\varphi)\in\mathcal{A}\)
+  cumpliendo la relación \((*)\), entonces existe un único campo de vectores
+  tangentes con \(\{g^{U}\colon(U,\varphi)\in\mathcal{A}\}\) como componentes locales.
+  \end{proposition}
+  
+  \begin{proof}
+    La demostración se deja como ejercicio al lector.
 
+    \underline{Ayuda:}
+    Montar dos diagramas como el anterior pero para \(U\cap V\), vistos
+    mediante las funciones coordenada \(\varphi\) y \(\psi\) respectivamente, que
+    sabemos que forman un difeomorfismo, y llegar a la siguientes relaciones:
+    \[\begin{array}{l}
+        \widetilde{\psi}\widetilde{\varphi}^{-1}X_{\varphi}=X_{\psi}\psi\varphi^{-1}\iff \\
+        \widetilde{\psi}\widetilde{\varphi}^{-1}(x,g^{U}(x))=X_{\psi}\psi\varphi^{-1}(x)\iff
+        \\
+        (\psi\varphi^{-1}(x),\J[x]{\psi\varphi^{-1}}(g^{U}(x)))=(\psi\varphi^{-1}(x),
+        g^{V}(\psi\varphi^{-1}(x)))\iff \\
+        g^{V}(\psi\varphi^{-1}(x))=\J[x]{\psi\varphi^{-1}}(g^{U}(x))
+      \end{array}\]
+    
+  \end{proof}
+  
   Luego dar un campo tangente sobre \(M\) con atlas
   \(\{(U,\varphi)\}=\mathcal{A}\) es dar funciones
   \(g^{U}\colon\varphi(U)\to\RealSet^{m}\) sujetas a la relación de
   compatibilidad anterior.
+
+  \section{Espacio de campos tangentes}
   
-\end{remark}
+  \begin{remark}\label{obs:espacio-campos}
+    Al conjunto de todos los campos tangentes de una variedad \(M\) lo
+    denotaremos: \(\mathbb{X}(M)=\{X\colon M\to\Tangente{M}\ \text{campos
+      tangentes}\}\)  
+  \end{remark}
+
+  \begin{lemma}[name=espacio de campos es
+    vectorial]\label{lem:espacio-campos-vectorial}
+    Dada una variedad \(M\), el conjunto definido en \cref{obs:espacio-campos} es
+    un espacio vectorial.  
+  \end{lemma}
+
+  \begin{proof}
+    Sean \(X,Y\in\mathbb{X}(M),\lambda\in\RealSet\). Entonces:
+    \begin{enumerate}
+    \item \((X+Y)(p)=X(p)+Y(p)\)
+    \item Neutro: El elemento neutro será el campo nulo \(\theta\colon
+      M\to\Tangente{M}\) tal que \(\theta(p)=0\) el vector nulo de
+      \(\Tangente[p]{M}\) definido por la curva constante \(c_{p}(t)=p\)
+    \item \((\lambda X)(p)=\lambda\cdot X(p)\)
+    \end{enumerate}
+  \end{proof}
+
+  \begin{lemma}
+    \(\mathbb{X}(M)\) espacio vectorial es un \(\mathcal{F}(M)\)-módulo sobre
+    \(\mathcal{F}(M)=\{f\colon M\to\RealSet\ \text{diferenciables}\}\), siendo
+    la ``multiplicación por escalar'':
+    \[
+      (f\cdot X)(p)=f(p)\cdot X(p)\ \text{(multiplicación conmutativa, f(p)
+        coeficiente)}
+    \]
+  \end{lemma}
+
+  \section{Campos \(f\)-compatibles o \(f\)-relacionados}
+
+  \begin{definition}[name=f-compatible]\label{def:f-comp}
+  Sea  \(f\colon M^{m}\to N^{n}\) diferenciable, \(X,Y\) campos tangentes tales que:
+
+    \begin{center}
+      \centering
+      \begin{tikzcd}[column sep = large, row sep = mid]
+        M
+        \ar[d, "X"']
+        \ar[r, "f"]
+        &
+        N
+        \ar[d, "Y"] \\
+        \Tangente{M}
+        \ar[r, "\dif{f}"']
+        &
+        \Tangente{N}
+      \end{tikzcd}
+    \end{center}
+Entonces diremos que \(X,Y\) son \(f\)-compatibles si
+    \(Y\circ f=\dif{f}\circ X \text{(conmuta)}\)
+  \end{definition}
+
+
   
 \end{document}
-
 %%% Local Variables:
 %%% TeX-master: "../VD"
 %%% End:
