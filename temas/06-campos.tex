@@ -127,30 +127,63 @@
     \]
   \end{lemma}
 
+  \newpage
+  
   \section{Campos \(f\)-compatibles o \(f\)-relacionados}
 
-  \begin{definition}[name=f-compatible]\label{def:f-comp}
-  Sea  \(f\colon M^{m}\to N^{n}\) diferenciable, \(X,Y\) campos tangentes tales que:
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}[column sep = large]
+      M
+      \ar[d, "X"']
+      \ar[r, "f"]
+      &
+      N
+      \ar[d, "Y"] \\ 
+      \Tangente{M}
+      \ar[r, "\dif{f}"']
+      &
+      \Tangente{N}
+    \end{tikzcd}
+    \captionof{figure}{}
+    \label{fig:campos-f-comp}
+  \end{figure}
 
-    \begin{center}
-      \centering
-      \begin{tikzcd}[column sep = large, row sep = mid]
-        M
-        \ar[d, "X"']
-        \ar[r, "f"]
-        &
-        N
-        \ar[d, "Y"] \\
-        \Tangente{M}
-        \ar[r, "\dif{f}"']
-        &
-        \Tangente{N}
-      \end{tikzcd}
-    \end{center}
-Entonces diremos que \(X,Y\) son \(f\)-compatibles si
-    \(Y\circ f=\dif{f}\circ X \text{(conmuta)}\)
+  \begin{definition}[name=f-compatible]\label{def:f-comp}
+    Sea  \(f\colon M^{m}\to N^{n}\) diferenciable, \(X,Y\) campos tangentes en
+    \(M\) y \(N\) como los de la \cref{fig:campos-f-comp}. Entonces diremos que
+    \(X,Y\) son \(f\)-compatibles si \(Y\circ f=\dif{f}\circ X\) (el diagrama
+    conmuta \(\forall p\in M\)).
   \end{definition}
 
+  \begin{remark}
+    La definición anterior es equivalente a decir que si \(\alpha\) es una curva
+    representando \(X(p)\) entonces \(f\circ\alpha\) representa el vector
+    \(Y(f(p))\).
+
+    Cabe destacar, que si \(f\) es difeomorfismo y \(X\in\mathbb{X}(M)\) sólo
+    existe un campo \(Y\in\mathbb{X}(N)\) \(f\)-compatible y es \(Y=\dif{f}\circ
+    X\circ f^{-1}\). Esto induce una aplicación \(f_{*}\) que estudiaremos más
+    adelante.
+  \end{remark}
+
+  \begin{definition}[name=f-invariante]\label{def:f-invariante}
+    Cuando \(f\colon X\to X\) y \(X\) es \(f\)-compatible consigo mismo (es
+    decir, \(X=\dif{f}\circ X\circ f^{-1}\)) entonces \(X\) se dice
+    \emph{\(f\)-invariante}.
+  \end{definition}
+
+  \begin{remark}
+    También es posible ver la \(f\)-compatibilidad por componentes locales, lo
+    cuál es un ejercicio interesante para el lector.
+  \end{remark}
+
+  \begin{proposition}
+    Si \(f\colon M\to N\) es difeomorfismo,
+    \(f_{*}\colon\mathbb{X}(M)\to\mathbb{X}(N)\) tal que \(f_{*}(X)=\dif{f}\circ
+    X\circ f^{-1}\), es aplicación lineal entre espacios vectoriales (por serlo
+    \(\dif{f}\)).
+  \end{proposition}
 
   
 \end{document}
