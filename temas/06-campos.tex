@@ -117,7 +117,7 @@
     \end{enumerate}
   \end{proof}
 
-  \begin{lemma}
+  \begin{lemma}\label{lem:e-campos-mod}
     \(\mathbb{X}(M)\) espacio vectorial es un \(\mathcal{F}(M)\)-módulo sobre
     \(\mathcal{F}(M)=\{f\colon M\to\RealSet\ \text{diferenciables}\}\), siendo
     la ``multiplicación por escalar'':
@@ -154,37 +154,139 @@
     \(M\) y \(N\) como los de la \cref{fig:campos-f-comp}. Entonces diremos que
     \(X,Y\) son \(f\)-compatibles si \(Y\circ f=\dif{f}\circ X\) (el diagrama
     conmuta \(\forall p\in M\)).
-  \end{definition}
-
-  \begin{remark}
-    La definición anterior es equivalente a decir que si \(\alpha\) es una curva
+    
+    Esto es equivalente a decir que si \(\alpha\) es una curva
     representando \(X(p)\) entonces \(f\circ\alpha\) representa el vector
     \(Y(f(p))\).
 
-    Cabe destacar, que si \(f\) es difeomorfismo y \(X\in\mathbb{X}(M)\) sólo
-    existe un campo \(Y\in\mathbb{X}(N)\) \(f\)-compatible y es \(Y=\dif{f}\circ
-    X\circ f^{-1}\). Esto induce una aplicación \(f_{*}\) que estudiaremos más
-    adelante.
-  \end{remark}
+   
+  \end{definition}
 
-  \begin{definition}[name=f-invariante]\label{def:f-invariante}
+  \begin{definition}[name=\(f\)-invariante]\label{def:f-invariante}
     Cuando \(f\colon X\to X\) y \(X\) es \(f\)-compatible consigo mismo (es
     decir, \(X=\dif{f}\circ X\circ f^{-1}\)) entonces \(X\) se dice
     \emph{\(f\)-invariante}.
   \end{definition}
 
-  \begin{remark}
-    También es posible ver la \(f\)-compatibilidad por componentes locales, lo
-    cuál es un ejercicio interesante para el lector.
-  \end{remark}
-
   \begin{proposition}
-    Si \(f\colon M\to N\) es difeomorfismo,
-    \(f_{*}\colon\mathbb{X}(M)\to\mathbb{X}(N)\) tal que \(f_{*}(X)=\dif{f}\circ
-    X\circ f^{-1}\), es aplicación lineal entre espacios vectoriales (por serlo
+    También es posible ver la \(f\)-compatibilidad por componentes locales:
+
+    Sean las componentes locales de \(X\),
+    \(\{f^{V}\colon\psi(V)\to\RealSet^{m}\}\), respecto a un cierto
+    atlas \(\mathcal{A}\) de \(M\). Entonces las componentes locales
+    \(\{g^{U}\colon\varphi(U)\to\RealSet^{m}\}\) de \(Y\) (\(f\)-compatible con
+    \(X\)) respecto a otro atlas \(\mathcal{B}\) de \(N\) están relacionadas con
+    las anteriores por la fórmula:
+    \[
+      g^{U}(\varphi(f(p)))=\J[\psi(p)]{\varphi\circ f\circ \psi^{-1}}f^{V}(\psi(p))
+    \]
+    si \((U,\varphi),(V,\psi)\) cartas de \(N\) y \(M\) respectivamente, con
+    \(f(V)\subseteq U\).
+  \end{proposition}
+
+  \begin{remark}
+    Cabe destacar, que si \(f\) es difeomorfismo y \(X\in\mathbb{X}(M)\) sólo
+    existe un campo \(Y\in\mathbb{X}(N)\) \(f\)-compatible y es \(Y=\dif{f}\circ
+    X\circ f^{-1}\). Esto induce una aplicación \(f_{*}\) que estudiaremos más
+    adelante.
+  \end{remark}
+  
+  \begin{proposition}[name=función \(f_{*}\)]
+    Si \(f\colon M\to N\) es difeomorfismo, entonces \(f\) induce una aplicación
+    \(f_{*}\colon\mathbb{X}(M)\to\mathbb{X}(N)\) con \(f_{*}(X)=\dif{f}\circ
+    X\circ f^{-1}\), que es aplicación lineal entre espacios vectoriales (por serlo
     \(\dif{f}\)).
   \end{proposition}
 
+  Como se vio en \cref{lem:e-campos-mod}, \(\mathbb{X}(M)\) es un
+  \(\mathcal{F}(M)\)-módulo, y se tiene el siguiente resultado:
+
+  \begin{lemma}
+    Sea \(f^{\#}\colon\mathcal{F}(N)\to\mathcal{F}(M)\) el homomorfismo de
+    anillos dado por la composición \(f^{\#}(g)=g\circ f\) y que cumple:
+    \[
+      f^{\#}(g\cdot g')=(g\cdot g')(f)=(gf)\cdot(g'f)=f^{\#}(g)\cdot f^{\#}(g')
+    \]
+    Entonces si \(X\) es \(f\)-compatible con \(Y\) se tiene que \(f^{\#}(g)X\)
+    es \(f\)-compatible con \(gY\) para todo \(g\in\mathcal{F}(N)\)
+  \end{lemma}
+
+  \begin{proof}
+    En efecto, el diagrama
+
+    \begin{center}
+      \centering
+      \begin{tikzcd}[column sep = large]
+        M
+        \ar[d, "f^{\#}(g)X"']
+        \ar[r, "f"]
+        &
+        N
+        \ar[d, "gY"] \\ 
+        \Tangente{M}
+        \ar[r, "\dif{f}"']
+        &
+        \Tangente{N}
+      \end{tikzcd}
+    \end{center}
+
+    es conmutativo pues si \(\alpha\colon(-\epsilon,\epsilon)\to M\) es una
+    curva representante de \(X(p)\), entonces \(\beta\colon(-\delta,\delta)\to
+    M\) con \(\beta(s)=\alpha(gf(p)s)\) (con \(\Abs{gf(p)\delta}<\epsilon\))
+    es representante de \(f^{\#}(g)X(p)\) y \(f\circ\beta\) lo es de
+    \(\dif{f}f^{\#}(g)X(p)\).
+
+    Por otro lado, por ser \(X\) \(f\)-compatible con
+    \(Y\) tenemos que \(f\circ\alpha\) es una curva representante de \(Y(f(p))\)
+    y por tanto se tiene que \(\gamma(s)=f\circ\alpha(g(f(p))s)=f\circ\beta(s)\) es
+    representante de \(gY(f(p))\), esto es, \(f^{\#}(g)X\) es \(f\)-compatible
+    con \(gY\).
+  \end{proof}
+
+  \begin{corollary}
+    Como consecuencia del lema anterior, se tiene que
+    \(f_{*}\colon\mathbb{X}(M)\to\mathbb{X}(N)\) es un homomorfismo de
+    \(\mathcal{F}(N)\)-módulos cumpliéndose \(f_{*}(f^{\#}(g)X)=gf_{*}X\). 
+  \end{corollary}
+
+  \begin{proof}
+    Si consideramos la operación de \(\mathcal{F}(N)\) sobre \(\mathbb{X}(M)\)
+    reflejada por \(f^{\#}\); esto es si \(g\in\mathcal{F}(N)\) y
+    \(X\in\mathbb{X}(M)\), entonces \(g\star X=f^{\#}(g)X\) y se prueba que
+    \(f_{*}\colon\mathbb{X}(M)\to\mathbb{X}(N)\) es un homomorfismo de
+    \(\mathcal{F}(N)\)-modulos.
+  \end{proof}
+
+  \begin{example}[name=campo invariante a la izquierda o derecha de un grupo de
+    Lie, G]
+    
+    Por definición son los campos \(L_{g}\)-invariantes (\(R_{g}-invariantes\)) para
+    \(L_{g}(x)=gx\) (\(R_{g}(x)=xg\)) \(\forall g\in G\).
+
+    Además, \(g=L_{g}(e)\) y se tiene:
+
+    \begin{center}
+      \centering
+      \begin{tikzcd}[column sep = large]
+        e
+        \ar[d, "X"']
+        \ar[r, "L_{g}"]
+        &
+        g
+        \ar[d, "X"] \\ 
+        \Tangente[e]{G}\ni X(e) \ \ \ \ \ \
+        \ar[r, "\dif{L_{g}}"']
+        &
+        \ \ \ \ \ \ X(g)\in\Tangente[g]{G}
+      \end{tikzcd}
+    \end{center}
+    entonces \(X(g)=\dif{L_{g}}X(e)\) y:
+    \[\begin{array}{rcl}
+        \mathbb{X}_{L}(G) & \cong & \Tangente[e]{G} \\
+        X & \mapsto & X(e) \\
+        X(g)=\dif{L_{g}}(v) & \leftarrow & v
+    \end{array}\]
+  \end{example}
   
 \end{document}
 %%% Local Variables:
