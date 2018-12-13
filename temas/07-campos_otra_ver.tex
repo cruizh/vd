@@ -1,0 +1,205 @@
+\documentclass[../VD.tex]{subfiles}
+
+\externaldocument{../VD}
+
+\begin{document}
+
+\setcounter{chapter}{6}
+\chapter{Versión alternativa de campos tangentes}\label{chap:campos}
+
+\section{Introducción}
+
+Pasaremos ahora a estudiar una versión alternativa y más operativa de la definición
+de campos tangentes y sus propiedades.
+
+Consideraremos los conjuntos \(\mathcal{F}(M)=\{f\colon M\to\RealSet
+\ \text{diferenciables}\}\) y \(\mathcal{F}(U)=\{f\colon U\to\RealSet
+\ \text{diferenciables}\}\) con \(U\subseteq M\) abierto.
+
+\begin{definition}[name=\(\mathcal{F}(p)\)]\label{def:F(p)}
+  Al conjunto de las \emph{curvas diferenciables alrededor de \(p\in M\)} lo
+  notaremos \[\mathcal{F}(p)=\{f\colon U\to\RealSet \ \text{diferenciables con}\ 
+  p\in U\subseteq M \ \text{abierto}\}\]
+\end{definition}
+
+\begin{definition}
+  Sean \(f\colon U\to\RealSet,g\colon V\to\RealSet\) ambas funciones en
+  \(\mathcal{F}(p)\) para un cierto \(p\in M\). Diremos que \(f\) y 
+  \(g\) son \emph{equivalentes en \(p\)}, y lo notarenos \(f \sim_{p} g\), si
+  \(\exists\Omega\subseteq U\cap V\) abierto con \(p\in\Omega\) donde \(f,g\)
+  están definidas y además \(\Restrict{f}{\Omega}=\Restrict{g}{\Omega}\).
+
+  \vline
+
+  A cada clase de equivalencia \(\Clase{f}\) se le llama \emph{gérmen en \(p\)}.
+  Al conjunto cociente de los gérmenes en \(p\) lo notaremos
+  \(\frac{\mathcal{F}(p)}{\sim_{p}}=\colon\mathcal{G}(p)\). 
+\end{definition}
+
+\begin{lemma}\label{lem:G(p)ev}
+  \(\mathcal{G}(p)\) es un espacio vectorial, de hecho, es un álgebra (tiene un
+  producto).
+\end{lemma}
+
+\begin{proof}
+  Sean \(f\colon U\to\RealSet\) y \(g\colon V\to\RealSet\), \(p\in
+          U,V\) abiertos, \(\lambda\in\RealSet\):
+  \begin{itemize}
+    \item \(\Clase{f}+\Clase{g}=\Clase{\Restrict{f}{U\cap V}+\Restrict{g}{U\cap
+          V}}\)
+    \item \(\lambda\Clase{f}=\Clase{\lambda f}\)
+    \item Elemento neutro: \(\theta_{p}\in\mathcal{G}(p), \
+      \theta_{p}\equiv cte\ 0\)
+    \item Producto: \(\Clase{f}\cdot\Clase{g}=\Clase{\Restrict{f}{U\cap
+          V}\cdot\Restrict{g}{U\cap V}}\)
+  \end{itemize}
+\end{proof}
+
+\begin{definition}
+  Una \emph{derivación en \(p\)} es una aplicación lineal
+  \(\delta\colon\mathcal{G}(p)\to\RealSet\) que cumple la \textit{regla de
+    Leibniz} de las derivadas:
+  \[
+    \delta(\Clase{f}\cdot\Clase{g})=\delta(\Clase{f})\cdot
+    g(p)+f(p)\cdot\delta(\Clase{g}) 
+  \]
+
+  A la familia de derivaciones en \(p\) la notaremos \(\mathcal{D}(p)\).
+\end{definition}
+
+\begin{remark}
+  \(\delta(\theta_{p})=0\), es más, si \(c_{t}\colon
+  M\to\RealSet\ cte\ t\), entonces \(\delta(\Clase{c_{t}})=0\):
+  \[\begin{array}{ccc}
+      \delta(\Clase{c_{t}}\Clase{f}) & =\delta(\Clase{c_{t}f})=\delta(\Clase{tf})
+      \overset{\text{\(\delta\) lineal}}{=} & t\delta(\Clase{f}) \\
+      \delta(\Clase{c_{t}}\Clase{f}) & \overset{\text{Leibniz}}{=}
+      \delta(\Clase{c_{t}})f(p)+t\delta(\Clase{f}) &
+      \end {array}\]
+
+    Luego, \(\forall\Clase{f}\in\mathcal{G}(p)\)
+    \[
+      0=\delta(\Clase{c_{t}})f(p)\Rightarrow\delta(\Clase{c_{t}})=0.
+    \]
+\end{remark}
+
+\begin{remark}
+  Todo germen de \(\mathcal{G}(p)\) se puede representar por una función
+  \(f\colon M\to\RealSet\). Esto es por el \nameref{lem:extension} de funciones
+  escalares: \(\Clase{g}\in\mathcal{G}(p)\) con \(g\colon U\to\RealSet\) con
+  \(p\in U\) abierto, entonces existen \(V\subseteq U\) abierto con \(p\in V\)
+  y \(\widetilde{g}\colon V\to\RealSet\) con \(\widetilde{g}=g\) en \(V\), luego
+  \(\Clase{\widetilde{g}}=\Clase{g}\).
+\end{remark}
+
+\begin{example}
+  Dada \(\Clase{\alpha}\in\Tangente[p]{M}\)
+  (\(\alpha\colon(-\epsilon,\epsilon)\to M, \, \alpha(0)=p\)), entonces
+  definimos:
+  \[\begin{array}{ll}
+    \delta_{\Clase{\alpha}}\colon & \mathcal{G}(p)\to\RealSet \\
+    & \Clase{f}\mapsto\delta_{\Clase{\alpha}}(\Clase{f})=(f\circ\alpha)'(0)
+    \end{array}\]
+  Tomaremos \(\epsilon\) pequeño para que
+  \(\alpha((-\epsilon,\epsilon))\subseteq U\Rightarrow
+  (-\epsilon,\epsilon)\overset{\alpha}{\to}U\overset{f}{\to}\RealSet\)
+
+  \vline
+
+  Además, \(\delta_{\Clase\alpha}\) es lineal trivialmente. Veamos la regla de
+  Leibniz:
+  \[\begin{array}{l}
+      \delta_{\Clase\alpha}(\Clase{f}\Clase{g})=\delta_{\Clase\alpha}(\Clase{fg})=\\
+      ((fg)\circ\alpha)'(0)=((f\circ\alpha)\cdot(g\circ\alpha))'(0)=\\
+      ((f\circ\alpha)'(0)(g\circ\alpha)(0)+(f\circ\alpha)(0)(g\circ\alpha)'(0)
+      \overset{\alpha(0)=p}{=} \\ \delta_{\Clase\alpha}(\Clase{f})g(p)+f(p)
+      \delta_{\Clase\alpha}(\Clase{g})
+  \end{array}\]
+\end{example}
+
+\begin{remark}
+  \(\mathcal{D}(p)\) es un espacio vectorial:
+  \begin{itemize}
+  \item \((\delta+\delta')(\Clase{f})=\delta(\Clase{f})+\delta'(\Clase{f})\)
+  \item \(\lambda\delta(\Clase{f})=\delta(\lambda\Clase{f})\)
+  \end{itemize}
+  Y existe un homomorfismo de espacios vectoriales 
+  \(\begin{array}{ll}
+      \\ \phi\colon & \Tangente[p]{M}\to\mathcal{D}(p) \\
+      & \Clase{\alpha}\mapsto\delta_{\Clase{\alpha}}
+    \end{array}\)
+\end{remark}
+
+\begin{proposition}
+  \(\phi\) es un isomorfismo
+\end{proposition}
+
+\begin{proof}
+  Sea la base \(\{e_{i}^{p}\}_{i=1}^{m}=\{\Clase{\epsilon_{i}^{p}}\}_{i=1}^{m}\)
+  de \(\Tangente[p]{M^{m}}\). Si \((U,\varphi)\) es carta de \(M\) con \(p\in
+  U\) entonces:
+  \[\begin{array}{ll}
+    (*) & \epsilon_{i}^{p}(t)=\varphi^{-1}(\varphi(p)+te_{i}),\, \Abs{t}<\epsilon
+  \end{array},\]
+  es decir, con un \(t\) adecuado para el que
+  \(\varphi(p)+te_{i}\in\varphi(U)\).
+
+  Si ahora tomamos \(f\in\mathcal{F}(U)\), entonces
+  \(\Clase{f}\in\mathcal{G}(p)\) y podemos aplicarle
+  \(\delta_{e_{i}^{p}}\):
+  \[\begin{array}{l}
+      \delta_{e_{i}^{p}}(\Clase{f})=(f\circ \epsilon_{i}^{p})'(0)=
+      (f\circ\varphi^{-1}\circ\varphi\circ\epsilon_{i}^{p})'(0)\overset{(*)}{=} \\
+      ((f\circ\varphi^{-1})\circ(\varphi(p)+te_{i}^{p}))'(0)=
+      \sum\limits_{j=1}^{m}\Restrict{\pderiv{f\circ\varphi^{-1}}{x_{j}}}{\varphi(p)}
+      \cdot\Restrict{\frac{dx_{j}}{dt}}{t=0}\overset{(**)}{=} \\
+      \Restrict{\pderiv{(f\circ\varphi^{-1})}{x_{i}}}{\varphi(p)}=
+      \Restrict{\pderiv{f}{x_{i}}}{p}
+    \end{array}\]
+  donde hemos utilizado:
+  \[\begin{array}{ll}
+      (**) & x_{j}=\left\{ \begin{array}{cc}
+                             \varphi(p)_{j} & j\neq i \\
+                             \varphi(p)_{i}+t & j=i
+                           \end{array}\right.
+    \end{array}\]
+
+  Por tanto, \(\delta_{e_{i}^{p}}=\Restrict{\pderiv{}{x_{i}}}{p}\).
+
+  \vline
+  
+  Ahora debemos probar que \(\phi\) es inyectiva y sobreyectiva:
+
+  \begin{itemize}
+    \item \underline{Inyectiva:} \(\phi\) es inyectivo si y solo
+      si \(\ker{\phi}=\{0\}\). En general, la imagen por \(\phi\) de un vector
+      de \(\Tangente[p]{M}\) es \(\phi(\sum\limits_{i=1}^{m}\lambda_{i}e_{i}^{p})=
+      \sum\limits_{i=1}^{m}\lambda_{i}\delta_{e_{i}^{p}}\).
+
+      Sea ahora, \((U,\varphi)\) carta con \(p\in U\) y tal que
+      \(U\overset{\varphi}{\to}\varphi(U)\overset{\pi_{j}}{\to}\RealSet\),
+      siendo \(\pi_{j}\) la proyección en la coordenada \(j\)
+      y sea \(\varphi_{j}=\pi_{j}\circ\varphi\), entonces: 
+      \[\begin{array}{c}
+        0=\sum\limits_{i=1}^{m}\lambda_{i}\delta_{e_{i}^{p}}(\Clase{\varphi_{j}})= \\
+          \sum\limits_{i=1}^{m}\lambda_{i}
+          \Restrict{\pderiv{(\varphi_{j}\circ\varphi^{-1})}{x_{i}}}{\varphi(p)}=
+          \sum\limits_{i=1}^{m}\lambda_{i}
+          \Restrict{\pderiv{\pi_{j}}{x_{i}}}{\varphi(p)} \ (\star)
+        \end{array}\]
+      y resulta que \(\Restrict{\pderiv{\pi_{j}}{x_{i}}}{\varphi(p)}\) se anula
+      si \(j\neq i\) y vale uno cuando son iguales, luego por \((\star)\)
+      obtenemos que \(\lambda_{j}=0\) para \(j\) fijo. Si variamos \(j\) veremos
+      que \(\lambda_{i}=0\ \forall i\), luego \(\ker{\phi}=\{0\}\). 
+
+      \item \underline{Sobreyectiva:} para probar la sobreyectividad
+        necesitaremos probar primero
+  \end{itemize}
+  
+\end{proof}
+
+
+\end{document}
+%%% Local Variables:
+%%% TeX-master: "../VD"
+%%% End:
