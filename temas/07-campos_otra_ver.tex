@@ -63,16 +63,18 @@ Consideraremos los conjuntos \(\mathcal{F}(M)=\{f\colon M\to\RealSet
     \delta(\Clase{f}\cdot\Clase{g})=\delta(\Clase{f})\cdot
     g(p)+f(p)\cdot\delta(\Clase{g}) 
   \]
+
+  A la familia de derivaciones en \(p\) la notaremos \(\mathcal{D}(p)\).
 \end{definition}
 
 \begin{remark}
   \(\delta(\theta_{p})=0\), es más, si \(c_{t}\colon
   M\to\RealSet\ cte\ t\), entonces \(\delta(\Clase{c_{t}})=0\):
-  \[\begin{array}{l}
-      \delta(\Clase{c_{t}}\Clase{f})=\delta(\Clase{c_{t}f})=\delta(\Clase{tf})
-      \overset{\text{\(\delta\) lineal}}{=} t\delta(\Clase{f}) \\
-      \delta(\Clase{c_{t}}\Clase{f})\overset{\text{Leibniz}}{=}
-      \delta(\Clase{c_{t}})f(p)+t\delta(\Clase{f})   
+  \[\begin{array}{ccc}
+      \delta(\Clase{c_{t}}\Clase{f}) & =\delta(\Clase{c_{t}f})=\delta(\Clase{tf})
+      \overset{\text{\(\delta\) lineal}}{=} & t\delta(\Clase{f}) \\
+      \delta(\Clase{c_{t}}\Clase{f}) & \overset{\text{Leibniz}}{=}
+      \delta(\Clase{c_{t}})f(p)+t\delta(\Clase{f}) &
       \end {array}\]
 
     Luego, \(\forall\Clase{f}\in\mathcal{G}(p)\)
@@ -107,13 +109,95 @@ Consideraremos los conjuntos \(\mathcal{F}(M)=\{f\colon M\to\RealSet
   Además, \(\delta_{\Clase\alpha}\) es lineal trivialmente. Veamos la regla de
   Leibniz:
   \[\begin{array}{l}
-      \delta_{\Clase\alpha}(\Clase{f}\Clase{g})=\delta_{\Clase\alpha}(\Clase{fg})=
+      \delta_{\Clase\alpha}(\Clase{f}\Clase{g})=\delta_{\Clase\alpha}(\Clase{fg})=\\
       ((fg)\circ\alpha)'(0)=((f\circ\alpha)\cdot(g\circ\alpha))'(0)=\\
       ((f\circ\alpha)'(0)(g\circ\alpha)(0)+(f\circ\alpha)(0)(g\circ\alpha)'(0)
       \overset{\alpha(0)=p}{=} \\ \delta_{\Clase\alpha}(\Clase{f})g(p)+f(p)
-      \delta_{\Clase\alpha}(\Clase{g})  
+      \delta_{\Clase\alpha}(\Clase{g})
   \end{array}\]
 \end{example}
+
+\begin{remark}
+  \(\mathcal{D}(p)\) es un espacio vectorial:
+  \begin{itemize}
+  \item \((\delta+\delta')(\Clase{f})=\delta(\Clase{f})+\delta'(\Clase{f})\)
+  \item \(\lambda\delta(\Clase{f})=\delta(\lambda\Clase{f})\)
+  \end{itemize}
+  Y existe un homomorfismo de espacios vectoriales 
+  \(\begin{array}{ll}
+      \\ \phi\colon & \Tangente[p]{M}\to\mathcal{D}(p) \\
+      & \Clase{\alpha}\mapsto\delta_{\Clase{\alpha}}
+    \end{array}\)
+\end{remark}
+
+\begin{proposition}
+  \(\phi\) es un isomorfismo
+\end{proposition}
+
+\begin{proof}
+  Sea la base \(\{e_{i}^{p}\}_{i=1}^{m}=\{\Clase{\epsilon_{i}^{p}}\}_{i=1}^{m}\)
+  de \(\Tangente[p]{M^{m}}\). Si \((U,\varphi)\) es carta de \(M\) con \(p\in
+  U\) entonces:
+  \[\begin{array}{ll}
+    (*) & \epsilon_{i}^{p}(t)=\varphi^{-1}(\varphi(p)+te_{i}),\, \Abs{t}<\epsilon
+  \end{array},\]
+  es decir, con un \(t\) adecuado para el que
+  \(\varphi(p)+te_{i}\in\varphi(U)\).
+
+  Si ahora tomamos \(f\in\mathcal{F}(U)\), entonces
+  \(\Clase{f}\in\mathcal{G}(p)\) y podemos aplicarle
+  \(\delta_{e_{i}^{p}}\):
+  \[\begin{array}{l}
+      \delta_{e_{i}^{p}}(\Clase{f})=(f\circ \epsilon_{i}^{p})'(0)=
+      (f\circ\varphi^{-1}\circ\varphi\circ\epsilon_{i}^{p})'(0)\overset{(*)}{=} \\
+      ((f\circ\varphi^{-1})\circ(\varphi(p)+te_{i}^{p}))'(0)=
+      \sum\limits_{j=1}^{m}\Restrict{\pderiv{f\circ\varphi^{-1}}{x_{j}}}{\varphi(p)}
+      \cdot\Restrict{\frac{dx_{j}}{dt}}{t=0}\overset{(**)}{=} \\
+      \Restrict{\pderiv{(f\circ\varphi^{-1})}{x_{i}}}{\varphi(p)}=
+      \Restrict{\pderiv{f}{x_{i}}}{p}
+    \end{array}\]
+  donde hemos utilizado:
+  \[\begin{array}{ll}
+      (**) & x_{j}=\left\{ \begin{array}{cc}
+                             \varphi(p)_{j} & j\neq i \\
+                             \varphi(p)_{i}+t & j=i
+                           \end{array}\right.
+    \end{array}\]
+
+  Por tanto, \(\delta_{e_{i}^{p}}=\Restrict{\pderiv{}{x_{i}}}{p}\).
+
+  \vline
+  
+  Ahora debemos probar que \(\phi\) es inyectiva y sobreyectiva:
+
+  \begin{itemize}
+    \item \underline{Inyectiva:} \(\phi\) es inyectivo si y solo
+      si \(\ker{\phi}=\{0\}\). En general, la imagen por \(\phi\) de un vector
+      de \(\Tangente[p]{M}\) es \(\phi(\sum\limits_{i=1}^{m}\lambda_{i}e_{i}^{p})=
+      \sum\limits_{i=1}^{m}\lambda_{i}\delta_{e_{i}^{p}}\).
+
+      Sea ahora, \((U,\varphi)\) carta con \(p\in U\) y tal que
+      \(U\overset{\varphi}{\to}\varphi(U)\overset{\pi_{j}}{\to}\RealSet\),
+      siendo \(\pi_{j}\) la proyección en la coordenada \(j\)
+      y sea \(\varphi_{j}=\pi_{j}\circ\varphi\), entonces: 
+      \[\begin{array}{c}
+        0=\sum\limits_{i=1}^{m}\lambda_{i}\delta_{e_{i}^{p}}(\Clase{\varphi_{j}})= \\
+          \sum\limits_{i=1}^{m}\lambda_{i}
+          \Restrict{\pderiv{(\varphi_{j}\circ\varphi^{-1})}{x_{i}}}{\varphi(p)}=
+          \sum\limits_{i=1}^{m}\lambda_{i}
+          \Restrict{\pderiv{\pi_{j}}{x_{i}}}{\varphi(p)} \ (\star)
+        \end{array}\]
+      y resulta que \(\Restrict{\pderiv{\pi_{j}}{x_{i}}}{\varphi(p)}\) se anula
+      si \(j\neq i\) y vale uno cuando son iguales, luego por \((\star)\)
+      obtenemos que \(\lambda_{j}=0\) para \(j\) fijo. Si variamos \(j\) veremos
+      que \(\lambda_{i}=0\ \forall i\), luego \(\ker{\phi}=\{0\}\). 
+
+      \item \underline{Sobreyectiva:} para probar la sobreyectividad
+        necesitaremos probar primero
+  \end{itemize}
+  
+\end{proof}
+
 
 \end{document}
 %%% Local Variables:
