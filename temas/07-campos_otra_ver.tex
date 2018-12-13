@@ -55,7 +55,65 @@ Consideraremos los conjuntos \(\mathcal{F}(M)=\{f\colon M\to\RealSet
   \end{itemize}
 \end{proof}
 
+\begin{definition}
+  Una \emph{derivación en \(p\)} es una aplicación lineal
+  \(\delta\colon\mathcal{G}(p)\to\RealSet\) que cumple la \textit{regla de
+    Leibniz} de las derivadas:
+  \[
+    \delta(\Clase{f}\cdot\Clase{g})=\delta(\Clase{f})\cdot
+    g(p)+f(p)\cdot\delta(\Clase{g}) 
+  \]
+\end{definition}
 
+\begin{remark}
+  \(\delta(\theta_{p})=0\), es más, si \(c_{t}\colon
+  M\to\RealSet\ cte\ t\), entonces \(\delta(\Clase{c_{t}})=0\):
+  \[\begin{array}{l}
+      \delta(\Clase{c_{t}}\Clase{f})=\delta(\Clase{c_{t}f})=\delta(\Clase{tf})
+      \overset{\text{\(\delta\) lineal}}{=} t\delta(\Clase{f}) \\
+      \delta(\Clase{c_{t}}\Clase{f})\overset{\text{Leibniz}}{=}
+      \delta(\Clase{c_{t}})f(p)+t\delta(\Clase{f})   
+      \end {array}\]
+
+    Luego, \(\forall\Clase{f}\in\mathcal{G}(p)\)
+    \[
+      0=\delta(\Clase{c_{t}})f(p)\Rightarrow\delta(\Clase{c_{t}})=0.
+    \]
+\end{remark}
+
+\begin{remark}
+  Todo germen de \(\mathcal{G}(p)\) se puede representar por una función
+  \(f\colon M\to\RealSet\). Esto es por el \nameref{lem:extension} de funciones
+  escalares: \(\Clase{g}\in\mathcal{G}(p)\) con \(g\colon U\to\RealSet\) con
+  \(p\in U\) abierto, entonces existen \(V\subseteq U\) abierto con \(p\in V\)
+  y \(\widetilde{g}\colon V\to\RealSet\) con \(\widetilde{g}=g\) en \(V\), luego
+  \(\Clase{\widetilde{g}}=\Clase{g}\).
+\end{remark}
+
+\begin{example}
+  Dada \(\Clase{\alpha}\in\Tangente[p]{M}\)
+  (\(\alpha\colon(-\epsilon,\epsilon)\to M, \, \alpha(0)=p\)), entonces
+  definimos:
+  \[\begin{array}{ll}
+    \delta_{\Clase{\alpha}}\colon & \mathcal{G}(p)\to\RealSet \\
+    & \Clase{f}\mapsto\delta_{\Clase{\alpha}}(\Clase{f})=(f\circ\alpha)'(0)
+    \end{array}\]
+  Tomaremos \(\epsilon\) pequeño para que
+  \(\alpha((-\epsilon,\epsilon))\subseteq U\Rightarrow
+  (-\epsilon,\epsilon)\overset{\alpha}{\to}U\overset{f}{\to}\RealSet\)
+
+  \vline
+
+  Además, \(\delta_{\Clase\alpha}\) es lineal trivialmente. Veamos la regla de
+  Leibniz:
+  \[\begin{array}{l}
+      \delta_{\Clase\alpha}(\Clase{f}\Clase{g})=\delta_{\Clase\alpha}(\Clase{fg})=
+      ((fg)\circ\alpha)'(0)=((f\circ\alpha)\cdot(g\circ\alpha))'(0)=\\
+      ((f\circ\alpha)'(0)(g\circ\alpha)(0)+(f\circ\alpha)(0)(g\circ\alpha)'(0)
+      \overset{\alpha(0)=p}{=} \\ \delta_{\Clase\alpha}(\Clase{f})g(p)+f(p)
+      \delta_{\Clase\alpha}(\Clase{g})  
+  \end{array}\]
+\end{example}
 
 \end{document}
 %%% Local Variables:
