@@ -130,6 +130,39 @@ Consideraremos los conjuntos \(\mathcal{F}(M)=\{f\colon M\to\RealSet
     \end{array}\)
 \end{remark}
 
+\begin{lemma}\label{lem:sobre-iso-derivaciones}
+  Sea \(U\subseteq\RealSet^{m}\) bola abierta de centro \(0\) (en general, un
+  convexo con \(0\in U\)). Si \(f\colon U\to\RealSet\) diferenciable, entonces
+  existen \(g_{1},\dots,g_{m}\colon U\to\RealSet\) cumpliendo:
+  \[\begin{array}{l}
+      1. \quad f(x)-f(0)=\sum\limits_{i=1}^{m}x_{i}g_{i}(x),\, \forall x\in U \\
+      2. \quad g_{i}(0)=\Restrict{\pderiv{f}{x_{i}}}{0}
+  \end{array}\]
+\end{lemma}
+
+\begin{proof}
+  Sea \(\begin{array}{ll}\\ h\colon &
+          U\times\Clase{0,1}\overset{t\cdot}{\to} U\overset{f}{\to}\RealSet \\
+          & (x,t)\mapsto tx\mapsto f(tx)\end{array}\).
+
+        Claramente, si \(U\) es convexo, entonces si
+        \(x\in U,\, t\in\Clase{0,1}\) se tiene \(tx\in\Clase{0,x}\subseteq U\).
+
+        Entonces:
+        \begin{enumerate}
+
+        \item \(\forall x\in U\):
+        \[\begin{array}{c}
+            h(x,1)-h(x,0)=f(x)-f(0)=\int\limits_{0}^{1}{\pderiv{h(x,t)}{t}}{dt}= \\
+            \sum\limits_{i=1}^{m}x_{i}\int\limits_{0}^{1}{
+            \Restrict{\pderiv{f}{x_{i}}}{tx}}{dt}=\sum\limits_{i=1}^{m}x_{i}g_{i}(x)
+          \end{array}\]
+        \item
+        \(g_{i}(0)=\int\limits_{0}^{1}{\Restrict{\pderiv{f}{x_{i}}}{0}}{dt}=\Restrict 
+        {\pderiv{f}{x_{i}}}{0}\)
+      \end{enumerate}
+\end{proof}
+
 \begin{proposition}
   \(\phi\) es un isomorfismo
 \end{proposition}
@@ -173,7 +206,8 @@ Consideraremos los conjuntos \(\mathcal{F}(M)=\{f\colon M\to\RealSet
   \begin{itemize}
     \item \underline{Inyectiva:} \(\phi\) es inyectivo si y solo
       si \(\ker{\phi}=\{0\}\). En general, la imagen por \(\phi\) de un vector
-      de \(\Tangente[p]{M}\) es \(\phi(\sum\limits_{i=1}^{m}\lambda_{i}e_{i}^{p})=
+      \(\Clase{\alpha}=\sum\limits_{i=1}^{m}\lambda_{i}e_{i}^{p}\) de
+      \(\Tangente[p]{M}\) es \(\phi(\Clase{\alpha})= 
       \sum\limits_{i=1}^{m}\lambda_{i}\delta_{e_{i}^{p}}\).
 
       Sea ahora, \((U,\varphi)\) carta con \(p\in U\) y tal que
@@ -181,11 +215,13 @@ Consideraremos los conjuntos \(\mathcal{F}(M)=\{f\colon M\to\RealSet
       siendo \(\pi_{j}\) la proyección en la coordenada \(j\)
       y sea \(\varphi_{j}=\pi_{j}\circ\varphi\), entonces: 
       \[\begin{array}{c}
-        0=\sum\limits_{i=1}^{m}\lambda_{i}\delta_{e_{i}^{p}}(\Clase{\varphi_{j}})= \\
+          \delta_{\Clase{\alpha}}(\Clase{\varphi_{j}})=0\iff
+          \sum\limits_{i=1}^{m}\lambda_{i}\delta_{e_{i}^{p}}(\Clase{\varphi_{j}})=
+          \\ 
           \sum\limits_{i=1}^{m}\lambda_{i}
           \Restrict{\pderiv{(\varphi_{j}\circ\varphi^{-1})}{x_{i}}}{\varphi(p)}=
           \sum\limits_{i=1}^{m}\lambda_{i}
-          \Restrict{\pderiv{\pi_{j}}{x_{i}}}{\varphi(p)} \ (\star)
+          \Restrict{\pderiv{\pi_{j}}{x_{i}}}{\varphi(p)}=0 \ (\star)
         \end{array}\]
       y resulta que \(\Restrict{\pderiv{\pi_{j}}{x_{i}}}{\varphi(p)}\) se anula
       si \(j\neq i\) y vale uno cuando son iguales, luego por \((\star)\)
@@ -193,7 +229,7 @@ Consideraremos los conjuntos \(\mathcal{F}(M)=\{f\colon M\to\RealSet
       que \(\lambda_{i}=0\ \forall i\), luego \(\ker{\phi}=\{0\}\). 
 
       \item \underline{Sobreyectiva:} para probar la sobreyectividad
-        necesitaremos probar primero
+        necesitaremos el \cref{lem:sobre-iso-derivaciones}
   \end{itemize}
   
 \end{proof}
