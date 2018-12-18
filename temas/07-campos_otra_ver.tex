@@ -275,13 +275,135 @@ Consideraremos los conjuntos \(\mathcal{F}(M)=\{f\colon M\to\RealSet
           \end{array}\]
 
         A su vez, por las propiedades de las derivaciones
-        \(\delta(\Clase{h-C_{h(p)}})=\delta(\Clase{h})\) y esto lleva a que
-        \(\delta(\Clase{h})=\sum\limits_{i=1}^{m}\delta(\Clase{\varphi_{i}})
-        \eta_{i}(p)\) (sobreyectividad)
+        \(\delta(\Clase{h-C_{h(p)}})=\delta(\Clase{h})\). Además, observemos que
+        \(\delta(\Clase{\varphi_{i}})=\lambda_{i}\in\RealSet\) (son escalares) y
+        que
+        \(\eta_{i}(p)=(g_{i}\circ\varphi)=g_{i}(0)=\Restrict{\pderiv{f}{x_{i}}}{0}
+        =\Restrict{\pderiv{(h\circ\varphi^{-1})}{x_{i}}}{0}=
+        \delta_{e_{i}^{p}}(\Clase{h})\). Así, 
+         
+        \[\begin{array}{l}
+            \delta(\Clase{h})=\sum\limits_{i=1}^{m}\delta(\Clase{\varphi_{i}})
+            \eta_{i}(p)=\sum\limits_{i=1}^{m}\lambda_{i}\delta_{e_{i}^{p}}(\Clase{h}) \\
+            \Rightarrow
+            \delta=\sum\limits_{i=1}^{m}\lambda_{i}\delta_{e_{i}^{p}}=
+            \phi(\sum\limits_{i=1}^{m}\lambda_{i}e_{i}^{p})
+          \end{array}\]
+
+        Y nuestra función \(\phi\) es sobreyectiva. Entonces es isomorfismo y
+        \(\Tangente[p]{M}\homeo_{\phi}\mathcal{D}(p)\), teniéndose que
+        \(\Tangente{M}\homeo\bigcup_{p\in M}\mathcal{D}(p)\).    
   \end{itemize}
-  
 \end{proof}
 
+\begin{remark}
+  Si optamos por la definición de Espacio Tangente como derivaciones
+  \(\mathcal{D}(p)\) del espacio de gérmenes \(\mathcal{G}(p)\), entonces
+  \(df_{p}\colon\mathcal{D}_{M}(p)\to\mathcal{D}_{N}(f(p))\) viene dada por
+  \(df_{p}(\delta)(\Clase{g})=\delta(\Clase{g\circ f})\).
+
+  \vline
+  
+  En efecto, recordemos que el isomorfismo \(\phi\) viene dado por
+  \(\Clase{\alpha}\mapsto\delta_{\Clase{\alpha}}\) con
+  \(\delta_{\Clase{\alpha}}(\Clase{f})=\Restrict{\frac{d(f\circ\alpha)}{dt}}{t=0}\)
+  por lo que
+  \(df_{p}(\delta_{\Clase{\alpha}})(\Clase{g})=\delta_{\Clase{\alpha}}(\Clase{g\circ
+    f})=\Restrict{\frac{d(g\circ f\circ\alpha)}{dt}}{t=0}\).
+
+  \vline
+
+  A su vez,
+  \(\delta_{df_{p}\Clase{\alpha}}(\Clase{g})=\delta_{\Clase{f\circ\alpha}}(\Clase{g})=
+  \Restrict{\frac{d(g\circ f\circ\alpha)}{dt}}{t=0}\).
+
+  \vline
+
+  Por tanto,
+  \(df_{p}(\delta_{\Clase{\alpha}})(\Clase{g})=\delta_{df_{p}\Clase{\alpha}}(\Clase{g})\),
+  es decir, el siguiente diagrama conmuta:
+
+   \begin{center}
+      \centering
+      \begin{tikzcd}[column sep = large]
+        \Tangente[p]{M}
+        \ar[d, "df_p"']
+        \ar[r, "\homeo_\phi"]
+        &
+        \mathcal{D}_M(p)
+        \ar[d, "df_p"] \\ 
+        \Tangente[f(p)]{N}
+        \ar[r, "\homeo_\phi"']
+        &
+        \mathcal{D}_N(f(p))
+      \end{tikzcd}
+    \end{center}  
+\end{remark}
+
+¿Cómo se ven los campos tangentes \(X\colon M\to\Tangente{M}\)?
+
+\begin{definition}
+  \(D\colon\mathcal{F}(M)\to\mathcal{F}(M)\) operador lineal se dice
+  \emph{derivación} si cumple \(D(fg)=D(f)g+fD(g)\) (regla de Leibniz). Al
+  espacio de derivaciones en \(M\) lo notaremos \(\mathcal{D}(M)\) (es espacio
+  vectorial).
+\end{definition}
+
+\begin{definition}
+  Si ahora \(X\colon M\to\Tangente{M}\) es un campo tangente con funciones
+  componentes locales \(g^{U}\colon\varphi(U)\to\RealSet^{m}\), entonces se
+  define \(D_{X}\colon\mathcal{F}(M)\to\mathcal{F}(M)\) como
+  
+  \[D_{X}(f)(p)=\sum\limits_{i=1}^{m}g_{i}^{U}(\varphi(p))\Restrict
+  {\pderiv{(f\circ\varphi^{-1})}{x_{i}}}{\varphi(p)}=
+  \sum\limits_{i=1}^{m}g_{i}^{U}(\varphi(p))\delta_{e_{i}^{p}}(\Clase{f})\]
+  siendo \((U,\varphi)\) carta con \(p\in U\).
+\end{definition}
+
+\begin{proposition}
+  La anterior aplicación está bien definida (por la propiedad
+  \nameref{prop:comp-local}) y es derivación.
+
+  \vline
+
+  Además, veremos que la correspondencia \(X\mapsto D_{X}\) es biyectiva y así
+  tendremos una segunda definición alternativa de campo tangente como una
+  derivación sobre \(\mathcal{F}(M)\).
+\end{proposition}
+
+\begin{proof}
+  \underline{AYUDA(biyección):} Tendremos que probar que existe un único
+  \(X_{D}\) para cada \(D\) tal que \(\phi(X_{D})=D\) con \(\phi\) el
+  isomorfismo que vimos antes.
+
+  Si \(D\colon\mathcal{F}(M)\to\mathcal{F}(M)\)
+  derivación entonces para cada \(p\in M\)
+  \(D_{p}\colon\mathcal{G}(p)\to\RealSet\) con 
+  \(D_{p}(\Clase{f})=D(\widetilde{f})(p)\) donde \(\widetilde{f}\) es un
+  representante de \(\Clase{f}\) definido en todo \(M\) y que siempre existe por
+  el \nameref{lem:extension}.
+\end{proof}
+
+\begin{lemma}
+  Si \(f,g\colon M\to\RealSet\) tienen el mismo gérmen en \(p\), entonces sus
+  derivaciones \(D(f)\) y \(D(g)\) tienen el mismo gérmen en \(p\) también.
+\end{lemma}
+
+\begin{proof}
+  Por el lema de extensión, consideremos la función constante \(1\):
+  \(c_{1}\colon U\to\RealSet\) con \(c_{1}(u)=1\). Sean \(f=g\) en
+  \(U\subseteq\RealSet\) abierto. Se tiene que \(\exists\widetilde{c_{1}}\colon
+  M\to\RealSet\) tal que \(\widetilde{c_{1}}=1\) en \(V\subseteq V'\subseteq U\)
+  abiertos y \(\widetilde{c_{1}}=0\) en \(U\backslash V'\).
+  Sea \(h=(f-g)\widetilde{c_{1}}\). Entonces \(h=cte\ 0\):
+  Si \(q\in V'\), \((f-g)(q)=0\), si \(q\in M\backslash V'\),
+  \(\widetilde{c_{1}}=0\). Por ser \(D\) lineal, \(D(h)=0\) y por ser derivación:
+  \[
+    0=D(h)=D(f-g)\widetilde{c_{1}}+(f-g)D(\widetilde{c_{1}})
+  \]
+
+  Luego si lo aplicamos en \(q\in V\), llegaremos a que \(D(f)=D(g)\) en \(V\).
+\end{proof}
 
 \end{document}
 %%% Local Variables:
