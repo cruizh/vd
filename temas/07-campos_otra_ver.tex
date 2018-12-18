@@ -164,7 +164,10 @@ Consideraremos los conjuntos \(\mathcal{F}(M)=\{f\colon M\to\RealSet
 \end{proof}
 
 \begin{proposition}
-  \(\phi\) es un isomorfismo
+   \(\begin{array}{ll}
+      \\ \phi\colon & \Tangente[p]{M}\to\mathcal{D}(p) \\
+      & \Clase{\alpha}\mapsto\delta_{\Clase{\alpha}}
+    \end{array}\) es un isomorfismo
 \end{proposition}
 
 \begin{proof}
@@ -229,7 +232,52 @@ Consideraremos los conjuntos \(\mathcal{F}(M)=\{f\colon M\to\RealSet
       que \(\lambda_{i}=0\ \forall i\), luego \(\ker{\phi}=\{0\}\). 
 
       \item \underline{Sobreyectiva:} para probar la sobreyectividad
-        necesitaremos el \cref{lem:sobre-iso-derivaciones}
+        utilizaremos el \cref{lem:sobre-iso-derivaciones}
+
+        Sean \(\delta\colon\mathcal{G}(p)\to\RealSet\) y
+        \(\Clase{h}\in\mathcal{G}(p)\). Podemos suponer \(h\colon
+        U\to\RealSet\), con \((U,\varphi)\) carta con \(p\in U,\, \varphi(U)\)
+        bola abierta de centro \(\varphi(p)=0\). Sea
+        \(f=h\circ\varphi^{-1}\colon\varphi(U)\to\RealSet\), \(f\) cumple el
+        \cref{lem:sobre-iso-derivaciones}:
+
+        \[
+          \exists g_{i}\colon\varphi(U)\to\RealSet\colon
+          \begin{dcases}
+            \forall x\in\varphi(U)
+            \ f(x)-f(0)=\sum\limits_{i=1}^{m}x_{i}g_{i}(x) \\
+            g_{i}(0) = \Restrict{\pderiv{f}{x_{i}}}{0}
+          \end{dcases}
+        \]
+
+        Sea \(\eta_{i}=g_{i}\circ\varphi\colon U\to\RealSet\). Sea \(q\in U,\
+        \varphi(q)=x\). Entonces:
+
+        \[
+          h(q)-h(p)=\sum\limits_{i=1}^{m}\varphi(q)_{i}\eta_{i}(q)
+        \]
+
+        donde \(\varphi(q)_{i}=\pi\circ\varphi(q)=\varphi_{i}(q)\).
+
+        Luego,
+
+        \[
+          h-C_{h(p)}=\sum\limits_{i=1}^{m}\varphi_{i}\eta_{i}
+        \]
+
+        Y por tanto,
+        \[\begin{array}{l}
+            \delta(\Clase{h-C_{h(p)}})=
+            \delta(\Clase{\sum\limits_{i=1}^{m}\varphi_{i}\eta_{i}})= \\
+            \sum\limits_{i=1}^{m}\varphi_{i}(p)\delta(\Clase{\eta_{i}})
+            +\delta(\Clase{\varphi_{i}})\eta_{i}=
+            \sum\limits_{i=1}^{m}\delta(\Clase{\varphi_{i}})\eta_{i}(p)
+          \end{array}\]
+
+        A su vez, por las propiedades de las derivaciones
+        \(\delta(\Clase{h-C_{h(p)}})=\delta(\Clase{h})\) y esto lleva a que
+        \(\delta(\Clase{h})=\sum\limits_{i=1}^{m}\delta(\Clase{\varphi_{i}})
+        \eta_{i}(p)\) (sobreyectividad)
   \end{itemize}
   
 \end{proof}
