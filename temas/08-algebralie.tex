@@ -1,0 +1,107 @@
+\documentclass[../VD.tex]{subfiles}
+
+\externaldocument{../VD}
+
+\begin{document}
+
+\setcounter{chapter}{7}
+\chapter{Álgebra de Lie}\label{chap:algebra}
+
+\section{Introducción}
+
+\begin{definition}\label{def:alglie}
+  Un \emph{álgebra de Lie}, \(\mathcal{L}\), es un espacio vectorial dotado de
+  otra operación interna, que llamaremos \emph{producto corchete},
+  \(\Clase{\cdot,\cdot}\colon\mathcal{L}\times\mathcal{L}\to\mathcal{L}\) que
+  verifica:
+  \begin{enumerate}
+  \item Es bilineal: \(\Clase{\lambda a,\mu b}=\lambda\mu\Clase{a,b}\)
+  \item Es antisimétrica: \(\Clase{a,b}=-\Clase{b,a}\)
+  \item La identidad de Jacobi (la suma cíclica es nula):
+    \(\Clase{\Clase{a,b},c}+\Clase{\Clase{b,c},a}+\Clase{\Clase{c,a},b}=0,\
+    \forall a,b,c\in\mathcal{L}\)
+  \end{enumerate}
+\end{definition}
+
+\begin{remark}
+  De la antisimetría: \(\Clase{a,a}=-\Clase{a,a}=0,\ \forall
+  a\in\mathcal{L}\)
+
+  Si \(\mathcal{L}\) es un espacio vectorial finito, a los productos corchetes
+  \(\Clase{e_{i},e_{j}}=\sum\limits_{i=1}^{m}c_{ij}^{k}e_{k}\) de cada par de
+  vectores de la base de \(\mathcal{L}\) se les llama constantes de estructura
+  del álgebra con respecto a la base del espacio.
+
+  En nuestro caso, no serán espacios finitos y no se tendrá este resultado.
+\end{remark}
+
+\begin{example}
+  Algunos ejemplos de álgebras de Lie:
+  
+  \begin{itemize}
+  \item \((\RealSet^{3},\wedge)\): se tiene que \(\Clase{i,j}=i\wedge
+    j=k,\Clase{j,k}=i,\Clase{k,i}=j\) por lo que se cumple la identidad de
+    Jacobi, \(\Clase{\Clase{i,j},k}=\Clase{k,k}=0\) y así las otras dos,
+    siendo la suma cíclica nula. 
+  \item \(\mathcal{M}_{n}(\RealSet)\) con \(\Clase{A,B}=AB-BA\)
+  \end{itemize}
+\end{example}
+
+\section{\(\mathbb{X}(M)\) como Álgebra de Lie}
+
+Queremos probar que \(\mathbb{X}(M)\) es un álgebra de Lie. Consideraremos los
+campos como derivaciones:
+
+\begin{proposition}
+  Sean \(X,Y\in\mathbb{X}(M)\), entonces \(D_{X}D_{Y}-D_{Y}D_{X}\) también es
+  una derivación. Además, \(\Clase{D_{X},D_{Y}}=D_{X}D_{Y}-D_{Y}D_{X}\) es su
+  producto corchete asociado. 
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{proposition}
+  Sea \(\mathcal{A}=\{(U,\varphi)\}\) atlas de \(M\). Si \(\{f^{U}\},\{g^{U}\}\)
+  denotan las funciones componentes de los campos \(X,Y\) respectivamente,
+  entonces el campo correspondiente a \(\Clase{D_{X},D_{Y}}(\Clase{X,Y})\) tiene
+  como funciones componentes locales a
+  \(\Clase{f^{U},g^{U}}\colon\varphi(U)\to\RealSet^{m}\) cuya i-ésima función
+  coordenada es
+  \(\Clase{f^{U},g^{U}}_{i}=\sum\limits_{j=1}^{m}(f_{j}^{U}\pderiv{g_{i}^{U}}{x_{j}}-
+  \pderiv{f_{i}^{U}}{x_{j}}g_{j}^{U})\)
+\end{proposition}
+
+\begin{proof}
+  
+\end{proof}
+
+\section{Campos h-compatibles}
+
+Si \(X,Y\in\mathbb{X}(M),X',Y'\in\mathbb{X}(N)\), \(X,X'\) h-compatibles,
+\(Y,Y'\) también, ¿entonces \(\Clase{X,Y}\) h-compatible con \(\Clase{X',Y'}\)?
+
+\begin{lemma}
+  Si \(X\in\mathbb{X}(M),Y\in\mathbb{X}(N)\) son h-compatibles, entonces
+  \(\forall p\in M,\ \forall f\in\mathcal{C}^{\infty}(N)\) se verifica que
+  \(D_{X}(f\circ h)(p)=D_{Y}(f)(h(p))\). Es decir, \(D_{X}(f\circ
+  h)=D_{Y}(f)\circ h\)
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{proposition}
+  Si \(X,X'\) son h-compatibles, \(Y,Y'\) también, entonces
+  \(\Clase{X,Y},\Clase{X',Y'}\) h-compatibles.
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+\end{document}
+%%% Local Variables:
+%%% TeX-master: "../VD"
+%%% End:
