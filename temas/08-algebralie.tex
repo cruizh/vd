@@ -15,7 +15,7 @@
   \(\Clase{\cdot,\cdot}\colon\mathcal{L}\times\mathcal{L}\to\mathcal{L}\) que
   verifica:
   \begin{enumerate}
-  \item Es bilineal: \(\Clase{\lambda a,\mu b}=\lambda\mu\Clase{a,b}\)
+  \item Es bilineal
   \item Es antisimétrica: \(\Clase{a,b}=-\Clase{b,a}\)
   \item La identidad de Jacobi (la suma cíclica es nula):
     \(\Clase{\Clase{a,b},c}+\Clase{\Clase{b,c},a}+\Clase{\Clase{c,a},b}=0,\
@@ -59,7 +59,49 @@ campos como derivaciones:
 \end{proposition}
 
 \begin{proof}
+  Sean \(f,g\in\mathcal{F}(M)\). Entonces, por un lado, \(D_{X}D_{Y}(fg)=\)
+  \[\begin{array}{l}
+      D_{X}\Clase{D_{Y}(f)g+fD_{Y}(g)}=D_{X}(D_{Y}(f)g)+D_{X}(fD_{Y}(g))\\
+      =(D_{X}D_{Y}(f))g+D_{Y}(f)D_{X}(g)+D_{X}(f)D_{Y}(g)+f(D_{X}D_{Y}(g))
+    \end{array}\]
 
+  A su vez, \(D_{Y}D_{X}(fg)=\)
+  \[\begin{array}{l}
+      (D_{Y}D_{X}(f))g+D_{X}(f)D_{Y}(g)+
+      D_{Y}(f)D_{X}(g)+f(D_{Y}D_{X}(g))
+    \end{array}\]
+
+  Si a la primera expresión le restamos la segunda, obtenemos que 
+  \(D_{X}D_{Y}(fg)-D_{Y}D_{X}(fg)=\)
+  \[
+    \Clase{(D_{X}D_{Y}(f))-(D_{Y}D_{X}(f))}g+
+    f\Clase{D_{X}D_{Y}(g)-D_{Y}D_{X}(g)}
+  \]
+  Luego, es \textbf{derivación} (y por ello \textbf{bilineal}). Además, es
+  \textbf{antisimétrico}:
+  \[\Clase{D_{Y},D_{X}}=D_{Y}D_{X}-D_{X}D_{Y}=-(D_{X}D_{Y}-D_{Y}D_{X})=
+    -\Clase{D_{X},D_{Y}}\]
+
+  Veamos ahora la identidad de Jacobi: Sean \(D_{X},D_{Y},D_{Z}\). Entonces:
+  \begin{itemize}
+  \item
+    \(\Clase{\Clase{D_{X},D_{Y}},D_{Z}}=\Clase{D_{X}D_{Y}-D_{Y}D_{X},D_{Z}}\).
+    Como es bilineal, lo anterior se corresponde con
+    \(
+    \Clase{D_{X}D_{Y},D_{Z}}-\Clase{D_{Y}D_{X},D_{Z}}=D_{X}D_{Y}D_{Z}-D_{Z}D_{X}D_{Y}-
+    D_{Y}D_{X}D_{Z}+D_{Z}D_{Y}D_{X}
+    \)
+  \item
+    \(\Clase{\Clase{D_{Y},D_{Z}},D_{X}}=D_{Y}D_{Z}D_{X}-D_{X}D_{Y}D_{Z}-D_{Z}D_{Y}D_{X}
+    +D_{X}D_{Z}D_{Y}\)
+  \item
+    \(\Clase{\Clase{D_{Z},D_{X}},D_{Y}}=D_{Z}D_{X}D_{Y}-D_{Y}D_{Z}D_{X}-D_{X}D_{Z}D_{Y}
+    +D_{Y}D_{X}D_{Z}\)
+  \end{itemize}
+  Claramente, la suma cíclica de las expresiones anteriores se anula.
+
+  Luego nuestra operación es un \emph{corchete de Lie} y entonces
+  \(\mathbb{X}(M)\) es un \emph{álgebra de Lie}.
 \end{proof}
 
 \begin{proposition}
@@ -74,7 +116,39 @@ campos como derivaciones:
 \end{proposition}
 
 \begin{proof}
-  
+  En \((U,\varphi)\),
+  \[\begin{array}{l}
+      D_{X}(h)=\sum\limits_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}f_{i}^{U}
+      \\
+      D_{Y}(h)=\sum\limits_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}g_{i}^{U}
+    \end{array}\]
+
+  Entonces,
+  \[\begin{array}{l}
+      D_{X}D_{Y}(h)=D_{X}(\sum\limits_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}g_{i}^{U})
+      =\sum\limits_{j=1}^{m}\pderiv{(
+      \sum\limits_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}g_{i}^{U})}{x_{j}}f_{j}^{U}
+      \\
+      =\sum\limits_{i,j=1}^{m}\Clase{\pderiv{^{2}h\circ\varphi^{-1}}{x_{j}\partial
+      x_{i}}g_{i}^{U}f_{j}^{U}+\pderiv{h\circ\varphi^{-1}}{x_{i}}\pderiv{g_{i}^{U}}{x_{j}}
+      f_{j}^{U}}
+    \end{array}\]
+
+  A su vez,
+  \[\begin{array}{l}
+      D_{Y}D_{X}(h)=\sum\limits_{i,j=1}^{m}\Clase{\pderiv{^{2}h\circ\varphi^{-1}}{x_{i}
+      \partial x_{j}}f_{i}^{U}g_{j}^{U}+\pderiv{h\circ\varphi^{-1}}{x_{i}}
+      \pderiv{f_{i}^{U}}{x_{j}}g_{j}^{U}}
+    \end{array}\]
+  Por tanto, restando la segunda expresión a la primera,
+  \[\begin{array}{l}
+      \Clase{D_{X},D_{Y}}(h)=(D_{X}D_{Y}-D_{Y}D_{X})(h)= \\
+      \sum\limits_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}(\sum\limits_{j=1}^{m}
+      \pderiv{g_{i}^{U}}{x_{j}}f_{j}^{U}-\pderiv{f_{i}^{U}}{x_{j}}g_{j}^{U})= \\
+      \sum\limits_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}(\text{coordenada
+      i-ésima})= \\
+      \sum\limits_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}\Clase{f^{U},g^{U}}_{i}
+    \end{array}\]
 \end{proof}
 
 \section{Campos h-compatibles}
@@ -84,22 +158,50 @@ Si \(X,Y\in\mathbb{X}(M),X',Y'\in\mathbb{X}(N)\), \(X,X'\) h-compatibles,
 
 \begin{lemma}
   Si \(X\in\mathbb{X}(M),Y\in\mathbb{X}(N)\) son h-compatibles, entonces
-  \(\forall p\in M,\ \forall f\in\mathcal{C}^{\infty}(N)\) se verifica que
+  \(\forall p\in M,\ \forall f\in\mathcal{F}(N)\) se verifica que
   \(D_{X}(f\circ h)(p)=D_{Y}(f)(h(p))\). Es decir, \(D_{X}(f\circ
   h)=D_{Y}(f)\circ h\)
 \end{lemma}
 
 \begin{proof}
+  Sean \(X,Y\) campos h-compatibles.
+  Entonces por definición: \(dh_{p}X(p)=Y(h(p))\),
+  donde \(dh_{p}X(p)\) se corresponde con la derivación de gérmenes para el gérmen
+  determinado por \(f\): \(\delta_{h(p)}(\Clase{f})=D_{X}(\widetilde{f}\circ
+  h)(p)=D_{X}(f\circ h)(p)\) (pues \(f\) está definida en todo \(N\) y no hace
+  falta extenderla).
 
+  También \(Y(h(p))\) se corresponde con
+  \(\delta'_{h(p)}(\Clase{f})=D_{Y}(f)(h(p))\).
+
+  Por tanto, llegamos a que
+  \[\begin{array}{l}
+      D_{X}(f\circ h)(p)=dh_{p}X(p)=Y(h(p))=D_{Y}(f)(h(p))
+    \end{array}\]
 \end{proof}
 
 \begin{proposition}
-  Si \(X,X'\) son h-compatibles, \(Y,Y'\) también, entonces
+  Si \(X,X'\) son h-compatibles (es decir, se cumple \(D_{X}(f\circ h)=D_{X'}(f)\circ
+  h\)), e \(Y,Y'\) también (\(D_{Y}(f\circ h)=D_{Y'}(f)\circ h\)), entonces
   \(\Clase{X,Y},\Clase{X',Y'}\) h-compatibles.
 \end{proposition}
 
 \begin{proof}
+  Aplicando el lema anterior, lo que tenemos que probar es que
+  \(\Clase{D_{X},D_{Y}}(f\circ h)=\Clase{D_{X'},D_{Y'}}(f)\circ h\) para ver que
+  son h-compatibles.
 
+  Por un lado,
+  \[\begin{array}{ll}
+      \Clase{D_{X},D_{Y}}(f\circ h)&=D_{X}(D_{Y}(f\circ h))-D_{Y}(D_{X}(f\circ
+      h))\\ &=D_{X}(D_{Y'}(f)\circ h)-D_{Y}(D_{X'}(f)\circ h)\\
+      &=D_{X}(f^{Y'}\circ h)-D_{Y}(f^{X'}\circ h)\\
+      &=D_{X'}(f^{Y'})\circ h -
+        D_{Y'}(f^{X'})\circ h \\
+      &=\Clase{D_{X'},D_{Y'}}(f)\circ h      
+    \end{array}\]
+  donde hemos usado que tanto \(D_{Y'}(f)\) como \(D_{X'}(f)\) son a su vez
+  funciones a las que podemos aplicar el resultado anterior de h-compatibilidad.
 \end{proof}
 \end{document}
 %%% Local Variables:
