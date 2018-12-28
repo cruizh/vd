@@ -1,0 +1,159 @@
+\documentclass[../VD.tex]{subfiles}
+
+\externaldocument{../VD}
+
+\begin{document}
+
+\setcounter{chapter}{8}
+\chapter{Tangente dual}\label{chap:dual}
+
+\section{Clase}
+
+Si \((U,\varphi)\) es una carta sobre \(M\), consideramos \(T U=\bigcup_{p\in U}T_{p}M\subseteq T M\). Entonces \(T U^*=\bigcap_{p\in U}T_{p}^*{M}\subseteq T^*(M)\).
+
+Además, si tomamos una carta \((TU,\tilde{\varphi})\), donde \(\tilde{\varphi}\colon TU\to \varphi(U)\times \RealSet^m \), podemos ver su equivalente dual:
+
+Sea \((T^*U,\tilde{\varphi})^*\), donde \(\tilde{\varphi}^*\colon T^*U\to \varphi(U)\times (\RealSet^m)^* \) dada por
+\[
+w\in T^*_p(M)\mapsto \tilde{\varphi}^*(w)=(\varphi(p),\tilde{\varphi}_2(w)\quad \text{con p en U}
+\]
+
+\begin{example}[1-forma]
+Asociada a cada \(f\in \Fdif(M)\) hay asociada una 1-forma
+\[
+p\in M\mapsto ((\dif{f})_p\colon T_p(M)\to \RealSet)
+\]
+cuyas componentes locales (referidas a carta \((U,\varphi)\)) de \(M\)) son \label{def:grad_1}
+\[
+(\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_1}|_{\varphi(p)},\ldots,\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_m}|_{\varphi(p)})
+\]
+Localmente, \(e_i^p\) representa los elementos básicos de \(T_p(M)\) y \((e_i^p)^*\) representa los duales de los \(e_i^p\) y forman una base de \(T_p^*(M)\).
+Esto se traduce en 
+\[
+(\dif{f})_p=\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_1}|_{\varphi(p)}(e_1^p)^*+\ldots+\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_m}|_{\varphi(p)}(e_m^p)^*
+\]
+En general, dada una 1-forma \(w\) con componentes licales
+\begin{enumerate}
+\item \(g^U\colon\varphi(U)\to (\RealSet^m)^*\)
+\item \(g^V\colon \psi(V)\to (\RealSet^m)^*\)
+\end{enumerate}
+ha de cumplirse:
+\[
+g^V(\psi\circ \varphi^{-1}(x))=(J_{\psi\circ \varphi^{-1}(p)}\varphi\circ \psi^{-1})^t\cdot g^U(x)
+\]
+
+Sean \((U,\varphi)\) y \((V,\psi)\) dos cartas de \(M\) con \(U\cap V\neq \emptyset\). Entonces, para \(y\in \psi(U\cap V)\) y \(x=\varphi\circ \psi^{-1}(y)\) se tiene:
+\begin{align*}
+(\bigtriangledown f)^V_i|_y&=\dfrac{\partial(f)\circ \psi^{-1}}{\partial y_i}|_y\\
+&=\dfrac{\partial(f\circ \varphi^{-1}\circ \varphi \circ \psi^{-1})}{\partial y_i}|_y\\
+&=\sum_{k=1}^m \dfrac{\partial(f\circ \varphi^{-1})}{\partial x_k}|_x\cdot \dfrac{\partial(\varphi\circ \psi^{-1})}{\partial y_i}|_y\\
+&=\text{producto escalar de la i-ésima columna de la matriz jacobiana} \\
+&J_y \varphi\circ \psi^{-1} \text{con el vector } (\bigtriangledown f)^U(x)
+\end{align*}
+siendo el gradiente el visto en \ref{def:grad_1.}.
+
+Resumiendo obtenemos
+\[
+(\bigtriangledown f)^V(\psi\circ \varphi^{-1}(x))=(\bigtriangledown f)^V(y)=(J_ {\psi\circ\varphi^{-1}(x)}(\varphi \circ \psi^{-1})^t\cdot (\bigtriangledown f)^U(x)
+\]
+
+Estro probaría que cumple la propiedad de compatibilidad vista anteriormente %need ref
+
+Veamos un caso concreto. Si tenemos una carta \((U,\varphi)\) de \(M\) podemos ver la siguiente aplicación localmente:
+\[
+\varphi_i\colon U\to \varphi(U)\to^{\pi_i}\RealSet
+\]
+Cuyas 1-formas vienen dadas por
+\begin{align*}
+(\dif{\varphi_i})_p&=(\dfrac{\partial(\varphi_i\circ \varphi^{-1})}{\partial x_1}|_{\varphi(p)},\ldots,\dfrac{\partial(\varphi_i\circ \varphi^{-1})}{\partial x_m}|_{\varphi(p)})\\
+&= \sum_{k=1}^{m} \underbracket{\dfrac{\partial(\varphi_i\circ \varphi^{-1})}{\partial x_k}|_{\varphi(p)}}_{\delta_{ik}}\cdot (e_k^p)^*\colon T_p M\to \RealSet
+\end{align*}
+\end{example}
+
+En \(M=\RealSet^m\) (Con una única carta \((\RealSet^m,id)\)), toda 1-forma \(w\) se expresa con la notación habitual
+\[
+w=g_1\dif{x_1}+\ldots+g_m\dif{x_m}
+\]
+y si ahora \(f\in\Fdif{\RealSet^m}\), entonces:
+\[
+df=\dfrac{\partial(f)}{\partial x_1}dx_1+\ldots+\dfrac{\partial(f)}{\partial x_m}dx_m
+\]
+que es la notación usual de análisis
+
+\begin{example}
+Sea \(M^m\) una variedad diferenciable y \(T^*M\) espacio cotangente.
+\[
+T^*(T^*M)=\text{espacio cotangente a } T^*M
+\]
+variedad diferenciable de dimension \(4m\).
+
+Asociado a \(M\), hay una 1-forma canónica \(\theta_M\) sobre \(T^*M\) (llamada de Liouville) definida de la siguiente manera:
+\[
+\theta_M\colon T^*M\to T^*(T^*M)
+\]
+con \(\theta_M(w)\in T^*_w(T^*M)\). Si \(w\in T^*M\) definimos \(\theta_M(w)(v)=w(d\pi^*(v))\)
+\end{example}
+
+\section{Una forma alternativa de ver las 1-formas}
+
+Supongamos que tenemos una 1-forma \(o\in M \mapsto \omega_p\in T_p^*(M)\). Podemos defnir una aplicación duferenciable 
+\[
+f_\omega\colon TM\to \RealSet,\quad (f_\omega\in \Fdif(TM))
+\]
+dada por \(f_\omega(v)=\omega_p(v)\)
+
+Veamos la diferenciabilidad de \(f_\omega\).
+
+Dada una carta \((U,\varphi)\) de \(M\), se tiene:
+ \begin{center}
+ 	\begin{tikzcd}
+ 	\bigcup_{p\in U}T_p M=
+	TU
+	\ar[r, "f_\omega"]
+	\ar[d, "\tilde{\varphi}"] &
+	\RealSet\\
+	\varphi(U)\times\RealSet^m
+	\ar[ur, "f_\omega\circ \tilde{\varphi}" ']
+	\end{tikzcd}
+\end{center}
+
+Tendríamos que probar que \(f_\omega\circ \tilde{\varphi}(x,y)=\omega_{\varphi^{-1}(x)}(\tilde{\varphi}^{-1}(x,y))\) es diferenciable.\\
+Además tenemos el siguiente diagrama:
+ \begin{center}
+	\begin{tikzcd}
+	U
+	\ar[r, "\omega"]
+	\ar[d, "\varphi"] &
+	T^*(U)
+	\ar[d, "\tilde{\varphi}^*"]\\
+	\varphi(U)
+	\ar[r, "\tilde{\varphi}^*\circ \omega\circ \varphi^{-1}"] &
+	\varphi(U)\times(\RealSet^m)^*
+	\end{tikzcd}
+\end{center}
+
+Según las definiciones, 
+\begin{align*}
+\tilde{\varphi}^*(\omega_ {\varphi^{-1}(x)})=(x,\eta)
+\end{align*}
+con \(\eta=(\lambda_1(x),\ldots,\lambda_m(x))\in (\RealSet^m)^*\) las coordenadas respecto a los elemento de la base de \((\RealSet^m)^*\).
+
+Dado \(y=(y_1,\ldots, y_m)\), si aplicamos \(\eta\) a \(y\) obtendremos:
+\[
+\eta(y)=\sum_{i=1}^{m}\lambda_i(x)y_i=(\tilde{\varphi}^*(\omega_ {\varphi^{-1}(x)}))_2\quad\text{diferenciable}
+\]
+
+Así pues, podeoms asociar a una 1-forma la función:
+\[
+\omega\mapsto f_{\omega}\in\Fdif(TM)
+\]
+Recíprocamente, dada una \(f\in\Fdif(TM)\) tal que para todo \(p\in M\)
+\[
+f\colon T_p(M)\to \RealSet
+\]
+es lineal, podemos definir una 1-forma que notaremos por \(\omega_f\) de la siguiente manera:
+\[
+p\in M\mapsto ((\omega_f)_p\colon T_pM\to \RealSet)
+\]
+con \((\omega_f)_p=f|_{T_p(M)}\)
+\end{document}
