@@ -12,8 +12,10 @@
 El espacio cotangente de una variedad se basa en el \emph{estudio de los
   momentos} de la física.
 
-Sea \(W\) espacio vectorial, el dual de \(W\) será el conjunto de aplicaciones
-lineales \(f\colon W\to K\) con \(K\) cuerpo del espacio vectorial.
+\begin{definition}
+  Sea \(W\) espacio vectorial, el dual de \(W\) será el conjunto de aplicaciones
+  lineales \(f\colon W\to K\) con \(K\) cuerpo del espacio vectorial. 
+\end{definition}
 
 \begin{definition}[name=espacio cotangente a \(M\) en el punto \(p\)]
 Sea \(M\) variedad diferenciable, \(p\in M,\
@@ -21,6 +23,62 @@ Sea \(M\) variedad diferenciable, \(p\in M,\
 \(\DualT[p]{M}=\{\omega\colon\Tangente[p]{M}\to\RealSet
 \text{lineales}\}\)
 \end{definition}
+
+\begin{proposition}
+  Si \(M\) es una variedad diferenciable de dimensión \(m\) entonces
+  \(\DualT{M}\) es una variedad diferenciable de dimensión \(2m\).
+
+  Además, la aplicación \(\pi^{*}\colon\DualT{M}\to M\), tal que
+  \(\pi^{*}(\omega)=p\) (\(\omega\in\DualT[p]{M}\)), es submersión. 
+\end{proposition}
+
+\begin{proof}
+  Dada \((U,\varphi)\) carta de \(M\), sea \(\DualT{U}=\bigcup\limits_{p\in
+    U}\DualT[p]{M}\). Recordemos que, asociada a
+  esa carta, está \((\Tangente{U},\widetilde{\varphi})\),
+  donde \(\widetilde{\varphi}\colon\Tangente{M}\to\varphi(U)\times\RealSet^{m}\)
+  tal que
+  \(v=\sum\limits_{i=1}^{m}\lambda_{i}e_{i}^{p}\mapsto(\varphi(p),\varphi_{2}(v))=
+  (\varphi(p),\sum\limits_{i=1}^{m}\lambda_{i}e_{i})\).
+  Si \((\RealSet^{m})^{*}\) es el espacio dual de \(\RealSet^{m}\), entonces se define
+  \(\widetilde{\varphi}^{*}\colon\DualT{U}\to\varphi(U)\times(\RealSet^{m})^{*}\)
+  de la siguiente manera:
+
+  \vline
+  
+  Dada la \textbf{aplicación lineal} \(\omega\in\DualT[p]{M}\),
+  \(\widetilde{\varphi}^{*}(\omega)=(\varphi(p),\varphi_{2}^{*}(\omega))\),
+  donde \(\varphi_{2}^{*}(\omega)\colon\RealSet^{m}\to\RealSet\) es la forma
+  lineal que a cada \(y\in\RealSet^{m}\) asocia
+  \(\varphi_{2}^{*}(\omega)(y)=\omega(\widetilde{\varphi}^{-1}(\varphi(p),y))\)
+  siendo
+  \(\widetilde{\varphi}\colon\Tangente{U}\to\varphi(U)\times\RealSet^{m}\) tal
+  que \(\widetilde{\varphi}(v)=(\varphi(p),\varphi_{2}(v))\) con
+  \(v\in\Tangente[p]{M}\).
+
+  \vline
+  
+  Si ahora fijamos el isomorfismo
+  \(\phi\colon(\RealSet^{m})^{*}\cong\RealSet^{m}\) que lleva los covectores de la
+  base canónica de \((\RealSet^{m})^{*}\), \(e_{i}^{*}\), en los vectores de la base
+  canónica de \(\RealSet^{m}\), \(e_{i}\), tendremos
+  \(\phi\circ\varphi^{*}\colon\DualT{U}\to\varphi(U)\times\RealSet^{m}\).
+
+  Obsérvese que si \((e_{i}^{p})^{*}\) es el dual del vector básico
+  \(e_{i}^{p}\in\Tangente[p]{M}\), entonces
+  \(\widetilde{\varphi}^{*}((e_{i}^{p})^{*})=(\varphi(p),e_{i}^{*})\), pues si
+  \(y=\sum\limits_{i=1}^{m}\lambda_{i}e_{i}\), entonces
+  \(\widetilde{\varphi}^{-1}(\varphi(p),y)=\sum\limits_{i=1}^{m}\lambda_{i}e_{i}^{p}\),
+  y \(\varphi_{2}^{*}((e_{i}^{p})^{*})(y)=(e_{i}^{p})^{*}(y)=\lambda_{i}\). Por
+  tanto, si \(\omega=\sum\limits_{i=1}^{m}\lambda_{i}(e_{i}^{p})^{*}\),
+  \(\phi\circ\widetilde{\varphi}^{*}(\omega)=(x,(\lambda_{1},\dots,\lambda_{m}))\) y
+  la inversa de \(\widetilde{\varphi}^{*}\) lleva
+  \((x,\lambda_{1},\dots,\lambda_{m})\) en la forma
+  \(\sum\limits_{i=1}^{m}\lambda_{i}(e_{i}^{\varphi^{-1}(x)})^{*}\).
+
+  
+  
+\end{proof}
 
 \section{Clase}
 
