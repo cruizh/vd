@@ -5,11 +5,26 @@
 \begin{document}
 
 \setcounter{chapter}{8}
-\chapter{Tangente dual}\label{chap:dual}
+\chapter{Espacio cotangente de una variedad}\label{chap:dual}
+
+\section{Introducción}
+
+El espacio cotangente de una variedad se basa en el \emph{estudio de los
+  momentos} de la física.
+
+Sea \(W\) espacio vectorial, el dual de \(W\) será el conjunto de aplicaciones
+lineales \(f\colon W\to K\) con \(K\) cuerpo del espacio vectorial.
+
+\begin{definition}[name=espacio cotangente a \(M\) en el punto \(p\)]
+Sea \(M\) variedad diferenciable, \(p\in M,\
+\Tangente[p]{M}\), entonces
+\(\Tangente[p]{^{*}M}=\{\omega\colon\Tangente[p]{M}\to\RealSet
+\text{lineales}\}\)
+\end{definition}
 
 \section{Clase}
 
-Si \((U,\varphi)\) es una carta sobre \(M\), consideramos \(T U=\bigcup_{p\in U}T_{p}M\subseteq T M\). Entonces \(T U^*=\bigcap_{p\in U}T_{p}^*{M}\subseteq T^*(M)\).
+Si \((U,\varphi)\) es una carta sobre \(M\), consideramos \(T U=\bigcup_{p\in U}T_{p}M\subseteq T M\). Entonces \(T U^*=\bigcup_{p\in U}T_{p}^*{M}\subseteq T^*(M)\).
 
 Además, si tomamos una carta \((TU,\tilde{\varphi})\), donde \(\tilde{\varphi}\colon TU\to \varphi(U)\times \RealSet^m \), podemos ver su equivalente dual:
 
