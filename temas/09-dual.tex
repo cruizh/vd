@@ -346,28 +346,31 @@ se prueba que \(\theta_{M}\) es sección diferenciable.
 
 \section{Una forma alternativa de ver las 1-formas}
 
-Supongamos que tenemos una 1-forma \(o\in M \mapsto \omega_p\in T_p^*(M)\). Podemos defnir una aplicación duferenciable 
+Supongamos una 1-forma \(\omega\) tal que \(p\in M
+\overset{\omega}{\mapsto}\omega_p\in\DualT[p]{M}\) (a cada punto corresponde un
+covector asociado). Entonces podemos definir una aplicación diferenciable 
 \[
-f_\omega\colon TM\to \RealSet,\quad (f_\omega\in \Fdif(TM))
+f_\omega\colon\Tangente{M}\to\RealSet,\quad (f_\omega\in\mathcal{F}(\Tangente{M}))
 \]
-dada por \(f_\omega(v)=\omega_p(v)\)
+dada por \(f_\omega(v)=\omega_p(v)\in\RealSet,\quad v\in\Tangente[p]{M}\).
 
 Veamos la diferenciabilidad de \(f_\omega\).
 
 Dada una carta \((U,\varphi)\) de \(M\), se tiene:
  \begin{center}
  	\begin{tikzcd}
- 	\bigcup_{p\in U}T_p M=
 	TU
 	\ar[r, "f_\omega"]
-	\ar[d, "\tilde{\varphi}"] &
+	\ar[d, "\widetilde{\varphi}"] &
 	\RealSet\\
 	\varphi(U)\times\RealSet^m
-	\ar[ur, "f_\omega\circ \tilde{\varphi}" ']
+	\ar[ur, "f_\omega\circ\widetilde{\varphi}^{-1}" ']
 	\end{tikzcd}
 \end{center}
 
-Tendríamos que probar que \(f_\omega\circ \tilde{\varphi}(x,y)=\omega_{\varphi^{-1}(x)}(\tilde{\varphi}^{-1}(x,y))\) es diferenciable.\\
+Tendríamos que probar que \(f_\omega\circ
+\widetilde{\varphi}^{-1}(x,y)=\omega_{\varphi^{-1}(x)}(\widetilde{\varphi}^{-1}(x,y))\)
+es diferenciable.\\
 Además tenemos el siguiente diagrama:
  \begin{center}
 	\begin{tikzcd}
@@ -377,33 +380,61 @@ Además tenemos el siguiente diagrama:
 	T^*(U)
 	\ar[d, "\tilde{\varphi}^*"]\\
 	\varphi(U)
-	\ar[r, "\tilde{\varphi}^*\circ \omega\circ \varphi^{-1}"] &
+	\ar[r, "\widetilde{\omega}"] &
 	\varphi(U)\times(\RealSet^m)^*
 	\end{tikzcd}
 \end{center}
 
+donde \(\widetilde{\omega}=\widetilde{\varphi}^{*}\circ\omega\circ\varphi^{-1}\)
+es diferenciable por ser \(\omega\) 1-forma.
+
 Según las definiciones, 
 \begin{align*}
-\tilde{\varphi}^*(\omega_ {\varphi^{-1}(x)})=(x,\eta)
+\widetilde{\varphi}^*(\omega_ {\varphi^{-1}(x)})=(x,\eta)
 \end{align*}
-con \(\eta=(\lambda_1(x),\ldots,\lambda_m(x))\in (\RealSet^m)^*\) las coordenadas respecto a los elemento de la base de \((\RealSet^m)^*\).
+con \(\eta=(\lambda_1(x),\ldots,\lambda_m(x))\in(\RealSet^m)^*\) las coordenadas
+respecto a los elemento de la base de \((\RealSet^m)^*\).
 
-Dado \(y=(y_1,\ldots, y_m)\), si aplicamos \(\eta\) a \(y\) obtendremos:
+Dado \(y=(y_1,\ldots, y_m)\in\RealSet^{m}\), si aplicamos \(\eta\) a \(y\)
+obtendremos:
 \[
-\eta(y)=\sum_{i=1}^{m}\lambda_i(x)y_i=(\tilde{\varphi}^*(\omega_ {\varphi^{-1}(x)}))_2\quad\text{diferenciable}
+  \eta(y)=\underbracket{\sum_{i=1}^{m}\lambda_i(x)y_i}_{(*)}\overset{\text{def}}{=}
+  \varphi^{*}_{2}(\omega_{\varphi^{-1}(x)})=
+  \omega_{\varphi^{-1}(x)}(\widetilde{\varphi}^{-1}(x,y))
 \]
 
-Así pues, podeoms asociar a una 1-forma la función:
+que es diferenciable por serlo \((*)\), ya que lo son las \(\lambda_{i}(x)\).
+Luego \(f_{\omega}\circ\widetilde{\varphi}^{-1}\) es diferenciable.
+
+\vline
+
+Así pues, podemos asociar a cada 1-forma \(\omega\) sobre \(M\) una función
+\(f_{\omega}\in\mathcal{F}(\Tangente{M})\):
 \[
-\omega\mapsto f_{\omega}\in\Fdif(TM)
+  \omega\mapsto f_{\omega}\in\mathcal{F}(\Tangente{M})
 \]
-Recíprocamente, dada una \(f\in\Fdif(TM)\) tal que para todo \(p\in M\)
+Recíprocamente, dada una \(f\in\mathcal{F}(\Tangente{M})\) tal que para todo
+\(p\in M\) 
 \[
-f\colon T_p(M)\to \RealSet
+  \Restrict{f}{\Tangente[p]{M}}\colon\Tangente[p]{M}\to\RealSet
 \]
-es lineal, podemos definir una 1-forma que notaremos por \(\omega_f\) de la siguiente manera:
+es lineal, podemos definir una 1-forma que notaremos por \(\omega_f\) de la
+siguiente manera:
 \[
-p\in M\mapsto ((\omega_f)_p\colon T_pM\to \RealSet)
+  p\in M\overset{\omega_{f}}{\longmapsto}((\omega_f)_p\colon T_pM\to
+  \RealSet)\in\DualT{M}
 \]
-con \((\omega_f)_p=f|_{T_p(M)}\)
+
+con \((\omega_f)_p=f|_{T_p(M)}\). Si tomamos ahora \(f_{\omega_{f}}\) se tiene
+\(f_{\omega_{f}}=f\).
+
+\begin{remark}
+  \(\Omega^{1}(M)=\{\text{1-formas sobre }M\}\).
+\end{remark}
+
+\begin{proposition}
+  \(\Omega^{1}(M)\) es un espacio vectorial, de hecho es subespacio vectorial
+  \(\begin{array}{c}\\ \Omega^{1}(M)\subseteq\mathcal{F}(\Tangente{M})\\
+      \omega\mapsto f_{\omega}\).
+\end{proposition}
 \end{document}
