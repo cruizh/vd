@@ -33,14 +33,9 @@ Sea \(M\) variedad diferenciable, \(p\in M,\
 \end{proposition}
 
 \begin{proof}
-  Dada \((U,\varphi)\) carta de \(M\), sea \(\DualT{U}=\bigcup\limits_{p\in
-    U}\DualT[p]{M}\). Recordemos que, asociada a
-  esa carta, está \((\Tangente{U},\widetilde{\varphi})\),
-  donde \(\widetilde{\varphi}\colon\Tangente{M}\to\varphi(U)\times\RealSet^{m}\)
-  tal que
-  \(v=\sum\limits_{i=1}^{m}\lambda_{i}e_{i}^{p}\mapsto(\varphi(p),\varphi_{2}(v))=
-  (\varphi(p),\sum\limits_{i=1}^{m}\lambda_{i}e_{i})\).
-  Si \((\RealSet^{m})^{*}\) es el espacio dual de \(\RealSet^{m}\), entonces se define
+  Dada \((U,\varphi)\) carta de \(M\), sea \(\DualT{U}=\bigcup_{p\in
+    U}\DualT[p]{M}\). Si \((\RealSet^{m})^{*}\) es el espacio dual de
+  \(\RealSet^{m}\), entonces definimos la aplicación dada por  
   \(\widetilde{\varphi}^{*}\colon\DualT{U}\to\varphi(U)\times(\RealSet^{m})^{*}\)
   de la siguiente manera:
 
@@ -59,60 +54,215 @@ Sea \(M\) variedad diferenciable, \(p\in M,\
   \vline
   
   Si ahora fijamos el isomorfismo
-  \(\phi\colon(\RealSet^{m})^{*}\cong\RealSet^{m}\) que lleva los covectores de la
+  \(\phi\colon\RealSet^{m}\times(\RealSet^{m})^{*}\cong\RealSet^{m}\times\RealSet^{m}\)
+  que lleva los covectores de la
   base canónica de \((\RealSet^{m})^{*}\), \(e_{i}^{*}\), en los vectores de la base
-  canónica de \(\RealSet^{m}\), \(e_{i}\), tendremos
-  \(\phi\circ\varphi^{*}\colon\DualT{U}\to\varphi(U)\times\RealSet^{m}\).
+  canónica de \(\RealSet^{m}\), \(e_{i}\), entonces la composición
+  \(\phi\circ\varphi^{*}\colon\DualT{U}\to\varphi(U)\times\RealSet^{m}\) (ya no
+  va a \(\varphi(U)\times(\RealSet^{m})^{*}\)).
+
+  \vline
 
   Obsérvese que si \((e_{i}^{p})^{*}\) es el dual del vector básico
   \(e_{i}^{p}\in\Tangente[p]{M}\), entonces
   \(\widetilde{\varphi}^{*}((e_{i}^{p})^{*})=(\varphi(p),e_{i}^{*})\), pues si
-  \(y=\sum\limits_{i=1}^{m}\lambda_{i}e_{i}\), entonces
-  \(\widetilde{\varphi}^{-1}(\varphi(p),y)=\sum\limits_{i=1}^{m}\lambda_{i}e_{i}^{p}\),
-  y \(\varphi_{2}^{*}((e_{i}^{p})^{*})(y)=(e_{i}^{p})^{*}(y)=\lambda_{i}\). Por
-  tanto, si \(\omega=\sum\limits_{i=1}^{m}\lambda_{i}(e_{i}^{p})^{*}\),
-  \(\phi\circ\widetilde{\varphi}^{*}(\omega)=(x,(\lambda_{1},\dots,\lambda_{m}))\) y
-  la inversa de \(\widetilde{\varphi}^{*}\) lleva
+  \(y=\sum\limits_{i=1}^{m}\lambda_{i}e_{i}\), entonces:
+  
+  \[\begin{array}{l}
+      \widetilde{\varphi}^{-1}(\varphi(p),y)=\sum\limits_{i=1}^{m}\lambda_{i}e_{i}^{p}=
+      v\in\Tangente[p]{M},
+    \end{array}\]
+  
+  y
+  
+  \[\begin{array}{l}
+      \varphi_{2}^{*}((e_{i}^{p})^{*})(y)=(e_{i}^{p})^{*}(v)=\lambda_{i}.
+    \end{array}\]
+  
+  Por tanto, si \(\omega=\sum\limits_{i=1}^{m}\lambda_{i}(e_{i}^{p})^{*}\), entonces
+  
+  \[
+    \phi\circ\widetilde{\varphi}^{*}(\omega)=(x,(\lambda_{1},\dots,\lambda_{m}))
+    \in\RealSet^{m}\times\RealSet^{m}
+  \]
+
+  y la inversa de \(\widetilde{\varphi}^{*}\) lleva
   \((x,\lambda_{1},\dots,\lambda_{m})\) en la forma
   \(\sum\limits_{i=1}^{m}\lambda_{i}(e_{i}^{\varphi^{-1}(x)})^{*}\).
 
+  Observamos que \(\widetilde{\varphi}^{*}\) es un homeomorfismo.
   
+  \vline
   
+  Queda ver que si \(\mathcal{A}=\{(U,\varphi)\}\) es un atlas de \(M\) entonces
+  \(\{(\DualT{U},\phi\circ\widetilde{\varphi}^{*})\}\) es un atlas para \(\DualT{M}\).
+
+  En primer lugar, la topología de \(\DualT{M}\) es la unión de las topologías
+  en los \(p\in M\), de la misma forma que hacíamos en \(\Tangente{M}\), que son
+  isomorfas a las de \(\RealSet^{m}\). En particular, \(\DualT{U}\) es abierto.
+
+  Si consideramos \(\phi\) como una identificación de coordenadas, bastará hacer
+  las comprobaciones para las \(\widetilde{\varphi}^{*}\). Es inmediato que
+  \(\widetilde{\varphi}^{*}(\Tangente{U})\) es un abierto de
+  \(\RealSet^{m}\times(\RealSet^{m})^{*}\cong_{\phi}\RealSet^{m}\times
+  \RealSet^{m}=\RealSet^{2m}\).
+
+  Además, si \((U,\varphi),(V,\psi)\) son cartas de \(\mathcal{A}\) con \(U\cap
+  V\neq\emptyset\), entonces \(\DualT{U}\cap\DualT{V}=\DualT{(U\cap V)}\) y
+  \(\widetilde{\varphi}^{*}(\DualT{U}\cap\DualT{V})=\varphi(U\cap
+  V)\times(\RealSet^{m})^{*}\) y
+  \(\widetilde{\psi}^{*}(\DualT{U}\cap\DualT{V})=\psi(U\cap 
+  V)\times(\RealSet^{m})^{*}\) son abiertos.
+
+  \vline
+
+  Queda probar que la aplicación siguiente es un difeomorfismo:
+  \[\widetilde{\psi}^{*}\circ(\widetilde{\varphi}^{*})^{-1}\colon\varphi(U\cap
+    V)\times(\RealSet^{m})^{*}\to\psi(U\cap V)\times(\RealSet^{m})^{*}.\]
+
+  Dado \((x,\eta)\in\varphi(U\cap V)\times(\RealSet^{m})^{*}\), con
+  \(\eta=(\mu_{1},\dots,\mu_{m})\), se tiene por
+  definición
+  \[
+    \widetilde{\psi}^{*}\circ(\widetilde{\varphi}^{*})^{-1}(x,\eta)=
+    (\psi\circ\varphi^{-1}(x),\psi_{2}^{*}((\widetilde{\varphi}^{*})^{-1}(x,\eta)))
+    \quad (1)
+  \]
+
+  donde para un vector \(y=(\lambda_{1},\dots,\lambda_{m})\in\RealSet^{m}\) se
+  tiene, siendo
+  \(z=\psi\circ\varphi^{-1}(x)\),
+  \[\begin{array}{l}
+      \psi_{2}^{*}((\widetilde{\varphi}^{*})^{-1}(x,\eta))(y)=
+      ((\widetilde{\varphi}^{*})^{-1}(x,\eta))(\widetilde{\psi}^{-1}(z,y))=\\
+      ((\widetilde{\varphi}^{*})^{-1}(x,\eta))(\sum\limits_{i=1}^{m}
+      \lambda_{i}e_{i}^{\psi^{-1}(z)})=\\
+      (\sum\limits_{j=1}^{m}\mu_{j}(e_{j}^{\varphi^{-1}(x)})^{*})(\sum\limits_{i=1}^{m}
+      \lambda_{i}e_{i}^{\varphi^{-1}(x)})=\\
+      \eta(\varphi_{2}(\widetilde{\psi}^{-1}(z,y)))=\eta(
+      \J[z]{\varphi\circ\psi^{-1}(y)})=\\
+      (\J[z]{\varphi\circ\psi^{-1}})^{t}(\eta)(y)
+    \end{array}\]
+
+  Luego,
+  \[
+    \psi_{2}^{*}((\widetilde{\varphi}^{*})^{-1}(x,\eta))=
+    (\J[z]{\varphi\circ\psi^{-1}})^{t}(\eta)=
+    ((\J[x]{\psi\circ\varphi^{-1}})^{-1})^{t}\quad(*)
+  \]
+
+  Aquí recordamos que si \(A\) es una matriz representando una aplicación lineal
+  \(f\colon V\to W\), entonces \(A^{t}\) es la matriz que
+  representa la aplicación lineal dual \(f^{*}\colon(W)^{*}\to(V)^{*},
+  f^{*}(\omega)=\omega\circ f\).
+
+  
+  Por tanto, el cambio de la carta \((\DualT{U},\widetilde{\varphi}^{*})\) a la
+  carta \((\DualT{V},\widetilde{\psi}^{*})\) en \(\DualT{M}\) está representado
+  por la traspuesta de la inversa de la matriz jacobiana que representa el
+  cambio de la carta \((\Tangente{U},\widetilde{\varphi})\) a la carta
+  \((\Tangente{V},\widetilde{\psi})\), así que los cambios de cartas en
+  \(\DualT{M}\) son diferenciables.
+
+  \vline
+
+  La proyección \(\pi^{*}\colon\DualT{M}\to M\) es submersión pues para una
+  carta \((U,\varphi)\) de \(M\) se tiene el diagrama:
+
+  \begin{center}
+    \centering
+    \begin{tikzcd}[column sep = large]
+      \DualT{U}
+      \ar[d, "\widetilde{\varphi}^*"']
+      \ar[r, "\pi^*"]
+      &
+      U
+      \ar[d, "\varphi"] \\ 
+      \varphi(U)\times(\RealSet^m)^*
+      \ar[r, ""']
+      &
+      \varphi(U)
+    \end{tikzcd}
+  \end{center}
+
+  donde \(\varphi\circ\pi^{*}\circ(\widetilde{\varphi}^{*})^{-1}(x,\eta)=x\) es la
+  proyección natural.
 \end{proof}
 
-\section{Clase}
+\begin{definition}[name=1-forma]\label{def:1-forma}
+  Se llama \emph{1-forma} de \(M\) a cualquier sección \(\omega\) (diferenciable) de
+  \(\pi^{*}\).
+\end{definition}
 
-Si \((U,\varphi)\) es una carta sobre \(M\), consideramos \(T U=\bigcup_{p\in U}T_{p}M\subseteq T M\). Entonces \(T U^*=\bigcup_{p\in U}T_{p}^*{M}\subseteq T^*(M)\).
+\begin{remark}
+  Igual que pasa en el caso de los campos tangentes, las 1-formas están
+  determinadas por sus componentes locales. Así, si \(\omega\colon
+  M\to\DualT{M}\) es una 1-forma y \((U,\varphi)\) es una carta de \(M\),
+  tenemos
+  
+  \begin{center}
+    \centering
+    \begin{tikzcd}[column sep = large]
+      U
+      \ar[d, "\varphi"']
+      \ar[r, "\omega"]
+      &
+      \DualT{U}
+      \ar[d, "\widetilde{\varphi}^*"] \\ 
+      \varphi(U)
+      \ar[r, ""']
+      &
+      \varphi(U)\times(\RealSet^m)^*
+    \end{tikzcd}
+  \end{center}
 
-Además, si tomamos una carta \((TU,\tilde{\varphi})\), donde \(\tilde{\varphi}\colon TU\to \varphi(U)\times \RealSet^m \), podemos ver su equivalente dual:
+  donde \(\widetilde{\varphi}^{*}\circ\omega\circ\varphi^{-1}(x)=(x,g^{U}(x))\),
+  con \(g^{U}\colon\varphi(U)\to(\RealSet^{m})^{*}\).
 
-Sea \((T^*U,\tilde{\varphi})^*\), donde \(\tilde{\varphi}^*\colon T^*U\to \varphi(U)\times (\RealSet^m)^* \) dada por
-\[
-w\in T^*_p(M)\mapsto \tilde{\varphi}^*(w)=(\varphi(p),\tilde{\varphi}_2(w)\quad \text{con p en U}
+  A las funciones \(g^{U}\) se las llama \textbf{componentes locales de la
+    1-forma \(\omega\)}.
+
+  Ahora la relación entre las componentes locales de dos cartas \((U,\varphi)\)
+  y \((V,\psi)\) viene dada por la ecuación
+  \[
+    g^{V}(\psi\circ\varphi^{-1}(x))=(\J[\psi\circ\varphi^{-1}(x)]
+    {\varphi\circ\psi^{-1}})^{t}g^{U}(x)
+  \]
+
+  que sigue del cambio de cartas visto anteriormente.
+
+  Por tanto, dar una 1-forma es dar una colección de componentes locales para un
+  atlas de \(M\) sujetas a la relación anterior.
+\end{remark}
+
+\section{Ejemplos de 1-formas sobre \(M\)}
+
+\begin{example}
+  El ejemplo clásico es la 1-forma conocida como \emph{diferencial o gradiente}:
+  asociada a cada \(f\in\mathcal{F}(M)\) hay asociada una 1-forma
+  \[
+    p\in M\mapsto((\dif{f})_p\colon\Tangente[p]{M}\to \RealSet)
+  \]
+  cuyas componentes locales (referidas a carta \((U,\varphi)\) de \(M\)) son
+  \label{def:grad-1}
+  \[
+    (\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_1}|_{\varphi(p)},\ldots,\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_m}|_{\varphi(p)})
 \]
-
-\begin{example}[1-forma]
-Asociada a cada \(f\in \Fdif(M)\) hay asociada una 1-forma
-\[
-p\in M\mapsto ((\dif{f})_p\colon T_p(M)\to \RealSet)
-\]
-cuyas componentes locales (referidas a carta \((U,\varphi)\)) de \(M\)) son \label{def:grad_1}
-\[
-(\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_1}|_{\varphi(p)},\ldots,\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_m}|_{\varphi(p)})
-\]
-Localmente, \(e_i^p\) representa los elementos básicos de \(T_p(M)\) y \((e_i^p)^*\) representa los duales de los \(e_i^p\) y forman una base de \(T_p^*(M)\).
-Esto se traduce en 
+Localmente, \(e_i^p\) representa los elementos básicos de \(\Tangente[p]{M}\) y
+\((e_i^p)^*\) representa los duales de los \(e_i^p\) y forman una base de
+\(\DualT[p]{M}\). Esto se traduce en 
 \[
 (\dif{f})_p=\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_1}|_{\varphi(p)}(e_1^p)^*+\ldots+\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_m}|_{\varphi(p)}(e_m^p)^*
 \]
-En general, dada una 1-forma \(w\) con componentes licales
+En general, dada una 1-forma \(w\) con componentes locales
 \begin{enumerate}
 \item \(g^U\colon\varphi(U)\to (\RealSet^m)^*\)
 \item \(g^V\colon \psi(V)\to (\RealSet^m)^*\)
 \end{enumerate}
 ha de cumplirse:
 \[
-g^V(\psi\circ \varphi^{-1}(x))=(J_{\psi\circ \varphi^{-1}(p)}\varphi\circ \psi^{-1})^t\cdot g^U(x)
+g^V(\psi\circ \varphi^{-1}(x))=(\J[\psi\circ \varphi^{-1}(p)]{\varphi\circ
+  \psi^{-1}})^tg^U(x)
 \]
 
 Sean \((U,\varphi)\) y \((V,\psi)\) dos cartas de \(M\) con \(U\cap V\neq \emptyset\). Entonces, para \(y\in \psi(U\cap V)\) y \(x=\varphi\circ \psi^{-1}(y)\) se tiene:
@@ -123,7 +273,7 @@ Sean \((U,\varphi)\) y \((V,\psi)\) dos cartas de \(M\) con \(U\cap V\neq \empty
 &=\text{producto escalar de la i-ésima columna de la matriz jacobiana} \\
 &J_y \varphi\circ \psi^{-1} \text{con el vector } (\bigtriangledown f)^U(x)
 \end{align*}
-siendo el gradiente el visto en \ref{def:grad_1.}.
+siendo el gradiente el visto en \ref{def:grad-1}.
 
 Resumiendo obtenemos
 \[
