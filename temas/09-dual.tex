@@ -244,64 +244,82 @@ Sea \(M\) variedad diferenciable, \(p\in M,\
     p\in M\mapsto((\dif{f})_p\colon\Tangente[p]{M}\to \RealSet)
   \]
   cuyas componentes locales (referidas a carta \((U,\varphi)\) de \(M\)) son
-  \label{def:grad-1}
-  \[
-    (\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_1}|_{\varphi(p)},\ldots,\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_m}|_{\varphi(p)})
+  
+  \[\label{def:grad-1}
+   (\nabla f)^{U}_{\varphi(p)}=(\Restrict{\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_1}}{\varphi(p)},\ldots,\Restrict{\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_m}}{\varphi(p)})
 \]
 Localmente, \(e_i^p\) representa los elementos básicos de \(\Tangente[p]{M}\) y
 \((e_i^p)^*\) representa los duales de los \(e_i^p\) y forman una base de
 \(\DualT[p]{M}\). Esto se traduce en 
 \[
-(\dif{f})_p=\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_1}|_{\varphi(p)}(e_1^p)^*+\ldots+\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_m}|_{\varphi(p)}(e_m^p)^*
+(\dif{f})_p=\Restrict{\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_1}}{\varphi(p)}(e_1^p)^*+\ldots+\Restrict{\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_m}}{\varphi(p)}(e_m^p)^*
 \]
-En general, dada una 1-forma \(w\) con componentes locales
+ Si \(U\cap V\neq\emptyset\), dada una 1-forma \(\omega\) con componentes
+locales 
 \begin{enumerate}
-\item \(g^U\colon\varphi(U)\to (\RealSet^m)^*\)
-\item \(g^V\colon \psi(V)\to (\RealSet^m)^*\)
+\item \(g^U\colon\varphi(U)\to (\RealSet^m)^*,\text{ para la carta }(U,\varphi)\)
+\item \(g^V\colon \psi(V)\to (\RealSet^m)^*,\text{ para la carta }(V,\psi{})\)
 \end{enumerate}
 ha de cumplirse:
 \[
-g^V(\psi\circ \varphi^{-1}(x))=(\J[\psi\circ \varphi^{-1}(p)]{\varphi\circ
-  \psi^{-1}})^tg^U(x)
+g^V(\psi\circ \varphi^{-1}(x))=(\J[\psi\circ \varphi^{-1}(x)]{\varphi\circ
+  \psi^{-1}})^tg^U(x),\quad x\in\varphi(U\cap V)
 \]
 
-Sean \((U,\varphi)\) y \((V,\psi)\) dos cartas de \(M\) con \(U\cap V\neq \emptyset\). Entonces, para \(y\in \psi(U\cap V)\) y \(x=\varphi\circ \psi^{-1}(y)\) se tiene:
+Sean \(y\in \psi(U\cap V),\ x=\varphi\circ \psi^{-1}(y)\) se tiene:
 \begin{align*}
-(\bigtriangledown f)^V_i|_y&=\dfrac{\partial(f)\circ \psi^{-1}}{\partial y_i}|_y\\
-&=\dfrac{\partial(f\circ \varphi^{-1}\circ \varphi \circ \psi^{-1})}{\partial y_i}|_y\\
-&=\sum_{k=1}^m \dfrac{\partial(f\circ \varphi^{-1})}{\partial x_k}|_x\cdot \dfrac{\partial(\varphi\circ \psi^{-1})}{\partial y_i}|_y\\
+\Restrict{(\nabla f)^V_i}{y}&=\Restrict{\dfrac{\partial(f\circ \psi^{-1})}{\partial y_i}}{y}\\
+&=\Restrict{\dfrac{\partial(f\circ \varphi^{-1}\circ \varphi \circ \psi^{-1})}{\partial y_i}}{y}\\
+&=\sum_{k=1}^m \Restrict{\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_k}}{x}\cdot\Restrict{\dfrac{\partial(\varphi\circ \psi^{-1})}{\partial y_i}}{y}\\
 &=\text{producto escalar de la i-ésima columna de la matriz jacobiana} \\
-&J_y \varphi\circ \psi^{-1} \text{con el vector } (\bigtriangledown f)^U(x)
+                            &\J[y]{\varphi\circ\psi^{-1}} \text{ con el vector } (\nabla f)^U(x)\\
+  &=(\J[y]{\varphi\circ\psi^{-1}})_{\cdot i}\cdot\Restrict{(\nabla f)^{U}}{x}
 \end{align*}
-siendo el gradiente el visto en \ref{def:grad-1}.
 
-Resumiendo obtenemos
+Luego \((\nabla f)^{V}(y)=(\J[y]{\varphi\circ\psi^{-1}})^{t}(\nabla f)^{U}(x)\),
+siendo el gradiente el visto en este \cref{def:grad-1}.
+
+Esto probaría que cumple la propiedad de compatibilidad que relaciona las
+componentes locales.
+
+Veamos un caso concreto. Si tenemos una carta \((U,\varphi)\) de \(M\) podemos
+ver la siguiente aplicación localmente:
 \[
-(\bigtriangledown f)^V(\psi\circ \varphi^{-1}(x))=(\bigtriangledown f)^V(y)=(J_ {\psi\circ\varphi^{-1}(x)}(\varphi \circ \psi^{-1})^t\cdot (\bigtriangledown f)^U(x)
-\]
-
-Estro probaría que cumple la propiedad de compatibilidad vista anteriormente %need ref
-
-Veamos un caso concreto. Si tenemos una carta \((U,\varphi)\) de \(M\) podemos ver la siguiente aplicación localmente:
-\[
-\varphi_i\colon U\to \varphi(U)\to^{\pi_i}\RealSet
+  \varphi_i\colon U\overset{\varphi}{\longrightarrow}
+  \varphi(U)\overset{\pi_i}{\longrightarrow}\RealSet,\
+  \varphi_{i}\in\mathcal{F}(U)
 \]
 Cuyas 1-formas vienen dadas por
 \begin{align*}
-(\dif{\varphi_i})_p&=(\dfrac{\partial(\varphi_i\circ \varphi^{-1})}{\partial x_1}|_{\varphi(p)},\ldots,\dfrac{\partial(\varphi_i\circ \varphi^{-1})}{\partial x_m}|_{\varphi(p)})\\
-&= \sum_{k=1}^{m} \underbracket{\dfrac{\partial(\varphi_i\circ \varphi^{-1})}{\partial x_k}|_{\varphi(p)}}_{\delta_{ik}}\cdot (e_k^p)^*\colon T_p M\to \RealSet
+(\dif{\varphi_i})_p&=(\Restrict{\dfrac{\partial(\varphi_i\circ \varphi^{-1})}{\partial x_1}}{\varphi(p)},\ldots,\Restrict{\dfrac{\partial(\varphi_i\circ \varphi^{-1})}{\partial x_m}}{\varphi(p)})\\
+                   &= \sum_{k=1}^{m} \Restrict{\dfrac{\partial(\overbracket{\varphi_i\circ \varphi^{-1}}^{\pi_{i}})}{\partial x_k}}{\varphi(p)}\cdot (e_k^p)^*\\
+                   & = \sum_{k=1}^{m} \underbracket{\dfrac{\partial x_{i}}{\partial x_k}}_{\delta_{ik}}\cdot (e_k^p)^*=(e_{i}^{p})^{*}\colon T_p M\to \RealSet
 \end{align*}
 \end{example}
 
-En \(M=\RealSet^m\) (Con una única carta \((\RealSet^m,id)\)), toda 1-forma \(w\) se expresa con la notación habitual
-\[
-w=g_1\dif{x_1}+\ldots+g_m\dif{x_m}
-\]
-y si ahora \(f\in\Fdif{\RealSet^m}\), entonces:
-\[
-df=\dfrac{\partial(f)}{\partial x_1}dx_1+\ldots+\dfrac{\partial(f)}{\partial x_m}dx_m
-\]
-que es la notación usual de análisis
+\begin{remark}[name=notación tradicional]
+  Localmente, a los elementos básicos \(\{e_{i}^{p}\}_{i=1}^{m}\) de
+  \(\Tangente[p]{M}\)  se les suele denotar \((\pderiv{}{x_{i}})_{\varphi}\).
+
+  De la misma manera, a los duales de esos elementos básicos,
+  \(\{(e_{i}^{p})^{*}\}_{i=1}^{m}\) se les suele denotar
+  \(\Restrict{\dif{x_{i}}}{\varphi}\).
+\end{remark}
+
+\begin{example}
+  Si \(M=\RealSet^m\) (\(\mathcal{A}=(\RealSet^m,id)\)), toda 1-forma \(\omega\)
+  se expresa con la notación habitual
+  \[
+    \omega=g_1\dif{x_1}+\ldots+g_m\dif{x_m}.
+  \]
+  Sea \(f\in\mathcal{F}(\RealSet^m)\), entonces:
+  \[
+    df=\dfrac{\partial f}{\partial x_1}dx_1+\ldots+\dfrac{\partial f}{\partial
+      x_m}dx_m
+  \]
+  
+  que es la notación usual en cálculo de varias variables.
+\end{example}
 
 \begin{example}
 Sea \(M^m\) una variedad diferenciable y \(T^*M\) espacio cotangente.
@@ -314,7 +332,16 @@ Asociado a \(M\), hay una 1-forma canónica \(\theta_M\) sobre \(T^*M\) (llamada
 \[
 \theta_M\colon T^*M\to T^*(T^*M)
 \]
-con \(\theta_M(w)\in T^*_w(T^*M)\). Si \(w\in T^*M\) definimos \(\theta_M(w)(v)=w(d\pi^*(v))\)
+con \(\theta_M(\omega)\in T^*_\omega(T^*M)\). Si \(\omega\in T^*M\) definimos
+\(\theta_M(\omega)(v)=\omega(\dif{\pi^*}(v))\), con
+\(\dif{\pi^{*}}(v)\in\Tangente[p]{M}\) pues:
+\[
+  v\in\Tangente[\omega]{\DualT{M}},\ \pi^{*}\colon\DualT{M}\to M\leadsto
+  \begin{array}{l}\\ \dif{\pi^{*}}\colon\Tangente{\DualT{M}}\to\Tangente{M}\\
+  \quad\quad\quad\quad v\longmapsto\dif{\pi^{*}}(v)\in\Tangente[p]{M}\end{array}
+\]
+
+se prueba que \(\theta_{M}\) es sección diferenciable.
 \end{example}
 
 \section{Una forma alternativa de ver las 1-formas}
