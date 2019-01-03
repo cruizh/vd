@@ -1,0 +1,69 @@
+\documentclass[../VD.tex]{subfiles}
+
+\externaldocument{../VD}
+
+\begin{document}
+
+\setcounter{chapter}{9}
+\chapter{Espacios de formas y tensores sobre una variedad}\label{chap:dual} 
+
+\section{Introducción}
+
+En \textbf{Álgebra Lineal} conocemos la extensión natural del espacio dual de
+las formas.
+
+\begin{definition}
+  Si una 1-forma del espacio vectorial \(V\) es una aplicación lineal
+  \(V\to\RealSet\), entonces dados \(n\) espacios vectoriales
+  \(V_{1},\dots,V_{n}\) y otro espacio vectorial \(W\), una \emph{aplicación
+    multilineal} \(f\colon V_{1}\times\dots\times V_{n}\to W\), esto es, \(\forall
+  \lambda,\mu\in\RealSet,\ \forall v_{i},v'_{i}\in V_{i},\ 1\leq i\leq n\):
+  
+  \[
+    f(v_{1},\dots,\lambda v_{i}+\mu v'_{i},\dots,v_{n})=\lambda
+    f(\dots,v_{i},\dots)+\mu f(\dots,v'_{i},\dots).
+  \]
+
+  Cuando \(V_{1}=\dots=V_{n},\ W=\RealSet\) decimos que \(f\) es una n-forma
+  sobre \(V\).
+\end{definition}
+
+Ahora se plantea cómo extender las n-formas al espacio tangente de una variedad
+\(M\). Ya vimos en el caso de las 1-formas que esa construcción se puede abordar
+de varias maneras:
+
+\begin{enumerate}
+\item Crear el espacio cotangente haciendo la construcción punto a punto y
+  después definiendo una estructura coherente en todo \(M\): para cada \(p\in
+  M\) sea \(\DualT[p]{M}\) y se define \(\DualT{M}=\bigcup_{p\in
+    M}\DualT[p]{M}\), dotándolo de una estructura de variedad diferenciable
+  compatible con la de \(M\) mediante la proyección
+  \(\pi^{*}\colon\DualT{M}\to M\ \omega\in\DualT[p]{M}\mapsto p\) y las 1-formas
+  se definen como secciones diferenciables de esa proyección.
+
+\item Definir el espacio cotangente globalmente sobre todo \(\Tangente{M}\) por
+  medio de funciones diferenciables \(f\colon\Tangente{M}\to\RealSet\) que punto
+  a punto son 1-formas, es decir, \(f\colon\Tangente[p]{M}\to\RealSet\) es
+  lineal para todo \(p\in M\).
+
+\item Usar \(\mathbb{X}(M)\) el \(\mathcal{F}(M)\)-módulo de los campos sobre
+  \(M\) y reescribir \(\DualT{M}\) como el dual de \(\mathbb{X}(M)\) como
+  \(\mathcal{F}(M)\)-módulo. Esto es, usar la identificación
+  \(\DualT{M}\cong\text{Hom}(\mathbb{X}(M),\mathcal{F}(M))\), que lleva la forma
+  \(\omega\colon M\to\Tangente{M}\) a la función \(\omega(X)(p)=X(\omega(p)),\
+  \forall p\in M\).
+\end{enumerate}
+
+Veamos cómo extender estas construccione equivalentes del espacio cotangente de
+\(M\) para obtener la noción de n-forma sobre la variedad \(M\).
+
+Para ello recordemos la noción de producto tensorial que permite reinterpretar
+las aplicaciones multilineales como 1-formas, pasando la complicación de las
+aplicaciones multilineales al espacio vectorial.
+
+
+\end{document}
+
+%%% Local Variables:
+%%% TeX-master: "../VD"
+%%% End:
