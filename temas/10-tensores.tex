@@ -61,29 +61,111 @@ Para ello recordemos la noción de producto tensorial que permite reinterpretar
 las aplicaciones multilineales como 1-formas, pasando la complicación de las
 aplicaciones multilineales al espacio vectorial.
 
-\begin{definition}
+\section{Producto Tensorial}
+
+\begin{definition}[name=producto tensorial]
   Recordemos que el \emph{producto tensorial} de los espacios vectoriales
   \(V_{1},\dots,V_{n}\), \(V_{1}\bigotimes\dots\bigotimes V_{n}\), es el espacio
   vectorial obtenido por combinaciones lineales de los símbolos
-  \(v_{1}\bigotimes\dots\bigotimes\ v_{n}\) sujetos a las relaciones:
+  \(v_{1}\otimes\dots\otimes\ v_{n}\) sujetos a las relaciones:
 
   \begin{itemize}
-  \item \(\lambda(v_{1}\bigotimes\dots\bigotimes
-    v_{n})=v_{1}\bigotimes\dots\bigotimes \lambda v_{i}\bigotimes\dots\bigotimes
+  \item \(\lambda(v_{1}\otimes\dots\otimes
+    v_{n})=v_{1}\otimes\dots\otimes \lambda v_{i}\otimes\dots\otimes
     v_{n},\ \forall i\)
 
-  \item \(v_{1}\bigotimes\dots\bigotimes(v_{i}+v'_{i})\bigotimes\dots\bigotimes
-    v_{n}=v_{1}\bigotimes\dots\bigotimes \lambda v_{i}\bigotimes\dots\bigotimes
-    v_{n}+v_{1}\bigotimes\dots\bigotimes \lambda v'_{i}\bigotimes\dots\bigotimes
+  \item \(v_{1}\otimes\dots\otimes(v_{i}+v'_{i})\otimes\dots\otimes
+    v_{n}=v_{1}\otimes\dots\otimes \lambda v_{i}\otimes\dots\otimes
+    v_{n}+v_{1}\otimes\dots\otimes \lambda v'_{i}\otimes\dots\otimes
     v_{n},\ \forall i\)
   \end{itemize}
 
   Entonces \((V_{1}\bigotimes\dots\bigotimes
   V_{n})^{*}\cong\text{Multi}_{n}(V_{1},\dots,V_{n}),\ f\mapsto
-  g_{f}(v_{1},\dots,v_{n})=f(v_{1}\bigotimes\dots\bigotimes\v_{n})\).
-
-  
+  g_{f}(v_{1},\dots,v_{n})=f(v_{1}\otimes\dots\otimes\v_{n})\).
 \end{definition}
+
+\begin{remark}
+  Además, se tiene que si \(B_{i}\) es una base de \(V_{i}\) entonces
+  \(\{b_{k_{1}}\otimes\dots\otimes b_{k_{n}}\}\) es una base de
+  \(V_{1}\bigotimes\dots\bigotimes V_{n}\) donde
+  \((b_{k_{1}},\dots,b_{k_{n}})\in B_{1}\times\dots\times B_{n}\).
+  Equivalentemente, las n-formas \(\delta_{k_{1},\dots,k_{n}}\) dadas por las
+  extensiones multilineales de \(\delta_{k_{1},\dots,k_{n}}(b_{k_{1}}\dots
+  b_{k_{n}})=1\) y \(\delta_{k_{1},\dots,k_{n}}(b_{k'_{1}}\dots b_{k'_{n}})=0\)
+  si \((k'_{1},\dots,k'_{n})\neq(k_{1},\dots,k_{n})\) es una base del espacio de
+  las aplicaciones multilineales \(V_{1}\times\dots\times V_{n}\to\RealSet\).
+  
+  Si \(V_{1}=\dots=V_{n}=V\) denotamos por \(\bigotimes_{n}V\) a
+    \(\underbracket{V\bigotimes\dots\bigotimes V}_{n\text{ veces}}\).
+
+  Así pues si Multi\(_{n}(V)\) es el espacio vectorial de las n-formas sobre
+  \(V\) tenemos Multi\(_{n}(V)\cong(\bigotimes_{n}(V))^{*}\) y
+  \(\dim{\text{Multi}_{n}(V)}=(\dim{V})^{n}\).
+
+  Además, dadas \(\alpha\in(\bigotimes_{r}V)^{*}\) y
+  \(\beta\in(\bigotimes_{s}V)^{*}\) se define
+  \(\alpha\otimes\beta\in(\bigotimes_{r}V\bigotimes(\bigotimes_{s}V))^{*}\) por:
+  \[
+    \alpha\otimes\beta(v_{1}\otimes\dots\otimes v_{r}\otimes
+    v_{r+1}\otimes\dots\otimes v_{r+s})=\alpha(v_{1}\otimes\dots\otimes
+    v_{r})\cdot \beta(v_{r+1}\otimes\dots\otimes v_{r+s}). 
+  \]
+
+  Obsérvese que existe un isomorfismo
+  \(\rho\colon\bigotimes_{r}V\cong(\bigotimes_{r}V)^{*}\) que lleva el producto
+  tensorial de 1-formas \(\alpha_{1}\otimes\dots\otimes\alpha_{r}\) en la
+  1-forma sobre \(\bigotimes_{r}V\) (o n-forma sobre \(V\)):
+  \[
+    \rho(\alpha_{1}\otimes\dots\otimes\alpha_{r})(v_{1}\otimes\dots\otimes
+    v_{r})=\alpha_{1}(v_{1})\otimes\dots\otimes\alpha_{r}(v_{r})
+  \]
+
+  Nótese que si \(\{e_{i}\}\) es una base de \(V\), los elementos básicos de
+  \(\bigotimes_{r}V^{*}\), \(e_{i_{1}}^{*}\otimes\dots\otimes e_{i_{r}}^{*}\)
+  pasan por \(\rho\) a los duales \((e_{i_{1}}\otimes\dots\otimes
+  e_{i_{n}})^{*}\) de la base \(\{e_{i_{1}}\otimes\dots\otimes e_{i_{r}}\}\) de
+  \(\bigotimes_{r}V\).
+\end{remark}
+
+Así pues, las opciones (equivalentes) para generalizar el espacio cotangente son
+las siguientes:
+
+\begin{enumerate}
+\item Tomar para cada \(p\in M\) Multi\(_{n}(\Tangente[p]{M})\) y definir
+  Multi\(_{n}\Tangente{M}=\bigcup_{p\in M}\text{Multi}_{n}(\Tangente[p]{M})\).
+  Si se quiere usar el producto tensorial entonces se toma
+  \(\bigotimes_{n}\Tangente[p]{M}\) y \(\bigotimes_{n}\Tangente{M}=\bigcup_{p\in
+    M}\bigotimes_{n}\Tangente[p]{M}\). Habrá que dotar a
+  Multi\(_{n}(\Tangente{M})\cong\bigotimes_{n}\Tangente{M}\) de una estructura de
+  variedad de dimensión \(n\dim{M}\), para la cual la proyección
+  \(\pi^{*}\colon\bigotimes_{n}\Tangente{M}\to M\) es diferenciable y definir una
+  n-forma sobre \(M\) como una sección de \(\pi\).
+  
+\item Definir una n-forma como una aplicación diferenciable
+  \(f\colon\bigotimes_{n}\Tangente{M}\to\RealSet\) tal que para cada \(p\in M\)
+  se restringe a una aplicación lineal
+  \(f\colon\Tangente[p]{M}\otimes\dots\otimes\Tangente[p]{M}\to\RealSet\), o,
+  equivalentemente multilineal
+  \(f\colon\Tangente[p]{M}\times\dots\times\Tangente[p]{M}\to\RealSet\).
+
+  Esta construcción es equivalente a definir primero el espacio tangente
+  ''producto'' \((\Tangente{M})^{n}=\bigcup_{p\in M}(\Tangente[p]{M})^{n}\),
+  donde
+  \((\Tangente[p]{M})^{n}=\Tangente[p]{M}\times\dots\times\Tangente[p]{M}\) que
+  resulta ser una variedad de dimensión \(n\dim{M}\). Ahora una n-forma sobre
+  \(M\) será una aplicación diferenciable
+  \(f\colon(\Tangente{M})^{n}\to\RealSet\) tal que para todo \(p\in M\) se
+  restringe a una aplicación multilineal
+  \(f\colon\Tangente[p]{M}\times\dots\times\Tangente[p]{M}\to\RealSet\).
+
+\item Extender las nociones de aplicación multilineal y producto tensorial a
+  módulos sobre un anillo \(A\). Entonces considerar las aplicaciones
+  multilineales de \(\mathcal{F}(M)\)-módulos
+  \(\mathbb{X}(M)\times\dots\times\mathbb{X}(M)\to\RealSet\) o bien las
+  aplicaciones lineales de \(\mathcal{F}(M)\)-módulos
+  \(\mathbb{X}(M)\bigotimes\dots\bigotimes\mathbb{X}(M)\to\mathcal{F}(M)\).
+\end{enumerate}
 
 \end{document}
 
