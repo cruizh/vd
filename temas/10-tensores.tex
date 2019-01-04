@@ -272,7 +272,7 @@ las \textbf{formas simétricas y las antisimétricas o alternadas}.
   El producto escalar de \(\RealSet^{n}\) es una 2-forma simétrica.
 \end{example}
 
-\begin{remark}
+\begin{remark}\label{rem:inv-trasp}
   \begin{enumerate}
   \item Obsérvese que para una r-forma alternada \(\alpha\) sobre \(V\) se tiene
     que si \(v_{i}=v_{j},\ i\neq j\), entonces claramente
@@ -293,8 +293,139 @@ las \textbf{formas simétricas y las antisimétricas o alternadas}.
 Ahora se plantea el problema de buscar un ''producto'' de \(V\) adecuado
 para las formas alternadas (simétricas, respectivamente).
 
-\section{Producto Exterior o Alternado}
+\section{Producto Exterior y simétrico}
+\begin{definition}[name= producto exterior]
+El \emph{r-producto  exterior (o alternado)} de \( V \), \( \Lambda^rV \), es el expacio vectorial obtenido al hacer cociente del producto tensorial \( \otimes_rV=\underbracket{V\otimes \ldots \otimes V}_{r} \) por el subespacio generado por los productos \( v_1\otimes\ldots\otimes v_r\) con \( v_i= v_j \) para algún \(  i\neq j\).
+\end{definition}
 
+La clase de \( v_1\otimes\ldots\otimes v_r \) se denota \( v_1\wedge\ldots\wedge v_r \) y se llama \emph{producto exterior (o alternado)} de los vectores \( v_1,\ldots,v_r \).
+
+De igual forma definimos el producto para las formas alternadas simétricas como sigue:
+
+\begin{definition}[name=producto simétrico]
+El \emph{r-producto simétrico} de \( V \), \( S^rV \), es el cociente de \( \otimes_rV \) por el subespacio generado por las diferencias
+\[
+v_1\otimes \ldots\otimes v_i\otimes \ldots v_j\otimes \ldots v_r-
+v_1\otimes \ldots\otimes v_j\otimes \ldots v_i\otimes \ldots v_r
+\]
+para too \( i\neq j \).
+\end{definition}
+
+A la clase resultante \( \alpha_{1}\otimes\alpha_{r} \) se le denota \( \alpha_{1}\ldots \alpha_{r}\) y se llama \emph{producto simétrico} de los vectores \(\alpha_{1},\ldots ,\alpha_{r}  \).
+
+Se tienen así aplicaciones cociente
+\[
+\pi_a\colon \otimes_r V\to \Lambda^rV\quad \pi_S\colon \otimes_rV\to S^rV
+\]
+
+Sean \( Alt_r(V) \) y \( Sim_r(V) \) los subespacios de \( Multi_r(V) \) formados por las r-formas alternas y simétricas, respectivamente. Vamos a construir de manera similar a la anterior aplicación lineal
+\[
+Alt\colon Multi_r(V)\to Alt_r(V)\quad Sim\colon Multi_r(V)\to Sim_r(V)
+\]
+
+Para ello observamos que si \( \beta\colon V\times V\to \RealSet \) es cualquier r-forma y \( \sigma \) es una permutación de \( \{1,\ldots,r\} \), tenemos entonce una nueva r-forma \( ^\sigma\beta\colon V\times\ldots V\to \RealSet \) definida como
+\[
+^\sigma\beta(v_1,\ldots,v_r)=\beta(v_{\sigma(1)},\ldots,v_{\sigma(r)})
+\]
+
+\begin{note}
+Si \( \tau \) es otra permutación entonces para la composición \( \tau\sigma \) se tiene \( ^{\tau\sigma}\beta=^\tau(^\sigma\beta) \)
+\end{note}
+
+\section{Función simétrica y alternada}
+
+\begin{definition}
+Dada la forma \( \beta \) se define 
+\[
+Sim(\beta)=\frac{1}{r!}\sum_{\sigma\in G_r} ^\sigma\beta
+\]
+donde \( G_r \) es el grupo de las permutaciones de \( r \) elementos
+\end{definition}
+
+Esta definición tiene consecuencias inmediatas que veremos en forma de proposición.
+
+\begin{proposition}
+\( Sim(\beta) \)es efectivamente una r-forma simétrica
+\end{proposition}
+
+\begin{proof}
+Sea \( \tau \) trasposición de \( i \) por \( j \). Tenemos
+\begin{align*}
+Sim(\beta)(v_1\ldots v_i\ldots v_j\ldots v_r)&=\frac{1}{r!}\sum_{\sigma\in G_r}^{\sigma\tau}\beta (v_1\ldots v_j\ldots v_i\ldots v_r)\\
+&=\frac{1}{r!}\sum_{\sigma'\in G_r}^{\sigma'}\beta(v_1\ldots v_j\ldots v_i\ldots v_r)\\
+&=Sim(\beta)(v_1\ldots v_j\ldots v_i\ldots v_r)
+\end{align*}
+Donde hemos usado que todo \( \sigma'\in G_r \) se puede reescribir como \( \sigma \tau \) siendo \( \sigma \) único si ya hemos fijado \( \tau \).
+\end{proof}
+
+\begin{proposition}
+Si \( \beta \) es simétrica entonces \( Sim(\beta)=\beta \)
+\end{proposition}
+
+\begin{proof}
+Ya hemos visto en \ref{rem:inv-trasp} y por tanto
+\begin{align*}
+Sim(\beta)(v_1\ldots v_r)&=\frac{1}{r!}\sum_{\sigma\in G_r}^\sigma\beta(v_1\ldots v_r)\\
+&=\frac{1}{r!}(r!)\beta(v_1\ldots v_r)\\
+&=\beta(v_1\ldots v_r)
+\end{align*}
+\end{proof}
+
+Este resultado deja ver que la aplicación \( Sim \) concuerda con la noción intuitiva de la misma.
+
+De manera análoga se define una aplicación para una r-forma arbitraria
+\begin{definition} 
+Sea \( \beta\in Multi_r(V) \)
+\[
+Alt(\beta)=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) ^\sigma\beta
+\]
+\end{definition}
+
+Y cumple igualmente  que \( Alt(\beta) \) es una r-forma
+
+\begin{proposition}
+\( Alt(\beta) \) es una r-forma
+\end{proposition}
+
+\begin{proof}
+	Sea \( \tau \) trasposición de \( i \) por \( j \). Tenemos
+\begin{align*}
+Alt(\beta)(v_1\ldots v_i\ldots v_j\ldots v_r)&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) ^\sigma\beta(v_1\ldots v_i\ldots v_j\ldots v_r)\\
+&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \beta(v_{\sigma(1)}\ldots v_{\sigma(i)}\ldots v_{\sigma(j)}\ldots v_{\sigma(r)})\\
+&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \beta(v_{\tau\sigma(1)}\ldots v_{\tau\sigma(j)}\ldots v_{\tau\sigma(i)}\ldots v_{\tau\sigma(r)})\\
+&=\frac{1}{r!}\sum_{\sigma\in G_r}-Signo(\tau\sigma) ^{\tau\sigma}\beta(v_1\ldots v_j\ldots v_i\ldots v_r)\\
+&=-\frac{1}{r!}\sum_{\sigma'\in G_r}Signo(\sigma') ^{\sigma'}\beta(v_1\ldots v_i\ldots v_j\ldots v_r)\\
+&=-Alt(\beta)(v_1\ldots v_j\ldots v_i\ldots v_r)
+\end{align*}
+\end{proof}
+
+\begin{proposition}
+Si \( \beta\in Alt_r(V) \) entonces \( Alt(\beta)=\beta \)
+\end{proposition}
+
+\begin{proof}
+Sabemos que \( ^\sigma\beta =signo(\sigma)\beta \) de acuerdo con \ref{rem:inv-trasp} y por tanto
+\begin{align*}
+Alt(\beta)&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) ^\sigma\beta\\
+&=\frac{1}{r!}(r!)\beta\\
+&=\beta
+\end{align*}
+\end{proof}
+
+Además tenemos un diagrama que conecta todos los conceptos vistos en la sección
+\begin{figure}[h]
+	\centering
+	\begin{tikzcd}
+		Alt_r(V) & Multi_r(V) \arrow[l, "Alt"'] \arrow[r ,"Sim"]& Sim_r(V)\\
+		(\Lambda^r V)^* \arrow[r, "\pi_a^*"] \arrow[u, "\rho_a"]& (\otimes_r V)^* \arrow[u, "\rho", "\homeo"'] & (S^rV)^* \arrow[l, "\pi_s^*"'] \arrow[u ,"\rho_s"]
+	\end{tikzcd}
+	%\caption{Texto}
+	%\label{fig:texto}
+\end{figure}
+donde \( \rho \) es la biyección que lleva la 1-forma \( \gamma\colon V_1\otimes\ldots \otimes V_r\to \RealSet \) en la r-forma \( \rho(\gamma)\colon V_1\times\ldots\times V_r\to \RealSet \) definida como
+\[
+\rho(\alpha)(v_1\ldots v_r)=\gamma(v_1\otimes \ldots \otimes v_r)
+\]
 
 \end{document}
 
