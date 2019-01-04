@@ -167,6 +167,135 @@ las siguientes:
   \(\mathbb{X}(M)\bigotimes\dots\bigotimes\mathbb{X}(M)\to\mathcal{F}(M)\).
 \end{enumerate}
 
+\begin{lemma}
+  Las 3 construcciones anteriores son equivalentes.
+\end{lemma}
+
+\begin{proof}
+  Ahora vemos cómo pasar de una a otra construcción:
+  \begin{itemize}
+  \item \((1)\iff(2)\). Si \(s\colon M\to\text{Multi}_{n}(\Tangente{M})\) es una
+    sección defino
+    \(f_{s}\colon\Tangente[p]{M}\times\dots\times\Tangente[p]{M}\to\RealSet\) por
+    \(f_{s}(v_{1},\dots,v_{n})=s(p)(v_{1},\dots,v_{n}),\
+    v_{i}\in\Tangente[p]{M}\).
+    Recíprocamente, dada \(f\colon\bigotimes_{n}\Tangente{M}\to\RealSet\) se
+    define \(s_{f}(p)(v_{1},\dots,v_{n})=f(v_{1}\otimes\dots\otimes v_{n}),\
+    v_{i}\in\Tangente[p]{M}\), con la notación del producto tensorial.
+    
+  \item \((2)\iff(3)\). Si \(f\colon\bigotimes_{n}\Tangente{M}\to\RealSet\)
+    entonces
+    \(\phi_{f}\colon\mathbb{X}(M)\times\dots\times\mathbb{X}(M)\to\mathcal{F}(M)\)
+    está dada por \(\phi_{f}(X_{1},\dots,X_{n})(p)=f(X_{1}(p),\dots,X_{n}(p))\).
+    Recíprocamente, si
+    \(\phi\colon\mathbb{X}(M)\times\dots\times\mathbb{X}(M)\to\mathcal{F}(M)\)
+    entonces \(f_{\phi}(v_{1}\otimes\dots\otimes
+    v_{n})=\phi(X_{v_{1}},\dots,X_{v_{n}})\) donde \(X_{v_{i}}\) son campos
+    cualesquiera con \(X_{v_{i}}(p)=v_{i}\). 
+  \end{itemize}
+\end{proof}
+
+\section{Tensores}
+
+Ahora podemos complicarlo más y mezclar el espacio tangente \(\Tangente{M}\) y
+el cotangente \(\DualT{M}\) en las construcciones anteriores y hablar de
+\textbf{tensores}.
+
+\begin{definition}[name=tensores]
+  Por un \emph{tensor r-covariante} se entenderá una r-forma sobre el espacio
+  cotangente de \(M\), \(\bigotimes_{r}\DualT{M}\to\RealSet\) mientras que un
+  \emph{tensor s-contravariante} es una s-forma del tangente,
+  \(\bigotimes_{s}\Tangente{M}\to\RealSet\).
+
+  \par
+  
+  Todavía más, si consideramos la variedad
+  \((\bigotimes_{s}\Tangente{M})\otimes(\bigotimes_{r}\DualT{M})=\bigcup_{p\in
+    M}(\bigotimes_{s}\Tangente[p]{M})\otimes(\bigotimes_{r}\DualT[p]{M})\), la
+  aplicación diferenciable
+  \((\bigotimes_{s}\Tangente{M})\otimes(\bigotimes_{r}\DualT{M})\to\RealSet\)
+  que es lineal en cada \(p\in M\) será entonces un \emph{tensor mixto de tipo
+    (s,r)}.
+\end{definition}
+
+\begin{remark}
+  Si \(m=\dim{M}\) y tomamos una carta entorno de \(p\in M\)
+  \((U,\varphi=(x_{1},\dots,x_{n}))\), con la notación
+  \(\dif{x_{1}},\dots,\dif{x_{n}}\) y
+  \(\pderiv{}{x_{1}},\dots,\pderiv{}{x_{n}}\) para la base canónica de
+  \(\DualT[p]{M}\) y \(\Tangente[p]{M}\), tenemos que un tensor r-covariante es
+  de la forma
+  \[\sum_{(i_{1},\dots,i_{r})}g_{i_{1},\dots,i_{r}}\dif{x_{i_{1}}}\otimes\dots\otimes
+  \dif{x_{i_{r}}},\ (i_{1},\dots,i_{r})\in\{1,\dots,m\}^{r}\] y análogamente un tensor
+  s-contravariante se escribe como
+  \[\sum_{(j_{1},\dots,j_{s})}f_{j_{1},\dots,j_{s}}\pderiv{}{x_{j_{1}}}\otimes\dots
+  \otimes\pderiv{}{x_{j_{s}}},\ (j_{1},\dots,j_{s})\in\{1,\dots,m\}^{s}.\]
+
+  Para un tensor mixto (s,r) tenemos
+  \[\sum_{(i_{1},\dots,i_{r}),(j_{1},\dots,j_{s})}h_{i_{1},ots,i_{r}}^{j_{1},\dots,j_{s}}
+  \pderiv{}{x_{j_{1}}}\otimes\dots\otimes\pderiv{}{x_{j_{s}}}\otimes
+  \dif{x_{i_{1}}}\otimes\dots\otimes\dif{x_{i_{r}}}.\]
+
+  A las funciones \(f,g,h\colon\varphi(U)\to\RealSet\) se las denomina
+  \emph{componentes} del correspondiente tensor en la carta \((U,\varphi)\). 
+\end{remark}
+
+\section{Formas Simétricas y Alternadas}
+
+Existen 2 clases de formas sobre un espacio vectorial \(V\) de especial interés:
+las \textbf{formas simétricas y las antisimétricas o alternadas}.
+
+\begin{definition}[name=forma simétrica]
+  Una r-forma \(\alpha\colon V\times\dots\times V\to\RealSet\) se dice
+  \emph{simétrica} si
+  \[\alpha(v_{1},\dots,v_{i},\dots,v_{j},\dots,v_{r})=
+  \alpha(v_{1},\dots,v_{j},\dots,v_{i},\dots,v_{r})\] para todo \(1\leq i\leq
+  j\leq r\). 
+\end{definition}
+
+\begin{definition}[name=forma alternada]
+  Una r-forma \(\alpha\colon V\times\dots\times V\to\RealSet\) se dice
+  \emph{antisimétrica o alternada} si
+  \[\alpha(v_{1},\dots,v_{i},\dots,v_{j},\dots,v_{r})= 
+  -\alpha(v_{1},\dots,v_{j},\dots,v_{i},\dots,v_{r})\] para todo \(1\leq i\leq
+  j\leq r\).  
+\end{definition}
+
+\begin{remark}
+  Las formas alternadas también son llamadas \emph{exteriores} en algunas
+  referencias. Incluso es bastante habitual que se reserve el nombre de
+  ''forma'' exclusivamente para las alternadas, dejando aplicación multilineal
+  para lo que aquí llamamos formas en general.
+\end{remark}
+
+\begin{example}
+  El producto escalar de \(\RealSet^{n}\) es una 2-forma simétrica.
+\end{example}
+
+\begin{remark}
+  \begin{enumerate}
+  \item Obsérvese que para una r-forma alternada \(\alpha\) sobre \(V\) se tiene
+    que si \(v_{i}=v_{j},\ i\neq j\), entonces claramente
+    \(\alpha(v_{1},\dots,v_{r})=0\) en virtud de su propia definición.
+  \item Más aún, como toda permutación es producto de trasposiciones entonces para
+    toda r-forma alternada \(\alpha\) y toda permutación \(\sigma\) de
+    \(\{1,\dots,r\}\), tenemos
+    \[\alpha(v_{\sigma(1)},\dots,v_{\sigma(r)})=\text{signo}(\sigma)
+    \alpha(v_{1},\dots,v_{r}),\] 
+    donde signo\((\sigma)\) vale \(1\) si \(\sigma\) se descompone como un
+    número par de trasposiciones y \(-1\) si el número es impar.
+  \item Por otro lado, si \(\alpha\) es simétrica entonces
+    \[\alpha(v_{\sigma(1)},\dots,v_{\sigma(n)})=\alpha(v_{1},\dots,v_{n})\] pues
+    \(\alpha\) es invariante por trasposiciones.
+  \end{enumerate}
+\end{remark}
+
+Ahora se plantea el problema de buscar un ''producto'' de \(V\) adecuado
+para las formas alternadas (simétricas, respectivamente).
+
+\section{Producto Exterior o Alternado}
+
+
 \end{document}
 
 %%% Local Variables:
