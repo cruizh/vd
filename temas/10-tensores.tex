@@ -427,6 +427,79 @@ donde \( \rho \) es la biyección que lleva la 1-forma \( \gamma\colon V_1\otime
 \rho(\alpha)(v_1\ldots v_r)=\gamma(v_1\otimes \ldots \otimes v_r)
 \]
 
+Entonces \( \rho_s=Sim\circ \rho Circ \pi_s^* \) y \( \rho_a=Alt\circ \rho \circ \pi_a^* \) son también biyectivas.
+
+\begin{proposition}
+\( \rho_a \) lleva la 1-forma \( \gamma\colon \Lambda^rV\to \RealSet \) en la r-forma alternada
+\[
+\rho_a(\gamma)(v_1,\ldots,v_r)=\gamma(v_1\wedge\ldots\wedge v_r)
+\]
+\end{proposition}
+
+\begin{proof}
+Siguiendo la definición del diagrama anterior
+\begin{align*}
+\rho_s(\gamma)(v_1\ldots v_r)&=Alt\circ \rho_s\circ \pi_a^*(\gamma)\\
+&=Alt(\rho(\gamma\circ \pi_a))(v_1\ldots v_r)\\
+&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) ^\sigma\rho(\gamma\circ \pi_a)(v_1\ldots v_r)\\
+&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \rho(\gamma\circ \pi_a)(v_{\sigma(1)}\ldots v_{\sigma(r)})\\
+&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \gamma\circ \pi_a(v_{\sigma(1)}\otimes\ldots\otimes v_{\sigma(r)})\\
+&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma)Signo(\sigma) \gamma\circ \pi_a(v_{1}\otimes\ldots\otimes v_{r})\\
+&=\frac{1}{r!}(r!\gamma(v_1\wedge\ldots \wedge v_r))\\
+&=\gamma(v_1\wedge\ldots \wedge v_r)
+\end{align*}
+usando que \( v_{\sigma(1)}\otimes \ldots v_{\sigma(r)} \) y \( Signo(\sigma)(v_1\otimes\ldots \otimes v_r) \) representan la misma clase en \( \Lambda^rV \) como cociente de \( \otimes_rV \)
+\end{proof}
+
+De aquí se sigue inmediatamente que\( \rho_a \) es inyectiva. \\
+Para la sobreyectividad, si \( \xi\colon V_1\times\ldots\times V_r\to \RealSet\) es una forma alternada, entonces \( \rho^{-1}(\xi)\colon V_1\otimes\ldots\otimes V_r\to \RealSet \) cumple
+\[
+\rho^{-1}(\xi)(v_1\otimes\ldots\otimes v_i\otimes\ldots\otimes v_j\otimes\ldots\otimes v_r)=\xi(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_r)=-\xi (v_1,\ldots,v_j,\ldots,v_r)
+\]
+por lo que es compatible con el cociente que define \( \Lambda^rV \) e induce una 1-forma \( \tilde{\rho^{-1}(\xi)}\colon \Lambda^rV\to \RealSet \) con
+\[
+\pi_a^*(\tilde{\rho^{-1}(\xi)})=\tilde{\rho^{-1}(\xi)}\circ \pi =\rho^{-1}(\xi)
+\]
+Así pues \( \rho_a(\tilde{\rho^{-1}(\xi)})=\xi \)
+
+\begin{remark}
+Para \( \rho_s\colon (S^rV)^*\to Sim_r(V) \) tenemos análogamente que si \( \nu\in (S^rV)^* \) entonces
+\[
+\rho_s(\nu)(v_1,\ldots,v_r)=\nu(\underbracket{v_1v_2\cdots v_r}_{\text{prod simétrico}})
+\]
+\end{remark}
+
+Hemos probado así los isomorfismos
+\[
+(\Lambda^rV)^*\homeo Alt_r(V),\quad (S^rV)^*\homeo Sim_r(V)
+\]
+
+\section{Dimensiones}
+\begin{proposition}
+Si \( \{e_i\} \) es una base de \( V \) entonces los productos exteriores \( e_{i_1}\wedge \ldots\wedge e_{i_r} \) con \( i_1<\ldots< i_r \) forman base de \( \Lambda^rV \). Además su dimensión es
+\[
+(\overset{n}{r})=\frac{n!}{r!(n-r)!}
+\]
+siendo \( n=dim(V) \)
+\end{proposition}
+
+\begin{proof}
+Podemos comprobar que toda r-forma en \( Alt_r(V) \) queda determinada por sus valores en \( (e_{i_1}),\ldots,e_{i_r} \) con \( i_1<\ldots <i_r \). Por tanto su dimensión es el número de posibles combinaciones con los subíndices.
+\end{proof}
+
+Tenemos un resultado análogo para \( S^rV \)
+
+\begin{proposition}
+Una base de \( S^rV \) la forman los productos simétricos \( e_{i_1}\cdots e_{i_r} \) con \( i_1\leq \ldots\leq i_r \) y su dimensión es
+\[
+dimS^r(V)=(\overset{n+r-1}{r})=\frac{(n+r-1)!}{r!(n-1)!}
+\]
+\end{proposition}
+
+\begin{proof}
+La prueba se hará en clase de problemas.
+\end{proof}
+
 \end{document}
 
 %%% Local Variables:
