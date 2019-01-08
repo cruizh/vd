@@ -420,12 +420,299 @@ Además tenemos un diagrama que conecta todos los conceptos vistos en la secció
 		(\Lambda^r V)^* \arrow[r, "\pi_a^*"] \arrow[u, "\rho_a"]& (\otimes_r V)^* \arrow[u, "\rho", "\homeo"'] & (S^rV)^* \arrow[l, "\pi_s^*"'] \arrow[u ,"\rho_s"]
 	\end{tikzcd}
 	%\caption{Texto}
-	%\label{fig:texto}
+	\label{fig:iso-ext}
 \end{figure}
 donde \( \rho \) es la biyección que lleva la 1-forma \( \gamma\colon V_1\otimes\ldots \otimes V_r\to \RealSet \) en la r-forma \( \rho(\gamma)\colon V_1\times\ldots\times V_r\to \RealSet \) definida como
 \[
 \rho(\gamma)(v_1\ldots v_r)=\gamma(v_1\otimes \ldots \otimes v_r)
 \]
+
+Entonces \( \rho_s=Sim\circ \rho \circ \pi_s^* \) y \( \rho_a=Alt\circ \rho \circ \pi_a^* \) son también biyectivas.
+
+\begin{proposition}
+\( \rho_a \) lleva la 1-forma \( \gamma\colon \Lambda^rV\to \RealSet \) en la r-forma alternada
+\[
+\rho_a(\gamma)(v_1,\ldots,v_r)=\gamma(v_1\wedge\ldots\wedge v_r)
+\]
+\end{proposition}
+
+\begin{proof}
+Siguiendo la definición del diagrama anterior
+\begin{align*}
+\rho_s(\gamma)(v_1\ldots v_r)&=Alt\circ \rho_s\circ \pi_a^*(\gamma)\\
+&=Alt(\rho(\gamma\circ \pi_a))(v_1\ldots v_r)\\
+&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) ^\sigma\rho(\gamma\circ \pi_a)(v_1\ldots v_r)\\
+&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \rho(\gamma\circ \pi_a)(v_{\sigma(1)}\ldots v_{\sigma(r)})\\
+&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \gamma\circ \pi_a(v_{\sigma(1)}\otimes\ldots\otimes v_{\sigma(r)})\\
+&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma)Signo(\sigma) \gamma\circ \pi_a(v_{1}\otimes\ldots\otimes v_{r})\\
+&=\frac{1}{r!}(r!\gamma(v_1\wedge\ldots \wedge v_r))\\
+&=\gamma(v_1\wedge\ldots \wedge v_r)
+\end{align*}
+usando que \( v_{\sigma(1)}\otimes \ldots v_{\sigma(r)} \) y \( Signo(\sigma)(v_1\otimes\ldots \otimes v_r) \) representan la misma clase en \( \Lambda^rV \) como cociente de \( \otimes_rV \)
+\end{proof}
+
+De aquí se sigue inmediatamente que\( \rho_a \) es inyectiva. \\
+Para la sobreyectividad, si \( \xi\colon V_1\times\ldots\times V_r\to \RealSet\) es una forma alternada, entonces \( \rho^{-1}(\xi)\colon V_1\otimes\ldots\otimes V_r\to \RealSet \) cumple
+\begin{align*}
+\rho^{-1}(\xi)(v_1\otimes\ldots\otimes v_i\otimes\ldots\otimes v_j\otimes\ldots\otimes v_r)&=\xi(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_r)\\
+&=-\xi (v_1,\ldots,v_j,\ldots,v_r)
+\end{align*}
+por lo que es compatible con el cociente que define \( \Lambda^rV \) e induce una 1-forma \( \tilde{\rho^{-1}(\xi)}\colon \Lambda^rV\to \RealSet \) con
+\[
+\pi_a^*(\tilde{\rho^{-1}(\xi)})=\tilde{\rho^{-1}(\xi)}\circ \pi =\rho^{-1}(\xi)
+\]
+Así pues \( \rho_a(\tilde{\rho^{-1}(\xi)})=\xi \)
+
+\begin{remark}
+Para \( \rho_s\colon (S^rV)^*\to Sim_r(V) \) tenemos análogamente que si \( \nu\in (S^rV)^* \) entonces
+\[
+\rho_s(\nu)(v_1,\ldots,v_r)=\nu(\underbracket{v_1v_2\cdots v_r}_{\text{prod simétrico}})
+\]
+\end{remark}
+
+Hemos probado así los isomorfismos
+\[
+(\Lambda^rV)^*\homeo Alt_r(V),\quad (S^rV)^*\homeo Sim_r(V)
+\]
+
+\section{Dimensiones}
+\begin{proposition}
+Si \( \{e_i\} \) es una base de \( V \) entonces los productos exteriores \( e_{i_1}\wedge \ldots\wedge e_{i_r} \) con \( i_1<\ldots< i_r \) forman base de \( \Lambda^rV \). Además su dimensión es
+\[
+(\overset{n}{r})=\frac{n!}{r!(n-r)!}
+\]
+siendo \( n=dim(V) \)
+\end{proposition}
+
+\begin{proof}
+Podemos comprobar que toda r-forma en \( Alt_r(V) \) queda determinada por sus valores en \( (e_{i_1}),\ldots,e_{i_r} \) con \( i_1<\ldots <i_r \). Por tanto su dimensión es el número de posibles combinaciones con los subíndices.
+\end{proof}
+
+Tenemos un resultado análogo para \( S^rV \)
+
+\begin{proposition}
+Una base de \( S^rV \) la forman los productos simétricos \( e_{i_1}\cdots e_{i_r} \) con \( i_1\leq \ldots\leq i_r \) y su dimensión es
+\[
+dimS^r(V)=(\overset{n+r-1}{r})=\frac{(n+r-1)!}{r!(n-1)!}
+\]
+\end{proposition}
+
+\begin{proof}
+La prueba se hará en clase de problemas.
+\end{proof}
+
+\begin{note}
+Observese que para \( n=dim(V) \) tenemos \( Alt_nV\homeo\Lambda^nV\homeo \RealSet \) estando \( \Lambda^nV \) generado por \( e_1\wedge\ldots\wedge e_n \) siendo \( \{e_i\} \) una base de \( V \).
+\end{note}
+
+\begin{proposition}
+La n-forma alternada se puede interpretar como un determinante
+\end{proposition}
+
+\begin{proof}
+En efecto, si \( \mu \) es una n-forma alternada, entonces \( \mu(v_1,\ldots,v_n)=\lambda\mu(e_1,\ldots,e_n) \), donde \( \lambda \) es el determinante de la matriz \( n\times n \) \( A_r \) cuyos vectores columna son los \( v_i \).
+
+Si \( v_j=\sum_{i=1}^{n}\lambda_j^ie_i \), entonces tomando \( \mu \) en \( Multi_n(V)\homeo (\otimes_nV)^* \), tenemos por la multilinealidad del producto tensorial
+\begin{align*}
+\mu(v_1\ldots v_n)&=\mu(\sum_{i=1}^n \lambda_1^ie_i\otimes\ldots \otimes\sum_{i=1}^n\lambda_n^i e_i)\\
+&=\sum_{(i_1,\ldots,i_n)\in \{1,\ldots,n\}^n} \lambda_1^{i_1}\cdots\lambda_n^{i_n}\mu(e_{i_1}\otimes\ldots\otimes e_{i_n})\quad (2)
+\end{align*}
+Ahora bien, por se \( \mu \) alternada esta se anula cuando aparecen índices repetidos. Así pues \( i_1\ldots i_n\) debe ser una permutación de \( \{1,\ldots,n\} \) y
+\begin{align*}
+(2)&=\sum_{\sigma\in G_n}\lambda_1^{\sigma(1)}\cdots\lambda_n^{\sigma(n)}\mu(e_{\sigma(1)}\otimes\ldots\otimes e_{\sigma(n)})\\
+&=\sum_{\sigma\in G_n}Signo(\sigma)\lambda_1^{\sigma(1)}\cdots\lambda_n^{\sigma(n)}\mu(e_1\otimes\ldots\otimes e_n)\\
+&=\lambda\mu(e_1\otimes\ldots\otimes e_n)\\
+&=\lambda\mu(e_1\wedge\ldots\wedge e_n)
+\end{align*}
+donde \( \lambda=\sum_{\sigma\in G_n}Signo(\sigma)\lambda_1^{\sigma(1)}\ldots\lambda_n^{\sigma(n)}=det(A_v) \).
+\end{proof}
+
+\section{Producto simétrico y exterior entre formas}
+Dadas una r-forma \( \alpha\colon\otimes_rV\to \RealSet \) y una s-forma \( \beta\colon\otimes_sV\to \RealSet \) habíamos definido la (r+s)-forma \( \alpha\otimes\beta\colon\otimes_{r+s}V\to \RealSet \) por
+\[
+\alpha\otimes\beta(v_1\otimes\ldots\otimes v_r\otimes v_{r+1}\otimes\ldots\otimes v_{r+s})=\alpha(v_1\ldots v_r)\cdot\beta(v_{r+1}\ldots v_{r+s})
+\]
+
+Si \( \alpha \)y \( \beta \) son simétricos entonces \( \alpha\otimes\beta \) no tiene que ser simétrico. Lo mismo ocurre si son alternados. Es por ellos que buscamos definir un nuevo producto que sea interno dentro de los simétricos y alternados.
+
+\begin{definition}
+Definimos el \emph{producto simétrico} de la r-forma simétrica \( \alpha \) con la s-forma simétrica \( \beta \) como la "simetrización" del producto anterior
+\[
+\alpha\cdot\beta=Sim(\alpha\otimes\beta)
+\]
+\end{definition}
+
+Si lo vemos aplicado a un elemento genérico resulta
+
+\begin{align*}
+  \alpha \cdot \beta(v_1,\dots,v_r,v_{r+1},\dots,v_{r+s})
+  =
+  \frac{1}{(r+s)!}
+  \sum_{\sigma\in G_{r+s}}
+  \alpha(v_{\sigma(1)}\dots v_{\sigma(r)})
+  \beta(v_{\sigma(r+1)}\dots v_{\sigma(r+s)})
+\end{align*}
+
+\begin{definition}
+Definimos el \emph{producto exterior (o alternado)} de la r-forma alternada \( \alpha \) con la s-forma alternada \( \beta \) como
+\[
+\alpha\wedge\beta=Alt(\alpha\otimes\beta)
+\]
+es decir,
+\begin{align*}
+&\alpha\wedge\beta(v_1,\ldots,v_r,v_{r+1},\ldots,v_{r+s})=\\
+&\frac{1}{(r+s)!}\sum_{\sigma\in G_{r+s}}Signo(\sigma)\alpha(v_1\ldots v_r)\cdot\beta(v_{r+1}\ldots v_{r+s})\\
+\end{align*}
+\end{definition}
+
+Veamos ahora una serie de propiedades acerca de estos nuevos conceptos.
+
+\begin{proposition}\label{prop:ext-proper}
+El producto exterior de formas alternadas cumple las siguientes propiedades:
+\begin{enumerate}
+\item Bilineal: \( (a\alpha+b\beta)\wedge \eta=a(\alpha\wedge\eta)+b(\beta\wedge\eta) \)
+\item Asociativo: \( (\alpha\wedge\beta)\wedge \gamma=\alpha\wedge(\beta\wedge\gamma) \)
+\item Anticonmutativo: \( \omega\wedge\eta=(-1)^{rs}\eta\wedge\omega \) si \( \omega\in \Lambda^r(V) \) y \( \eta\in \Lambda^s(V) \). En particular, \( \omega\wedge\omega=0 \) si r es impar.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}
+\item Esta propiedad es inmediata a partir de la definición.
+\item Lo probaremos en el siguiente lema \ref{lem:transi}
+\item Sabiendo que cada término de
+\begin{align*}
+&Alt(\omega\otimes\eta)(v_1,\ldots,v_r,v_{r+1},\ldots,v_{r+s})=\\
+&\frac{1}{(r+s)!}\sum_{\sigma\in G_{r+s}}Signo(\sigma)\omega(v_{\sigma(1)},\ldots,\omega_{\sigma(r)})\eta(v_{\sigma(r+1)},\ldots,v_{\sigma(r+s)})
+\end{align*}
+aparece en
+\begin{align*}
+&Alt(\eta\otimes\omega)(v_1,\ldots,v_r,v_{r+1},\ldots,v_{r+s})=\\
+&\frac{1}{(r+s)!}\sum_{\sigma'\in G_{r+s}}Signo(\sigma')\eta(v_{\sigma'(1)},\ldots,\omega_{\sigma'(r)})\omega(v_{\sigma'(r+1)},\ldots,v_{\sigma'(r+s)})
+\end{align*}
+En efecto, dada \( \sigma \) su \( \sigma' \) asociada está definida por
+\(
+\sigma'(1)=\sigma(r+1),\ldots,\sigma'(s)=\sigma(r+s),\sigma'(s+1)=\sigma(1),\ldots,\sigma'(s+r)=\sigma(r)
+\)
+Falta por ver la relación entre los signos. Siguiendo la regla anterior es fácil ver que para pasar de \( \sigma'(1) \) a \( \sigma(1) \) necesitamos trasponer r posiciones y lo mismo ocurre para cualquier otro índice.
+
+Así pues \( signo(\sigma)=signo(\sigma')(-1)^{rs} \).
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}\label{lem:transi}
+	\begin{enumerate}
+\item Supongamos que la r-forma \( \alpha \) cumple \( Alt(\alpha)=0 \). Entonces para toda s-forma \( \beta \) se tiene \( Alt(\alpha\otimes\beta)=Alt(\beta\otimes\alpha)=0 \).
+\item \( Alt(Alt(\omega\otimes\eta)\otimes\theta)=Alt(\omega\otimes\eta\otimes\theta)=Alt(\omega\otimes Alt(\eta\otimes \theta)) \).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}
+\item Desarrollamos uno de los dos dado que son análogos.
+\begin{align*}
+&Alt(\alpha\otimes\beta)(v_1\ldots v_{r+s})=\\
+&=\frac{1}{(r+s)!}\sum_{\sigma\in G_{r+s}}Signo(\sigma)\alpha(v_{\sigma(1)},\ldots,\omega_{\sigma(r)})\beta(v_{\sigma(r+1)},\ldots,v_{\sigma(r+s)})
+\end{align*}
+Para probar que esta suma es nula se descompondrá \( G_{r+s} \) en subconjuntos disjuntos tales que sumas extendidas a esos subconjuntos serán todas nulas.\\
+Empezamos tomando \( G\in G_{r+s} \) formado por las permutaciones que dejen fijo \( r+1,\ldots,r+s \). Entonces si \( \sigma' \) es la restricción de \( \sigma \) a \( \{1,\ldots,r\} \), tenemos que \( \sigma\mapsto \sigma' \) da un isomorfismo \( G\homeo G_r \) y además \( signo(\sigma)=signo(\sigma') \). Entonces
+\begin{align*}
+&\sum_{\sigma\in G}Signo(\sigma)\alpha(v_{\sigma(1)},\ldots,\omega_{\sigma(r)})\beta(v_{\sigma(r+1)},\ldots,v_{\sigma(r+s)})=\\
+&=\sum_{\sigma\in G_{r+s}}Signo(\sigma)\alpha(v_{\sigma(1)},\ldots,\omega_{\sigma(r)})\beta(v_{r+1},\ldots,v_{r+s})=\\
+&=[\sum_{\sigma'\in G_{r+s}}Signo(\sigma')\alpha(v_{\sigma'(1)},\ldots,\omega_{\sigma'(r)})]\beta(v_{r+1},\ldots,v_{r+s})=\\
+&=r!Alt(\alpha)\beta(v_{r+1}\ldots v_{r+s})=0
+\end{align*}
+Sea \( \sigma_1\neq G \). Entonces \( G\sigma_1=\{\sigma\sigma_1\colon\sigma\in G\} \) es disjunto con \( G \) pues si \( \mu\in G\sigma_1\cap G\) entonces \( \mu=\sigma\sigma_1 \) con \( \mu,\sigma\in G \) y se cumpliría \( \sigma_1=\sigma^{-1}\mu\in G \) que es contradicción.\\
+El sumando generado por \( G\sigma_1 \) es
+\begin{align*}
+&\sum_{\sigma_1}=\sum_{\mu\in G\sim_1}Signo(\mu)\alpha(v_{\mu(1)}\ldots v_{\mu(r)})\beta(v_{\mu(r+1)}\ldots v_{\mu(r+s)})=\\
+&=\sum_{\theta\in G}Signo(\sigma\sigma_1)\alpha(v_{\sigma\sigma_1(1)}\ldots v_{\sigma\sigma_1(r)})\beta(v_{\sigma\sigma_1(r+1)}\ldots v_{\sigma\sigma_1(r+s)})\quad (\label{proof:lem-transi})
+\end{align*}
+Tomando \( (w_1\ldots w_{k+l})=(v_{\sigma_1(1)}\ldots v_{\sigma_1(r+s)}) \), tenemos que \( w_{\sigma(i)}=v_{\sigma\sigma_1(i)} \) y por tanto
+\begin{align*}
+(\ref{proof:lem-transi} )&=Signo(\sigma_1)\sum_{\sigma\in G}Signo(\sigma)\alpha(w_{\sigma(1)}\ldots w_{\sigma(r)})\beta(w_{\sigma(r+1)}\ldots w_{\sigma(r+s)})\\
+&=Signo(\sigma_1)(r!Alt(\alpha)(w_1\ldots w_r))\beta(w_{r+1}\ldots w_{r+s})\\
+&=0
+\end{align*}
+Si tomamos \( \sigma_2\notin G\cup G\sigma_1 \), tenemos \( G\cap G\sigma_2=\emptyset \) y \( G\sigma_1\cap G\sigma_2=\emptyset \).\\
+Repitiendo el proceso anterior llegamos a \( \sum_{\sigma_2}=0 \).
+
+Por la finitud de \( G_{r+s} \) se llegará a cubrir \( G_{r+s} \) con conjuntos disjuntos de la forma \( G, G_{\sigma_1},\ldots,G_{\sigma_k} \) y cada uno de ellos no aporta nada a la suma total, que será por tanto nula.
+\item Observamps que por ser \( Alt(\alpha) \) una forma alternada \( Alt(Alt(\alpha))=Alt(\alpha) \). Por tanto
+\begin{align*}
+\alpha&=Alt(Alt(\eta\otimes\theta)-\eta\otimes\theta)\\
+&=Alt(\eta\otimes\theta)-Alt(\eta\otimes\theta)\\
+&=0
+\end{align*}
+Entonces por (1), linealidad y la transitividad del producto tensorial
+\[
+0=Alt(\omega\otimes\alpha)=Alt(\omega\otimes Alt(\eta\otimes\theta))-Alt(\omega\otimes\eta\otimes\theta)
+\]
+Por tanto \( Alt(\omega\otimes Alt(\eta\otimes\theta))=Alt(\omega\otimes\eta\otimes\theta) \).
+
+De manera análoga se prueba \( Alt(Alt(\omega\otimes Alt(\eta\otimes\theta)))=Alt(\omega\otimes\eta\otimes\theta) \)
+\end{enumerate}
+\end{proof}
+
+\begin{note}
+Usando la segunda parte del lema \ref{lem:transi} tenemos
+\[
+(\alpha\wedge\beta)\wedge\gamma=Alt(Alt(\alpha\otimes\beta)\otimes\gamma)=
+Alt(\alpha\otimes Alt(\beta\otimes\gamma))=\alpha\wedge(\beta\wedge\gamma)
+\]
+lo que probaría (2) \ref{prop:ext-proper}
+\end{note}
+
+La siguiente proposición nos dice que las formas alternadas quedan determinadas por las 1-formas t el producto exterior.
+
+\begin{proposition}
+Si \( \{e_i\} \) es una base de \( V \), entonces la r-forma alternada \( r!(e_{i_1}^*\wedge\ldots\wedge e_{i_r}^*) \) con \( 1\leq i_1< \ldots<i_r\leq n  \) se corresponde con el del elemento básico \( e_{i_1}\wedge\ldots \wedge e_{i_r}\in \Lambda^r(V) \)  por el isomorfismo \( \rho_a\colon(\Lambda^rV)^*\to Alt_r(V)  \) que vimos en \ref{fig:iso-ext}.
+
+En particular al recorrer  \( 1\leq i_1< \ldots<i_r\leq n  \) todas las ordenaciones, el conjunto \( \{e_{i_1}^*\wedge\ldots\wedge e_{i_r}^*\}\) forma una base de \( alt_r(V) \).
+\end{proposition}
+
+\begin{proof}
+Lo haremos por inducción.\\
+Para r=1 es obvio.\\
+Supongamos el resultado cierto para r-1 y veamos el caso r. Por definición
+
+\begin{equation}
+ \label{proof:prop-alt} 
+\begin{aligned}
+&\rho_a^{-1}(e_{i_1}^*\wedge\ldots e_{i_r}^*)(e_{j_1}\wedge\ldots\wedge e_{j_r})\\
+&=(e_{i_1}^*\wedge\ldots e_{i_r}^*)(e_{j_1},\ldots, e_{j_r})=\\
+&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma)e_{i_1}^*(e_{j_{\sigma(1)}})(e_{i_2}^*\wedge\ldots e_{i_r}^*)(e_{j_{\sigma(2)}},\ldots, e_{j_{\sigma(r)}})
+\end{aligned}
+\end{equation}
+
+Aquí usamos la transitividad del producto exterior de formas. Ahora \( e_{i_1}^*(e_{j_1})=1 \) si para todo \( \sigma\in G_r \) se tiene \( j_{\sigma(1)}=i_1 \).
+
+Por tanto existe un \( 1\leq t\leq r \) con \( j_t=i_1 \) y tenemos
+\begin{equation}
+  \label{proof:prop-alt-2}
+  \begin{aligned}
+    \eqref{proof:prop-alt} &= \frac{1}{r!} \sum_{\sigma\in G_r \sigma(1)=t}
+    Signo(\sigma)(e_{i_2}^{*} \wedge \dots e_{i_r}^{*})
+    (e_{j_{\sigma(2)}}, \dots, e_{j_{\sigma(r)}})\\
+    &=\frac{1}{r!} \sum_{\sigma'\in G_r} Signo(\sigma')(e_{i_2}^{*} \wedge \dots
+    e_{i_r}^{*}) (e_{j_{\sigma'(2)}}, \dots, e_{j_{\sigma'(r)}})
+  \end{aligned}
+\end{equation}
+
+Aquí \( \sigma' \) es la restricción de \( \sigma \) a \( \{1,\ldots,t-1,t+1,\ldots,r\} \). Observese que \( Signo(\sigma')=Signo(\sigma) \).
+
+Por hipótesis de inducción \( (r-1)!((e_{i_2}^*\wedge\ldots e_{i_r}^*) \) corresponde al dual de \( (e_{i_2}\wedge\ldots e_{i_r} \), por lo que necesariamente \( \{j_1,\ldots,j_{t-1},j_{t+1},\ldots,j_r\}=\{i_2,\ldots,i_r\} \) y además
+\[
+(r-1)!((e_{i_2}^*\wedge\ldots e_{i_r}^*)(e_{j_{\sigma'(2)}},\ldots, e_{j_{\sigma'(r)}})=Signo(\sigma')
+\]
+por lo que
+\begin{align*}
+(\ref{proof:prop-alt-2})&=\frac{1}{r!}\frac{1}{(r-1)!}\sum_{\sigma'\in G_{r+-1}}(Signo(\sigma'))^2\\
+&=\frac{1}{r!}\frac{1}{(r-1)!}(r-1)!\\
+&=\frac{1}{r!}
+\end{align*}
+De donde se sigue el resultado.
+\end{proof}
 
 \end{document}
 
