@@ -12,23 +12,26 @@
 \begin{definition}\label{def:alglie}
   Un \emph{álgebra de Lie}, \(\mathcal{L}\), es un espacio vectorial dotado de
   otra operación interna, que llamaremos \emph{producto corchete},
-  \(\Clase{\cdot,\cdot}\colon\mathcal{L}\times\mathcal{L}\to\mathcal{L}\) que
-  verifica:
+  \(\ProdC{\cdot}{\cdot} \colon \mathcal{L} \times \mathcal{L} \to \mathcal{L}\)
+  que verifica:
   \begin{enumerate}
   \item Es bilineal
-  \item Es antisimétrica: \(\Clase{a,b}=-\Clase{b,a}\)
+  \item Es antisimétrica: \(\ProdC{a}{b}=-\ProdC{b}{a}\)
   \item La identidad de Jacobi (la suma cíclica es nula):
-    \(\Clase{\Clase{a,b},c}+\Clase{\Clase{b,c},a}+\Clase{\Clase{c,a},b}=0,\
-    \forall a,b,c\in\mathcal{L}\)
+    \[
+      \ProdC{\ProdC{a}{b}}{c} +
+      \ProdC{\ProdC{b}{c}}{a} +
+      \ProdC{\ProdC{c}{a}}{b}
+      = 0 \ \forall a,b,c \in \mathcal{L}
+    \]
   \end{enumerate}
 \end{definition}
 
 \begin{remark}
-  De la antisimetría: \(\Clase{a,a}=-\Clase{a,a}=0,\ \forall
-  a\in\mathcal{L}\)
+  De la antisimetría: \(\ProdC{a}{a}=-\ProdC{a}{a}=0\ \forall a\in\mathcal{L}\)
 
   Si \(\mathcal{L}\) es un espacio vectorial finito, a los productos corchetes
-  \(\Clase{e_{i},e_{j}}=\sum\limits_{i=1}^{m}c_{ij}^{k}e_{k}\) de cada par de
+  \(\ProdC{e_{i}}{e_{j}}=\sum_{i=1}^{m}c_{ij}^{k}e_{k}\) de cada par de
   vectores de la base de \(\mathcal{L}\) se les llama constantes de estructura
   del álgebra con respecto a la base del espacio.
 
@@ -39,11 +42,11 @@
   Algunos ejemplos de álgebras de Lie:
   
   \begin{itemize}
-  \item \((\RealSet^{3},\wedge)\): se tiene que \(\Clase{i,j}=i\wedge
-    j=k,\Clase{j,k}=i,\Clase{k,i}=j\) por lo que se cumple la identidad de
-    Jacobi, \(\Clase{\Clase{i,j},k}=\Clase{k,k}=0\) y así las otras dos,
+  \item \((\RealSet^{3},\wedge)\): se tiene que \(\ProdC{i}{j}=i\wedge
+    j=k,\ProdC{j}{k}=i,\ProdC{k}{i}=j\) por lo que se cumple la identidad de
+    Jacobi, \(\ProdC{\ProdC{i}{j}}{k}=\ProdC{k}{k}=0\) y así las otras dos,
     siendo la suma cíclica nula. 
-  \item \(\mathcal{M}_{n}(\RealSet)\) con \(\Clase{A,B}=AB-BA\)
+  \item \(\mathcal{M}_{n}(\RealSet)\) con \(\ProdC{A}{B}=AB-BA\)
   \end{itemize}
 \end{example}
 
@@ -54,49 +57,64 @@ campos como derivaciones:
 
 \begin{proposition}
   Sean \(X,Y\in\mathbb{X}(M)\), entonces \(D_{X}D_{Y}-D_{Y}D_{X}\) también es
-  una derivación. Además, \(\Clase{D_{X},D_{Y}}=D_{X}D_{Y}-D_{Y}D_{X}\) es su
+  una derivación. Además, \(\ProdC{D_{X}}{D_{Y}}=D_{X}D_{Y}-D_{Y}D_{X}\) es su
   producto corchete asociado. 
 \end{proposition}
 
 \begin{proof}
-  Sean \(f,g\in\mathcal{F}(M)\). Entonces, por un lado, \(D_{X}D_{Y}(fg)=\)
-  \[\begin{array}{l}
-      D_{X}\Clase{D_{Y}(f)g+fD_{Y}(g)}=D_{X}(D_{Y}(f)g)+D_{X}(fD_{Y}(g))\\
-      =(D_{X}D_{Y}(f))g+D_{Y}(f)D_{X}(g)+D_{X}(f)D_{Y}(g)+f(D_{X}D_{Y}(g))
-    \end{array}\]
-
-  A su vez, \(D_{Y}D_{X}(fg)=\)
-  \[\begin{array}{l}
-      (D_{Y}D_{X}(f))g+D_{X}(f)D_{Y}(g)+
-      D_{Y}(f)D_{X}(g)+f(D_{Y}D_{X}(g))
-    \end{array}\]
+  Sean \(f,g\in\mathcal{F}(M)\). Entonces, por un lado,
+  \begin{align*}
+    D_{X}D_{Y}(fg) &= D_{X}(D_{Y}(f)g+fD_{Y}(g))\\
+    &=D_{X}(D_{Y}(f)g)+D_{X}(fD_{Y}(g))\\
+                   &=(D_{X}D_{Y}(f))g + D_{Y}(f)D_{X}(g)\\
+                   &+ D_{X}(f)D_{Y}(g) + f(D_{X}D_{Y}(g))
+  \end{align*}
+  A su vez,
+  \begin{align*}
+    D_{Y}D_{X}(fg) &= (D_{Y}D_{X}(f))g + D_{X}(f)D_{Y}(g)\\
+                   &+ D_{Y}(f)D_{X}(g)+f(D_{Y}D_{X}(g))
+  \end{align*}
 
   Si a la primera expresión le restamos la segunda, obtenemos que 
-  \(D_{X}D_{Y}(fg)-D_{Y}D_{X}(fg)=\)
+  \begin{align*}
+    D_{X}D_{Y}(fg)-D_{Y}D_{X}(fg)
+    &= ((D_{X}D_{Y}(f))-(D_{Y}D_{X}(f)))g\\
+    &+ f(D_{X}D_{Y}(g)-D_{Y}D_{X}(g))
+  \end{align*}
+  
+  Luego, es derivación (y por ello bilineal). Además, es antisimétrica:
+  
   \[
-    \Clase{(D_{X}D_{Y}(f))-(D_{Y}D_{X}(f))}g+
-    f\Clase{D_{X}D_{Y}(g)-D_{Y}D_{X}(g)}
+    \ProdC{D_{Y}}{D_{X}} =
+    D_{Y}D_{X}-D_{X}D_{Y} =
+    -(D_{X}D_{Y}-D_{Y}D_{X}) =
+    -\ProdC{D_{X}}{D_{Y}}
   \]
-  Luego, es \textbf{derivación} (y por ello \textbf{bilineal}). Además, es
-  \textbf{antisimétrico}:
-  \[\Clase{D_{Y},D_{X}}=D_{Y}D_{X}-D_{X}D_{Y}=-(D_{X}D_{Y}-D_{Y}D_{X})=
-    -\Clase{D_{X},D_{Y}}\]
 
   Veamos ahora la identidad de Jacobi: Sean \(D_{X},D_{Y},D_{Z}\). Entonces:
   \begin{itemize}
   \item
-    \(\Clase{\Clase{D_{X},D_{Y}},D_{Z}}=\Clase{D_{X}D_{Y}-D_{Y}D_{X},D_{Z}}\).
+    \(\ProdC{\ProdC{D_{X}}{D_{Y}}}{D_{Z}}=\ProdC{D_{X}D_{Y}-D_{Y}D_{X}}{D_{Z}}\).
+
     Como es bilineal, lo anterior se corresponde con
-    \(
-    \Clase{D_{X}D_{Y},D_{Z}}-\Clase{D_{Y}D_{X},D_{Z}}=D_{X}D_{Y}D_{Z}-D_{Z}D_{X}D_{Y}-
-    D_{Y}D_{X}D_{Z}+D_{Z}D_{Y}D_{X}
-    \)
+    \begin{align*}
+      \ProdC{D_{X}D_{Y}}{D_{Z}}-\ProdC{D_{Y}D_{X}}{D_{Z}}
+      &= D_{X}D_{Y}D_{Z}-D_{Z}D_{X}D_{Y}\\
+      &- D_{Y}D_{X}D_{Z}+D_{Z}D_{Y}D_{X}
+    \end{align*}
+  
   \item
-    \(\Clase{\Clase{D_{Y},D_{Z}},D_{X}}=D_{Y}D_{Z}D_{X}-D_{X}D_{Y}D_{Z}-D_{Z}D_{Y}D_{X}
-    +D_{X}D_{Z}D_{Y}\)
+    \begin{align*}
+      \ProdC{\ProdC{D_{Y}}{D_{Z}}}{D_{X}}
+      &= D_{Y}D_{Z}D_{X} - D_{X}D_{Y}D_{Z}\\
+      &- D_{Z}D_{Y}D_{X} +D_{X}D_{Z}D_{Y}
+    \end{align*}
   \item
-    \(\Clase{\Clase{D_{Z},D_{X}},D_{Y}}=D_{Z}D_{X}D_{Y}-D_{Y}D_{Z}D_{X}-D_{X}D_{Z}D_{Y}
-    +D_{Y}D_{X}D_{Z}\)
+    \begin{align*}
+      \ProdC{\ProdC{D_{Z}}{D_{X}}}{D_{Y}}
+      &= D_{Z}D_{X}D_{Y} - D_{Y}D_{Z}D_{X}\\
+      &- D_{X}D_{Z}D_{Y} + D_{Y}D_{X}D_{Z}
+    \end{align*}
   \end{itemize}
   Claramente, la suma cíclica de las expresiones anteriores se anula.
 
@@ -107,54 +125,60 @@ campos como derivaciones:
 \begin{proposition}
   Sea \(\mathcal{A}=\{(U,\varphi)\}\) atlas de \(M\). Si \(\{f^{U}\},\{g^{U}\}\)
   denotan las funciones componentes de los campos \(X,Y\) respectivamente,
-  entonces el campo correspondiente a \(\Clase{D_{X},D_{Y}}(\Clase{X,Y})\) tiene
+  entonces el campo correspondiente a \(\ProdC{D_{X}}{D_{Y}}(\ProdC{X}{Y})\) tiene
   como funciones componentes locales a
-  \(\Clase{f^{U},g^{U}}\colon\varphi(U)\to\RealSet^{m}\) cuya i-ésima función
+  \(\ProdC{f^{U}}{g^{U}}\colon\varphi(U)\to\RealSet^{m}\) cuya i-ésima función
   coordenada es
-  \(\Clase{f^{U},g^{U}}_{i}=\sum\limits_{j=1}^{m}(f_{j}^{U}\pderiv{g_{i}^{U}}{x_{j}}-
+  \(\ProdC{f^{U}}{g^{U}}_{i}=\sum_{j=1}^{m}(f_{j}^{U}\pderiv{g_{i}^{U}}{x_{j}}-
   \pderiv{f_{i}^{U}}{x_{j}}g_{j}^{U})\)
 \end{proposition}
 
 \begin{proof}
   En \((U,\varphi)\),
-  \[\begin{array}{l}
-      D_{X}(h)=\sum\limits_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}f_{i}^{U}
-      \\
-      D_{Y}(h)=\sum\limits_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}g_{i}^{U}
-    \end{array}\]
 
+  \begin{align*}
+    D_{X}(h)&=\sum_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}f_{i}^{U}\\
+    D_{Y}(h)&=\sum_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}g_{i}^{U}
+  \end{align*}
+  
   Entonces,
-  \[\begin{array}{l}
-      D_{X}D_{Y}(h)=D_{X}(\sum\limits_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}g_{i}^{U})
-      =\sum\limits_{j=1}^{m}\pderiv{(
-      \sum\limits_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}g_{i}^{U})}{x_{j}}f_{j}^{U}
-      \\
-      =\sum\limits_{i,j=1}^{m}\Clase{\pderiv{^{2}h\circ\varphi^{-1}}{x_{j}\partial
-      x_{i}}g_{i}^{U}f_{j}^{U}+\pderiv{h\circ\varphi^{-1}}{x_{i}}\pderiv{g_{i}^{U}}{x_{j}}
-      f_{j}^{U}}
-    \end{array}\]
-
+  \begin{align*}
+    D_{X}D_{Y}(h)
+    &= D_{X}(\sum_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}g_{i}^{U})\\
+    &= \sum_{j=1}^{m}\pderiv{(
+      \sum_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}g_{i}^{U})}{x_{j}}f_{j}^{U}
+    \\
+    &= \sum_{i,j=1}^{m}\left[ \pderiv{h\circ\varphi^{-1}}{x_{j},x_{i}} g_{i}^{U}f_{j}^{U}+\pderiv{h\circ\varphi^{-1}}{x_{i}}\pderiv{g_{i}^{U}}{x_{j}}
+      f_{j}^{U} \right]
+  \end{align*}
+  
   A su vez,
-  \[\begin{array}{l}
-      D_{Y}D_{X}(h)=\sum\limits_{i,j=1}^{m}\Clase{\pderiv{^{2}h\circ\varphi^{-1}}{x_{i}
-      \partial x_{j}}f_{i}^{U}g_{j}^{U}+\pderiv{h\circ\varphi^{-1}}{x_{i}}
-      \pderiv{f_{i}^{U}}{x_{j}}g_{j}^{U}}
-    \end{array}\]
+  \[
+    D_{Y}D_{X}(h)
+    = \sum_{i,j=1}^{m} \left[
+      \pderiv{h\circ\varphi^{-1}}{x_{i},x_{j}}
+      f_{i}^{U}g_{j}^{U} +
+      \pderiv{h\circ\varphi^{-1}}{x_{i}}
+      \pderiv{f_{i}^{U}}{x_{j}}g_{j}^{U}
+      \right]
+  \]
+ 
   Por tanto, restando la segunda expresión a la primera,
-  \[\begin{array}{l}
-      \Clase{D_{X},D_{Y}}(h)=(D_{X}D_{Y}-D_{Y}D_{X})(h)= \\
-      \sum\limits_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}(\sum\limits_{j=1}^{m}
-      \pderiv{g_{i}^{U}}{x_{j}}f_{j}^{U}-\pderiv{f_{i}^{U}}{x_{j}}g_{j}^{U})= \\
-      \sum\limits_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}(\text{coordenada
-      i-ésima})= \\
-      \sum\limits_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}\Clase{f^{U},g^{U}}_{i}
-    \end{array}\]
+  \begin{align*}
+    \ProdC{D_{X}}{D_{Y}}(h)
+    &= (D_{X}D_{Y}-D_{Y}D_{X})(h)\\
+    &= \sum_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}\left(\sum_{j=1}^{m}
+      \pderiv{g_{i}^{U}}{x_{j}}f_{j}^{U}-\pderiv{f_{i}^{U}}{x_{j}}g_{j}^{U} \right)\\
+    &= \sum_{i=1}^{m} \pderiv{h\circ\varphi^{-1}}{x_{i}}(\text{coordenada
+      i-ésima})\\
+    &= \sum_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}\ProdC{f^{U}}{g^{U}}_{i}
+  \end{align*}
 \end{proof}
 
 \section{Campos h-compatibles}
 
 Si \(X,Y\in\mathbb{X}(M),X',Y'\in\mathbb{X}(N)\), \(X,X'\) h-compatibles,
-\(Y,Y'\) también, ¿entonces \(\Clase{X,Y}\) h-compatible con \(\Clase{X',Y'}\)?
+\(Y,Y'\) también, ¿entonces \(\ProdC{X}{Y}\) h-compatible con \(\ProdC{X'}{Y'}\)?
 
 \begin{lemma}
   Si \(X\in\mathbb{X}(M),Y\in\mathbb{X}(N)\) son h-compatibles, entonces
@@ -183,27 +207,29 @@ Si \(X,Y\in\mathbb{X}(M),X',Y'\in\mathbb{X}(N)\), \(X,X'\) h-compatibles,
 \begin{proposition}
   Si \(X,X'\) son h-compatibles (es decir, se cumple \(D_{X}(f\circ h)=D_{X'}(f)\circ
   h\)), e \(Y,Y'\) también (\(D_{Y}(f\circ h)=D_{Y'}(f)\circ h\)), entonces
-  \(\Clase{X,Y},\Clase{X',Y'}\) h-compatibles.
+  \(\ProdC{X}{Y},\ProdC{X'}{Y'}\) h-compatibles.
 \end{proposition}
 
 \begin{proof}
   Aplicando el lema anterior, lo que tenemos que probar es que
-  \(\Clase{D_{X},D_{Y}}(f\circ h)=\Clase{D_{X'},D_{Y'}}(f)\circ h\) para ver que
+  \(\ProdC{D_{X}}{D_{Y}}(f\circ h)=\ProdC{D_{X'}}{D_{Y'}}(f)\circ h\) para ver que
   son h-compatibles.
 
   Por un lado,
-  \[\begin{array}{ll}
-      \Clase{D_{X},D_{Y}}(f\circ h)&=D_{X}(D_{Y}(f\circ h))-D_{Y}(D_{X}(f\circ
-      h))\\ &=D_{X}(D_{Y'}(f)\circ h)-D_{Y}(D_{X'}(f)\circ h)\\
-      &=D_{X}(f^{Y'}\circ h)-D_{Y}(f^{X'}\circ h)\\
-      &=D_{X'}(f^{Y'})\circ h -
-        D_{Y'}(f^{X'})\circ h \\
-      &=\Clase{D_{X'},D_{Y'}}(f)\circ h      
-    \end{array}\]
+  \begin{align*}
+    \ProdC{D_{X}}{D_{Y}}(f\circ h)
+    &= D_{X}(D_{Y}(f\circ h)) - D_{Y}(D_{X}(f \circ h))\\
+    &=D_{X}(D_{Y'}(f)\circ h)-D_{Y}(D_{X'}(f)\circ h)\\
+    &=D_{X}(f^{Y'}\circ h)-D_{Y}(f^{X'}\circ h)\\
+    &=D_{X'}(f^{Y'})\circ h - D_{Y'}(f^{X'})\circ h \\
+    &=\ProdC{D_{X'}}{D_{Y'}}(f)\circ h
+  \end{align*}
+  
   donde hemos usado que tanto \(D_{Y'}(f)\) como \(D_{X'}(f)\) son a su vez
   funciones a las que podemos aplicar el resultado anterior de h-compatibilidad.
 \end{proof}
 \end{document}
+
 %%% Local Variables:
 %%% TeX-master: "../VD"
 %%% End:
