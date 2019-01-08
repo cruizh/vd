@@ -543,9 +543,14 @@ Definimos el \emph{producto simétrico} de la r-forma simétrica \( \alpha \) co
 \end{definition}
 
 Si lo vemos aplicado a un elemento genérico resulta
+
 \begin{align*}
-&\alpha\cdot\beta(v_1,\ldots,v_r,v_{r+1},\ldots,v_{r+s})=\\
-&\frac{1}{(r+s)!}\sum_{\sigma\in G_{r+s}}\alpha(v_{\sigma(1)}\ldots v_{\sidebarhsep(n)})\beta(v_{\sigma(r+1)}\ldots v_{\sigma(r+s)})
+  \alpha \cdot \beta(v_1,\dots,v_r,v_{r+1},\dots,v_{r+s})
+  =
+  \frac{1}{(r+s)!}
+  \sum_{\sigma\in G_{r+s}}
+  \alpha(v_{\sigma(1)}\dots v_{\sigma(r)})
+  \beta(v_{\sigma(r+1)}\dots v_{\sigma(r+s)})
 \end{align*}
 
 \begin{definition}
@@ -670,18 +675,30 @@ En particular al recorrer  \( 1\leq i_1< \ldots<i_r\leq n  \) todas las ordenaci
 Lo haremos por inducción.\\
 Para r=1 es obvio.\\
 Supongamos el resultado cierto para r-1 y veamos el caso r. Por definición
-\begin{align*}
-&\rho_a^{-1}(e_{i_1}^*\wedge\ldots e_{i_r}^*)(e_{j_1}\wedge\ldots\wedge e_{j_r})=\\
+
+\begin{equation}
+ \label{proof:prop-alt} 
+\begin{aligned}
+&\rho_a^{-1}(e_{i_1}^*\wedge\ldots e_{i_r}^*)(e_{j_1}\wedge\ldots\wedge e_{j_r})\\
 &=(e_{i_1}^*\wedge\ldots e_{i_r}^*)(e_{j_1},\ldots, e_{j_r})=\\
-&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma)e_{i_1}^*(e_{j_{\sigma(1)}})(e_{i_2}^*\wedge\ldots e_{i_r}^*)(e_{j_{\sigma(2)}},\ldots, e_{j_{\sigma(r)}})\quad (\label{proof:prop-alt})
-\end{align*}
+&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma)e_{i_1}^*(e_{j_{\sigma(1)}})(e_{i_2}^*\wedge\ldots e_{i_r}^*)(e_{j_{\sigma(2)}},\ldots, e_{j_{\sigma(r)}})
+\end{aligned}
+\end{equation}
+
 Aquí usamos la transitividad del producto exterior de formas. Ahora \( e_{i_1}^*(e_{j_1})=1 \) si para todo \( \sigma\in G_r \) se tiene \( j_{\sigma(1)}=i_1 \).
 
 Por tanto existe un \( 1\leq t\leq r \) con \( j_t=i_1 \) y tenemos
-\begin{align*}
-&(\ref{proof:prop-alt})=\frac{1}{r!}\sum_{\sigma\in G_r \sigma(1)=t}Signo(\sigma)(e_{i_2}^*\wedge\ldots e_{i_r}^*)(e_{j_{\sigma(2)}},\ldots, e_{j_{\sigma(r)}})=\\
-&=\frac{1}{r!}\sum_{\sigma'\in G_r}Signo(\sigma')(e_{i_2}^*\wedge\ldots e_{i_r}^*)(e_{j_{\sigma'(2)}},\ldots, e_{j_{\sigma'(r)}})\quad \label{proof:prop-alt-2}
-\end{align*}
+\begin{equation}
+  \label{proof:prop-alt-2}
+  \begin{aligned}
+    \eqref{proof:prop-alt} &= \frac{1}{r!} \sum_{\sigma\in G_r \sigma(1)=t}
+    Signo(\sigma)(e_{i_2}^{*} \wedge \dots e_{i_r}^{*})
+    (e_{j_{\sigma(2)}}, \dots, e_{j_{\sigma(r)}})\\
+    &=\frac{1}{r!} \sum_{\sigma'\in G_r} Signo(\sigma')(e_{i_2}^{*} \wedge \dots
+    e_{i_r}^{*}) (e_{j_{\sigma'(2)}}, \dots, e_{j_{\sigma'(r)}})
+  \end{aligned}
+\end{equation}
+
 Aquí \( \sigma' \) es la restricción de \( \sigma \) a \( \{1,\ldots,t-1,t+1,\ldots,r\} \). Observese que \( Signo(\sigma')=Signo(\sigma) \).
 
 Por hipótesis de inducción \( (r-1)!((e_{i_2}^*\wedge\ldots e_{i_r}^*) \) corresponde al dual de \( (e_{i_2}\wedge\ldots e_{i_r} \), por lo que necesariamente \( \{j_1,\ldots,j_{t-1},j_{t+1},\ldots,j_r\}=\{i_2,\ldots,i_r\} \) y además
