@@ -714,6 +714,51 @@ por lo que
 De donde se sigue el resultado.
 \end{proof}
 
+\begin{remark}
+  El factor \(r!\) de la proposición anterior es habitualmente eliminado si se
+  reescala el producto exterior por medio de la fórmula
+  \(\omega\wedge\eta=\frac{(r+s)!}{r!s!}\text{Alt}(\omega\otimes\eta)\) para la
+  r-forma \(\omega\) y la s-forma \(\eta\). Con esta nueva definición el
+  coeficiente \(r!\) desaparece de la proposición anterior:
+
+  En efecto con la fórmula anterior se tiene que (aplicada la transitividad y si
+  \(\gamma\) es una t-forma): 
+  \[\begin{array}{c}
+      \omega\wedge\eta\wedge\gamma=(\omega\wedge\eta)\wedge\gamma=
+      \frac{(r+s+t)!}{(r+s)!t!}\frac{(r+s)!}{r!s!}\text{Alt}
+      (\text{Alt}(\omega\otimes\eta)\otimes\gamma)= \\
+      =\frac{(r+s+t)!}{r!s!t!}\text{Alt}(\text{Alt}(\omega\otimes\eta)\otimes\gamma)
+    \end{array}\]
+\end{remark}
+
+\begin{remark}
+  Otra ventaja de la definición reescalada de producto exterior es que la
+  notación usada para describir la clase de
+  \(\omega_{1}\otimes\dots\otimes\omega_{r}\in\bigotimes_{r}V^{*}\) en
+  \(\Lambda^{r}V^{*}\), que era \(\omega_{1}\wedge\dots\wedge\omega_{r}\), es
+  coherente con \(\omega_{1}\wedge\dots\wedge\omega_{r}\) como producto exterior
+  de 1-formas ya que \(e_{i_{1}}^{*}\wedge\dots\wedge e_{i_{r}}^{*}\) con
+  \(i_{1}<\dots<i_{r}\) son ahora los elementos básicos con ambas notaciones. Se
+  tiene así la identificación \(\Lambda^{r}V^{*}\cong\text{Alt}_{r}(V)\). 
+\end{remark}
+
+Terminamos con la siguiente proposición que nos da el producto exterior de
+1-formas como un determinante.
+
+\begin{proposition}
+  Dadas las 1-formas sobre \(V\) \(\omega_{1},\dots,\omega_{r}\) y la secuencia
+  de vectores \(v_{1},\dots,v_{r}\in V\) se tiene la igualdad:
+  \[
+    (\omega_{1}\wedge\dots\omega_{r})(v_{1},\dots,v_{r})=
+    \frac{1}{r!}\det{A_{\omega_{1}\dots\omega_{r}}}
+  \]
+  donde \(A_{\omega_{1}\dots\omega_{r}}=(a_{ij})\) con \(a_{ij}=\omega_{j}(v_{1})\).
+\end{proposition}
+
+\begin{proof}
+  
+\end{proof}
+
 \end{document}
 
 %%% Local Variables:
