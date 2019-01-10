@@ -714,7 +714,7 @@ por lo que
 De donde se sigue el resultado.
 \end{proof}
 
-\begin{remark}
+\begin{remark}\label{rem:reescalado}
   El factor \(r!\) de la proposición anterior es habitualmente eliminado si se
   reescala el producto exterior por medio de la fórmula
   \(\omega\wedge\eta=\frac{(r+s)!}{r!s!}\text{Alt}(\omega\otimes\eta)\) para la
@@ -745,7 +745,7 @@ De donde se sigue el resultado.
 Terminamos con la siguiente proposición que nos da el producto exterior de
 1-formas como un determinante.
 
-\begin{proposition}
+\begin{proposition}\label{prop:prod-ext-det}
   Dadas las 1-formas sobre \(V\) \(\omega_{1},\dots,\omega_{r}\) y la secuencia
   de vectores \(v_{1},\dots,v_{r}\in V\) se tiene la igualdad:
   \[
@@ -756,8 +756,75 @@ Terminamos con la siguiente proposición que nos da el producto exterior de
 \end{proposition}
 
 \begin{proof}
+  Las propiedades del determinante (si multiplicamos una fila o una columna por
+  \(\lambda\) el determinante queda multiplicado por \(\lambda\) y si una fila o
+  columna se descompone en una suma entonces el determinante es la suma de los
+  respectivos determinantes) se traducen en que la aplicación
+  \(\gamma_{\omega_{1}\dots\omega_{r}}\colon V\times\dots\times V\to\RealSet\)
+  tal que \((v_{1},\dots,v_{r})\mapsto \det{A_{\omega_{1}\dots\omega_{r}}}\) es
+  una r-forma alternada.
+
+  Entonces \(\Phi\colon V^{*}\times\dots\times
+  V^{*}\to\Lambda^{r}(V)\) dada por \((\omega_{1},\dots,\omega_{r})\mapsto
+  \gamma_{\omega_{1},\dots,\omega_{r}}\) se convierte en una aplicación
+  multilineal. Análogamente lo es la aplicación \(\Psi\colon V^{*}\times\dots\times
+  V^{*}\to\Lambda^{r}(V)\) dada por \((\omega_{1},\dots,\omega_{r})\mapsto
+  \omega_{1}\wedge\dots\wedge\omega_{r}\).
   
+  Entonces la proposición anterior quedará demostrada si probamos \(\Phi=\Psi\).
+  Para ello, dada una base \(\{e_{i}\}_{i=1}^{n}\) de \(V\), bastará que
+  probemos la igualdad para cualquier secuencia de elementos básicos
+  \((e_{i_{1}}^{*},\dots,e_{i_{r}}^{*})\).
+
+  Además, si en esa secuencia \(i_{t}=i_{s}\) para algún \(s\) y algún \(t\),
+  entonces \(\Psi(e_{i_{1}}^{*},\dots,e_{i_{r}}^{*})=0\) por anticonmutatividad
+  y \(\Phi(e_{i_{1}}^{*},\dots,e_{i_{r}}^{*})=0\) por tener la matriz
+  correspondiente dos columnas iguales. Entonces todas las \(i_{1},\dots,i_{r}\)
+  serán distintas y podemos reducirnos al caso \(i_{1}<\dots<i_{r}\) por
+  anticonmutatividad y para
+  \(\Phi(e_{i_{1}}^{*},\dots,e_{i_{r}}^{*})=\gamma_{e_{i_{1}}^{*},\dots,e_{i_{r}}^{*}}\)
+  con \(i_{1}<\dots<i_{r}\) se tiene que
+  \(\gamma_{e_{i_{1}}^{*},\dots,e_{i_{r}}^{*}}(v_{1},\dots,v_{r})\) es el
+  determinante de la matriz \(A=(a_{ij})\) con
+  \(v_{i}=\sum_{j=1}^{n}a_{ij}e_{j}\), esto es, la matriz cuyos vectores
+  columnas son los \(v_{i}\).
+
+  Para \(\Psi(e_{i_{1}}^{*},\dots,e_{i_{r}}^{*})=e_{i_{1}}^{*}\wedge\dots\wedge
+  e_{i_{r}}^{*}\) se tiene
+  \[
+    \begin{array}{l}
+       (e_{i_{1}}^{*}\wedge\dots\wedge e_{i_{r}}^{*})(v_{1},\dots,v_{r})=(e_{i_{1}}^{*}
+    \wedge\dots\wedge e_{i_{r}}^{*})(\sum_{j=1}^{n}a_{1j}e_{j},
+    \dots,\sum_{j=1}^{n}a_{rj}e_{j})= \\
+      \overset{(1)}{=}
+      \sum_{(j_{1},\dots,j_{r})\in\{1,\dots,n\}^{r}}a_{1j_{1}}\cdots a_{rj_{r}} 
+    (e_{i_{1}}^{*}\wedge\dots\wedge e_{i_{r}}^{*})(e_{j_{1}},
+    \dots,e_{j_{r}})= \\
+    \overset{(2)}{=}\frac{1}{r!}\sum_{\sigma\in G_{r}}Signo(\sigma) a_{1\sigma(1)}
+    \cdots a_{r\sigma(r)}=\det{A}
+    \end{array}
+  \]
+
+  En la igualdad \((1)\) se usa la multilinealidad y en la \((2)\) la
+  proposición ¿¿(REF pág 19)?? y así \(r!(e_{i_{1}}^{*}\wedge\dots\wedge
+  e_{i_{r}}^{*})\) se corresponde con el dual de \(e_{i_{1}}\wedge\dots\wedge
+  e_{i_{r}}\in\Lambda^{r}(V)\) y por tanto los sumandos del término de la
+  izquierda de \((2)\) no nulos son aquellos con
+  \(\{j_{1},\dots,j_{r}\}=\{i_{1},\dots,i_{r}\}\).
+
+  Entonces \(r!(e_{i_{1}}^{*}\wedge\dots\wedge
+  e_{i_{r}}^{*})(e_{j_{1}},\dots,e_{j_{r}})=Signo(\sigma)\) donde \(\sigma\) es
+  la permutación que lleva \((j_{1}\dots j_{r})\) a \((i_{1}\dots i_{r})\).
 \end{proof}
+
+\begin{remark}
+  Si usamos el reescalado del producto exterior dado por la fórmula en la
+  \cref{rem:reescalado} entonces el factor \(\frac{1}{r!}\) desaparece de la
+  igualdad de la proposición anterior (\cref{prop:prod-ext-det}).
+
+  Por eso a la definición del producto exterior con el reescalado se le llama el
+  \emph{convenio del determinante}.
+\end{remark}
 
 \end{document}
 
