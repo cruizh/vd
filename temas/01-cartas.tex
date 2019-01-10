@@ -316,6 +316,28 @@ atlas de \(S^{n}\subseteq\RealSet^{n}\), pues se comprueba fácilmente que
 estas cartas son compatibles y recubren la \(n\)-esfera.
 \end{example}
 
+\begin{example}
+  Sea \(P^{n}\RealSet=\frac{\RealSet^{n+1}-\{0\}}{\sim}\) siendo \(\sim\) la
+  relación de equivalencia \(x\sim y\iff\exists\lambda\neq 0\) tal que
+  \(x=\lambda y\), es decir, el \emph{Espacio Proyectivo Real n-dimensional}.
+  Entonces resulta que un atlas compatible con la estructura diferenciable de
+  \(P^{n}\RealSet\) será \(\{U_{i},\varphi_{i}\}_{i=1}^{n+1}\) donde para cada
+  carta, \(U_{i}=\{\Clase{x_{1},\dots,x_{n+1}}\in P^{n}\RealSet\colon x_{i}\neq
+  0\}\) y \(\varphi_{i}\) es la siguiente aplicación: 
+
+  \begin{align*}
+    \varphi_{i} \colon U_{i} &\to \RealSet^{n}\\
+    [x_{1}, \dots, x_{n+1}] &\mapsto \left(
+                              \frac{x_{1}}{x_{i}},
+                              \dots,
+                              \frac{x_{i-1}}{x_{i}},
+                              \frac{x_{i+1}}{x_{i}},
+                              \dots,
+                              \frac{x_{n}}{x_{i}}
+                              \right)
+  \end{align*}
+\end{example}
+
 \section{Topología natural}
 \label{sec:topnat}
 
