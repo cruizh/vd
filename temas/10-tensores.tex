@@ -944,7 +944,101 @@ que habría que desarrollar teniendo en cuenta las propiedades del producto
 exterior.
 
 En particular, \(\dif{x_{i}}\wedge\dif{x_{i}}=0\) y
-\(\dif{x_{i}}\wedge\dif{x_{j}}=-\dif{x_{j}}\wedge\dif{x_{i}}\) por anticonmutatividad.
+\(\dif{x_{i}}\wedge\dif{x_{j}}=-\dif{x_{j}}\wedge\dif{x_{i}}\) por
+anticonmutatividad.
+
+\newpage
+
+\section{Diferencial Exterior}
+
+Una importante propiedad de las formas alternadas sobre una \(m\)-variedad \(M\)
+es que la forma gradiente de una función (\cref{ex:forma-dif})
+\(\dif\colon\mathcal{F}(M)=\Omega^{0}(M)\to\Omega^{1}(M)\) es el primer eslabón
+de toda una cadena de operadores
+\[
+  \Omega^{0}(M) \overset{\dif[1]{}}{\longrightarrow}
+  \Omega^{1}(M) \overset{\dif[2]{}}{\longrightarrow}
+  \Omega^{2}(M) \overset{\dif[3]{}}{\longrightarrow} \dots
+\]
+
+\begin{definition}
+Para \(r\geq 1\) el operador
+\(\dif=\dif[r+1]{}\colon\Omega^{r}(M)\to\Omega^{r+1}(M)\) se llama
+\emph{diferencial exterior}. Damos una definición en los abiertos de
+\(\RealSet^{m}\) y después daremos una idea de cómo extender la definición a
+toda la variedad \(M\).
+
+En un abierto \(V\subseteq\RealSet^{m}\) una r-forma diferenciable alternada se
+escribe como \(\omega=\sum_{I}f_{I}\dif[I]{}\), donde \(I\) recorre todo el
+conjunto de secuencias ordenadas \(I=\{1\leq i_{1}<\dots<i_{r}\leq m\}\), y
+además \(\dif[I]=\dif{x_{i_{1}}}\wedge\dots\wedge\dif{x_{i_{r}}}\) y \(f_{I}\colon
+V\to\RealSet\) diferenciable.
+
+Entonces si \(\dif{f_{I}}\) es su forma gradiente se define
+\[
+  \dif{\omega}=\sum_{I}\dif{f_{I}}\wedge\dif[I]=
+  \sum_{I}(\sum_{i=1}^{m}\pderiv{f_{I}}{x_{i}}\dif{x_{i}})\wedge\dif[I].
+\]
+\end{definition}
+
+Ahora dada una r-forma diferenciable alternada \(\omega\) sobre la variedad
+\(M\), tomamos sus restricciones \(i_{U}^{*}\omega=\omega_{U}\) a las cartas
+\((U,\varphi)\) de un atlas de \(M\). Entonces \(\varphi^{-1}\colon\varphi(U)\to
+U\) permite definir la forma \((\varphi^{-1})^{*}\omega_{U}\) sobre el abierto
+\(\varphi(U)\subseteq\RealSet^{m}\), donde está definida la diferencial
+\(\dif{((\varphi^{-1})^{*}\omega_{U})}\). Entonces pasamos esta diferencial a
+\(U\) por medio de \(\varphi\colon U\to\varphi(U)\) como
+\(\varphi^{*}(\dif{((\varphi^{-1})^{*}\omega_{U})})\).
+
+Quedará ver que todas estas formas son conocidas y definir así la diferencial de
+\(\omega_{U}\) como
+\[
+  (5)\quad (\dif{\omega})_{p}=\varphi^{*}(\dif{((\varphi^{-1})^{*}\omega_{p})}).
+\]
+
+Esto se deja sin demostración. Se puede consultar en \emph{Introduction
+  to Smooth Manifolds, John M. Lee}, donde también se pueden encontrar las
+demostraciones de las siguientes propiedades de la diferencial exterior:
+
+\newpage
+
+\begin{proposition}
+  La diferencial exterior cuenta con las
+  siguiente propiedades: 
+  \begin{enumerate}
+  \item \(\dif{}\) es lineal.
+  \item \(\dif{} \dif{}=0\).
+  \item
+    \(\dif{(\omega\wedge\eta)}=\dif\omega\wedge\eta+(-1)^{r}\omega\wedge\dif{\eta}\)
+    si \(\omega\in\Omega^{r}(M)\).
+  \item Si \(f\colon M\to N\) es una aplicación diferenciable entre variedades y
+    \(\omega\in\Omega^{r}(N)\) entonces \(\dif{f^{*}\omega}=f^{*}\dif{\omega}\).
+  \end{enumerate}
+\end{proposition}
+
+A partir del diagrama
+\[
+  \mathcal{F}(M)=\Omega^{0}(M) \overset{\dif[1]{}}{\longrightarrow}
+  \Omega^{1}(M) \overset{\dif[2]{}}{\longrightarrow}
+  \dots
+  \Omega^{r}(M) \overset{\dif[r+1]{}}{\longrightarrow}
+  \dots
+\]
+ y teniendo en cuenta que \(\dif[r+1]{}\circ\dif[r]{}=0\) se puede considerar el
+ espacio vectorial cociente \(\frac{\ker{\dif[r+1]{}}}{\text{Im}\dif[r]{}}\).
+
+ De nuevo aparece el álgebra en el estudio de las variedades. Estos cocientes
+ definen la llamada \emph{cohomología de De Rham} de la variedad \(M\). El curso
+ \textbf{Cálculo en Variedades} trata sobre ello.
+
+ Terminamos diciendo que las formas en \(\ker\dif[r+1]{}\), es decir aquellas
+ con \(\dif{\omega}=0\), se llaman \emph{formas cerradas} y las formas en
+ \(\text{Im}\dif[r]{}\), es decir aquellas r-formas \(\omega\) para las que
+ existe una (r-1)-forma \(\eta\) con \(\dif{\eta}=\omega\) se llaman
+ \emph{formas exactas}.
+
+ Así pues, la cohomología de De Rham trata de encontrar aquellas formas cerradas
+ sobre \(M\) que no son exactas.
 \end{document}
 
 %%% Local Variables:
