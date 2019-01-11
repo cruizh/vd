@@ -419,7 +419,7 @@ Además tenemos un diagrama que conecta todos los conceptos vistos en la secció
 		Alt_r(V) & Multi_r(V) \arrow[l, "Alt"'] \arrow[r ,"Sim"]& Sim_r(V)\\
 		(\Lambda^r V)^* \arrow[r, "\pi_a^*"] \arrow[u, "\rho_a"]& (\otimes_r V)^* \arrow[u, "\rho", "\homeo"'] & (S^rV)^* \arrow[l, "\pi_s^*"'] \arrow[u ,"\rho_s"]
 	\end{tikzcd}
-	%\caption{Texto}
+	\captionof{figure}{}
 	\label{fig:iso-ext}
 \end{figure}
 donde \( \rho \) es la biyección que lleva la 1-forma \( \gamma\colon V_1\otimes\ldots \otimes V_r\to \RealSet \) en la r-forma \( \rho(\gamma)\colon V_1\times\ldots\times V_r\to \RealSet \) definida como
@@ -665,10 +665,16 @@ lo que probaría (2) \ref{prop:ext-proper}
 
 La siguiente proposición nos dice que las formas alternadas quedan determinadas por las 1-formas t el producto exterior.
 
-\begin{proposition}
-Si \( \{e_i\} \) es una base de \( V \), entonces la r-forma alternada \( r!(e_{i_1}^*\wedge\ldots\wedge e_{i_r}^*) \) con \( 1\leq i_1< \ldots<i_r\leq n  \) se corresponde con el del elemento básico \( e_{i_1}\wedge\ldots \wedge e_{i_r}\in \Lambda^r(V) \)  por el isomorfismo \( \rho_a\colon(\Lambda^rV)^*\to Alt_r(V)  \) que vimos en \ref{fig:iso-ext}.
+\begin{proposition}\label{prop:base-alt}
+Si \( \{e_i\} \) es una base de \( V \), entonces la r-forma alternada \(
+r!(e_{i_1}^*\wedge\ldots\wedge e_{i_r}^*) \) con \( 1\leq i_1< \ldots<i_r\leq n
+\) se corresponde con el del elemento básico \( e_{i_1}\wedge\ldots \wedge
+e_{i_r}\in \Lambda^r(V) \)  por el isomorfismo \( \rho_a\colon(\Lambda^rV)^*\to
+Alt_r(V)  \) que vimos en la \cref{fig:iso-ext}.
 
-En particular al recorrer  \( 1\leq i_1< \ldots<i_r\leq n  \) todas las ordenaciones, el conjunto \( \{e_{i_1}^*\wedge\ldots\wedge e_{i_r}^*\}\) forma una base de \( alt_r(V) \).
+En particular al recorrer  \( 1\leq i_1< \ldots<i_r\leq n  \) todas las
+ordenaciones, el conjunto \( \{e_{i_1}^*\wedge\ldots\wedge e_{i_r}^*\}\) forma
+una base de \( Alt_r(V) \).
 \end{proposition}
 
 \begin{proof}
@@ -806,7 +812,7 @@ Terminamos con la siguiente proposición que nos da el producto exterior de
   \]
 
   En la igualdad \((1)\) se usa la multilinealidad y en la \((2)\) la
-  proposición ¿¿(REF pág 19)?? y así \(r!(e_{i_{1}}^{*}\wedge\dots\wedge
+  \cref{prop:base-alt} y así \(r!(e_{i_{1}}^{*}\wedge\dots\wedge
   e_{i_{r}}^{*})\) se corresponde con el dual de \(e_{i_{1}}\wedge\dots\wedge
   e_{i_{r}}\in\Lambda^{r}(V)\) y por tanto los sumandos del término de la
   izquierda de \((2)\) no nulos son aquellos con
@@ -826,6 +832,119 @@ Terminamos con la siguiente proposición que nos da el producto exterior de
   \emph{convenio del determinante}.
 \end{remark}
 
+\section{Caso particular: formas sobre una variedad}
+
+Como casos particulares de formas diferenciables sobre una \(m\)-variedad \(M\)
+se pueden considerar las formas diferenciables simétricas y alrernadas sobre
+\(M\) así como el correspondiente producto exterior.
+
+Si se identifica \(\Lambda^{r}(\RealSet^{m})\) con
+\(\RealSet^{\binom{m}{r}}\) entonces
+\(\Lambda^{r}(\Tangente{M})=\bigcup_{p\in M}\Lambda^{r}(\Tangente[p]{M})\) puede
+ser dotada de una estructura de  \((m+\binom{m}{r})\)-variedad:
+
+En efecto, dada una carta \((U,\varphi)\) de \(M\), la carta asociada para
+\(\Lambda^{r}(\Tangente{M})\) es
+\((\Lambda^{r}(\Tangente{U}),\Lambda^{r}(\varphi))\), donde
+\(\Lambda^{r}(\Tangente{U})=\bigcup_{p\in U}\Lambda^{r}(\Tangente[p]{M})\) y
+\(\Lambda^{r}(\varphi)\colon\Lambda^{r}(\Tangente{U})\to\varphi(U)\times
+\Lambda^{r}(\RealSet^{m})=\varphi(U)\times\RealSet^{\binom{m}{r}}\) tal que, dada
+\(\omega\in\Lambda^{r}(\Tangente[p]{M})\),
+\(\Lambda^{r}(\varphi)(\omega)=(\varphi(p),\Lambda^{r}(\varphi)_{2})(\omega)\),
+y además estando \(\Lambda^{r}(\varphi)_{2}(\omega)\in\Lambda^{r}(\RealSet^{m})\) dada
+por
+\(\Lambda^{r}(\varphi)_{2}(\omega)(v)=\omega(\widetilde{\varphi}^{-1}(p,v))\),
+siendo \((\Tangente{U},\widetilde{\varphi})\) la carta de \(\Tangente{M}\)
+asociada a \((U,\varphi)\).
+
+Los cambios de carta de \(\Lambda^{r}(\Tangente{M})\) vienen dados por las
+aplicaciones
+\[\begin{array}{c}
+    \varphi(U\cap V)\times\Lambda^{r}(\Tangente{\RealSet^{m}})\to\psi(U\cap
+    V)\times\Lambda^{r}(\RealSet^{m}) \\
+    (x,\omega)\mapsto(\psi\varphi^{-1}(x),\Lambda^{r}(\J[x]{\psi\varphi^{-1}})(\omega))
+  \end{array}\]
+
+donde si \(f\colon\RealSet^{m}\to\RealSet^{m},\
+\Lambda^{r}(f)\colon\Lambda^{r}(\RealSet^{m})\to\Lambda^{r}(\RealSet^{m})\) está
+dada por \(\Lambda^{r}(f)(\omega)\) con
+\(\Lambda^{r}(f)(\omega)(v_{1},\dots,v_{r})=\omega(f(v_{1}),\dots,f(v_{r}))\).
+
+Se tiene que para esta estructura de variedad sobre
+\(\Lambda^{r}(\Tangente{M})\) la proyección
+\(\pi\colon\Lambda^{r}(\Tangente{M})\to M\), dada por \(\pi(\omega)=p,\
+\omega\in\Lambda^{r}(\Tangente[p]{M})\), es una aplicación diferenciable (de
+hecho una fibración) y se definen las \emph{r-formas diferenciables alternadas} sobre
+\(M\) como las secciones \(s\colon M\to\Lambda^{r}(\Tangente{M})\) de \(\pi\).
+
+Alternativamente se podría definir una r-forma alternada sobre \(M\) como una
+aplicación diferenciable \(f\colon\bigotimes^{r}\Tangente{M}\to\RealSet\) tal
+que para cada \(p\in M\) la restricción
+\(f\colon\Tangente[p]{M}\bigotimes\dots\bigotimes\Tangente[p]{M}\to\RealSet\) es
+una r-forma alternada.
+
+De manera similar se podría definir las \emph{r-formas diferenciables simétricas}
+sobre \(M\).
+
+En coordenadas locales, las 1-formas \(\dif{x_{1}},\dots,\dif{x_{m}}\) nos dan
+una base de \(\Lambda^{r}(\Tangente{M})\) por medio de los productos exteriores
+\[
+  \dif{x_{i_{1}}}\wedge\dots\wedge\dif{x_{i_{r}}}
+\]
+para cada secuencia ordenada
+\(1\leq i_{1}<\dots<i_{r}\leq m\). Así, una r-forma \(\omega\) sobre \(M\)
+tiene como expresión local, en \((U,\varphi)\) con
+\(\varphi(p)=(x_{1}(p),\dots,x_{m}(p))\) y  \(f_{i_{1}\dots
+  i_{r}}\colon\varphi(U)\to\RealSet\) diferenciable,
+\[
+  \omega=\sum_{1\leq
+    i_{1}<\dots<i_{r}\leq m}f_{i_{1}\dots
+    i_{r}}\dif{x_{i_{1}}}\wedge\dots\wedge\dif{x_{i_{r}}}
+\]
+
+Habitualmente se denota por \(\Omega^{r}(M)\) el espacio vectorial de las
+r-formas diferenciables alternadas sobre \(M\) para \(r\geq 0\).
+
+Para \(r=0,\ \Omega^{0}(M)=\mathcal{F}(M)\) las funciones diferenciables
+sobre \(M\). Para \(r=1,\ \Omega^{1}(M)\) son las 1-formas sobre \(M\).
+
+Toda aplicación diferenciable \(f\colon M^{m}\to N^{n}\) induce una aplicación
+lineal \(f^{*}\colon\Omega^{r}(N)\to\Omega^{r}(M)\) que lleva la r-forma
+alternada \(\omega\colon\bigotimes^{r}\Tangente{N}\to\RealSet\) en la r-forma
+alternada \(f^{*}\omega\colon\bigotimes^{r}\Tangente{M}\to\RealSet\) dada por
+la composición
+\(\bigotimes^{r}\Tangente{M}\overset{\otimes^{r}\dif{f}}{\to}\bigotimes^{r}\Tangente{N}\overset{\omega}{\to}\RealSet\)
+donde \(\otimes^{r}\dif{f}\) es la aplicación que para cada \(p\in M\) y
+\(v_{1},\dotsm,v_{r}\in\Tangente[p]{M}\)
+\[
+  (\otimes^{r}\dif{f})_{p}(v_{1}\otimes\dots\otimes
+  v_{r})=\dif{f_{p}} v_{1}\otimes\dots\otimes\dif{f_{p}} v_{r}
+\]
+
+con \(\dif{f}\colon\Tangente{M}\to\Tangente{N}\) la diferencial de \(f\).
+
+Si tomamos cartas \((U,\varphi)\) de \(M\) y \((V,\psi)\) de \(N\) con
+\(f(U)\subseteq V\), entonces si la expresión local de \(\omega\) en
+\((V,\psi)\) es
+\[
+  \omega=\sum_{1\leq
+    i_{1}<\dots<i_{r}\leq n}g_{i_{1}\dots
+    i_{r}}\dif{y_{i_{1}}}\wedge\dots\wedge\dif{y_{i_{r}}},
+\]
+la expresión local de \(f^{*}\omega\) en \((U,\varphi)\) es
+\[
+  f^{*}\omega=\sum_{1\leq
+    i_{1}<\dots<i_{r}\leq n}g_{i_{1}\dots
+    i_{r}}(f(x_{1},\dots,x_{m}))
+  (\sum_{k=1}^{m}\pderiv{f_{i_{1}}}{x_{k}}\dif{x_{k}})
+  \wedge\dots\wedge
+  (\sum_{k=1}^{m}\pderiv{f_{i_{r}}}{x_{k}}\dif{x_{k}})
+\]
+que habría que desarrollar teniendo en cuenta las propiedades del producto
+exterior.
+
+En particular, \(\dif{x_{i}}\wedge\dif{x_{i}}=0\) y
+\(\dif{x_{i}}\wedge\dif{x_{j}}=-\dif{x_{j}}\wedge\dif{x_{i}}\) por anticonmutatividad.
 \end{document}
 
 %%% Local Variables:
