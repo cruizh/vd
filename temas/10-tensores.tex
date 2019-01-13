@@ -305,10 +305,11 @@ De igual forma definimos el producto para las formas alternadas simétricas como
 \begin{definition}[name=producto simétrico]
 El \emph{r-producto simétrico} de \( V \), \( S^rV \), es el cociente de \( \otimes_rV \) por el subespacio generado por las diferencias
 \[
-v_1\otimes \ldots\otimes v_i\otimes \ldots v_j\otimes \ldots v_r-
-v_1\otimes \ldots\otimes v_j\otimes \ldots v_i\otimes \ldots v_r
+v_1\otimes \ldots\otimes v_i\otimes \ldots \otimes v_j\otimes \ldots \otimes
+v_r-
+v_1\otimes \ldots\otimes v_j\otimes \ldots \otimes v_i\otimes \ldots \otimes v_r
 \]
-para too \( i\neq j \).
+para todo \( i\neq j \).
 \end{definition}
 
 A la clase resultante \( \alpha_{1}\otimes\alpha_{r} \) se le denota \( \alpha_{1}\ldots \alpha_{r}\) y se llama \emph{producto simétrico} de los vectores \(\alpha_{1},\ldots ,\alpha_{r}  \).
@@ -323,7 +324,7 @@ Sean \( Alt_r(V) \) y \( Sim_r(V) \) los subespacios de \( Multi_r(V) \) formado
 Alt\colon Multi_r(V)\to Alt_r(V)\quad Sim\colon Multi_r(V)\to Sim_r(V)
 \]
 
-Para ello observamos que si \( \beta\colon V\times V\to \RealSet \) es cualquier r-forma y \( \sigma \) es una permutación de \( \{1,\ldots,r\} \), tenemos entonce una nueva r-forma \( ^\sigma\beta\colon V\times\ldots V\to \RealSet \) definida como
+Para ello observamos que si \( \beta\colon V\times V\to \RealSet \) es cualquier r-forma y \( \sigma \) es una permutación de \( \{1,\ldots,r\} \), tenemos entonces una nueva r-forma \( ^\sigma\beta\colon V\times\ldots V\to \RealSet \) definida como
 \[
 ^\sigma\beta(v_1,\ldots,v_r)=\beta(v_{\sigma(1)},\ldots,v_{\sigma(r)})
 \]
@@ -339,7 +340,7 @@ Dada la forma \( \beta \) se define
 \[
 Sim(\beta)=\frac{1}{r!}\sum_{\sigma\in G_r} ^\sigma\beta
 \]
-donde \( G_r \) es el grupo de las permutaciones de \( r \) elementos
+donde \( G_r \) es el grupo de las permutaciones de \( r \) elementos.
 \end{definition}
 
 Esta definición tiene consecuencias inmediatas que veremos en forma de proposición.
@@ -389,14 +390,18 @@ Y cumple igualmente  que \( Alt(\beta) \) es una r-forma
 
 \begin{proof}
 	Sea \( \tau \) trasposición de \( i \) por \( j \). Tenemos
-\begin{align*}
-Alt(\beta)(v_1\ldots v_i\ldots v_j\ldots v_r)&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) ^\sigma\beta(v_1\ldots v_i\ldots v_j\ldots v_r)\\
-&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \beta(v_{\sigma(1)}\ldots v_{\sigma(i)}\ldots v_{\sigma(j)}\ldots v_{\sigma(r)})\\
-&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \beta(v_{\tau\sigma(1)}\ldots v_{\tau\sigma(j)}\ldots v_{\tau\sigma(i)}\ldots v_{\tau\sigma(r)})\\
-&=\frac{1}{r!}\sum_{\sigma\in G_r}-Signo(\tau\sigma) ^{\tau\sigma}\beta(v_1\ldots v_j\ldots v_i\ldots v_r)\\
-&=-\frac{1}{r!}\sum_{\sigma'\in G_r}Signo(\sigma') ^{\sigma'}\beta(v_1\ldots v_i\ldots v_j\ldots v_r)\\
-&=-Alt(\beta)(v_1\ldots v_j\ldots v_i\ldots v_r)
-\end{align*}
+\[\begin{array}{l}
+Alt(\beta)(v_1\dots v_i\dots v_j\dots v_r)=\\ \\=\frac{1}{r!}\sum_{\sigma\in
+    G_r}Signo(\sigma) ^\sigma\beta(v_1\ldots v_i\ldots v_j\ldots v_r)\\ \\
+=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \beta(v_{\sigma(1)}\ldots v_{\sigma(i)}\ldots v_{\sigma(j)}\ldots v_{\sigma(r)})
+\\ \\=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma)
+    \beta(v_{\tau\sigma(1)}\ldots v_{\tau\sigma(j)}\ldots
+    v_{\tau\sigma(i)}\ldots v_{\tau\sigma(r)})\\ \\
+=\frac{1}{r!}\sum_{\sigma\in G_r}-Signo(\tau\sigma) ^{\tau\sigma}\beta(v_1\ldots v_j\ldots v_i\ldots v_r)
+\\ \\=-\frac{1}{r!}\sum_{\sigma'\in G_r}Signo(\sigma') ^{\sigma'}\beta(v_1\ldots
+    v_i\ldots v_j\ldots v_r)\\ \\
+=-Alt(\beta)(v_1\ldots v_j\ldots v_i\ldots v_r)
+\end{array}\]
 \end{proof}
 
 \begin{proposition}
@@ -438,30 +443,31 @@ Entonces \( \rho_s=Sim\circ \rho \circ \pi_s^* \) y \( \rho_a=Alt\circ \rho \cir
 
 \begin{proof}
 Siguiendo la definición del diagrama anterior
-\begin{align*}
-\rho_s(\gamma)(v_1\ldots v_r)&=Alt\circ \rho_s\circ \pi_a^*(\gamma)\\
-&=Alt(\rho(\gamma\circ \pi_a))(v_1\ldots v_r)\\
-&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) ^\sigma\rho(\gamma\circ \pi_a)(v_1\ldots v_r)\\
-&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \rho(\gamma\circ \pi_a)(v_{\sigma(1)}\ldots v_{\sigma(r)})\\
-&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \gamma\circ \pi_a(v_{\sigma(1)}\otimes\ldots\otimes v_{\sigma(r)})\\
-&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma)Signo(\sigma) \gamma\circ \pi_a(v_{1}\otimes\ldots\otimes v_{r})\\
-&=\frac{1}{r!}(r!\gamma(v_1\wedge\ldots \wedge v_r))\\
-&=\gamma(v_1\wedge\ldots \wedge v_r)
-\end{align*}
+\[\begin{array}{l}
+\rho_s(\gamma)(v_1\ldots v_r)=Alt\circ \rho_s\circ \pi_a^*(\gamma)
+=Alt(\rho(\gamma\circ \pi_a))(v_1\ldots v_r)=
+\\ \\ \frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) ^\sigma\rho(\gamma\circ \pi_a)(v_1\ldots v_r)=
+\\ \\ \frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \rho(\gamma\circ \pi_a)(v_{\sigma(1)}\ldots v_{\sigma(r)})=
+\\ \\ \frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \gamma\circ
+    \pi_a(v_{\sigma(1)}\otimes\ldots\otimes v_{\sigma(r)}) = \\ \\
+\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma)Signo(\sigma) \gamma\circ \pi_a(v_{1}\otimes\ldots\otimes v_{r})
+\\ \\ \frac{1}{r!}(r!\gamma(v_1\wedge\ldots \wedge v_r))
+=\gamma(v_1\wedge\ldots \wedge v_r)
+\end{array}\]
 usando que \( v_{\sigma(1)}\otimes \ldots v_{\sigma(r)} \) y \( Signo(\sigma)(v_1\otimes\ldots \otimes v_r) \) representan la misma clase en \( \Lambda^rV \) como cociente de \( \otimes_rV \)
 \end{proof}
 
-De aquí se sigue inmediatamente que\( \rho_a \) es inyectiva. \\
+De aquí se sigue inmediatamente que \(\rho_a \) es inyectiva. \\
 Para la sobreyectividad, si \( \xi\colon V_1\times\ldots\times V_r\to \RealSet\) es una forma alternada, entonces \( \rho^{-1}(\xi)\colon V_1\otimes\ldots\otimes V_r\to \RealSet \) cumple
 \begin{align*}
 \rho^{-1}(\xi)(v_1\otimes\ldots\otimes v_i\otimes\ldots\otimes v_j\otimes\ldots\otimes v_r)&=\xi(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_r)\\
 &=-\xi (v_1,\ldots,v_j,\ldots,v_r)
 \end{align*}
-por lo que es compatible con el cociente que define \( \Lambda^rV \) e induce una 1-forma \( \tilde{\rho^{-1}(\xi)}\colon \Lambda^rV\to \RealSet \) con
+por lo que es compatible con el cociente que define \( \Lambda^rV \) e induce una 1-forma \( \tilde{\rho}^{-1}(\xi)\colon \Lambda^rV\to \RealSet \) con
 \[
-\pi_a^*(\tilde{\rho^{-1}(\xi)})=\tilde{\rho^{-1}(\xi)}\circ \pi =\rho^{-1}(\xi)
+\pi_a^*(\tilde{\rho}^{-1}(\xi))=\tilde{\rho}^{-1}(\xi)\circ \pi =\rho^{-1}(\xi)
 \]
-Así pues \( \rho_a(\tilde{\rho^{-1}(\xi)})=\xi \)
+Así pues \( \rho_a(\tilde{\rho}^{-1}(\xi))=\xi \)
 
 \begin{remark}
 Para \( \rho_s\colon (S^rV)^*\to Sim_r(V) \) tenemos análogamente que si \( \nu\in (S^rV)^* \) entonces
@@ -533,7 +539,7 @@ Dadas una r-forma \( \alpha\colon\otimes_rV\to \RealSet \) y una s-forma \( \bet
 \alpha\otimes\beta(v_1\otimes\ldots\otimes v_r\otimes v_{r+1}\otimes\ldots\otimes v_{r+s})=\alpha(v_1\ldots v_r)\cdot\beta(v_{r+1}\ldots v_{r+s})
 \]
 
-Si \( \alpha \)y \( \beta \) son simétricos entonces \( \alpha\otimes\beta \) no tiene que ser simétrico. Lo mismo ocurre si son alternados. Es por ellos que buscamos definir un nuevo producto que sea interno dentro de los simétricos y alternados.
+Si \(\alpha\) y \(\beta\) son simétricos entonces \( \alpha\otimes\beta \) no tiene que ser simétrico. Lo mismo ocurre si son alternados. Es por ellos que buscamos definir un nuevo producto que sea interno dentro de los simétricos y alternados.
 
 \begin{definition}
 Definimos el \emph{producto simétrico} de la r-forma simétrica \( \alpha \) con la s-forma simétrica \( \beta \) como la "simetrización" del producto anterior
@@ -546,7 +552,7 @@ Si lo vemos aplicado a un elemento genérico resulta
 
 \begin{align*}
   \alpha \cdot \beta(v_1,\dots,v_r,v_{r+1},\dots,v_{r+s})
-  =
+  = \\
   \frac{1}{(r+s)!}
   \sum_{\sigma\in G_{r+s}}
   \alpha(v_{\sigma(1)}\dots v_{\sigma(r)})
@@ -626,11 +632,11 @@ Sea \( \sigma_1\neq G \). Entonces \( G\sigma_1=\{\sigma\sigma_1\colon\sigma\in 
 El sumando generado por \( G\sigma_1 \) es
 \begin{align*}
 &\sum_{\sigma_1}=\sum_{\mu\in G\sim_1}Signo(\mu)\alpha(v_{\mu(1)}\ldots v_{\mu(r)})\beta(v_{\mu(r+1)}\ldots v_{\mu(r+s)})=\\
-&=\sum_{\theta\in G}Signo(\sigma\sigma_1)\alpha(v_{\sigma\sigma_1(1)}\ldots v_{\sigma\sigma_1(r)})\beta(v_{\sigma\sigma_1(r+1)}\ldots v_{\sigma\sigma_1(r+s)})\quad (\label{proof:lem-transi})
+&=\sum_{\theta\in G}Signo(\sigma\sigma_1)\alpha(v_{\sigma\sigma_1(1)}\ldots v_{\sigma\sigma_1(r)})\beta(v_{\sigma\sigma_1(r+1)}\ldots v_{\sigma\sigma_1(r+s)})\quad (*)
 \end{align*}
 Tomando \( (w_1\ldots w_{k+l})=(v_{\sigma_1(1)}\ldots v_{\sigma_1(r+s)}) \), tenemos que \( w_{\sigma(i)}=v_{\sigma\sigma_1(i)} \) y por tanto
 \begin{align*}
-(\ref{proof:lem-transi} )&=Signo(\sigma_1)\sum_{\sigma\in G}Signo(\sigma)\alpha(w_{\sigma(1)}\ldots w_{\sigma(r)})\beta(w_{\sigma(r+1)}\ldots w_{\sigma(r+s)})\\
+(*)&=Signo(\sigma_1)\sum_{\sigma\in G}Signo(\sigma)\alpha(w_{\sigma(1)}\ldots w_{\sigma(r)})\beta(w_{\sigma(r+1)}\ldots w_{\sigma(r+s)})\\
 &=Signo(\sigma_1)(r!Alt(\alpha)(w_1\ldots w_r))\beta(w_{r+1}\ldots w_{r+s})\\
 &=0
 \end{align*}
@@ -638,7 +644,7 @@ Si tomamos \( \sigma_2\notin G\cup G\sigma_1 \), tenemos \( G\cap G\sigma_2=\emp
 Repitiendo el proceso anterior llegamos a \( \sum_{\sigma_2}=0 \).
 
 Por la finitud de \( G_{r+s} \) se llegará a cubrir \( G_{r+s} \) con conjuntos disjuntos de la forma \( G, G_{\sigma_1},\ldots,G_{\sigma_k} \) y cada uno de ellos no aporta nada a la suma total, que será por tanto nula.
-\item Observamps que por ser \( Alt(\alpha) \) una forma alternada \( Alt(Alt(\alpha))=Alt(\alpha) \). Por tanto
+\item Observamos que por ser \( Alt(\alpha) \) una forma alternada \( Alt(Alt(\alpha))=Alt(\alpha) \). Por tanto
 \begin{align*}
 \alpha&=Alt(Alt(\eta\otimes\theta)-\eta\otimes\theta)\\
 &=Alt(\eta\otimes\theta)-Alt(\eta\otimes\theta)\\
