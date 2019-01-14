@@ -1,4 +1,4 @@
-\documentclass[ebook,oneside]{memoir}
+\documentclass[a4paper]{memoir}
 
 \usepackage{polyglossia}
 \setdefaultlanguage{spanish}
@@ -212,9 +212,13 @@ sibling=theorem
 
 \begin{document}
 
-\maketitle
+\begin{titlingpage}
+  \maketitle
+\end{titlingpage}
 
 \tableofcontents
+
+\clearpage
 
 \listoftheorems[ignore={example,exercise}]
 
