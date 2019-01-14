@@ -567,7 +567,12 @@ Definimos el \emph{producto exterior (o alternado)} de la r-forma alternada \( \
 es decir,
 \begin{align*}
 &\alpha\wedge\beta(v_1,\ldots,v_r,v_{r+1},\ldots,v_{r+s})=\\
-&\frac{1}{(r+s)!}\sum_{\sigma\in G_{r+s}}Signo(\sigma)\alpha(v_1\ldots v_r)\cdot\beta(v_{r+1}\ldots v_{r+s})\\
+  &\frac{1}{(r+s)!}
+    \sum_{\sigma\in G_{r+s}}
+    Signo(\sigma)
+    \alpha(v_{\sigma(1)} \ldots v_{\sigma(r)})
+    \cdot
+    \beta(v_{\sigma(r+1)}\ldots v_{\sigma(r+s)})\\
 \end{align*}
 \end{definition}
 
