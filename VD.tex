@@ -35,6 +35,14 @@
   }
 }
 
+% Elimina pruebas y soluciones de ejercicios si estamos generando el documento
+% sin pruebas
+\ifdefined\noproof
+\usepackage{versions}
+\excludeversion{proof}
+\excludeversion{Answer}
+\fi
+
 \usepackage[unicode,breaklinks=true]{hyperref}
 \usepackage{nameref,cleveref}
 
