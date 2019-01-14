@@ -6,10 +6,9 @@ before_install:
   # We use the docker image from https://hub.docker.com/r/cludch/tectonic/
   - docker pull cludch/tectonic
 script:
-  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind cludch/tectonic tectonic --web-bundle $WEB_BUNDLE VD.tex
-  - mv "VD.pdf" "VD_completo.pdf"
-  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind cludch/tectonic bash -c "tectonic --web-bundle $WEB_BUNDLE - <<< \"\def\noproof{1} \input{VD.tex}\""
-  - mv "texput.pdf" "VD_sin_pruebas.pdf"
+  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind cludch/tectonic tectonic --web-bundle $WEB_BUNDLE VD_completo.tex
+  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind cludch/tectonic tectonic --web-bundle $WEB_BUNDLE VD_sin_pruebas.tex
+  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind cludch/tectonic tectonic --web-bundle $WEB_BUNDLE VD_ebook.tex
 
 before_deploy:
   - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
@@ -22,6 +21,7 @@ deploy:
   file:
     - VD_completo.pdf
     - VD_sin_pruebas.pdf
+    - VD_ebook.pdf
   skip_cleanup: true
   on:
     repo: cruizh/vd
