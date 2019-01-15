@@ -96,15 +96,15 @@ Consideraremos los conjuntos \(\mathcal{F}(M)=\{f\colon M\to\RealSet
 
 \begin{example}
   Dada \(\Clase{\alpha}\in\Tangente[p]{M}\)
-  (\(\alpha\colon(-\epsilon,\epsilon)\to M, \, \alpha(0)=p\)), entonces
+  (\(\alpha\colon(-\varepsilon,\varepsilon)\to M, \, \alpha(0)=p\)), entonces
   definimos:
   \[\begin{array}{ll}
     \delta_{\Clase{\alpha}}\colon & \mathcal{G}(p)\to\RealSet \\
     & \Clase{f}\mapsto\delta_{\Clase{\alpha}}(\Clase{f})=(f\circ\alpha)'(0)
     \end{array}\]
-  Tomaremos \(\epsilon\) pequeño para que
-  \(\alpha((-\epsilon,\epsilon))\subseteq U\Rightarrow
-  (-\epsilon,\epsilon)\overset{\alpha}{\to}U\overset{f}{\to}\RealSet\)
+  Tomaremos \(\varepsilon\) pequeño para que
+  \(\alpha((-\varepsilon,\varepsilon))\subseteq U\Rightarrow
+  (-\varepsilon,\varepsilon)\overset{\alpha}{\to}U\overset{f}{\to}\RealSet\)
 
   \vline
 
@@ -175,11 +175,11 @@ Consideraremos los conjuntos \(\mathcal{F}(M)=\{f\colon M\to\RealSet
 \end{proposition}
 
 \begin{proof}
-  Sea la base \(\{e_{i}^{p}\}_{i=1}^{m}=\{\Clase{\epsilon_{i}^{p}}\}_{i=1}^{m}\)
+  Sea la base \(\{e_{i}^{p}\}_{i=1}^{m}=\{\Clase{\varepsilon_{i}^{p}}\}_{i=1}^{m}\)
   de \(\Tangente[p]{M^{m}}\). Si \((U,\varphi)\) es carta de \(M\) con \(p\in
   U\) entonces:
   \[\begin{array}{ll}
-    (*) & \epsilon_{i}^{p}(t)=\varphi^{-1}(\varphi(p)+te_{i}),\, \Abs{t}<\epsilon
+    (*) & \varepsilon_{i}^{p}(t)=\varphi^{-1}(\varphi(p)+te_{i}),\, \Abs{t}<\varepsilon
   \end{array},\]
   es decir, con un \(t\) adecuado para el que
   \(\varphi(p)+te_{i}\in\varphi(U)\).
@@ -188,8 +188,8 @@ Consideraremos los conjuntos \(\mathcal{F}(M)=\{f\colon M\to\RealSet
   \(\Clase{f}\in\mathcal{G}(p)\) y podemos aplicarle
   \(\delta_{e_{i}^{p}}\):
   \[\begin{array}{l}
-      \delta_{e_{i}^{p}}(\Clase{f})=(f\circ \epsilon_{i}^{p})'(0)=
-      (f\circ\varphi^{-1}\circ\varphi\circ\epsilon_{i}^{p})'(0)\overset{(*)}{=} \\
+      \delta_{e_{i}^{p}}(\Clase{f})=(f\circ \varepsilon_{i}^{p})'(0)=
+      (f\circ\varphi^{-1}\circ\varphi\circ\varepsilon_{i}^{p})'(0)\overset{(*)}{=} \\
       ((f\circ\varphi^{-1})\circ(\varphi(p)+te_{i}^{p}))'(0)=
       \sum\limits_{j=1}^{m}\Restrict{\pderiv{f\circ\varphi^{-1}}{x_{j}}}{\varphi(p)}
       \cdot\Restrict{\frac{dx_{j}}{dt}}{t=0}\overset{(**)}{=} \\
