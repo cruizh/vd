@@ -977,6 +977,16 @@ M\overset{f}{\to} N\) donde \( \pi \) es la proyección. De acuerdo con el \cref
   diferenciable \(\pi\colon E\to B\) se llama \emph{fibración} si para cada
   \(p\in B\) existen un abierto \(U\subseteq B\) con \(p\in U\) y un
   difeomorfismo \(\rho_{U}\colon\pi^{-1}(U)\to U\times F\) tal que el diagrama
+  \begin{figure}[h]
+    \centering
+    \begin{tikzcd}
+      \pi^{-1}(U) \ar[r, "\rho_{U}"] \ar[dr, "\pi"'] &
+      U \times F \ar[d, "\pi_{1}"]\\
+      & U
+    \end{tikzcd}
+    \caption{Fibración}
+    \label{fig:fibracion}
+  \end{figure}
   % (0.0.1)   \pi^{-1}(U)--\rho_{U}-->U\times F
   %                   -   -  \pi  -  -    \pi_{1}      
   %                                 ->   U
@@ -986,65 +996,60 @@ M\overset{f}{\to} N\) donde \( \pi \) es la proyección. De acuerdo con el \cref
   \(B\) y \(E\) se llaman \emph{espacio base} y \emph{espacio total} de la
   fibración, respectivamente.
 
-  \begin{enumerate}
-    \item Probar que podemos encontrar un atlas \(\mathcal{A}\) de \(B\) tal que
-      para cada carta \((U,\varphi)\) de \(\mathcal{A}\) se tiene un diagrama
-      análogo a (0.0.1).
-    \item Probar que toda fibración es una submersión. Probar que la restricción
-      a \(\RealSet^{2}\setminus\{(0,0)\}\) de la proyección
-      \(\pi_{2}\colon\RealSet^{2}\to\RealSet\) es una submersión pero no es una
-      fibración.
-    \item Probar que \(f\colon\RealSet\to S^{1}\) dada por
-      \(f(t)=(\cos{t},\sin{t})\)
-      es una fibración de fibra \(\IntegerSet\).
-    \item Probar que la proyección \(\pi\colon S^{n}\to P_{n}\RealSet\) es una
-      fibración de fibra la \(0\)-variedad \(\{\pm 1\}\).
-    \end{enumerate}
+  \Question Probar que podemos encontrar un atlas \(\mathcal{A}\) de \(B\) tal
+  que para cada carta \((U,\varphi)\) de \(\mathcal{A}\) se tiene un diagrama
+  análogo a \eqref{fig:fibracion}.
+
+  \Question Probar que toda fibración es una submersión. Probar que la
+  restricción a \(\RealSet^{2}\setminus\{(0,0)\}\) de la proyección
+  \(\pi_{2}\colon\RealSet^{2}\to\RealSet\) es una submersión pero no es una
+  fibración.
+
+  \Question Probar que \(f\colon\RealSet\to S^{1}\) dada por
+  \(f(t)=(\cos{t},\sin{t})\) es una fibración de fibra \(\IntegerSet\).
+
+  \Question Probar que la proyección \(\pi\colon S^{n}\to P_{n}\RealSet\) es una
+  fibración de fibra la \(0\)-variedad \(\{\pm 1\}\).
 \end{Exercise}
 
 \begin{Answer}[number=16]
-  1. \(\forall p\in B,\, \exists U_{p}\ni p\) cumpliendo el dicho diagrama
+  \Question \(\forall p\in B,\, \exists U_{p}\ni p\) cumpliendo el diagrama
   conmutativo. Entonces \(\exists(V_{p},\varphi_{p})\) carta con \(p\in
   V_{p}\subseteq U_{p}\) (abierto) cumpliendo:
-% \begin{figure}[h]
-%    \centering
-%    \begin{tikzcd}
-%      \pi^{-1}(V_{p}) \ar[rr, "\rho_{V_{p}}"]\ar[rd, "\pi"] &&
-%      V_{p}\times F \ar[ld, "\pi_{1}"] \\
-%      U 
-%    \end{tikzcd}
-%    \caption{Diagrama Conmutativo}
-%  \end{figure}
+  \begin{center}
+    \begin{tikzcd}
+      \pi^{-1}(V_{p}) \ar[r, "\rho_{V_{p}}"] \ar[rd, "\pi"'] &
+      V_{p}\times F \ar[d, "\pi_{1}"] \\
+      & U
+    \end{tikzcd}
+  \end{center}
 
-%   \begin{figure}[h]
-%    \centering
-%    \begin{tikzcd}
-%      \pi^{-1}(V_{p}) \ar[r,"\rho"] \ar[dr, "\pi"'] &
-%      U\times F \ar[d, "\pi_{1}"] \\
-%      & U
-%    \end{tikzcd}
-%    \caption{Diagrama Conmutativo}
-%  \end{figure}
+  \begin{center}
+   \centering
+   \begin{tikzcd}
+     \pi^{-1}(V_{p}) \ar[r,"\rho"] \ar[rd, "\pi"'] &
+     U \times F \ar[d, "\pi_{1}"] \\
+     & U
+   \end{tikzcd}
+ \end{center}
   
   Como \(\rho_{_{V_{p}}}\) es difeomorfismo en \(U_{p}\), su restricción a
   \(V_{p}\) también lo es. Por la \cref{def:Lindelöff},
   \(B=\bigcup_{p\in B}V_{p}\). Entonces \(\exists\) una cantidad numerable
   cubriendo \(B\) y \({(V_{p},\varphi_{p})\colon p\in B}\) es el atlas que buscábamos.
 
-  2. \(U\) tiene estructura diferenciable y además cumple el diagrama
+  \Question \(U\) tiene estructura diferenciable y además cumple el diagrama
   conmutativo de la hipótesis, donde observamos que \(\pi_{1}\) es una submersión (es
   la primera proyección). Sea \(p\in B\), entonces existen cartas
   \((W,\varphi)\) de \(U\) (de \(B\)) y \((V,\psi)\) de \(\pi^{-1}(U)\) (de
   \(E\)) tal que:
 
-%  \begin{figure}[h]
-%    \centering
-%    \begin{tikzcd}
-%      V \ar[rr,"pi"]\ar[dd,"\psi"] & W \ar[dd,"\varphi"] \\
-%      \psi(V) \ar[rr] & \varphi(W)
-%    \end{tikzcd}
-%    \caption{Diagrama Conmutativo 2}
-%  \end{figure}
+ \begin{center}
+   \begin{tikzcd}
+     V \ar[r,"\pi"] \ar[d,"\psi"] & W \ar[d,"\varphi"] \\
+     \psi(V) \ar[r, dashed] & \varphi(W)
+   \end{tikzcd}
+ \end{center}
   
   Como \(\varphi\circ\pi\circ\psi^{-1}\) tiene como rango la dimensión de \(B\)
   que es menor que la de \(E\), entonces \(\pi\) es submersión.
@@ -1055,28 +1060,30 @@ M\overset{f}{\to} N\) donde \( \pi \) es la proyección. De acuerdo con el \cref
   \(\RealSet\) con \(0\in U\), \(U\) cumpliendo el diagrama del enunciado. Como
   \(p\in U\), podemos tomar el mismo diagrama cambiando \(U\) por \(p\):
 
-  % Diagrama Conmutativo 3
-  %   \pi^{-1}(p)--\rho_p-->{p}xF
-  %        \               /   
-  %     \pi \             / \pi_1
-  %               p
+  \begin{center}
+    \begin{tikzcd}
+      \pi^{-1}(p) \ar[r, "\rho_{p}"] \ar[rd, "\pi"']
+      & \Set{p} \times F \ar[d, "\pi_{1}"]\\
+      & \Set{p}
+    \end{tikzcd}
+  \end{center}
 
   Como \(\rho_{p}\) es difeomorfismo, en particular es homeomorfismo. Por ello,
   del diagrama se obtiene que \(\{p\}\times F\homeo F\). Sin embargo, \(\pi^{-1}(0)\)
   es no conexa mientras que \(\pi^{-1}(x),\,x\neq 0\) es conexa, luego
   contradicción y \(\pi\) NO es fibración.
 
-  3. Sea \(\pi\colon\RealSet\to S^{1},\,\pi(t)=(\cos{t},\sin{t})\). Tomaremos
-  como \(U_{p}=S^{1}\backslash\{(1,0)\}\). Tal y como hicimos en otro ejercicio
-  de clase, dividiremos la circunferencia en \(n\) partes de ángulo \(2\pi/n\).
-  Luego \(\pi^{-1}(U_{p})=\bigcup_{k\in\IntegerSet}(2\pi k,2\pi (k+1))\). Se
-  tiene que los intervalos dentro de la unión son todos homeomorfos a la recta
-  real, y que su unión en los \(k\in\IntegerSet\) es difeomorfa a
+  \Question Sea \(\pi\colon\RealSet\to S^{1},\,\pi(t)=(\cos{t},\sin{t})\).
+  Tomaremos como \(U_{p}=S^{1}\backslash\{(1,0)\}\). Tal y como hicimos en otro
+  ejercicio de clase, dividiremos la circunferencia en \(n\) partes de ángulo
+  \(2\pi/n\). Luego \(\pi^{-1}(U_{p})=\bigcup_{k\in\IntegerSet}(2\pi k,2\pi
+  (k+1))\). Se tiene que los intervalos dentro de la unión son todos homeomorfos
+  a la recta real, y que su unión en los \(k\in\IntegerSet\) es difeomorfa a
   \(S^{1}\backslash\{(1,0)\}\times\IntegerSet\) por el difeomorfismo \(x\mapsto
   (\pi(x),k)\), con \(x\in (2\pi k,2\pi (k+1))\). Para el punto \((1,0)\) cojo
   \(U_{(1,0)}=S^{1}\backslash\{(-1,0)\},\,
   \pi^{-1}(U_{(1,0)})=\bigcup_{k\in\IntegerSet}(-\pi+2\pi k,\pi+2\pi k)\). Así
-  que \(\pi\) es fibración de fibra \(\IntegerSet\).  
+  que \(\pi\) es fibración de fibra \(\IntegerSet\).
 \end{Answer}
 
 \begin{Exercise}[number=17]
@@ -1088,8 +1095,8 @@ dada por
 es una submersión que envía la \(3\)-esfera de radio \(r\) en la \(2\)-esfera de radio
 \(r^{2}\), por 1o que para \(r=1\) tenemos \(h\colon S^{3}\to S^{2}\).
 
-Probar que \(h\) es de hecho una \underline{fibración} de fibra \(S^{1}\), llamada la
-fibración de \underline{Hopf}.
+Probar que \(h\) es de hecho una fibración de fibra \(S^{1}\), llamada la
+\emph{fibración de Hopf}.
 
 Considerar los conjuntos
 \(OZ_{+}=\{(x,y,z)\in\RealSet^{3}\backslash\{0\}: z>0\}\) y 
@@ -1207,5 +1214,5 @@ y
 \end{document}
 
 %%% Local Variables:
-%%% TeX-master: "../VD"
+%%% TeX-master: "../VD_ebook"
 %%% End:

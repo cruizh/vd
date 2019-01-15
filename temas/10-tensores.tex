@@ -5,7 +5,7 @@
 \begin{document}
 
 \setcounter{chapter}{9}
-\chapter{Espacios de formas y tensores sobre una variedad}\label{chap:dual} 
+\chapter{Espacios de formas y tensores sobre una variedad}\label{chap:dual}
 
 \section{Introducción}
 
@@ -18,7 +18,7 @@ las formas.
   \(V_{1},\dots,V_{n}\) y otro espacio vectorial \(W\), una \emph{aplicación
     multilineal} \(f\colon V_{1}\times\dots\times V_{n}\to W\), esto es, \(\forall
   \lambda,\mu\in\RealSet,\ \forall v_{i},v'_{i}\in V_{i},\ 1\leq i\leq n\):
-  
+
   \[
     f(v_{1},\dots,\lambda v_{i}+\mu v'_{i},\dots,v_{n})=\lambda
     f(\dots,v_{i},\dots)+\mu f(\dots,v'_{i},\dots).
@@ -95,7 +95,7 @@ aplicaciones multilineales al espacio vectorial.
   b_{k_{n}})=1\) y \(\delta_{k_{1},\dots,k_{n}}(b_{k'_{1}}\dots b_{k'_{n}})=0\)
   si \((k'_{1},\dots,k'_{n})\neq(k_{1},\dots,k_{n})\) es una base del espacio de
   las aplicaciones multilineales \(V_{1}\times\dots\times V_{n}\to\RealSet\).
-  
+
   Si \(V_{1}=\dots=V_{n}=V\) denotamos por \(\bigotimes_{n}V\) a
     \(\underbracket{V\bigotimes\dots\bigotimes V}_{n\text{ veces}}\).
 
@@ -109,7 +109,7 @@ aplicaciones multilineales al espacio vectorial.
   \[
     \alpha\otimes\beta(v_{1}\otimes\dots\otimes v_{r}\otimes
     v_{r+1}\otimes\dots\otimes v_{r+s})=\alpha(v_{1}\otimes\dots\otimes
-    v_{r})\cdot \beta(v_{r+1}\otimes\dots\otimes v_{r+s}). 
+    v_{r})\cdot \beta(v_{r+1}\otimes\dots\otimes v_{r+s}).
   \]
 
   Obsérvese que existe un isomorfismo
@@ -141,7 +141,7 @@ las siguientes:
   variedad de dimensión \(n\dim{M}\), para la cual la proyección
   \(\pi^{*}\colon\bigotimes_{n}\Tangente{M}\to M\) es diferenciable y definir una
   n-forma sobre \(M\) como una sección de \(\pi\).
-  
+
 \item Definir una n-forma como una aplicación diferenciable
   \(f\colon\bigotimes_{n}\Tangente{M}\to\RealSet\) tal que para cada \(p\in M\)
   se restringe a una aplicación lineal
@@ -182,7 +182,7 @@ las siguientes:
     Recíprocamente, dada \(f\colon\bigotimes_{n}\Tangente{M}\to\RealSet\) se
     define \(s_{f}(p)(v_{1},\dots,v_{n})=f(v_{1}\otimes\dots\otimes v_{n}),\
     v_{i}\in\Tangente[p]{M}\), con la notación del producto tensorial.
-    
+
   \item \((2)\iff(3)\). Si \(f\colon\bigotimes_{n}\Tangente{M}\to\RealSet\)
     entonces
     \(\phi_{f}\colon\mathbb{X}(M)\times\dots\times\mathbb{X}(M)\to\mathcal{F}(M)\)
@@ -191,7 +191,7 @@ las siguientes:
     \(\phi\colon\mathbb{X}(M)\times\dots\times\mathbb{X}(M)\to\mathcal{F}(M)\)
     entonces \(f_{\phi}(v_{1}\otimes\dots\otimes
     v_{n})=\phi(X_{v_{1}},\dots,X_{v_{n}})\) donde \(X_{v_{i}}\) son campos
-    cualesquiera con \(X_{v_{i}}(p)=v_{i}\). 
+    cualesquiera con \(X_{v_{i}}(p)=v_{i}\).
   \end{itemize}
 \end{proof}
 
@@ -208,7 +208,7 @@ el cotangente \(\DualT{M}\) en las construcciones anteriores y hablar de
   \(\bigotimes_{s}\Tangente{M}\to\RealSet\).
 
   \par
-  
+
   Todavía más, si consideramos la variedad
   \((\bigotimes_{s}\Tangente{M})\otimes(\bigotimes_{r}\DualT{M})=\bigcup_{p\in
     M}(\bigotimes_{s}\Tangente[p]{M})\otimes(\bigotimes_{r}\DualT[p]{M})\), la
@@ -237,7 +237,7 @@ el cotangente \(\DualT{M}\) en las construcciones anteriores y hablar de
   \dif{x_{i_{1}}}\otimes\dots\otimes\dif{x_{i_{r}}}.\]
 
   A las funciones \(f,g,h\colon\varphi(U)\to\RealSet\) se las denomina
-  \emph{componentes} del correspondiente tensor en la carta \((U,\varphi)\). 
+  \emph{componentes} del correspondiente tensor en la carta \((U,\varphi)\).
 \end{remark}
 
 \section{Formas Simétricas y Alternadas}
@@ -250,15 +250,15 @@ las \textbf{formas simétricas y las antisimétricas o alternadas}.
   \emph{simétrica} si
   \[\alpha(v_{1},\dots,v_{i},\dots,v_{j},\dots,v_{r})=
   \alpha(v_{1},\dots,v_{j},\dots,v_{i},\dots,v_{r})\] para todo \(1\leq i\leq
-  j\leq r\). 
+  j\leq r\).
 \end{definition}
 
 \begin{definition}[name=forma alternada]
   Una r-forma \(\alpha\colon V\times\dots\times V\to\RealSet\) se dice
   \emph{antisimétrica o alternada} si
-  \[\alpha(v_{1},\dots,v_{i},\dots,v_{j},\dots,v_{r})= 
+  \[\alpha(v_{1},\dots,v_{i},\dots,v_{j},\dots,v_{r})=
   -\alpha(v_{1},\dots,v_{j},\dots,v_{i},\dots,v_{r})\] para todo \(1\leq i\leq
-  j\leq r\).  
+  j\leq r\).
 \end{definition}
 
 \begin{remark}
@@ -281,7 +281,7 @@ las \textbf{formas simétricas y las antisimétricas o alternadas}.
     toda r-forma alternada \(\alpha\) y toda permutación \(\sigma\) de
     \(\{1,\dots,r\}\), tenemos
     \[\alpha(v_{\sigma(1)},\dots,v_{\sigma(r)})=\text{signo}(\sigma)
-    \alpha(v_{1},\dots,v_{r}),\] 
+    \alpha(v_{1},\dots,v_{r}),\]
     donde signo\((\sigma)\) vale \(1\) si \(\sigma\) se descompone como un
     número par de trasposiciones y \(-1\) si el número es impar.
   \item Por otro lado, si \(\alpha\) es simétrica entonces
@@ -295,7 +295,7 @@ para las formas alternadas (simétricas, respectivamente).
 
 \section{Producto Exterior y simétrico}
 \begin{definition}[name= producto exterior]
-El \emph{r-producto  exterior (o alternado)} de \( V \), \( \Lambda^rV \), es el expacio vectorial obtenido al hacer cociente del producto tensorial \( \otimes_rV=\underbracket{V\otimes \ldots \otimes V}_{r} \) por el subespacio generado por los productos \( v_1\otimes\ldots\otimes v_r\) con \( v_i= v_j \) para algún \(  i\neq j\).
+El \emph{r-producto  exterior (o alternado)} de \( V \), \( \Lambda^rV \), es el espacio vectorial obtenido al hacer cociente del producto tensorial \( \otimes_rV=\underbracket{V\otimes \ldots \otimes V}_{r} \) por el subespacio generado por los productos \( v_1\otimes\ldots\otimes v_r\) con \( v_i= v_j \) para algún \(  i\neq j\).
 \end{definition}
 
 La clase de \( v_1\otimes\ldots\otimes v_r \) se denota \( v_1\wedge\ldots\wedge v_r \) y se llama \emph{producto exterior (o alternado)} de los vectores \( v_1,\ldots,v_r \).
@@ -336,7 +336,7 @@ Si \( \tau \) es otra permutación entonces para la composición \( \tau\sigma \
 \section{Función simétrica y alternada}
 
 \begin{definition}
-Dada la forma \( \beta \) se define 
+Dada la forma \( \beta \) se define
 \[
 Sim(\beta)=\frac{1}{r!}\sum_{\sigma\in G_r} ^\sigma\beta
 \]
@@ -375,7 +375,7 @@ Sim(\beta)(v_1\ldots v_r)&=\frac{1}{r!}\sum_{\sigma\in G_r}^\sigma\beta(v_1\ldot
 Este resultado deja ver que la aplicación \( Sim \) concuerda con la noción intuitiva de la misma.
 
 De manera análoga se define una aplicación para una r-forma arbitraria
-\begin{definition} 
+\begin{definition}
 Sea \( \beta\in Multi_r(V) \)
 \[
 Alt(\beta)=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) ^\sigma\beta
@@ -567,7 +567,12 @@ Definimos el \emph{producto exterior (o alternado)} de la r-forma alternada \( \
 es decir,
 \begin{align*}
 &\alpha\wedge\beta(v_1,\ldots,v_r,v_{r+1},\ldots,v_{r+s})=\\
-&\frac{1}{(r+s)!}\sum_{\sigma\in G_{r+s}}Signo(\sigma)\alpha(v_1\ldots v_r)\cdot\beta(v_{r+1}\ldots v_{r+s})\\
+  &\frac{1}{(r+s)!}
+    \sum_{\sigma\in G_{r+s}}
+    Signo(\sigma)
+    \alpha(v_{\sigma(1)} \ldots v_{\sigma(r)})
+    \cdot
+    \beta(v_{\sigma(r+1)}\ldots v_{\sigma(r+s)})\\
 \end{align*}
 \end{definition}
 
@@ -689,7 +694,7 @@ Para r=1 es obvio.\\
 Supongamos el resultado cierto para r-1 y veamos el caso r. Por definición
 
 \begin{equation}
- \label{proof:prop-alt} 
+ \label{proof:prop-alt}
 \begin{aligned}
 &\rho_a^{-1}(e_{i_1}^*\wedge\ldots e_{i_r}^*)(e_{j_1}\wedge\ldots\wedge e_{j_r})\\
 &=(e_{i_1}^*\wedge\ldots e_{i_r}^*)(e_{j_1},\ldots, e_{j_r})=\\
@@ -734,7 +739,7 @@ De donde se sigue el resultado.
   coeficiente \(r!\) desaparece de la proposición anterior:
 
   En efecto con la fórmula anterior se tiene que (aplicada la transitividad y si
-  \(\gamma\) es una t-forma): 
+  \(\gamma\) es una t-forma):
   \[\begin{array}{c}
       \omega\wedge\eta\wedge\gamma=(\omega\wedge\eta)\wedge\gamma=
       \frac{(r+s+t)!}{(r+s)!t!}\frac{(r+s)!}{r!s!}\text{Alt}
@@ -751,7 +756,7 @@ De donde se sigue el resultado.
   coherente con \(\omega_{1}\wedge\dots\wedge\omega_{r}\) como producto exterior
   de 1-formas ya que \(e_{i_{1}}^{*}\wedge\dots\wedge e_{i_{r}}^{*}\) con
   \(i_{1}<\dots<i_{r}\) son ahora los elementos básicos con ambas notaciones. Se
-  tiene así la identificación \(\Lambda^{r}V^{*}\cong\text{Alt}_{r}(V)\). 
+  tiene así la identificación \(\Lambda^{r}V^{*}\cong\text{Alt}_{r}(V)\).
 \end{remark}
 
 Terminamos con la siguiente proposición que nos da el producto exterior de
@@ -782,7 +787,7 @@ Terminamos con la siguiente proposición que nos da el producto exterior de
   multilineal. Análogamente lo es la aplicación \(\Psi\colon V^{*}\times\dots\times
   V^{*}\to\Lambda^{r}(V)\) dada por \((\omega_{1},\dots,\omega_{r})\mapsto
   \omega_{1}\wedge\dots\wedge\omega_{r}\).
-  
+
   Entonces la proposición anterior quedará demostrada si probamos \(\Phi=\Psi\).
   Para ello, dada una base \(\{e_{i}\}_{i=1}^{n}\) de \(V\), bastará que
   probemos la igualdad para cualquier secuencia de elementos básicos
@@ -809,7 +814,7 @@ Terminamos con la siguiente proposición que nos da el producto exterior de
     \wedge\dots\wedge e_{i_{r}}^{*})(\sum_{j=1}^{n}a_{1j}e_{j},
     \dots,\sum_{j=1}^{n}a_{rj}e_{j})= \\
       \overset{(1)}{=}
-      \sum_{(j_{1},\dots,j_{r})\in\{1,\dots,n\}^{r}}a_{1j_{1}}\cdots a_{rj_{r}} 
+      \sum_{(j_{1},\dots,j_{r})\in\{1,\dots,n\}^{r}}a_{1j_{1}}\cdots a_{rj_{r}}
     (e_{i_{1}}^{*}\wedge\dots\wedge e_{i_{r}}^{*})(e_{j_{1}},
     \dots,e_{j_{r}})= \\
     \overset{(2)}{=}\frac{1}{r!}\sum_{\sigma\in G_{r}}Signo(\sigma) a_{1\sigma(1)}
@@ -953,8 +958,6 @@ En particular, \(\dif{x_{i}}\wedge\dif{x_{i}}=0\) y
 \(\dif{x_{i}}\wedge\dif{x_{j}}=-\dif{x_{j}}\wedge\dif{x_{i}}\) por
 anticonmutatividad.
 
-\newpage
-
 \section{Diferencial Exterior}
 
 Una importante propiedad de las formas alternadas sobre una \(m\)-variedad \(M\)
@@ -1006,11 +1009,9 @@ Esto se deja sin demostración. Se puede consultar en \emph{Introduction
   to Smooth Manifolds, John M. Lee}, donde también se pueden encontrar las
 demostraciones de las siguientes propiedades de la diferencial exterior:
 
-\newpage
-
 \begin{proposition}
   La diferencial exterior cuenta con las
-  siguiente propiedades: 
+  siguiente propiedades:
   \begin{enumerate}
   \item \(\dif{}\) es lineal.
   \item \(\dif{} \dif{}=0\).
@@ -1048,5 +1049,5 @@ A partir del diagrama
 \end{document}
 
 %%% Local Variables:
-%%% TeX-master: "../VD"
+%%% TeX-master: "../VD_ebook"
 %%% End:

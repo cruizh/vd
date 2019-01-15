@@ -1,9 +1,14 @@
+env:
+  WEB_BUNDLE="https://tectonic.newton.cx/bundles/tlextras-2018.1r0/bundle.tar"
 sudo: required
 services: docker
-script:
+before_install:
   # We use the docker image from https://hub.docker.com/r/cludch/tectonic/
   - docker pull cludch/tectonic
-  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind cludch/tectonic tectonic --web-bundle "https://tectonic.newton.cx/bundles/tlextras-2018.1r0/bundle.tar" VD.tex
+script:
+  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind cludch/tectonic tectonic --web-bundle $WEB_BUNDLE VD_completo.tex
+  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind cludch/tectonic tectonic --web-bundle $WEB_BUNDLE VD_sin_pruebas.tex
+  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind cludch/tectonic tectonic --web-bundle $WEB_BUNDLE VD_ebook.tex
 
 before_deploy:
   - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
@@ -13,7 +18,10 @@ deploy:
   prerelease: true
   api_key:
     secure: Th82V4SGfbHHc/Y4uXBkBMM+KATYqgBomPgH48TtqABi2i7kCD7S+hMyVZFCjrn3/DGipLYLSmXbjhT41i4C/ab0SWS9odTXSwWWTsT4uvED5iG4SzjAlpPxkC4cFp4UDf4IX97pjAmg9FNtchbf8E4IjoqeRp0vX2kt/wFVyrzk96rm2tit8bXw1XD5/2lczytnbGDwueBtoz2IHZfmU23tiswBC7s3cDLxaDZmClKTJGWfzFw5EP0evthQB8t44uSbmeOwVWsQbyCiQdVch9p5B8vyyXAssIP7W5hqwWcE/wsNF0mX810hPA5FqG6NfnEFjeB7K5Y58KEww4yINiIn2j5Xt3ICI0feu8+ky7QBsGPu+xAMHBLX57NxSH5xUuj/UQuvWT35RNmhlS4zjJNBPuvzEDr5v5dPCGYo6rKU5Gd0WJ1UShYGI3pqv1hzr/4wGd6vKaABoK4H8NSEpsgMT+k6WQtFq986z+JFwh/Mt0IjGmsR5SuxaJ9nK+u9UfPKHzPVul82F5MKz/X4nM7vv/9VpDEio79Y68EP15Fv08jaoz3C6is23xs5aYCnkH33sUQFcSoeZUdJUBfA73erFUIRnlKnrycbFmlneA4xXuyv8RYAvTUy0pniwfJfrD0pYmcQyR9lYPJ9sZDmtaQZHe5OlrepGMHJQr3F8AY=
-  file: VD.pdf
+  file:
+    - VD_completo.pdf
+    - VD_sin_pruebas.pdf
+    - VD_ebook.pdf
   skip_cleanup: true
   on:
     repo: cruizh/vd
