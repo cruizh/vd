@@ -24,6 +24,18 @@ ser descritas por mapas euclídeos. Todos estos mapas se juntan (formando un
 atlas) para describir toda la variedad teniendo en cuenta los cambios de
 coordenadas al pasar de un mapa a otro.
 
+Es interesante observar que la representación de una región puede quedar
+deformada respecto a la original: pensemos en los mapas donde los continentes
+aparecen deformados y la relación con sus tamaños originales no queda reflejada
+en los mismos.
+
+El mínimo exigido en una representación cartográfica es que se preserve la
+topología: proximidad, mínimo de componentes, etc. Este requisito obliga en
+particular a que la representación de la esfera necesite al menos dos mapas.
+
+En lo que sigue se pedirá más: que se preserven aquellas propiedades que son
+consecuencia de la diferenciabilidad, especialmente la noción de tangencia.
+
 A continuación se han seleccionado algunos ejemplos motivadores de variedades
 que aparecen como espacios de configuraciones. Recordemos que en física se llama
 espacio de configuraciones de un sistema mecánico $S$ al espacio $M(S)$ que
@@ -94,16 +106,16 @@ la descripción completa de una posición del sistema.
 	
   \begin{figure}[ht]
     \centering
-    \subfloat[]{\includegraphics[scale=0.6]{intro-fig20.pdf}}\qquad %% TFB % NEED GRAPHICS
-    \subfloat[]{\includegraphics[scale=0.4]{intro-fig30.pdf}} %% TFB % NEED GRAPHICS
+    \subfloat{\includegraphics[scale=0.6]{intro-fig20.pdf}}\qquad %% TFB % NEED GRAPHICS
+    \subfloat{\includegraphics[scale=0.4]{intro-fig30.pdf}} %% TFB % NEED GRAPHICS
     \caption{}
     \label{fig20y30}
   \end{figure}
 
   \begin{figure}[ht]
     \centering
-    \subfloat[]{\includegraphics[scale=0.6]{intro-fig40.pdf}}\qquad %% TFB % NEED GRAPHICS
-    \subfloat[]{\includegraphics[scale=0.9]{intro-fig50d.pdf}} %% TFB % NEED GRAPHICS
+    \subfloat{\includegraphics[scale=0.6]{intro-fig40.pdf}}\qquad %% TFB % NEED GRAPHICS
+    \subfloat{\includegraphics[scale=0.9]{intro-fig50d.pdf}} %% TFB % NEED GRAPHICS
     \caption{El espacio de configuraciones del péndulo doble se obtiene al pegar las circunferencias del borde de dos copias de la corona circular, obteniéndose la superficie tórica en la derecha.}
     \label{fig40y50d}
   \end{figure}
