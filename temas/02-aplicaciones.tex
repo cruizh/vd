@@ -17,40 +17,40 @@
   \emph{diferenciable} en \(p \in M\) si para toda carta \((W,\psi)\) de \(N\)
   con \(f(p) \in W\) existe una carta \((U,\varphi)\) de \(M\) tal que \(p \in
   U, f(U) \subseteq W\) y \(\psi \circ f \circ \varphi^{-1} \colon \varphi(U)
-  \to \psi(W)\) es diferenciable en \(\varphi(p)\). Nótese que, en la
-  \cref{fig:factorizacion-diferenciable}, \(\widetilde{f} = \psi \circ f \circ
-  \varphi^{-1}\).
+  \to \psi(W)\) es diferenciable en \(\varphi(p)\). Ver el diagrama
+  \eqref{eq:cd-factorización-diferenciable}, en el que \(\widetilde{f} = \psi
+  \circ f \circ \varphi^{-1}\).
 
   Se dice que \(f\) es \emph{diferenciable} si lo es para todo \(p \in M\).
 \end{definition}
 
-\begin{figure}[h]
-  \centering
+\begin{equation}
   \begin{tikzcd}
     U \arrow[r, "f"] \arrow[d, "\varphi"']
     & W \arrow[d, "\psi"] \\
     \varphi(U) \arrow[r, "\widetilde{f}"]
     & \psi(W)
   \end{tikzcd}
-  \caption{Factorización de una aplicación diferenciable entre variedades}
-  \label{fig:factorizacion-diferenciable}
-\end{figure}
+  \label{eq:cd-factorización-diferenciable}
+\end{equation}
 
 \begin{lemma}
   \label{lem:dif-implies-cont}
-  Toda \(f\) \nameref{def:diferenciable} es continua para las topologías
-  asociadas a las correspondientes estructuras diferenciables.
+  Toda aplicación \nameref{def:diferenciable} \(f \colon M \to N\) es continua
+  para las topologías asociadas a las correspondientes estructuras
+  diferenciables.
 \end{lemma}
 
 \begin{proof}
   Sea \(G \subset N\) abierto. Veamos que \(f^{-1}(G)\) es abierto de \(M\).
 
   Sea \(p \in f^{-1}(G)\). Entonces \(f(p) \in G\). Por el
-  lema de \nameref{lem:topnat-caract}, existe
+  \cref{lem:topnat-caract}, existe
   \((W,\psi)\) carta de \(N\) con \(f(p) \in W \subseteq G\). Como \(f\) es
   \nameref{def:diferenciable} existe \((U,\varphi)\) carta de \(U\) con \(p \in
   U\), \(f(U) \subseteq W \subseteq G\). Entonces \(p \in U \subseteq
-  f^{-1}(G)\). 
+  f^{-1}(G)\), y de nuevo el \cref{lem:topnat-caract} nos dice que \(f^{-1}(G)\)
+  es abierto.
 \end{proof}
 
 \begin{lemma}
@@ -66,10 +66,10 @@
   \coloneqq \rho \circ g \circ \psi^{-1}\) diferenciable. Por otra parte, como
   \(f\) es diferenciable, existe una carta \((U,\varphi)\) de \(M\) con \(p \in
   U\), \(f(U) \subseteq W\) y \(\widetilde{f} \coloneqq \psi \circ f \circ
-  \varphi^{-1}\) diferenciable. Tenemos el diagrama de la \cref{fig:comp-dif-cd}.
+  \varphi^{-1}\) diferenciable. Tenemos el diagrama \eqref{eq:cd-comp-dif}.
 
-  \begin{figure}[h]
-    \centering
+  \begin{equation}
+    \label{eq:cd-comp-dif}
     \begin{tikzcd}
       U \ar[d, "\varphi"] \ar[r, "f"] &
       W \ar[d, "\psi"] \ar[r, "g"] &
@@ -78,10 +78,7 @@
       \psi(W) \ar[r, "\widetilde{g}"] &
       \rho(\Omega)
     \end{tikzcd}
-    \caption{Composición de aplicaciones diferenciables}
-    \label{fig:comp-dif-cd}
-  \end{figure}
-
+  \end{equation}
   Ya hemos encontrado una carta \((U,\varphi)\) de \(M\) con \(p \in U\) y \((g
   \circ f)(U) \subseteq \Omega\).
   Para ver que \(g \circ f\) es diferenciable, queda probar que
@@ -95,33 +92,30 @@
   \(f\) es \nameref{def:diferenciable} en \(p\) si y solo si existen cartas
   \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p \in U\), \(f(U)
   \subseteq W\) y \(\widetilde{f} = \psi \circ f \circ \varphi^{-1}\) es
-  diferenciable (la misma de la \cref{fig:factorizacion-diferenciable}).
+  diferenciable (como en el diagrama \ref{eq:cd-factorización-diferenciable}).
 \end{lemma}
 
 \begin{proof}\item
-\begin{subproof}[\(\implies\)]
-Es cierto pues que existan esas cartas es un caso particular de que \(f\) sea
-diferenciable.
+  \begin{subproof}[\(\implies\)]
+    Es obvio.
 \end{subproof}
 \begin{subproof}[\(\impliedby\)]
-  Sea \((\Omega,\rho)\) carta cualquiera de \(N\) con \(f(p)\in\Omega\). Se
+  Sea \((\Omega,\rho)\) una carta cualquiera de \(N\) con \(f(p)\in\Omega\). Se
   tiene que \(\Omega\cap W\) es abierto de \(N\) y \(f(p) \in \Omega\cap
   W \subseteq W\). Como además \((W,\psi)\) y \((\Omega,\rho)\) son compatibles,
   entonces \(\psi(\Omega\cap W),\rho(\Omega\cap W)\) son abiertos y
   \(\psi\circ\rho^{-1},\rho\circ\psi^{-1}\) son diferenciables.
 
-  Sabemos que \(f \colon U \to W\) es continua, y que \(W,\Omega\) son abiertos
-  de \(N\) por lo que su intersección también, luego \(f^{-1}(\Omega \cap W)\)
-  es abierto de \(M\), entonces \(f^{-1}(\Omega \cap W)\cap U \eqqcolon \Gamma
-  \subseteq U\) es abierto de \(M\).
+  Sabemos que \(f \colon U \to W\) es continua, y que \(W\) y \(\Omega\) son
+  abiertos de \(N\) por lo que su intersección también, luego \(f^{-1}(\Omega
+  \cap W)\) es abierto de \(M\), entonces \(\Gamma \coloneqq f^{-1}(\Omega \cap
+  W) \cap U \subseteq U\) es abierto de \(M\).
 
 Sabemos por el \cref{lem:compat-restriccion}, que
-\((\Gamma,\Restrict{\varphi}{\Gamma})\) es carta de \(M\). Entonces:
-
-\[\Gamma\overset{f}{\rightarrow}\Omega\cap W\subseteq W,\Omega\]
-
-\begin{figure}[h]
-	\centering
+\((\Gamma,\Restrict{\varphi}{\Gamma})\) es carta de \(M\). Entonces
+\(\Gamma\overset{f}{\rightarrow}\Omega\cap W\subseteq W,\Omega\) y tenemos el diagrama
+\begin{equation}
+  \label{eq:cd-dif-existen-cartas}
 	\begin{tikzcd}	
 		\Gamma
 		\arrow[rr,"	f "]
@@ -133,71 +127,15 @@ Sabemos por el \cref{lem:compat-restriccion}, que
 		\rho(\Omega)\\
     \varphi(p)
 	\end{tikzcd}
+\end{equation}
+donde \(\varphi(\Gamma)\) es abierto pues \(\varphi\) es homeomorfismo y \(\Gamma\) abierto.
 
-Y \(\varphi(\Gamma)\) es abierto pues \(\varphi\) es homeomorfismo y \(\Gamma\) abierto.
+Con el anterior diagrama y el hecho de que \(\tilde{f}= \rho \circ f \circ
+\varphi^{-1} = (\rho \circ \psi^{-1}) \circ (\psi \circ f \circ \varphi^{-1})\)
+que es diferenciable pues \(\rho\circ\psi^{-1}\) lo es por compatbilidad y
+\(\psi\circ f\circ\varphi^{-1}\) lo es por hipótesis, y se sigue que \(f\) es
+diferenciable.
 
-Con el anterior diagrama y la definición que hemos hecho de
-\(\tilde{f}=\rho\circ f\circ\varphi^{-1}=(\rho\circ\psi^{-1})\circ(\psi\circ
-f\circ\varphi^{-1})\) que es diferenciable pues \((\rho\circ\psi^{-1})\) lo es
-por compatbilidad y \((\psi\circ f\circ\varphi^{-1})\) lo es por hipótesis,
-luego se tiene que \(f\) es diferenciable.
-
- 
-\end{figure}
-
-\end{subproof}
-\end{proof}
-
-\begin{lemma}
-  \label{lem:dif-caract-forall}
-  Supongamos que \(f \colon M \to N\) es continua. Entonces \(f\) es
-  \nameref{def:diferenciable} en \(p\) si y solo si para todas las cartas
-  \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p \in U\) y \(f(U)
-  \subseteq W\), la aplicación \(\widetilde{f} \coloneqq \psi \circ f \circ
-  \varphi^{-1}\) (la misma de la \cref{fig:factorizacion-diferenciable}) es
-  diferenciable.
-\end{lemma}
-
-\begin{proof}\item 
-\begin{subproof}[\(\impliedby\)]
-  Sea \((W',\psi')\) una carta con \(f(p) \in W'\).
-  Como \(W\) y \(W'\) son abiertos de \(N\), es claro que \(W \cap W'\) también
-  es abierto de \(N\).
-  Por ser \(f\) continua, \(f^{-1}(W\cap W')\) es abierto en \(M\),
-  con \(p \in f^{-1}(W \cap W')\).
-
-  Como \(U\) es abierto de \(M\) podemos definir el abierto \(U'\) de \(M\) como
-  \(U \cap f^{-1}(W \cap W')\). Entonces \((U',\varphi')\) con \(\varphi'
-  \coloneqq \Restrict{\varphi}{U'}\) es una carta de \(M\) por el
-  \cref{lem:compat-subcartas} de \nameref{lem:compat-subcartas} y ser \(\varphi
-  \colon U \to \varphi(U)\) homeomorfismo.
-
-  Además \(p \in U'\) y \(f(U') \subseteq W' \).
-  Finalmente
-
-  \begin{figure}[h]
-    \centering
-    \begin{tikzcd}
-      U' \ar[r, "f"] \ar[d, "\varphi'"'] & W' \ar[d, "\psi'"]\\
-      \varphi'(U') \ar[d, hook, "i_{U'}"']
-      \ar[r, "\hat{f}"] & \psi'(W') \ar[d, hook, "i_{W'}"]\\
-      \varphi(U) \ar[r, "\widetilde{f}"'] & \psi(W')
-    \end{tikzcd}
-  \end{figure}
-
-  Por construcción de \((W',\psi')\) y definición de
-  \nameref{def:diferenciable}, \(f\) es diferenciable si y solo si \(\hat{f} =
-  \psi' \circ f \circ {(\varphi')}^{-1}\)
-  lo es, y efectivamente lo es porque \(\hat{f} = \Restrict{\widetilde{f}\,}{\varphi(U')}\), que es
-  restricción de una aplicación diferenciable luego es diferenciable (recordemos
-  que \(\widetilde{f} = \psi \circ f \circ \varphi^{-1}\) es diferenciable
-  por ser \(f\) diferenciable).
-\end{subproof}
-
-\begin{subproof}[\(\implies\)]
-Para dos cartas \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p\in U\)
-y \(f(U)\subseteq W\), la composición \(\psi\circ f \circ \varphi^{-1}\) es
-diferenciable por definición.
 \end{subproof}
 \end{proof}
 
@@ -214,6 +152,38 @@ diferenciable por definición.
   \(\widetilde{f} = \Id{\RealSet} \circ f \circ \varphi^{-1} = f \circ
   \varphi^{-1}\).
 \end{proof}
+
+\begin{lemma}
+  \label{lem:dif-caract-forall}
+  Supongamos que \(f \colon M \to N\) es continua. Entonces \(f\) es
+  \nameref{def:diferenciable} en \(p\) si y solo si para todas las cartas
+  \((U,\varphi)\) de \(M\) y \((W,\psi)\) de \(N\) con \(p \in U\) y \(f(p) \in
+  W\), la aplicación \(\widetilde{f} \coloneqq \psi \circ f \circ \varphi^{-1}
+  \colon \varphi(U \cap f^{-1}(W)) \to \psi(W)\) es diferenciable en \(\varphi(p)\).
+\end{lemma}
+
+\begin{proof}\item 
+\begin{subproof}[\(\impliedby\)]
+  Como \(f\) es continua, \(f^{-1}(W)\) es abierto y por tanto \(U' = f^{-1}(W)
+  \cap U\) también. Además \(p \in U'\) y si \(\varphi' =
+  \Restrict{\varphi}{U'}\), el par \((U',\varphi')\) es una carta de \(M\)
+  compatible con \((U,\varphi)\). Por tanto, por el \cref{lem:dif-caract-exists}
+  se sigue que \(f\) es diferenciable en \(p\).
+\end{subproof}
+
+\begin{subproof}[\(\implies\)]
+  Por definición, dado el atlas \((W, \psi)\) existe una carta \((\Omega,
+  \rho)\) de \(M\) tal que \(p \in \Omega\), \(f(\Omega) \subseteq W\) y
+  \(\widehat{f} \eqqcolon \psi \circ f \circ \rho^{-1} \colon \rho(\Omega) \to
+  \psi(W)\) es diferenciable en \(\rho(p)\). Como \(p \in \Omega \cap U'\) y
+  \((\Omega, \rho)\) y \((U', \varphi')\) son compatibles, \(\widetilde{f}\) en
+  el abierto \(\varphi(U' \cap \Omega) \subseteq \varphi(U')\) coincide con la
+  composición \[\psi \circ \Restrict{\widehat{f}\,}{\rho(\Omega \cap U')} \circ
+  \Restrict{\left( \rho \circ \varphi^{-1} \right)}{\varphi(U' \cap \Omega)}\]
+que es diferenciable en \(\varphi(p)\).
+\end{subproof}
+\end{proof}
+
 
 \section{Difeomorfismo}
 \label{sec:difeo}
@@ -668,7 +638,7 @@ diferenciable.
   Por ser \(f\) diferenciable, existen \((U,\varphi),\ (W,\psi)\) cartas de
   \(M\) y \(N\) respectivamente con \(p \in U\), \(f(U) \subseteq W\) y
   \(\widetilde{f}\) diferenciable. Se tiene el diagrama de la
-  \cref{fig:factorizacion-diferenciable}. Por definición, \(\rango{f(p)} =
+  \cref{eq:cd-factorización-diferenciable}. Por definición, \(\rango{f(p)} =
   \rango{\J[\varphi(p)]{\widetilde{f}}} = n\).
 
   Por el teorema de la función inversa en \(\RealSet^{n}\), existe \(G
@@ -738,7 +708,7 @@ diferenciable.
   podemos elegir cartas \((U,\varphi)\) y \((V,\psi)\) con \(p \in U\) y \(f(U)
   \subseteq V\). Podemos suponer que \(\varphi(p)=0=\psi(f(p))\). Ahora
   consideramos \(\widetilde{f} = \psi \circ f \circ \varphi^{-1}\), la misma de
-  la \cref{fig:factorizacion-diferenciable}.
+  la \cref{eq:cd-factorización-diferenciable}.
 
   Si \(f\) es una \nameref{def:inmersión} en \(p\), entonces \(\rango{f(p)} =
   m\). Elegimos \(i_{1},\dots,i_{m} \in \Set{1,\dots,n}\) tales que el menor \(m
