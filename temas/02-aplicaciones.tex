@@ -190,15 +190,18 @@ que es diferenciable en \(\varphi(p)\).
 
 \begin{definition}[difeomorfismo]
   \label{def:difeo}
-  \(f \colon M \to N\) se dice \emph{difeomorfismo} entre variedades si \(f\) es
-  biyectiva y \(f\) y \(f^{-1}\) son \hyperref[def:diferenciable]{diferenciables}.
+  Una aplicación entre variedades \(f \colon M \to N\) se dice
+  \emph{difeomorfismo} si
+  \(f\) es biyectiva y
+  \(f\) y \(f^{-1}\) son \hyperref[def:diferenciable]{diferenciables}.
 \end{definition}
 
+\numberwithin{equation}{theorem}
 \begin{lemma}
+  \label{lem:atlas-difeo}
   Si \(f \colon M \to N\) es un \nameref{def:difeo} y \(\mathcal{A}\) y
   \(\mathcal{B}\) son atlas de \(M\) y \(N\) respectivamente, entonces
   \begin{equation}
-    \tag{L2.5.1}
     \label{eq:atlas-difeo}
     f(\mathcal{A}) = \Set{
       (f(U), \varphi \circ f^{-1})
@@ -209,6 +212,7 @@ que es diferenciable en \(\varphi(p)\).
   es un \nameref{def:atlas} de \(N\) \hyperref[def:atlas-compat]{compatible} con
   \(\mathcal{B}\).
 \end{lemma}
+\numberwithin{equation}{chapter}
 
 \begin{proof}\item
   \begin{subproof}[\(f(\mathcal{A})\) es atlas]
@@ -221,35 +225,36 @@ que es diferenciable en \(\varphi(p)\).
       \circ f \circ \varphi^{-1} = \psi \circ \varphi^{-1}
     \]
     que va de \((\varphi \circ f^{-1})(f(U \cap V)) = \varphi(U \cap V)\) a
-    \(\psi(U \cap V) = (\psi \circ f^{-1})(f(U \cap V))\), y es diferenciable
-    por hipótesis, luego todas las cartas de \(f(\mathcal{A})\) es compatibles
+    \(\psi(U \cap V) = (\psi \circ f^{-1})(f(U \cap V))\) es diferenciable
+    por hipótesis. Luego todas las cartas de \(f(\mathcal{A})\) son compatibles
     entre sí.
   \end{subproof}
 
   \begin{subproof}[\(f(\mathcal{A})\) es compatible con \(\mathcal{B}\)]
-    Sean \((f(U), \varphi f^{-1}) \in f(\mathcal{A})\) y \((W,\rho) \in
+    Sean \((f(U), \varphi \circ f^{-1}) \in f(\mathcal{A})\) y \((W,\rho) \in
     \mathcal{B}\) con \(f(U) \cap W \neq \emptyset\). Tenemos que ver que
     \[
       \rho \circ {(\varphi \circ f^{-1})}^{-1}
+      = \rho \circ f \circ \varphi^{-1}
       \colon
-      \varphi f^{-1}(f(U) \cap W)
+      \varphi \circ f^{-1}(f(U) \cap W)
       \to
       \rho(f(U) \cap W)
     \]
-    es diferenciable. Nótese que \(\rho \circ {(\varphi \circ f^{-1})}^{-1} = \rho
-    \circ f \circ \varphi^{-1}\). Para ello, sea \(x \in \varphi f^{-1}(f(U)
+    es diferenciable. Para ello, sea \(x \in \varphi f^{-1}(f(U)
     \cap W) = \varphi(U \cap f^{-1}(W))\). Sea \(p \in U \cap f^{-1}(W)\) con
     \(x = \varphi(p)\).
 
     Por ser \(f\) diferenciable, también es continua por el
-    \cref{lem:dif-implies-cont} y \(\Omega \coloneqq U \cap f^{-1}(W)\) es
-    abierto de \(M\). Tenemos que \(f(\Omega) \subseteq W\). Como \(f\) es
-    diferenciable en \(p\), para la carta \((\Omega, \varphi_{0})\) con
-    \(\varphi_{0} \coloneqq \Restrict{\varphi}{\Omega}\), la composición \(\rho
-    \circ f \circ \varphi_{0}^{-1} \colon \varphi_{0}(\Omega) \to \rho(W)\) es
-    diferenciable. Como \(\varphi_{0}(\Omega) = \varphi(\Omega)\) es abierto de
-    \(\varphi(U)\), tenemos que \(\rho \circ f \circ \varphi^{-1}\) es
-    diferenciable en todos sus puntos.
+    \Cref{lem:dif-implies-cont} y \(\Omega = U \cap f^{-1}(W)\) es abierto de
+    \(M\). Tenemos que \(f(\Omega) \subseteq W\). Como \(f\) es diferenciable en
+    \(p\), para la carta \((\Omega, \varphi_{0})\) con \(\varphi_{0} =
+    \Restrict{\varphi}{\Omega}\), la composición \(\rho \circ f \circ
+    \varphi_{0}^{-1} \colon \varphi_{0}(\Omega) \to \rho(W)\) es diferenciable.
+    Aquí usamos el \Cref{lem:dif-caract-exists}. Como \(\varphi_{0}(\Omega) =
+    \varphi(\Omega)\) es abierto de \(\varphi(U)\), tenemos que \(\rho \circ f
+    \circ \varphi^{-1}\) es diferenciable en \(x\) para todo \(x \in \varphi(U
+    \cap f^{-1}(W))\)
 
     Análogamente, como \(f^{-1}\) es diferenciable se tiene que \(\varphi \circ
     f^{-1} \circ \rho^{-1} \colon \rho(f(U) \cap W) \to \varphi f^{-1}(f(U) \cap
@@ -258,10 +263,11 @@ que es diferenciable en \(\varphi(p)\).
 \end{proof}
 
 \begin{note}
-  la primera parte prueba que si tenemos \(\mathcal{A}\) un atlas sobre \(M\) y
-  \(f \colon M \to X\) es una biyección (con \(X\) un conjunto cualquiera),
-  entonces \(X\) puede verse dotado de una estructura diferenciable con atlas
-  \(f(\mathcal{A})\) que cumple las siguientes propiedades:
+  La primera parte de la demostración del \Cref{lem:atlas-difeo} prueba que si tenemos
+  \(\mathcal{A}\) un atlas sobre \(M\) y \(f \colon M \to X\) es una biyección
+  (con \(X\) un conjunto cualquiera), entonces \(X\) puede verse dotado de una
+  estructura diferenciable con atlas \(f(\mathcal{A})\) que cumple las
+  siguientes propiedades:
 
   \begin{enumerate}
   \item Una carta \((\Omega,\xi)\) es compatible con \(f(\mathcal{A})\) si y
