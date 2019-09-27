@@ -10,26 +10,30 @@
 \section{Introducción}
 
 En \textbf{Álgebra Lineal} conocemos la extensión natural del espacio dual de
-las formas.
+las \(1\)-formas por medio de las aplicaciones multilineales. Recordemos su definición.
 
 \begin{definition}
-  Si una 1-forma del espacio vectorial \(V\) es una aplicación lineal
-  \(V\to\RealSet\), entonces dados \(n\) espacios vectoriales
-  \(V_{1},\dots,V_{n}\) y otro espacio vectorial \(W\), una \emph{aplicación
-    multilineal} \(f\colon V_{1}\times\dots\times V_{n}\to W\), esto es, \(\forall
-  \lambda,\mu\in\RealSet,\ \forall v_{i},v'_{i}\in V_{i},\ 1\leq i\leq n\):
+  Dados \(n\) espacios vectoriales
+  \(V_{1},\dots,V_{n}\) y otro espacio vectorial \(W\), una aplicación
+     \(f\colon V_{1}\times\dots\times V_{n}\to W\) se dice \emph{multilineal} (de orden \(n\) con valores en \(W\)) si para cualesquiera 
+     \(\lambda,\mu\in\RealSet\) y \(v_{i},v'_{i}\in V_{i},\ 1\leq i\leq n\), se cumple:
 
   \[
     f(v_{1},\dots,\lambda v_{i}+\mu v'_{i},\dots,v_{n})=\lambda
     f(\dots,v_{i},\dots)+\mu f(\dots,v'_{i},\dots).
   \]
 
-  Cuando \(V_{1}=\dots=V_{n},\ W=\RealSet\) decimos que \(f\) es una n-forma
-  sobre \(V\).
+  Cuando \(V_{1}=\dots=V_{n}\) y \(W=\RealSet\) decimos que \(f\) es una \emph{\(n\)-forma}
+  sobre \(V\).  
 \end{definition}
 
-Ahora se plantea cómo extender las n-formas al espacio tangente de una variedad
-\(M\). Ya vimos en el caso de las 1-formas que esa construcción se puede abordar
+El conjunto de las aplicaciones multilineales de orden \(n\) sobre \(W\) se denota por \(Multi(V_1,V_2,\dots,V_n; W)\) y tiene una estructura de espacio
+vectorial para las operaciones obvias. Si \(W = \RealSet\) se escribirá \(Multi(V_1,V_2,\dots,V_n)\), mientras que el espacio vectorial de las  \(n\)-formas sobre \(V\) será  denotado por \(Multi_n(V)\).
+
+\par 
+
+Ahora se plantea cómo extender las \(n\)-formas al espacio tangente de una variedad
+\(M\). Ya vimos en el caso de las \(1\)-formas que esa construcción se puede abordar
 de varias maneras:
 
 \begin{enumerate}
@@ -38,27 +42,27 @@ de varias maneras:
   M\) sea \(\DualT[p]{M}\) y se define \(\DualT{M}=\bigcup_{p\in
     M}\DualT[p]{M}\), dotándolo de una estructura de variedad diferenciable
   compatible con la de \(M\) mediante la proyección
-  \(\pi^{*}\colon\DualT{M}\to M\ \omega\in\DualT[p]{M}\mapsto p\) y las 1-formas
-  se definen como secciones diferenciables de esa proyección.
+  \(\pi^{*}\colon\DualT{M}\to M\), \(\omega\in\DualT[p]{M}\mapsto p\), y las \(1\)-formas
+  se definen entonces como secciones diferenciables de esa proyección.
 
 \item Definir el espacio cotangente globalmente sobre todo \(\Tangente{M}\) por
   medio de funciones diferenciables \(f\colon\Tangente{M}\to\RealSet\) que punto
-  a punto son 1-formas, es decir, \(f\colon\Tangente[p]{M}\to\RealSet\) es
+  a punto son \(1\)-formas, es decir, \(f\colon\Tangente[p]{M}\to\RealSet\) es
   lineal para todo \(p\in M\).
 
-\item Usar \(\mathbb{X}(M)\) el \(\mathcal{F}(M)\)-módulo de los campos sobre
-  \(M\) y reescribir \(\DualT{M}\) como el dual de \(\mathbb{X}(M)\) como
+\item Considerar  el \(\mathcal{F}(M)\)-módulo de los campos sobre
+  \(M\), \(\mathbb{X}(M)\), y definir \(\DualT{M}\) como el dual de \(\mathbb{X}(M)\) como
   \(\mathcal{F}(M)\)-módulo. Esto es, usar la identificación
   \(\DualT{M}\cong\text{Hom}(\mathbb{X}(M),\mathcal{F}(M))\), que lleva la forma
   \(\omega\colon M\to\Tangente{M}\) a la función \(\omega(X)(p)=X(\omega(p)),\
   \forall p\in M\).
 \end{enumerate}
 
-Veamos cómo extender estas construccione equivalentes del espacio cotangente de
-\(M\) para obtener la noción de n-forma sobre la variedad \(M\).
+Veamos cómo extender estas construcciones equivalentes del espacio cotangente de
+\(M\) para obtener la noción de \(n\)-forma sobre la variedad \(M\).
 
-Para ello recordemos la noción de producto tensorial que permite reinterpretar
-las aplicaciones multilineales como 1-formas, pasando la complicación de las
+Para ello recordaremos la noción de producto tensorial que permite reinterpretar
+las aplicaciones multilineales como \(1\)-formas, pasando la complicación de las
 aplicaciones multilineales al espacio vectorial.
 
 \section{Producto Tensorial}
@@ -67,21 +71,21 @@ aplicaciones multilineales al espacio vectorial.
   Recordemos que el \emph{producto tensorial} de los espacios vectoriales
   \(V_{1},\dots,V_{n}\), \(V_{1}\bigotimes\dots\bigotimes V_{n}\), es el espacio
   vectorial obtenido por combinaciones lineales de los símbolos
-  \(v_{1}\otimes\dots\otimes\ v_{n}\) sujetos a las relaciones:
+  \(v_{1}\otimes\dots\otimes\ v_{n}\) sujetos a las relaciones (\(1\leq i\leq n\)):
 
   \begin{itemize}
   \item \(\lambda(v_{1}\otimes\dots\otimes
     v_{n})=v_{1}\otimes\dots\otimes \lambda v_{i}\otimes\dots\otimes
-    v_{n},\ \forall i\)
+    v_{n}\),
 
   \item \(v_{1}\otimes\dots\otimes(v_{i}+v'_{i})\otimes\dots\otimes
     v_{n}=v_{1}\otimes\dots\otimes \lambda v_{i}\otimes\dots\otimes
     v_{n}+v_{1}\otimes\dots\otimes \lambda v'_{i}\otimes\dots\otimes
-    v_{n},\ \forall i\)
+    v_{n}\).
   \end{itemize}
 
-  Entonces \((V_{1}\bigotimes\dots\bigotimes
-  V_{n})^{*}\cong\text{Multi}_{n}(V_{1},\dots,V_{n}),\ f\mapsto
+  Se tiene entonces un isomorfismo \((V_{1}\bigotimes\dots\bigotimes
+  V_{n})^{*}\cong\text{Multi}(V_{1},\dots,V_{n}),\ f\mapsto
   g_{f}(v_{1},\dots,v_{n})=f(v_{1}\otimes\dots\otimes\v_{n})\).
 \end{definition}
 
@@ -90,22 +94,20 @@ aplicaciones multilineales al espacio vectorial.
   \(\{b_{k_{1}}\otimes\dots\otimes b_{k_{n}}\}\) es una base de
   \(V_{1}\bigotimes\dots\bigotimes V_{n}\) donde
   \((b_{k_{1}},\dots,b_{k_{n}})\in B_{1}\times\dots\times B_{n}\).
-  Equivalentemente, las n-formas \(\delta_{k_{1},\dots,k_{n}}\) dadas por las
+  Equivalentemente, las aplicaciones \(\delta_{k_{1},\dots,k_{n}}\) dadas por las
   extensiones multilineales de \(\delta_{k_{1},\dots,k_{n}}(b_{k_{1}}\dots
   b_{k_{n}})=1\) y \(\delta_{k_{1},\dots,k_{n}}(b_{k'_{1}}\dots b_{k'_{n}})=0\)
-  si \((k'_{1},\dots,k'_{n})\neq(k_{1},\dots,k_{n})\) es una base del espacio de
-  las aplicaciones multilineales \(V_{1}\times\dots\times V_{n}\to\RealSet\).
+  si \((k'_{1},\dots,k'_{n})\neq(k_{1},\dots,k_{n})\) es una base de 
+  \(Multi(V_{1}\times\dots\times V_{n})\).
 
   Si \(V_{1}=\dots=V_{n}=V\) denotamos por \(\bigotimes_{n}V\) a
-    \(\underbracket{V\bigotimes\dots\bigotimes V}_{n\text{ veces}}\).
-
-  Así pues si Multi\(_{n}(V)\) es el espacio vectorial de las n-formas sobre
-  \(V\) tenemos Multi\(_{n}(V)\cong(\bigotimes_{n}(V))^{*}\) y
+    \(\underbracket{V\bigotimes\dots\bigotimes V}_{n\text{ veces}}\). 
+    Tenemos así los isomorfismos  Multi\(_{n}(V)\cong(\bigotimes_{n}(V))^{*}\) y
   \(\dim{\text{Multi}_{n}(V)}=(\dim{V})^{n}\).
 
-  Además, dadas \(\alpha\in(\bigotimes_{r}V)^{*}\) y
-  \(\beta\in(\bigotimes_{s}V)^{*}\) se define
-  \(\alpha\otimes\beta\in(\bigotimes_{r}V\bigotimes(\bigotimes_{s}V))^{*}\) por:
+  También dadas \(\alpha\in(\bigotimes_{r}V)^{*}\) y
+  \(\beta\in(\bigotimes_{s}V)^{*}\) se puede definir el producto tensorial
+  \(\alpha\otimes\beta\in(\bigotimes_{r+s}V)^{*}\) por:
   \[
     \alpha\otimes\beta(v_{1}\otimes\dots\otimes v_{r}\otimes
     v_{r+1}\otimes\dots\otimes v_{r+s})=\alpha(v_{1}\otimes\dots\otimes
@@ -113,12 +115,12 @@ aplicaciones multilineales al espacio vectorial.
   \]
 
   Obsérvese que existe un isomorfismo
-  \(\rho\colon\bigotimes_{r}V\cong(\bigotimes_{r}V)^{*}\) que lleva el producto
-  tensorial de 1-formas \(\alpha_{1}\otimes\dots\otimes\alpha_{r}\) en la
-  1-forma sobre \(\bigotimes_{r}V\) (o n-forma sobre \(V\)):
+  \(\rho\colon\bigotimes_{r}V^*\cong(\bigotimes_{r}V)^{*}\) que lleva el producto
+  tensorial de \(1\)-formas \(\alpha_{1}\otimes\dots\otimes\alpha_{r}\) en la
+  \(1\)-forma sobre \(\bigotimes_{r}V\) (o \(n\)-forma sobre \(V\)):
   \[
     \rho(\alpha_{1}\otimes\dots\otimes\alpha_{r})(v_{1}\otimes\dots\otimes
-    v_{r})=\alpha_{1}(v_{1})\otimes\dots\otimes\alpha_{r}(v_{r})
+    v_{r})=\alpha_{1}(v_{1})\cdot \alpha_2(v_2) \cdot \dots \cdot \alpha_{r-1}(v_{r-1}) \cdot \alpha_{r}(v_{r}).
   \]
 
   Nótese que si \(\{e_{i}\}\) es una base de \(V\), los elementos básicos de
@@ -139,8 +141,8 @@ las siguientes:
     M}\bigotimes_{n}\Tangente[p]{M}\). Habrá que dotar a
   Multi\(_{n}(\Tangente{M})\cong\bigotimes_{n}\Tangente{M}\) de una estructura de
   variedad de dimensión \(n\dim{M}\), para la cual la proyección
-  \(\pi^{*}\colon\bigotimes_{n}\Tangente{M}\to M\) es diferenciable y definir una
-  n-forma sobre \(M\) como una sección de \(\pi\).
+  \(\pi^{*}\colon\bigotimes_{n}\Tangente{M}\to M\) sea diferenciable y definir una
+  \(n\)-forma sobre \(M\) como una sección de \(\pi\).
 
 \item Definir una n-forma como una aplicación diferenciable
   \(f\colon\bigotimes_{n}\Tangente{M}\to\RealSet\) tal que para cada \(p\in M\)
@@ -168,14 +170,14 @@ las siguientes:
 \end{enumerate}
 
 \begin{lemma}
-  Las 3 construcciones anteriores son equivalentes.
+  Las tres construcciones anteriores son equivalentes.
 \end{lemma}
 
 \begin{proof}
-  Ahora vemos cómo pasar de una a otra construcción:
+  Veamos cómo pasar de una a otra construcción:
   \begin{itemize}
   \item \((1)\iff(2)\). Si \(s\colon M\to\text{Multi}_{n}(\Tangente{M})\) es una
-    sección defino
+    sección se define
     \(f_{s}\colon\Tangente[p]{M}\times\dots\times\Tangente[p]{M}\to\RealSet\) por
     \(f_{s}(v_{1},\dots,v_{n})=s(p)(v_{1},\dots,v_{n}),\
     v_{i}\in\Tangente[p]{M}\).
@@ -202,20 +204,21 @@ el cotangente \(\DualT{M}\) en las construcciones anteriores y hablar de
 \textbf{tensores}.
 
 \begin{definition}[name=tensores]
-  Por un \emph{tensor r-covariante} se entenderá una r-forma sobre el espacio
+  Por un \emph{tensor \(r\)-covariante} se entenderá una \(r\)-forma sobre el espacio
   cotangente de \(M\), \(\bigotimes_{r}\DualT{M}\to\RealSet\) mientras que un
-  \emph{tensor s-contravariante} es una s-forma del tangente,
+  \emph{tensor \(s\)-contravariante} es una \(s\)-forma del tangente,
   \(\bigotimes_{s}\Tangente{M}\to\RealSet\).
 
   \par
 
   Todavía más, si consideramos la variedad
-  \((\bigotimes_{s}\Tangente{M})\otimes(\bigotimes_{r}\DualT{M})=\bigcup_{p\in
-    M}(\bigotimes_{s}\Tangente[p]{M})\otimes(\bigotimes_{r}\DualT[p]{M})\), la
-  aplicación diferenciable
+  \[(\bigotimes_{s}\Tangente{M})\otimes(\bigotimes_{r}\DualT{M})=\bigcup_{p\in
+    M}(\bigotimes_{s}\Tangente[p]{M})\otimes(\bigotimes_{r}\DualT[p]{M}),
+    \] 
+    una aplicación diferenciable
   \((\bigotimes_{s}\Tangente{M})\otimes(\bigotimes_{r}\DualT{M})\to\RealSet\)
   que es lineal en cada \(p\in M\) será entonces un \emph{tensor mixto de tipo
-    (s,r)}.
+    \((s,r)\)}.
 \end{definition}
 
 \begin{remark}
@@ -223,30 +226,33 @@ el cotangente \(\DualT{M}\) en las construcciones anteriores y hablar de
   \((U,\varphi=(x_{1},\dots,x_{n}))\), con la notación
   \(\dif{x_{1}},\dots,\dif{x_{n}}\) y
   \(\pderiv{}{x_{1}},\dots,\pderiv{}{x_{n}}\) para la base canónica de
-  \(\DualT[p]{M}\) y \(\Tangente[p]{M}\), tenemos que un tensor r-covariante es
-  de la forma
-  \[\sum_{(i_{1},\dots,i_{r})}g_{i_{1},\dots,i_{r}}\dif{x_{i_{1}}}\otimes\dots\otimes
-  \dif{x_{i_{r}}},\ (i_{1},\dots,i_{r})\in\{1,\dots,m\}^{r}\] y análogamente un tensor
-  s-contravariante se escribe como
-  \[\sum_{(j_{1},\dots,j_{s})}f_{j_{1},\dots,j_{s}}\pderiv{}{x_{j_{1}}}\otimes\dots
-  \otimes\pderiv{}{x_{j_{s}}},\ (j_{1},\dots,j_{s})\in\{1,\dots,m\}^{s}.\]
+  \(\DualT[p]{M}\) y \(\Tangente[p]{M}\), tenemos que un tensor \(r\)-covariante se escribe 
+  localmente 
+  \[\sum_{(i_{1},\dots,i_{r}) \in \{1,\dots, m\}^r}g_{i_{1},\dots,i_{r}}\dif{x_{i_{1}}}\otimes\dots\otimes
+  \dif{x_{i_{r}}}
+  \] 
+  y análogamente un tensor \(s\)-contravariante se escribe como
+  \[\sum_{(j_{1},\dots,j_{s})\in\{1,\dots,m\}^{s}}f_{j_{1},\dots,j_{s}}\pderiv{}{x_{j_{1}}}\otimes\dots
+  \otimes\pderiv{}{x_{j_{s}}}.\]
 
-  Para un tensor mixto (s,r) tenemos
-  \[\sum_{(i_{1},\dots,i_{r}),(j_{1},\dots,j_{s})}h_{i_{1},ots,i_{r}}^{j_{1},\dots,j_{s}}
+  Para un tensor mixto \((s,r)\) tenemos
+  \[\sum_{(i_{1},\dots,i_{r},j_{1},\dots,j_{s}) \in \{1,\dots, m\}^r \times\{1,\dots, m\}^s} h_{i_{1},\dots,i_{r}}^{j_{1},\dots,j_{s}}
   \pderiv{}{x_{j_{1}}}\otimes\dots\otimes\pderiv{}{x_{j_{s}}}\otimes
   \dif{x_{i_{1}}}\otimes\dots\otimes\dif{x_{i_{r}}}.\]
 
-  A las funciones \(f,g,h\colon\varphi(U)\to\RealSet\) se las denomina
-  \emph{componentes} del correspondiente tensor en la carta \((U,\varphi)\).
+ En las fórmulas anteriores las funciones 
+ \[f_{j_{1},\dots,j_{s}},g_{i_{1},\dots,i_{r}},h_{i_{1},\dots,i_{r}}^{j_{1},\dots,j_{s}}\colon\varphi(U)\to\RealSet
+ \] 
+ se denominan \emph{componentes} del correspondiente tensor en la carta \((U,\varphi)\).
 \end{remark}
 
 \section{Formas Simétricas y Alternadas}
 
-Existen 2 clases de formas sobre un espacio vectorial \(V\) de especial interés:
+Existen dos clases de formas sobre un espacio vectorial \(V\) de especial interés:
 las \textbf{formas simétricas y las antisimétricas o alternadas}.
 
 \begin{definition}[name=forma simétrica]
-  Una r-forma \(\alpha\colon V\times\dots\times V\to\RealSet\) se dice
+  Una \(r\)-forma \(\alpha\colon V\times\dots\times V\to\RealSet\) se dice
   \emph{simétrica} si
   \[\alpha(v_{1},\dots,v_{i},\dots,v_{j},\dots,v_{r})=
   \alpha(v_{1},\dots,v_{j},\dots,v_{i},\dots,v_{r})\] para todo \(1\leq i\leq
@@ -254,7 +260,7 @@ las \textbf{formas simétricas y las antisimétricas o alternadas}.
 \end{definition}
 
 \begin{definition}[name=forma alternada]
-  Una r-forma \(\alpha\colon V\times\dots\times V\to\RealSet\) se dice
+  Una \(r\)-forma \(\alpha\colon V\times\dots\times V\to\RealSet\) se dice
   \emph{antisimétrica o alternada} si
   \[\alpha(v_{1},\dots,v_{i},\dots,v_{j},\dots,v_{r})=
   -\alpha(v_{1},\dots,v_{j},\dots,v_{i},\dots,v_{r})\] para todo \(1\leq i\leq
@@ -269,62 +275,64 @@ las \textbf{formas simétricas y las antisimétricas o alternadas}.
 \end{remark}
 
 \begin{example}
-  El producto escalar de \(\RealSet^{n}\) es una 2-forma simétrica.
+  El producto escalar de \(\RealSet^{n}\) es una \(2\)-forma simétrica.
 \end{example}
 
 \begin{remark}\label{rem:inv-trasp}
   \begin{enumerate}
-  \item Obsérvese que para una r-forma alternada \(\alpha\) sobre \(V\) se tiene
-    que si \(v_{i}=v_{j},\ i\neq j\), entonces claramente
+  \item Para toda \(r\)-forma alternada \(\alpha\) sobre \(V\) se tiene
+    que si \(v_{i}=v_{j},\ i\neq j\), y entonces 
     \(\alpha(v_{1},\dots,v_{r})=0\) en virtud de su propia definición.
   \item Más aún, como toda permutación es producto de trasposiciones entonces para
-    toda r-forma alternada \(\alpha\) y toda permutación \(\sigma\) de
+    toda \(r\)-forma alternada \(\alpha\) y toda permutación \(\sigma\) de
     \(\{1,\dots,r\}\), tenemos
-    \[\alpha(v_{\sigma(1)},\dots,v_{\sigma(r)})=\text{signo}(\sigma)
+    \[\alpha(v_{\sigma(1)},\dots,v_{\sigma(r)})=s(\sigma)
     \alpha(v_{1},\dots,v_{r}),\]
-    donde signo\((\sigma)\) vale \(1\) si \(\sigma\) se descompone como un
-    número par de trasposiciones y \(-1\) si el número es impar.
+    donde \(s(\sigma)\) vale \(1\) si \(\sigma\) se descompone como un
+    número par de transposiciones y \(-1\) si el número es impar.
   \item Por otro lado, si \(\alpha\) es simétrica entonces
     \[\alpha(v_{\sigma(1)},\dots,v_{\sigma(n)})=\alpha(v_{1},\dots,v_{n})\] pues
     \(\alpha\) es invariante por trasposiciones.
   \end{enumerate}
 \end{remark}
 
-Ahora se plantea el problema de buscar un ''producto'' de \(V\) adecuado
-para las formas alternadas (simétricas, respectivamente).
+Ahora se plantea el problema de buscar un ''producto'' de \(V\) 
+que permita describir las formas alternadas (simétricas, respectivamente) como formas duales para ese producto.
 
 \section{Producto Exterior y simétrico}
 \begin{definition}[name= producto exterior]
-El \emph{r-producto  exterior (o alternado)} de \( V \), \( \Lambda^rV \), es el espacio vectorial obtenido al hacer cociente del producto tensorial \( \otimes_rV=\underbracket{V\otimes \ldots \otimes V}_{r} \) por el subespacio generado por los productos \( v_1\otimes\ldots\otimes v_r\) con \( v_i= v_j \) para algún \(  i\neq j\).
+El \emph{\(r\)-producto  exterior (o alternado)} de \( V \), denotado \( \Lambda^rV \), es el espacio vectorial obtenido al hacer cociente del producto tensorial \( \otimes_rV=\underbracket{V\otimes \ldots \otimes V}_{r} \) por el subespacio generado por los productos \( v_1\otimes\ldots\otimes v_r\) con \( v_i= v_j \) para algún \(  i\neq j\).
 \end{definition}
 
 La clase de \( v_1\otimes\ldots\otimes v_r \) se denota \( v_1\wedge\ldots\wedge v_r \) y se llama \emph{producto exterior (o alternado)} de los vectores \( v_1,\ldots,v_r \).
 
-De igual forma definimos el producto para las formas alternadas simétricas como sigue:
+De manera análoga se define el producto para las formas simétricas como sigue:
 
 \begin{definition}[name=producto simétrico]
-El \emph{r-producto simétrico} de \( V \), \( S^rV \), es el cociente de \( \otimes_rV \) por el subespacio generado por las diferencias
+El \emph{\(r\)-producto simétrico} de \( V \), denotado \( S^rV \), es el espacio vectorial cociente de \( \otimes_rV \) por el subespacio generado por las diferencias
 \[
-v_1\otimes \ldots\otimes v_i\otimes \ldots \otimes v_j\otimes \ldots \otimes
-v_r-
-v_1\otimes \ldots\otimes v_j\otimes \ldots \otimes v_i\otimes \ldots \otimes v_r
+(v_1\otimes \ldots\otimes v_i\otimes \ldots \otimes v_j\otimes \ldots \otimes
+v_r)-
+(v_1\otimes \ldots\otimes v_j\otimes \ldots \otimes v_i\otimes \ldots \otimes v_r),
 \]
 para todo \( i\neq j \).
 \end{definition}
 
-A la clase resultante \( \alpha_{1}\otimes\alpha_{r} \) se le denota \( \alpha_{1}\ldots \alpha_{r}\) y se llama \emph{producto simétrico} de los vectores \(\alpha_{1},\ldots ,\alpha_{r}  \).
+A la clase de \( v_{1}\otimes \ldots \otimes v_{r} \) se le denota \( v_{1}\ldots v_{r}\) y se llama \emph{producto simétrico} de los vectores \(v_{1},\ldots ,v_{r}  \).
 
 Se tienen así aplicaciones cociente
 \[
-\pi_a\colon \otimes_r V\to \Lambda^rV\quad \pi_S\colon \otimes_rV\to S^rV
+\pi_a\colon \otimes_r V\to \Lambda^rV \mbox{ y } \pi_s\colon \otimes_rV\to S^rV.
 \]
 
-Sean \( Alt_r(V) \) y \( Sim_r(V) \) los subespacios de \( Multi_r(V) \) formados por las r-formas alternas y simétricas, respectivamente. Vamos a construir de manera similar a la anterior aplicación lineal
+Sean \( Alt_r(V) \) y \( Sim_r(V) \) los subespacios de \( Multi_r(V) \) formados por las \(r\)-formas alternas y simétricas, respectivamente. Vamos a construir aplicaciones lineales
 \[
-Alt\colon Multi_r(V)\to Alt_r(V)\quad Sim\colon Multi_r(V)\to Sim_r(V)
+Alt\colon Multi_r(V)\to Alt_r(V), \quad Sim\colon Multi_r(V)\to Sim_r(V)
 \]
-
-Para ello observamos que si \( \beta\colon V\times V\to \RealSet \) es cualquier r-forma y \( \sigma \) es una permutación de \( \{1,\ldots,r\} \), tenemos entonces una nueva r-forma \( ^\sigma\beta\colon V\times\ldots V\to \RealSet \) definida como
+que se correspondan con las proyecciones $\pi_a$ y $\pi_s$.
+Para ello observamos que si \( \beta\colon V\times V\to \RealSet \) es cualquier \(r\)-forma y \( \sigma \) es una permutación de \( \{1,\ldots,r\} \), tenemos entonces una nueva \(r\)-forma \[ ^\sigma\beta\colon V\times\ldots V\to \RealSet 
+\] 
+definida como
 \[
 ^\sigma\beta(v_1,\ldots,v_r)=\beta(v_{\sigma(1)},\ldots,v_{\sigma(r)})
 \]
@@ -333,173 +341,172 @@ Para ello observamos que si \( \beta\colon V\times V\to \RealSet \) es cualquier
 Si \( \tau \) es otra permutación entonces para la composición \( \tau\sigma \) se tiene \( ^{\tau\sigma}\beta=^\tau(^\sigma\beta) \)
 \end{note}
 
-\section{Función simétrica y alternada}
+\section{Funciones de simetrización  y alternancia}
 
 \begin{definition}
-Dada la forma \( \beta \) se define
+Dada la \(r \)-forma \( \beta \) se define
 \[
-Sim(\beta)=\frac{1}{r!}\sum_{\sigma\in G_r} ^\sigma\beta
+Sim(\beta)=\frac{1}{r!}\sum_{\sigma\in \mathfrak{G}_r} \ ^\sigma\beta,
 \]
-donde \( G_r \) es el grupo de las permutaciones de \( r \) elementos.
+donde \( \mathfrak{G}_r \) es el grupo de las permutaciones de \( r \) elementos.
 \end{definition}
 
-Esta definición tiene consecuencias inmediatas que veremos en forma de proposición.
+A \(Sim(\beta)\) se le llama la \emph{simetrización} de (o la \emph{forma simétrica asociada} a) la forma \(\beta\). 
 
-\begin{proposition}
-\( Sim(\beta) \)es efectivamente una r-forma simétrica
-\end{proposition}
+\begin{lemma}
+\( Sim(\beta) \)es efectivamente una $r$-forma simétrica.
+\end{lemma}
 
 \begin{proof}
 Sea \( \tau \) trasposición de \( i \) por \( j \). Tenemos
 \begin{align*}
-Sim(\beta)(v_1\ldots v_i\ldots v_j\ldots v_r)&=\frac{1}{r!}\sum_{\sigma\in G_r}^{\sigma\tau}\beta (v_1\ldots v_j\ldots v_i\ldots v_r)\\
-&=\frac{1}{r!}\sum_{\sigma'\in G_r}^{\sigma'}\beta(v_1\ldots v_j\ldots v_i\ldots v_r)\\
-&=Sim(\beta)(v_1\ldots v_j\ldots v_i\ldots v_r)
+Sim(\beta)(v_1,\ldots, v_i,\ldots, v_j,\ldots, v_r)&=\frac{1}{r!}\sum_{\sigma\in \mathfrak{G}_r} \ ^{\sigma\tau}\beta (v_1,\ldots, v_j,\ldots, v_i,\ldots, v_r)\\
+&=\frac{1}{r!}\sum_{\sigma'\in \mathfrak{G}_r} \ ^{\sigma'}\beta(v_1,\ldots, v_j,\ldots, v_i,\ldots, v_r)\\
+&=Sim(\beta)(v_1,\ldots, v_j,\ldots, v_i,\ldots, v_r).
 \end{align*}
-Donde hemos usado que todo \( \sigma'\in G_r \) se puede reescribir como \( \sigma \tau \) siendo \( \sigma \) único si ya hemos fijado \( \tau \).
+Donde hemos usado que todo \( \sigma'\in \mathfrak{G}_r \) se puede reescribir como \( \sigma \tau \) siendo \( \sigma \) único si ya hemos fijado \( \tau \).
 \end{proof}
 
-\begin{proposition}
-Si \( \beta \) es simétrica entonces \( Sim(\beta)=\beta \)
-\end{proposition}
+\begin{lemma}
+Si \( \beta \) ya es simétrica entonces \( Sim(\beta)=\beta \)
+\end{lemma}
 
 \begin{proof}
-Ya hemos visto en \ref{rem:inv-trasp} y por tanto
+De acuerdo con la Observación \ref{rem:inv-trasp}(3) tenemos
 \begin{align*}
-Sim(\beta)(v_1\ldots v_r)&=\frac{1}{r!}\sum_{\sigma\in G_r}^\sigma\beta(v_1\ldots v_r)\\
-&=\frac{1}{r!}(r!)\beta(v_1\ldots v_r)\\
-&=\beta(v_1\ldots v_r)
+Sim(\beta)(v_1\ldots v_r)&=\frac{1}{r!}\sum_{\sigma\in \mathfrak{G}_r} \  ^\sigma\beta(v_1,\ldots, v_r)\\
+&=\frac{1}{r!}(r!)\beta(v_1,\ldots, v_r)\\
+&=\beta(v_1,\ldots, v_r).
 \end{align*}
 \end{proof}
 
-Este resultado deja ver que la aplicación \( Sim \) concuerda con la noción intuitiva de la misma.
 
-De manera análoga se define una aplicación para una r-forma arbitraria
+De manera análoga se define una función de alternancia para \(r\)-formas como sigue.
 \begin{definition}
-Sea \( \beta\in Multi_r(V) \)
+Sea \( \beta\in Multi_r(V) \), se define su \emph{forma alternada asociada} por la fórmula
 \[
-Alt(\beta)=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) ^\sigma\beta
+Alt(\beta)=\frac{1}{r!}\sum_{\sigma\in \mathfrak{G}_r} s(\sigma) ^\sigma\beta
 \]
 \end{definition}
 
-Y cumple igualmente  que \( Alt(\beta) \) es una r-forma
 
-\begin{proposition}
-\( Alt(\beta) \) es una r-forma
-\end{proposition}
+\begin{lemma}
+\( Alt(\beta) \) es una \(r\)-forma alternada.
+\end{lemma}
 
 \begin{proof}
 	Sea \( \tau \) trasposición de \( i \) por \( j \). Tenemos
 \[\begin{array}{l}
-Alt(\beta)(v_1\dots v_i\dots v_j\dots v_r)=\\ \\=\frac{1}{r!}\sum_{\sigma\in
-    G_r}Signo(\sigma) ^\sigma\beta(v_1\ldots v_i\ldots v_j\ldots v_r)\\ \\
-=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \beta(v_{\sigma(1)}\ldots v_{\sigma(i)}\ldots v_{\sigma(j)}\ldots v_{\sigma(r)})
-\\ \\=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma)
-    \beta(v_{\tau\sigma(1)}\ldots v_{\tau\sigma(j)}\ldots
-    v_{\tau\sigma(i)}\ldots v_{\tau\sigma(r)})\\ \\
-=\frac{1}{r!}\sum_{\sigma\in G_r}-Signo(\tau\sigma) ^{\tau\sigma}\beta(v_1\ldots v_j\ldots v_i\ldots v_r)
-\\ \\=-\frac{1}{r!}\sum_{\sigma'\in G_r}Signo(\sigma') ^{\sigma'}\beta(v_1\ldots
-    v_i\ldots v_j\ldots v_r)\\ \\
-=-Alt(\beta)(v_1\ldots v_j\ldots v_i\ldots v_r)
+Alt(\beta)(v_1,\dots, v_i,\dots, v_j,\dots, v_r)=\\ \\=\frac{1}{r!}\sum_{\sigma\in
+    \mathfrak{G}_r} s(\sigma) ^\sigma\beta(v_1,\ldots, v_i,\ldots, v_j,\ldots, v_r)\\ \\
+=\frac{1}{r!}\sum_{\sigma\in \mathfrak{G}_r} s(\sigma) \beta(v_{\sigma(1)},\ldots, v_{\sigma(i)},\ldots, v_{\sigma(j)},\ldots, v_{\sigma(r)})
+\\ \\=\frac{1}{r!}\sum_{\sigma\in \mathfrak{G}_r} s(\sigma)
+    \beta(v_{\tau\sigma(1)},\ldots, v_{\tau\sigma(j)},\ldots,
+    v_{\tau\sigma(i)},\ldots, v_{\tau\sigma(r)})\\ \\
+=\frac{1}{r!}\sum_{\sigma\in \mathfrak{G}_r}-s(\tau\sigma) ^{\tau\sigma}\beta(v_1,\ldots, v_j,\ldots, v_i,\ldots, v_r)
+\\ \\=-\frac{1}{r!}\sum_{\sigma'\in \mathfrak{G}_r}s(\sigma') ^{\sigma'}\beta(v_1,\ldots,
+    v_i,\ldots, v_j,\ldots, v_r)\\ \\
+=-Alt(\beta)(v_1,\ldots, v_j,\ldots, v_i,\ldots, v_r).
 \end{array}\]
 \end{proof}
 
-\begin{proposition}
-Si \( \beta\in Alt_r(V) \) entonces \( Alt(\beta)=\beta \)
-\end{proposition}
+\begin{lemma}
+Si \( \beta\in Alt_r(V) \) entonces \( Alt(\beta)=\beta \).
+\end{lemma}
 
 \begin{proof}
-Sabemos que \( ^\sigma\beta =signo(\sigma)\beta \) de acuerdo con \ref{rem:inv-trasp} y por tanto
+Sabemos que \( ^\sigma\beta =s(\sigma)\beta \) de acuerdo con la Observación\ref{rem:inv-trasp}(2)  y por tanto
 \begin{align*}
-Alt(\beta)&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) ^\sigma\beta\\
+Alt(\beta)&=\frac{1}{r!}\sum_{\sigma\in \mathfrak{G}_r}s(\sigma) ^\sigma\beta\\
 &=\frac{1}{r!}(r!)\beta\\
 &=\beta
 \end{align*}
 \end{proof}
 
-Además tenemos un diagrama que conecta todos los conceptos vistos en la sección
+Además tenemos un diagrama que conecta todos los conceptos vistos hasta ahora, donde \( \rho \) es la biyección que lleva la \(1\)-forma \( \gamma\colon V_1\otimes\ldots \otimes V_r\to \RealSet \) en la \(r\)-forma \( \rho(\gamma)\colon V_1\times\ldots\times V_r\to \RealSet \) definida como
+\[
+\rho(\gamma)(v_1\ldots v_r)=\gamma(v_1\otimes \ldots \otimes v_r).
+\]
+
 \begin{figure}[h]
 	\centering
 	\begin{tikzcd}
 		Alt_r(V) & Multi_r(V) \arrow[l, "Alt"'] \arrow[r ,"Sim"]& Sim_r(V)\\
 		(\Lambda^r V)^* \arrow[r, "\pi_a^*"] \arrow[u, "\rho_a"]& (\otimes_r V)^* \arrow[u, "\rho", "\homeo"'] & (S^rV)^* \arrow[l, "\pi_s^*"'] \arrow[u ,"\rho_s"]
 	\end{tikzcd}
-	\captionof{figure}{}
+	%\captionof{figure}{}
 	\label{fig:iso-ext}
 \end{figure}
-donde \( \rho \) es la biyección que lleva la 1-forma \( \gamma\colon V_1\otimes\ldots \otimes V_r\to \RealSet \) en la r-forma \( \rho(\gamma)\colon V_1\times\ldots\times V_r\to \RealSet \) definida como
-\[
-\rho(\gamma)(v_1\ldots v_r)=\gamma(v_1\otimes \ldots \otimes v_r)
-\]
+Entonces \( \rho_s=Sim\circ \rho \circ \pi_s^* \) y \( \rho_a=Alt\circ \rho \circ \pi_a^* \) son también isomorfismos.
 
-Entonces \( \rho_s=Sim\circ \rho \circ \pi_s^* \) y \( \rho_a=Alt\circ \rho \circ \pi_a^* \) son también biyectivas.
-
-\begin{proposition}
-\( \rho_a \) lleva la 1-forma \( \gamma\colon \Lambda^rV\to \RealSet \) en la r-forma alternada
+\begin{proposition}\label{ROA}
+\( \rho_a \) lleva la \(1\)-forma \( \gamma\colon \Lambda^rV\to \RealSet \) en la \(r\)-forma alternada
 \[
-\rho_a(\gamma)(v_1,\ldots,v_r)=\gamma(v_1\wedge\ldots\wedge v_r)
+\rho_a(\gamma)(v_1,\ldots,v_r)=\gamma(v_1\wedge\ldots\wedge v_r).
 \]
 \end{proposition}
 
 \begin{proof}
-Siguiendo la definición del diagrama anterior
+Teniendo en cuenta la conmutatividad del diagrama anterior
 \[\begin{array}{l}
-\rho_s(\gamma)(v_1\ldots v_r)=Alt\circ \rho_s\circ \pi_a^*(\gamma)
+\rho_a(\gamma)(v_1\ldots v_r)=Alt\circ \rho_a\circ \pi_a^*(\gamma)
 =Alt(\rho(\gamma\circ \pi_a))(v_1\ldots v_r)=
-\\ \\ \frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) ^\sigma\rho(\gamma\circ \pi_a)(v_1\ldots v_r)=
-\\ \\ \frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \rho(\gamma\circ \pi_a)(v_{\sigma(1)}\ldots v_{\sigma(r)})=
-\\ \\ \frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma) \gamma\circ
+\\ \\ \frac{1}{r!}\sum_{\sigma\in \mathfrak{G}_r} s(\sigma) ^\sigma\rho(\gamma\circ \pi_a)(v_1\ldots v_r)=
+\\ \\ \frac{1}{r!}\sum_{\sigma\in \mathfrak{G}_r} s(\sigma) \rho(\gamma\circ \pi_a)(v_{\sigma(1)}\ldots v_{\sigma(r)})=
+\\ \\ \frac{1}{r!}\sum_{\sigma\in \mathfrak{G}_r} s(\sigma) \gamma\circ
     \pi_a(v_{\sigma(1)}\otimes\ldots\otimes v_{\sigma(r)}) = \\ \\
-\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma)Signo(\sigma) \gamma\circ \pi_a(v_{1}\otimes\ldots\otimes v_{r})
+\frac{1}{r!}\sum_{\sigma\in \mathfrak{G}_r} s(\sigma) s(\sigma) \gamma\circ \pi_a(v_{1}\otimes\ldots\otimes v_{r})
 \\ \\ \frac{1}{r!}(r!\gamma(v_1\wedge\ldots \wedge v_r))
-=\gamma(v_1\wedge\ldots \wedge v_r)
+=\gamma(v_1\wedge\ldots \wedge v_r).
 \end{array}\]
-usando que \( v_{\sigma(1)}\otimes \ldots v_{\sigma(r)} \) y \( Signo(\sigma)(v_1\otimes\ldots \otimes v_r) \) representan la misma clase en \( \Lambda^rV \) como cociente de \( \otimes_rV \)
+Aquí hemos usado que \( v_{\sigma(1)}\otimes \ldots v_{\sigma(r)} \) y \( s(\sigma)(v_1\otimes\ldots \otimes v_r) \) representan la misma clase en \( \Lambda^rV \) como cociente de \( \otimes_rV \).
 \end{proof}
 
 De aquí se sigue inmediatamente que \(\rho_a \) es inyectiva. \\
-Para la sobreyectividad, si \( \xi\colon V_1\times\ldots\times V_r\to \RealSet\) es una forma alternada, entonces \( \rho^{-1}(\xi)\colon V_1\otimes\ldots\otimes V_r\to \RealSet \) cumple
+Para la sobreyectividad, si \( \xi\colon V_1\times\ldots\times V_r\to \RealSet\) es una \(r\)-forma alternada, entonces \( \rho^{-1}(\xi)\colon V_1\otimes\ldots\otimes V_r\to \RealSet \) cumple
 \begin{align*}
 \rho^{-1}(\xi)(v_1\otimes\ldots\otimes v_i\otimes\ldots\otimes v_j\otimes\ldots\otimes v_r)&=\xi(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_r)\\
-&=-\xi (v_1,\ldots,v_j,\ldots,v_r)
+&=-\xi (v_1,\ldots,v_j,\ldots,v_i, \ldots,v_r)=-\rho^{-1}(\xi)(v_1\otimes\ldots\otimes v_j\otimes\ldots\otimes v_i\otimes\ldots\otimes v_r),
 \end{align*}
-por lo que es compatible con el cociente que define \( \Lambda^rV \) e induce una 1-forma \( \tilde{\rho}^{-1}(\xi)\colon \Lambda^rV\to \RealSet \) con
+por lo que es \(\rho^{-1}\) es compatible con el cociente que define \( \Lambda^rV \) e induce una \(1\)-forma \( \tilde{\rho}^{-1}(\xi)\colon \Lambda^rV\to \RealSet \) con
 \[
-\pi_a^*(\tilde{\rho}^{-1}(\xi))=\tilde{\rho}^{-1}(\xi)\circ \pi =\rho^{-1}(\xi)
+\pi_a^*(\tilde{\rho}^{-1}(\xi))=\tilde{\rho}^{-1}(\xi)\circ \pi =\rho^{-1}(\xi).
 \]
-Así pues \( \rho_a(\tilde{\rho}^{-1}(\xi))=\xi \)
+Así pues \( \rho_a(\tilde{\rho}^{-1}(\xi))=\xi \).
 
 \begin{remark}
 Para \( \rho_s\colon (S^rV)^*\to Sim_r(V) \) tenemos análogamente que si \( \nu\in (S^rV)^* \) entonces
 \[
-\rho_s(\nu)(v_1,\ldots,v_r)=\nu(\underbracket{v_1v_2\cdots v_r}_{\text{prod simétrico}})
+\rho_s(\nu)(v_1,\ldots,v_r)=\nu(\underbracket{v_1v_2\cdots v_r}_{\text{prod simétrico}}).
 \]
 \end{remark}
 
-Hemos probado así los isomorfismos
+Hemos probado así que existen  isomorfismos
 \[
-(\Lambda^rV)^*\homeo Alt_r(V),\quad (S^rV)^*\homeo Sim_r(V)
+(\Lambda^rV)^*\homeo Alt_r(V) \mbox{ y } (S^rV)^*\homeo Sim_r(V).
 \]
 
 \section{Dimensiones}
+
+En esta sección establecemos las dimensiones de los productos exteriores y simétricos sobre un espacio vectorial \(V\) de base 
+\( \{e_i\}_{i=1}^n \).
 \begin{proposition}
-Si \( \{e_i\} \) es una base de \( V \) entonces los productos exteriores \( e_{i_1}\wedge \ldots\wedge e_{i_r} \) con \( i_1<\ldots< i_r \) forman base de \( \Lambda^rV \). Además su dimensión es
+Los productos exteriores \( e_{i_1}\wedge \ldots\wedge e_{i_r} \) con \( i_1<\ldots< i_r \) forman base de \( \Lambda^rV \). En particular su dimensión es
 \[
-(\overset{n}{r})=\frac{n!}{r!(n-r)!}
+\binom{n}{r}=\frac{n!}{r!(n-r)!}.
 \]
-siendo \( n=dim(V) \)
 \end{proposition}
 
 \begin{proof}
-Podemos comprobar que toda r-forma en \( Alt_r(V) \) queda determinada por sus valores en \( (e_{i_1}),\ldots,e_{i_r} \) con \( i_1<\ldots <i_r \). Por tanto su dimensión es el número de posibles combinaciones con los subíndices.
+Podemos comprobar que toda r-forma en \( Alt_r(V) \) queda determinada por sus valores en \( (e_{i_1},\ldots,e_{i_r}) \) con \( i_1<\ldots <i_r \). Por tanto su dimensión es el número de posibles combinaciones de tales subíndices.
 \end{proof}
 
-Tenemos un resultado análogo para \( S^rV \)
+También se pude determinar la dimensión de \( S^rV \), si bien la demostración es más complicada.
 
 \begin{proposition}
 Una base de \( S^rV \) la forman los productos simétricos \( e_{i_1}\cdots e_{i_r} \) con \( i_1\leq \ldots\leq i_r \) y su dimensión es
 \[
-dimS^r(V)=(\overset{n+r-1}{r})=\frac{(n+r-1)!}{r!(n-1)!}
+dimS^r(V)=\binom{n+r-1}{r} =\frac{(n+r-1)!}{r!(n-1)!}
 \]
 \end{proposition}
 
@@ -508,160 +515,158 @@ La prueba se hará en clase de problemas.
 \end{proof}
 
 \begin{note}
-Observese que para \( n=dim(V) \) tenemos \( Alt_nV\homeo\Lambda^nV\homeo \RealSet \) estando \( \Lambda^nV \) generado por \( e_1\wedge\ldots\wedge e_n \) siendo \( \{e_i\} \) una base de \( V \).
+Observese que para \( n=dim(V) \) tenemos \( \Lambda^nV\homeo \RealSet \), estando \( \Lambda^nV \) generado por \( e_1\wedge\ldots\wedge e_n \).
 \end{note}
 
+De acuerdo con los resultados anteriores y el diagrama \ref{fig:iso-ext}, las dimensiones de los espacios de las \(r\)-formas alternadas y simétricas sobre \(V\) son, respectivamente,  \(\dim Alt_r(V) = \binom{n}{r}\)  y \(\dim Sim_r(V) = \binom{n+r-1}{r}\).
+ 
 \begin{proposition}
-La n-forma alternada se puede interpretar como un determinante
+Toda \(n\)-forma alternada de \(Alt_r(V) \cong \Lambda^r(V) \cong \RealSet\) se puede interpretar como un determinante. Explícitamente, si $\mu \in Alt_n(V)\), entonces $\mu(v_1,\ldots,v_n) = \det A(v_1,\ldots,v_n) \mu(e_1,\ldots, e_n)\), donde \(A(v_1,\ldots,v_n)\) es la matriz formada por los vectores \(v_i\) como columnas.  
 \end{proposition}
 
 \begin{proof}
-En efecto, si \( \mu \) es una n-forma alternada, entonces \( \mu(v_1,\ldots,v_n)=\lambda\mu(e_1,\ldots,e_n) \), donde \( \lambda \) es el determinante de la matriz \( n\times n \) \( A_r \) cuyos vectores columna son los \( v_i \).
-
-Si \( v_j=\sum_{i=1}^{n}\lambda_j^ie_i \), entonces tomando \( \mu \) en \( Multi_n(V)\homeo (\otimes_nV)^* \), tenemos por la multilinealidad del producto tensorial
+Si \( v_j=\sum_{i=1}^{n}\lambda_j^ie_i \) y vemos $\mu$ como una \(1\)-forma del producto tensorial \(\otimes_n V\), entonces tenemos por la multilinealidad del producto tensorial
 \begin{align*}
-\mu(v_1\ldots v_n)&=\mu(\sum_{i=1}^n \lambda_1^ie_i\otimes\ldots \otimes\sum_{i=1}^n\lambda_n^i e_i)\\
-&=\sum_{(i_1,\ldots,i_n)\in \{1,\ldots,n\}^n} \lambda_1^{i_1}\cdots\lambda_n^{i_n}\mu(e_{i_1}\otimes\ldots\otimes e_{i_n})\quad (2)
+\mu(v_1 \otimes \ldots \otimes v_n)&=\mu(\sum_{i=1}^n \lambda_1^ie_i\otimes\ldots \otimes\sum_{i=1}^n\lambda_n^i e_i)\\
+&=\sum_{(i_1,\ldots,i_n)\in \{1,\ldots,n\}^n} \lambda_1^{i_1}\cdots\lambda_n^{i_n}\mu(e_{i_1}\otimes\ldots\otimes e_{i_n}).
 \end{align*}
-Ahora bien, por se \( \mu \) alternada esta se anula cuando aparecen índices repetidos. Así pues \( i_1\ldots i_n\) debe ser una permutación de \( \{1,\ldots,n\} \) y
+Ahora bien, por ser \( \mu \) alternada ésta se anula cuando aparecen índices repetidos. Así pues en la suma anterior desaparecen todos los sumandos  donde \( i_1\ldots i_n\) no sea una permutación de \( \{1,\ldots,n\} \) y por tanto 
 \begin{align*}
-(2)&=\sum_{\sigma\in G_n}\lambda_1^{\sigma(1)}\cdots\lambda_n^{\sigma(n)}\mu(e_{\sigma(1)}\otimes\ldots\otimes e_{\sigma(n)})\\
-&=\sum_{\sigma\in G_n}Signo(\sigma)\lambda_1^{\sigma(1)}\cdots\lambda_n^{\sigma(n)}\mu(e_1\otimes\ldots\otimes e_n)\\
-&=\lambda\mu(e_1\otimes\ldots\otimes e_n)\\
-&=\lambda\mu(e_1\wedge\ldots\wedge e_n)
+\mu(v_1\otimes \ldots \otimes v_n)&=\sum_{\sigma\in \mathfrak{G}_n}\lambda_1^{\sigma(1)}\cdots\lambda_n^{\sigma(n)}\mu(e_{\sigma(1)}\otimes\ldots\otimes e_{\sigma(n)}) \\
+&=\sum_{\sigma\in \mathfrak{G}_n} s(\sigma)\lambda_1^{\sigma(1)}\cdots\lambda_n^{\sigma(n)}\mu(e_1\otimes\ldots\otimes e_n) \\
+&=\lambda\mu(e_1\otimes\ldots\otimes e_n),\\
 \end{align*}
-donde \( \lambda=\sum_{\sigma\in G_n}Signo(\sigma)\lambda_1^{\sigma(1)}\ldots\lambda_n^{\sigma(n)}=det(A_v) \).
+donde \( \lambda=\sum_{\sigma\in \mathfrak{G}_n}s(\sigma)\lambda_1^{\sigma(1)}\ldots\lambda_n^{\sigma(n)}=\det A(v_1,\ldots,v_n) \).
 \end{proof}
 
 \section{Producto simétrico y exterior entre formas}
-Dadas una r-forma \( \alpha\colon\otimes_rV\to \RealSet \) y una s-forma \( \beta\colon\otimes_sV\to \RealSet \) habíamos definido la (r+s)-forma \( \alpha\otimes\beta\colon\otimes_{r+s}V\to \RealSet \) por
+Dadas una \(r\)-forma \( \alpha\colon\otimes_rV\to \RealSet \) y una \(s\)-forma \( \beta\colon\otimes_sV\to \RealSet \) habíamos definido la \((r+s)\)-forma \( \alpha\otimes\beta\colon\otimes_{r+s}V\to \RealSet \) por
 \[
-\alpha\otimes\beta(v_1\otimes\ldots\otimes v_r\otimes v_{r+1}\otimes\ldots\otimes v_{r+s})=\alpha(v_1\ldots v_r)\cdot\beta(v_{r+1}\ldots v_{r+s})
+\alpha\otimes\beta(v_1\otimes\ldots\otimes v_r\otimes v_{r+1}\otimes\ldots\otimes v_{r+s})=\alpha(v_1\ldots v_r)\cdot\beta(v_{r+1}\ldots v_{r+s}).
 \]
 
-Si \(\alpha\) y \(\beta\) son simétricos entonces \( \alpha\otimes\beta \) no tiene que ser simétrico. Lo mismo ocurre si son alternados. Es por ellos que buscamos definir un nuevo producto que sea interno dentro de los simétricos y alternados.
+Si \(\alpha\) y \(\beta\) son simétricos entonces \( \alpha\otimes\beta \) no tiene que ser simétrico. Lo mismo ocurre si son alternadas. Es por ellos que buscamos definir nuevos productos que sean internos para las formas simétricas y alternadas.
 
 \begin{definition}
-Definimos el \emph{producto simétrico} de la r-forma simétrica \( \alpha \) con la s-forma simétrica \( \beta \) como la "simetrización" del producto anterior
+El \emph{producto simétrico} de la \(r\)-forma simétrica \( \alpha \) con la \(s\)-forma simétrica \( \beta \) es la simetrización 
+del producto anterior; esto es, 
 \[
-\alpha\cdot\beta=Sim(\alpha\otimes\beta)
+\alpha\cdot\beta=Sim(\alpha\otimes\beta).
 \]
 \end{definition}
 
-Si lo vemos aplicado a un elemento genérico resulta
+De acuerdo con la definición anterior, tenemos explícitamente para  un elemento genérico de \(V\times \ldots \times V\) (\(r+s\) veces) 
 
 \begin{align*}
   \alpha \cdot \beta(v_1,\dots,v_r,v_{r+1},\dots,v_{r+s})
   = \\
   \frac{1}{(r+s)!}
-  \sum_{\sigma\in G_{r+s}}
+  \sum_{\sigma\in \mathfrak{G}_{r+s}}
   \alpha(v_{\sigma(1)}\dots v_{\sigma(r)})
-  \beta(v_{\sigma(r+1)}\dots v_{\sigma(r+s)})
+  \beta(v_{\sigma(r+1)}\dots v_{\sigma(r+s)}).
 \end{align*}
 
 \begin{definition}
-Definimos el \emph{producto exterior (o alternado)} de la r-forma alternada \( \alpha \) con la s-forma alternada \( \beta \) como
+El \emph{producto exterior (o alternado)} de la \(r\)-forma alternada \( \alpha \) con la \(s\)-forma alternada \( \beta \) es
+la forma alternada asociada a $\alpha \otimes \beta$; es decir,  
 \[
-\alpha\wedge\beta=Alt(\alpha\otimes\beta)
+\alpha\wedge\beta=Alt(\alpha\otimes\beta); 
 \]
-es decir,
+explícitamente,
 \begin{align*}
 &\alpha\wedge\beta(v_1,\ldots,v_r,v_{r+1},\ldots,v_{r+s})=\\
   &\frac{1}{(r+s)!}
-    \sum_{\sigma\in G_{r+s}}
-    Signo(\sigma)
+    \sum_{\sigma\in \mathfrak{G}_{r+s}}
+    s(\sigma)
     \alpha(v_{\sigma(1)} \ldots v_{\sigma(r)})
-    \cdot
-    \beta(v_{\sigma(r+1)}\ldots v_{\sigma(r+s)})\\
+    \beta(v_{\sigma(r+1)}\ldots v_{\sigma(r+s)}).\\
 \end{align*}
 \end{definition}
 
-Veamos ahora una serie de propiedades acerca de estos nuevos conceptos.
+Veamos ahora una serie de propiedades acerca de estos nuevos productos.
 
 \begin{proposition}\label{prop:ext-proper}
 El producto exterior de formas alternadas cumple las siguientes propiedades:
 \begin{enumerate}
-\item Bilineal: \( (a\alpha+b\beta)\wedge \eta=a(\alpha\wedge\eta)+b(\beta\wedge\eta) \)
-\item Asociativo: \( (\alpha\wedge\beta)\wedge \gamma=\alpha\wedge(\beta\wedge\gamma) \)
-\item Anticonmutativo: \( \omega\wedge\eta=(-1)^{rs}\eta\wedge\omega \) si \( \omega\in \Lambda^r(V) \) y \( \eta\in \Lambda^s(V) \). En particular, \( \omega\wedge\omega=0 \) si r es impar.
+\item Bilinealidad: \( (a\alpha+b\beta)\wedge \eta=a(\alpha\wedge\eta)+b(\beta\wedge\eta); a,b\in \RealSet. \)
+\item Asociatividad: \( (\alpha\wedge\beta)\wedge \gamma=\alpha\wedge(\beta\wedge\gamma) \).
+\item Anticonmutatividad: \( \omega\wedge\eta=(-1)^{rs}\eta\wedge\omega \) si \( \omega\in \Lambda^r(V) \) y \( \eta\in \Lambda^s(V) \). En particular, \( \omega\wedge\omega=0 \) si \(r\) es impar.
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
 \begin{enumerate}
 \item Esta propiedad es inmediata a partir de la definición.
-\item Lo probaremos en el siguiente lema \ref{lem:transi}
-\item Sabiendo que cada término de
+\item Es consecuencia del Lema \ref{lem:transi} que sigue.
+\item Observamos que cada término de
 \begin{align*}
 &Alt(\omega\otimes\eta)(v_1,\ldots,v_r,v_{r+1},\ldots,v_{r+s})=\\
-&\frac{1}{(r+s)!}\sum_{\sigma\in G_{r+s}}Signo(\sigma)\omega(v_{\sigma(1)},\ldots,\omega_{\sigma(r)})\eta(v_{\sigma(r+1)},\ldots,v_{\sigma(r+s)})
+&\frac{1}{(r+s)!}\sum_{\sigma\in \mathfrak{G}_{r+s}}s(\sigma)\omega(v_{\sigma(1)},\ldots,\omega_{\sigma(r)})\eta(v_{\sigma(r+1)},\ldots,v_{\sigma(r+s)})
 \end{align*}
 aparece en
 \begin{align*}
 &Alt(\eta\otimes\omega)(v_1,\ldots,v_r,v_{r+1},\ldots,v_{r+s})=\\
-&\frac{1}{(r+s)!}\sum_{\sigma'\in G_{r+s}}Signo(\sigma')\eta(v_{\sigma'(1)},\ldots,\omega_{\sigma'(r)})\omega(v_{\sigma'(r+1)},\ldots,v_{\sigma'(r+s)})
+&\frac{1}{(r+s)!}\sum_{\sigma'\in \mathfrak{G}_{r+s}}s(\sigma')\eta(v_{\sigma'(1)},\ldots,\omega_{\sigma'(r)})\omega(v_{\sigma'(r+1)},\ldots,v_{\sigma'(r+s)})
 \end{align*}
-En efecto, dada \( \sigma \) su \( \sigma' \) asociada está definida por
+En efecto, dada \( \sigma \), sea \( \sigma' \) definida por
 \(
 \sigma'(1)=\sigma(r+1),\ldots,\sigma'(s)=\sigma(r+s),\sigma'(s+1)=\sigma(1),\ldots,\sigma'(s+r)=\sigma(r)
 \)
-Falta por ver la relación entre los signos. Siguiendo la regla anterior es fácil ver que para pasar de \( \sigma'(1) \) a \( \sigma(1) \) necesitamos trasponer r posiciones y lo mismo ocurre para cualquier otro índice.
-
-Así pues \( signo(\sigma)=signo(\sigma')(-1)^{rs} \).
+Falta por ver la relación entre los signos. Es fácil ver que para pasar de \( \sigma'(1) \) a \( \sigma(1) \) necesitamos trasponer r posiciones y lo mismo ocurre para cualquier otro índice. Así pues \( s(\sigma)= s(\sigma')(-1)^{rs} \).
 \end{enumerate}
 \end{proof}
 
 \begin{lemma}\label{lem:transi}
 	\begin{enumerate}
-\item Supongamos que la r-forma \( \alpha \) cumple \( Alt(\alpha)=0 \). Entonces para toda s-forma \( \beta \) se tiene \( Alt(\alpha\otimes\beta)=Alt(\beta\otimes\alpha)=0 \).
-\item \( Alt(Alt(\omega\otimes\eta)\otimes\theta)=Alt(\omega\otimes\eta\otimes\theta)=Alt(\omega\otimes Alt(\eta\otimes \theta)) \).
+\item [(1)] Supongamos que la \(r\)-forma \( \alpha \) cumple \( Alt(\alpha)=0 \). Entonces para toda \(s\)-forma \( \beta \) se tiene \( Alt(\alpha\otimes\beta)=Alt(\beta\otimes\alpha)=0 \).
+\item [(2)] \( Alt(Alt(\omega\otimes\eta)\otimes\theta)=Alt(\omega\otimes\eta\otimes\theta)=Alt(\omega\otimes Alt(\eta\otimes \theta)) \).
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
 \begin{enumerate}
-\item Desarrollamos uno de los dos dado que son análogos.
+\item [(1)] Desarrollamos uno de los dos dado que son análogos.
 \begin{align*}
 &Alt(\alpha\otimes\beta)(v_1\ldots v_{r+s})=\\
-&=\frac{1}{(r+s)!}\sum_{\sigma\in G_{r+s}}Signo(\sigma)\alpha(v_{\sigma(1)},\ldots,\omega_{\sigma(r)})\beta(v_{\sigma(r+1)},\ldots,v_{\sigma(r+s)})
+&=\frac{1}{(r+s)!}\sum_{\sigma\in \mathfrak{G}_{r+s}} s(\sigma)\alpha(v_{\sigma(1)},\ldots,v_{\sigma(r)})\beta(v_{\sigma(r+1)},\ldots,v_{\sigma(r+s)}).
 \end{align*}
-Para probar que esta suma es nula se descompondrá \( G_{r+s} \) en subconjuntos disjuntos tales que sumas extendidas a esos subconjuntos serán todas nulas.\\
-Empezamos tomando \( G\in G_{r+s} \) formado por las permutaciones que dejen fijo \( r+1,\ldots,r+s \). Entonces si \( \sigma' \) es la restricción de \( \sigma \) a \( \{1,\ldots,r\} \), tenemos que \( \sigma\mapsto \sigma' \) da un isomorfismo \( G\homeo G_r \) y además \( signo(\sigma)=signo(\sigma') \). Entonces
+Para probar que esta suma es nula se descompondrá \( \mathfrak{G}_{r+s} \) en subconjuntos disjuntos tales que sumas extendidas a esos subconjuntos serán todas nulas.\\
+Empezamos tomando \( \mathfrak{G}\subseteq \mathfrak{G}_{r+s} \) formado por las permutaciones que dejen fijo \( r+1,\ldots,r+s \). Entonces si \( \sigma' \) es la restricción de \( \sigma \in \mathfrak{G}\) a \( \{1,\ldots,r\} \), tenemos que \( \sigma\mapsto \sigma' \) da un isomorfismo \( \mathfrak{G}\homeo \mathfrak{G}_r \) y además \( s(\sigma)=s(\sigma') \). Entonces
 \begin{align*}
-&\sum_{\sigma\in G}Signo(\sigma)\alpha(v_{\sigma(1)},\ldots,\omega_{\sigma(r)})\beta(v_{\sigma(r+1)},\ldots,v_{\sigma(r+s)})=\\
-&=\sum_{\sigma\in G_{r+s}}Signo(\sigma)\alpha(v_{\sigma(1)},\ldots,\omega_{\sigma(r)})\beta(v_{r+1},\ldots,v_{r+s})=\\
-&=[\sum_{\sigma'\in G_{r+s}}Signo(\sigma')\alpha(v_{\sigma'(1)},\ldots,\omega_{\sigma'(r)})]\beta(v_{r+1},\ldots,v_{r+s})=\\
-&=r!Alt(\alpha)\beta(v_{r+1}\ldots v_{r+s})=0
+&\sum_{\sigma\in \mathfrak{G}} s(\sigma)\alpha(v_{\sigma(1)},\ldots, v_{\sigma(r)})\beta(v_{\sigma(r+1)},\ldots,v_{\sigma(r+s)})=\\
+&=\sum_{\sigma\in \mathfrak{G}} s(\sigma)\alpha(v_{\sigma(1)},\ldots,v_{\sigma(r)})\beta(v_{r+1},\ldots,v_{r+s})=\\
+&=(\sum_{\sigma'\in \mathfrak{G}_{r}}s(\sigma')\alpha(v_{\sigma'(1)},\ldots,v_{\sigma'(r)}))\beta(v_{r+1},\ldots,v_{r+s})=\\
+&=r!Alt(\alpha)\beta(v_{r+1}\ldots v_{r+s})=0.
 \end{align*}
-Sea \( \sigma_1\neq G \). Entonces \( G\sigma_1=\{\sigma\sigma_1\colon\sigma\in G\} \) es disjunto con \( G \) pues si \( \mu\in G\sigma_1\cap G\) entonces \( \mu=\sigma\sigma_1 \) con \( \mu,\sigma\in G \) y se cumpliría \( \sigma_1=\sigma^{-1}\mu\in G \) que es contradicción.\\
-El sumando generado por \( G\sigma_1 \) es
+Sea \( \sigma_1\notin \mathfrak{G} \). Entonces \( \mathfrak{G}\sigma_1=\{\sigma\sigma_1\colon\sigma\in \mathfrak{G}\} \) es disjunto con \( \mathfrak{G} \) pues si \( \mu\in \mathfrak{G}\sigma_1\cap \mathfrak{G}\) entonces \( \mu=\sigma\sigma_1 \) con \( \mu,\sigma\in \mathfrak{G} \) y se cumpliría \( \sigma_1=\sigma^{-1}\mu\in \mathfrak{G} \) que es una contradicción.\\
+El sumando generado por \( \mathfrak{G}\sigma_1 \) es
 \begin{align*}
-&\sum_{\sigma_1}=\sum_{\mu\in G\sim_1}Signo(\mu)\alpha(v_{\mu(1)}\ldots v_{\mu(r)})\beta(v_{\mu(r+1)}\ldots v_{\mu(r+s)})=\\
-&=\sum_{\theta\in G}Signo(\sigma\sigma_1)\alpha(v_{\sigma\sigma_1(1)}\ldots v_{\sigma\sigma_1(r)})\beta(v_{\sigma\sigma_1(r+1)}\ldots v_{\sigma\sigma_1(r+s)})\quad (*)
+&\lambda_{\sigma_1}=\sum_{\mu\in \mathfrak{G}\sigma_1}s(\mu)\alpha(v_{\mu(1)}\ldots v_{\mu(r)})\beta(v_{\mu(r+1)}\ldots v_{\mu(r+s)})=\\
+&=\sum_{\sigma\in \mathfrak{G}} s(\sigma\sigma_1)\alpha(v_{\sigma\sigma_1(1)}\ldots v_{\sigma\sigma_1(r)})\beta(v_{\sigma\sigma_1(r+1)}\ldots v_{\sigma\sigma_1(r+s)})\quad (*)
 \end{align*}
-Tomando \( (w_1\ldots w_{k+l})=(v_{\sigma_1(1)}\ldots v_{\sigma_1(r+s)}) \), tenemos que \( w_{\sigma(i)}=v_{\sigma\sigma_1(i)} \) y por tanto
+Tomando \( (w_1\ldots w_{r+s})=(v_{\sigma_1(1)}\ldots v_{\sigma_1(r+s)}) \), tenemos que \( w_{\sigma(i)}=v_{\sigma\sigma_1(i)} \) y por tanto
 \begin{align*}
-(*)&=Signo(\sigma_1)\sum_{\sigma\in G}Signo(\sigma)\alpha(w_{\sigma(1)}\ldots w_{\sigma(r)})\beta(w_{\sigma(r+1)}\ldots w_{\sigma(r+s)})\\
-&=Signo(\sigma_1)(r!Alt(\alpha)(w_1\ldots w_r))\beta(w_{r+1}\ldots w_{r+s})\\
-&=0
+(*)&= s(\sigma_1)\sum_{\sigma\in \mathfrak{G}}s(\sigma)\alpha(w_{\sigma(1)}\ldots w_{\sigma(r)})\beta(w_{\sigma(r+1)}\ldots w_{\sigma(r+s)})\\
+&= s(\sigma_1)(r!Alt(\alpha)(w_1\ldots w_r))\beta(w_{r+1}\ldots w_{r+s}) = 0.\\
 \end{align*}
-Si tomamos \( \sigma_2\notin G\cup G\sigma_1 \), tenemos \( G\cap G\sigma_2=\emptyset \) y \( G\sigma_1\cap G\sigma_2=\emptyset \).\\
-Repitiendo el proceso anterior llegamos a \( \sum_{\sigma_2}=0 \).
+Si tomamos \( \sigma_2\notin \mathfrak{G}\cup \mathfrak{G}\sigma_1 \), tenemos \( \mathfrak{G}\cap \mathfrak{G}\sigma_2=\emptyset \) y \( \mathfrak{G}\sigma_1\cap \mathfrak{G}\sigma_2=\emptyset \).\\
+Repitiendo el proceso anterior llegamos a \( \lambda_{\sigma_2}=0 \).
 
-Por la finitud de \( G_{r+s} \) se llegará a cubrir \( G_{r+s} \) con conjuntos disjuntos de la forma \( G, G_{\sigma_1},\ldots,G_{\sigma_k} \) y cada uno de ellos no aporta nada a la suma total, que será por tanto nula.
-\item Observamos que por ser \( Alt(\alpha) \) una forma alternada \( Alt(Alt(\alpha))=Alt(\alpha) \). Por tanto
-\begin{align*}
-\alpha&=Alt(Alt(\eta\otimes\theta)-\eta\otimes\theta)\\
-&=Alt(\eta\otimes\theta)-Alt(\eta\otimes\theta)\\
-&=0
-\end{align*}
-Entonces por (1), linealidad y la transitividad del producto tensorial
+Por la finitud de \( \mathfrak{G}_{r+s} \) se llegará a cubrir \( \mathfrak{G}_{r+s} \) con conjuntos disjuntos de la forma \( \mathfrak{G}, \mathfrak{G}_{\sigma_1},\ldots,\mathfrak{G}_{\sigma_k} \) y cada uno de ellos no aporta nada a la suma total, que será por tanto nula.
+\item [(2)] Observamos que por ser \( Alt(\alpha) \) una forma alternada \( Alt(Alt(\alpha))=Alt(\alpha) \). Por tanto
 \[
-0=Alt(\omega\otimes\alpha)=Alt(\omega\otimes Alt(\eta\otimes\theta))-Alt(\omega\otimes\eta\otimes\theta)
+\alpha = Alt(Alt(\eta\otimes\theta)-\eta\otimes\theta) = Alt(\eta\otimes\theta)-Alt(\eta\otimes\theta) =0.
+\]
+Entonces por (1), la linealidad y la transitividad del producto tensorial
+\[
+0=Alt(\omega\otimes\alpha)=Alt(\omega\otimes Alt(\eta\otimes\theta))-Alt(\omega\otimes\eta\otimes\theta).
 \]
 Por tanto \( Alt(\omega\otimes Alt(\eta\otimes\theta))=Alt(\omega\otimes\eta\otimes\theta) \).
 
-De manera análoga se prueba \( Alt(Alt(\omega\otimes Alt(\eta\otimes\theta)))=Alt(\omega\otimes\eta\otimes\theta) \)
+De manera análoga se prueba 
+\[
+Alt(Alt(\omega\otimes Alt(\eta\otimes\theta)))=Alt(\omega\otimes\eta\otimes\theta).
+ \]
 \end{enumerate}
 \end{proof}
 
@@ -671,88 +676,82 @@ Usando la segunda parte del lema \ref{lem:transi} tenemos
 (\alpha\wedge\beta)\wedge\gamma=Alt(Alt(\alpha\otimes\beta)\otimes\gamma)=
 Alt(\alpha\otimes Alt(\beta\otimes\gamma))=\alpha\wedge(\beta\wedge\gamma)
 \]
-lo que probaría (2) \ref{prop:ext-proper}
+lo que probaría (2) en La Proposición \ref{prop:ext-proper}.
 \end{note}
 
-La siguiente proposición nos dice que las formas alternadas quedan determinadas por las 1-formas t el producto exterior.
+La siguiente proposición nos dice que las formas alternadas quedan determinadas por las \(1\)-formas y el producto exterior. Sea $V$ un espacio vectorial de base \( \{e_i\}_{i=1}^n \).
 
 \begin{proposition}\label{prop:base-alt}
-Si \( \{e_i\} \) es una base de \( V \), entonces la r-forma alternada \(
-r!(e_{i_1}^*\wedge\ldots\wedge e_{i_r}^*) \) con \( 1\leq i_1< \ldots<i_r\leq n
-\) se corresponde con el del elemento básico \( e_{i_1}\wedge\ldots \wedge
-e_{i_r}\in \Lambda^r(V) \)  por el isomorfismo \( \rho_a\colon(\Lambda^rV)^*\to
-Alt_r(V)  \) que vimos en la \cref{fig:iso-ext}.
-
+El isomorfismo \( \rho_a\colon(\Lambda^rV)^*\to Alt_r(V)  \) de la Proposición \ref{ROA}
+lleva el dual del elemento básico 
+\[ e_{i_1}\wedge\ldots \wedge e_{i_r}\in \Lambda^r(V)
+\]
+en la \(r\)-forma alternada definida como el producto exterior de $1$-formas 
+\[r!(e_{i_1}^*\wedge\ldots\wedge e_{i_r}^*) \ (1\leq i_1< \ldots<i_r\leq n).
+\] 
 En particular al recorrer  \( 1\leq i_1< \ldots<i_r\leq n  \) todas las
-ordenaciones, el conjunto \( \{e_{i_1}^*\wedge\ldots\wedge e_{i_r}^*\}\) forma
+ordenaciones, el conjunto \( \{e_{i_1}^*\wedge\ldots\wedge e_{i_r}^*\}\) es
 una base de \( Alt_r(V) \).
 \end{proposition}
 
 \begin{proof}
 Lo haremos por inducción.\\
-Para r=1 es obvio.\\
-Supongamos el resultado cierto para r-1 y veamos el caso r. Por definición
+Para \(r=1\) es obvio. Supongamos el resultado cierto para \(r-1\) y veamos el caso \(r\). Sea $e_{j_1} \wedge \ldots \wedge e_{j_r}$ un elemento básico de \(\Lambda^r V\). Por definición
 
 \begin{equation}
  \label{proof:prop-alt}
 \begin{aligned}
-&\rho_a^{-1}(e_{i_1}^*\wedge\ldots e_{i_r}^*)(e_{j_1}\wedge\ldots\wedge e_{j_r})\\
-&=(e_{i_1}^*\wedge\ldots e_{i_r}^*)(e_{j_1},\ldots, e_{j_r})=\\
-&=\frac{1}{r!}\sum_{\sigma\in G_r}Signo(\sigma)e_{i_1}^*(e_{j_{\sigma(1)}})(e_{i_2}^*\wedge\ldots e_{i_r}^*)(e_{j_{\sigma(2)}},\ldots, e_{j_{\sigma(r)}})
+&\rho_a^{-1}(e_{i_1}^*\wedge\ldots e_{i_r}^*)(e_{j_1}\wedge\ldots\wedge e_{j_r}) =(e_{i_1}^*\wedge\ldots e_{i_r}^*)(e_{j_1},\ldots, e_{j_r})=\\
+&=\frac{1}{r!}\sum_{\sigma\in \mathfrak{G}_r} s(\sigma)e_{i_1}^*(e_{j_{\sigma(1)}})(e_{i_2}^*\wedge\ldots e_{i_r}^*)(e_{j_{\sigma(2)}},\ldots, e_{j_{\sigma(r)}}) = (1).
 \end{aligned}
 \end{equation}
 
-Aquí usamos la transitividad del producto exterior de formas. Ahora \( e_{i_1}^*(e_{j_1})=1 \) si para todo \( \sigma\in G_r \) se tiene \( j_{\sigma(1)}=i_1 \).
+Aquí usamos la transitividad del producto exterior de formas. Ahora \( e_{i_1}^*(e_{j_{\sigma(1)}})=1 \) si y sólo si  \( j_{\sigma(1)}=i_1 \).
+Por tanto si (1) no es nulo debe existir un \( 1\leq t\leq r \) con \( j_t=i_1 \). Además, por hipótesis de inducción, \( (r-1)!((e_{i_2}^*\wedge\ldots e_{i_r}^*) \) corresponde al dual de \( e_{i_2}\wedge\ldots e_{i_r} \), por lo que necesariamente \( \{j_1,\ldots,j_{t-1},j_{t+1},\ldots,j_r\}=\{i_2,\ldots,i_r\} \) si (1) no es nulo. Por tanto,  \(\{i_1,\ldots, i_r\}\) coincide con  \(\{j_1,\ldots, j_r\}\) y teniendo en cuenta que están ordenados \(i_k = j_k\) para todo \(k\leq r\). Entonces,   
 
-Por tanto existe un \( 1\leq t\leq r \) con \( j_t=i_1 \) y tenemos
 \begin{equation}
   \label{proof:prop-alt-2}
   \begin{aligned}
-    \eqref{proof:prop-alt} &= \frac{1}{r!} \sum_{\sigma\in G_r \sigma(1)=t}
-    Signo(\sigma)(e_{i_2}^{*} \wedge \dots e_{i_r}^{*})
-    (e_{j_{\sigma(2)}}, \dots, e_{j_{\sigma(r)}})\\
-    &=\frac{1}{r!} \sum_{\sigma'\in G_r} Signo(\sigma')(e_{i_2}^{*} \wedge \dots
-    e_{i_r}^{*}) (e_{j_{\sigma'(2)}}, \dots, e_{j_{\sigma'(r)}})
+  (1) &= \frac{1}{r!} \sum_{\sigma\in \mathfrak{G}_r, \ \sigma(1)=1}
+    s(\sigma)(e_{i_2}^{*} \wedge \dots e_{i_r}^{*})
+    (e_{i_{\sigma(2)}}, \dots, e_{i_{\sigma(r)}})\\
+    &=\frac{1}{r!} \sum_{\sigma'\in \mathfrak{G}_{r-1}} s(\sigma')(e_{i_2}^{*} \wedge \dots
+    e_{i_r}^{*}) (e_{j_{\sigma'(2)}}, \dots, e_{j_{\sigma'(r)}}) = (2)
   \end{aligned}
 \end{equation}
-
-Aquí \( \sigma' \) es la restricción de \( \sigma \) a \( \{1,\ldots,t-1,t+1,\ldots,r\} \). Observese que \( Signo(\sigma')=Signo(\sigma) \).
-
-Por hipótesis de inducción \( (r-1)!((e_{i_2}^*\wedge\ldots e_{i_r}^*) \) corresponde al dual de \( (e_{i_2}\wedge\ldots e_{i_r} \), por lo que necesariamente \( \{j_1,\ldots,j_{t-1},j_{t+1},\ldots,j_r\}=\{i_2,\ldots,i_r\} \) y además
+ Aquí \(\sigma'\) es la restricción de \(\sigma \in \mathfrak{G}_r\) con \(\sigma(1) = 1\). Obsérvese que \( s(\sigma')= s(\sigma) \), además  
 \[
-(r-1)!((e_{i_2}^*\wedge\ldots e_{i_r}^*)(e_{j_{\sigma'(2)}},\ldots, e_{j_{\sigma'(r)}})=Signo(\sigma')
+(r-1)!((e_{i_2}^*\wedge\ldots e_{i_r}^*)(e_{i_{\sigma'(2)}},\ldots, e_{i_{\sigma'(r)}})= s(\sigma')
 \]
 por lo que
 \begin{align*}
-(\ref{proof:prop-alt-2})&=\frac{1}{r!}\frac{1}{(r-1)!}\sum_{\sigma'\in G_{r+-1}}(Signo(\sigma'))^2\\
-&=\frac{1}{r!}\frac{1}{(r-1)!}(r-1)!\\
-&=\frac{1}{r!}
+(2) &=\frac{1}{r!}\frac{1}{(r-1)!}\sum_{\sigma'\in \mathfrak{G}_{r-1}}s(\sigma')^2\\
+&=\frac{1}{r!}\frac{1}{(r-1)!}(r-1)! =\frac{1}{r!}.
 \end{align*}
 De donde se sigue el resultado.
 \end{proof}
 
 \begin{remark}\label{rem:reescalado}
-  El factor \(r!\) de la proposición anterior es habitualmente eliminado si se
-  reescala el producto exterior por medio de la fórmula
+  El factor \(r!\) de la proposición anterior es habitualmente eliminado reescalando previamente el producto exterior por medio de la fórmula
   \(\omega\wedge\eta=\frac{(r+s)!}{r!s!}\text{Alt}(\omega\otimes\eta)\) para la
-  r-forma \(\omega\) y la s-forma \(\eta\). Con esta nueva definición el
-  coeficiente \(r!\) desaparece de la proposición anterior:
+  \(r\)-forma \(\omega\) y la \(s\)-forma \(\eta\). Con esta nueva definición el
+  coeficiente \(r!\) desaparece de la proposición anterior.
 
-  En efecto con la fórmula anterior se tiene que (aplicada la transitividad y si
-  \(\gamma\) es una t-forma):
+  Con la nueva fórmula de \(Alt\) se tiene que (aplicada la transitividad y si
+  \(\gamma\) es una $t$-forma):
   \[\begin{array}{c}
       \omega\wedge\eta\wedge\gamma=(\omega\wedge\eta)\wedge\gamma=
       \frac{(r+s+t)!}{(r+s)!t!}\frac{(r+s)!}{r!s!}\text{Alt}
       (\text{Alt}(\omega\otimes\eta)\otimes\gamma)= \\
-      =\frac{(r+s+t)!}{r!s!t!}\text{Alt}(\text{Alt}(\omega\otimes\eta)\otimes\gamma)
+      =\frac{(r+s+t)!}{r!s!t!}\text{Alt}(\text{Alt}(\omega\otimes\eta)\otimes\gamma).
     \end{array}\]
 \end{remark}
 
 \begin{remark}
   Otra ventaja de la definición reescalada de producto exterior es que la
-  notación usada para describir la clase de
+  notación \(\omega_1\wedge \ldots \wedge \omega_r\) usada para describir la clase de
   \(\omega_{1}\otimes\dots\otimes\omega_{r}\in\bigotimes_{r}V^{*}\) en
-  \(\Lambda^{r}V^{*}\), que era \(\omega_{1}\wedge\dots\wedge\omega_{r}\), es
+  \(\Lambda^{r}V^{*}\), que era \(\omega_{1}\wedge\dots\wedge\omega_{r}\), es perfectamente 
   coherente con \(\omega_{1}\wedge\dots\wedge\omega_{r}\) como producto exterior
   de 1-formas ya que \(e_{i_{1}}^{*}\wedge\dots\wedge e_{i_{r}}^{*}\) con
   \(i_{1}<\dots<i_{r}\) son ahora los elementos básicos con ambas notaciones. Se
@@ -767,7 +766,7 @@ Terminamos con la siguiente proposición que nos da el producto exterior de
   de vectores \(v_{1},\dots,v_{r}\in V\) se tiene la igualdad:
   \[
     (\omega_{1}\wedge\dots\omega_{r})(v_{1},\dots,v_{r})=
-    \frac{1}{r!}\det{A_{\omega_{1}\dots\omega_{r}}}
+    \frac{1}{r!}\det{A_{\omega_{1}\dots\omega_{r}}},
   \]
   donde \(A_{\omega_{1}\dots\omega_{r}}=(a_{ij})\) con \(a_{ij}=\omega_{j}(v_{1})\).
 \end{proposition}
@@ -796,9 +795,11 @@ Terminamos con la siguiente proposición que nos da el producto exterior de
   Además, si en esa secuencia \(i_{t}=i_{s}\) para algún \(s\) y algún \(t\),
   entonces \(\Psi(e_{i_{1}}^{*},\dots,e_{i_{r}}^{*})=0\) por anticonmutatividad
   y \(\Phi(e_{i_{1}}^{*},\dots,e_{i_{r}}^{*})=0\) por tener la matriz
-  correspondiente dos columnas iguales. Entonces todas las \(i_{1},\dots,i_{r}\)
-  serán distintas y podemos reducirnos al caso \(i_{1}<\dots<i_{r}\) por
-  anticonmutatividad y para
+  correspondiente dos columnas iguales. Entonces podemos suponer que todas las \(i_{1},\dots,i_{r}\)
+  serán distintas y, más aún, podemos reducirnos al caso \(i_{1}<\dots<i_{r}\) por
+  anticonmutatividad. 
+  
+  En tal caso, para
   \(\Phi(e_{i_{1}}^{*},\dots,e_{i_{r}}^{*})=\gamma_{e_{i_{1}}^{*},\dots,e_{i_{r}}^{*}}\)
   con \(i_{1}<\dots<i_{r}\) se tiene que
   \(\gamma_{e_{i_{1}}^{*},\dots,e_{i_{r}}^{*}}(v_{1},\dots,v_{r})\) es el
@@ -817,33 +818,33 @@ Terminamos con la siguiente proposición que nos da el producto exterior de
       \sum_{(j_{1},\dots,j_{r})\in\{1,\dots,n\}^{r}}a_{1j_{1}}\cdots a_{rj_{r}}
     (e_{i_{1}}^{*}\wedge\dots\wedge e_{i_{r}}^{*})(e_{j_{1}},
     \dots,e_{j_{r}})= \\
-    \overset{(2)}{=}\frac{1}{r!}\sum_{\sigma\in G_{r}}Signo(\sigma) a_{1\sigma(1)}
-    \cdots a_{r\sigma(r)}=\det{A}
+    \overset{(2)}{=}\frac{1}{r!}\sum_{\sigma\in \mathfrak{G}_{r}}s(\sigma) a_{1\sigma(1)}
+    \cdots a_{r\sigma(r)}=\det{A}.
     \end{array}
   \]
 
   En la igualdad \((1)\) se usa la multilinealidad y en la \((2)\) la
-  \cref{prop:base-alt} y así \(r!(e_{i_{1}}^{*}\wedge\dots\wedge
+  Proposición \ref{prop:base-alt} y así \(r!(e_{i_{1}}^{*}\wedge\dots\wedge
   e_{i_{r}}^{*})\) se corresponde con el dual de \(e_{i_{1}}\wedge\dots\wedge
   e_{i_{r}}\in\Lambda^{r}(V)\) y por tanto los sumandos del término de la
   izquierda de \((2)\) no nulos son aquellos con
   \(\{j_{1},\dots,j_{r}\}=\{i_{1},\dots,i_{r}\}\).
 
   Entonces \(r!(e_{i_{1}}^{*}\wedge\dots\wedge
-  e_{i_{r}}^{*})(e_{j_{1}},\dots,e_{j_{r}})=Signo(\sigma)\) donde \(\sigma\) es
+  e_{i_{r}}^{*})(e_{j_{1}},\dots,e_{j_{r}})= s(\sigma)\) donde \(\sigma\) es
   la permutación que lleva \((j_{1}\dots j_{r})\) a \((i_{1}\dots i_{r})\).
 \end{proof}
 
 \begin{remark}
   Si usamos el reescalado del producto exterior dado por la fórmula en la
-  \cref{rem:reescalado} entonces el factor \(\frac{1}{r!}\) desaparece de la
-  igualdad de la proposición anterior (\cref{prop:prod-ext-det}).
+  Observación \ref{rem:reescalado} entonces el factor \(\frac{1}{r!}\) desaparece de la
+  igualdad de la Proposición \ref{prop:prod-ext-det}.
 
   Por eso a la definición del producto exterior con el reescalado se le llama el
   \emph{convenio del determinante}.
 \end{remark}
 
-\section{Caso particular: formas sobre una variedad}
+\section{Formas alternadas y simétricas sobre una variedad}
 
 Como casos particulares de formas diferenciables sobre una \(m\)-variedad \(M\)
 se pueden considerar las formas diferenciables simétricas y alrernadas sobre
@@ -858,84 +859,88 @@ En efecto, dada una carta \((U,\varphi)\) de \(M\), la carta asociada para
 \(\Lambda^{r}(\Tangente{M})\) es
 \((\Lambda^{r}(\Tangente{U}),\Lambda^{r}(\varphi))\), donde
 \(\Lambda^{r}(\Tangente{U})=\bigcup_{p\in U}\Lambda^{r}(\Tangente[p]{M})\) y
-\(\Lambda^{r}(\varphi)\colon\Lambda^{r}(\Tangente{U})\to\varphi(U)\times
-\Lambda^{r}(\RealSet^{m})=\varphi(U)\times\RealSet^{\binom{m}{r}}\) tal que, dada
-\(\omega\in\Lambda^{r}(\Tangente[p]{M})\),
-\(\Lambda^{r}(\varphi)(\omega)=(\varphi(p),\Lambda^{r}(\varphi)_{2})(\omega)\),
-y además estando \(\Lambda^{r}(\varphi)_{2}(\omega)\in\Lambda^{r}(\RealSet^{m})\) dada
-por
-\(\Lambda^{r}(\varphi)_{2}(\omega)(v)=\omega(\widetilde{\varphi}^{-1}(p,v))\),
+\[
+\Lambda^{r}(\varphi)\colon\Lambda^{r}(\Tangente{U})\to\varphi(U)\times
+\Lambda^{r}(\RealSet^{m})=\varphi(U)\times\RealSet^{\binom{m}{r}}
+\] 
+lleva 
+\(\omega\in\Lambda^{r}(\Tangente[p]{M})\) en el par 
+\(\Lambda^{r}(\varphi)(\omega)=(\varphi(p),\Lambda^{r}(\varphi)_{2}(\omega)\)), donde  
+ \(\Lambda^{r}(\varphi)_{2}(\omega)\in\Lambda^{r}(\RealSet^{m})\) es la forma 
+ definida por \(\Lambda^{r}(\varphi)_{2}(\omega)(v)=\omega(\widetilde{\varphi}^{-1}(p,v))\),
 siendo \((\Tangente{U},\widetilde{\varphi})\) la carta de \(\Tangente{M}\)
 asociada a \((U,\varphi)\).
 
 Los cambios de carta de \(\Lambda^{r}(\Tangente{M})\) vienen dados por las
 aplicaciones
 \[\begin{array}{c}
-    \varphi(U\cap V)\times\Lambda^{r}(\Tangente{\RealSet^{m}})\to\psi(U\cap
+    \varphi(U\cap V)\times\Lambda^{r}(\RealSet^{m})\to\psi(U\cap
     V)\times\Lambda^{r}(\RealSet^{m}) \\
     (x,\omega)\mapsto(\psi\varphi^{-1}(x),\Lambda^{r}(\J[x]{\psi\varphi^{-1}})(\omega))
   \end{array}\]
-
-donde si \(f\colon\RealSet^{m}\to\RealSet^{m},\
+donde, si \(f\colon\RealSet^{m}\to\RealSet^{m},\
 \Lambda^{r}(f)\colon\Lambda^{r}(\RealSet^{m})\to\Lambda^{r}(\RealSet^{m})\) está
 dada por \(\Lambda^{r}(f)(\omega)\) con
 \(\Lambda^{r}(f)(\omega)(v_{1},\dots,v_{r})=\omega(f(v_{1}),\dots,f(v_{r}))\).
 
-Se tiene que para esta estructura de variedad sobre
+Para esta estructura de variedad sobre
 \(\Lambda^{r}(\Tangente{M})\) la proyección
 \(\pi\colon\Lambda^{r}(\Tangente{M})\to M\), dada por \(\pi(\omega)=p,\
-\omega\in\Lambda^{r}(\Tangente[p]{M})\), es una aplicación diferenciable (de
-hecho una fibración) y se definen las \emph{r-formas diferenciables alternadas} sobre
+\omega\in\Lambda^{r}(\Tangente[p]{M})\), es una aplicación diferenciable y 
+se definen las \emph{r-formas diferenciables alternadas} sobre
 \(M\) como las secciones \(s\colon M\to\Lambda^{r}(\Tangente{M})\) de \(\pi\).
 
-Alternativamente se podría definir una r-forma alternada sobre \(M\) como una
-aplicación diferenciable \(f\colon\bigotimes^{r}\Tangente{M}\to\RealSet\) tal
+Equivalentemente se podría definir una \(r\)-forma alternada sobre \(M\) como una
+aplicación diferenciable \(f\colon\bigotimes_{r}\Tangente{M}\to\RealSet\) tal
 que para cada \(p\in M\) la restricción
-\(f\colon\Tangente[p]{M}\bigotimes\dots\bigotimes\Tangente[p]{M}\to\RealSet\) es
-una r-forma alternada.
-
+\(f\colon\Tangente[p]{M}\otimes\dots \otimes\Tangente[p]{M}\to\RealSet\) define
+una \(r\)-forma alternada.
+\par
+\medskip
 De manera similar se podría definir las \emph{r-formas diferenciables simétricas}
 sobre \(M\).
-
-En coordenadas locales, las 1-formas \(\dif{x_{1}},\dots,\dif{x_{m}}\) nos dan
+\par
+\medskip
+Dada una carta \((U,\varphi)\) de $M$ con coordenadas locales 
+\(\varphi(p)=(x_{1}(p),\dots,x_{m}(p))\), a partir de las \(1\)-formas \(\dif{x_{1}},\dots,\dif{x_{m}}\) se obtiene 
 una base de \(\Lambda^{r}(\Tangente{M})\) por medio de los productos exteriores
 \[
-  \dif{x_{i_{1}}}\wedge\dots\wedge\dif{x_{i_{r}}}
+  \dif{x_{i_{1}}}\wedge\dots\wedge\dif{x_{i_{r}}}, 
 \]
 para cada secuencia ordenada
-\(1\leq i_{1}<\dots<i_{r}\leq m\). Así, una r-forma \(\omega\) sobre \(M\)
-tiene como expresión local, en \((U,\varphi)\) con
-\(\varphi(p)=(x_{1}(p),\dots,x_{m}(p))\) y  \(f_{i_{1}\dots
-  i_{r}}\colon\varphi(U)\to\RealSet\) diferenciable,
+\(1\leq i_{1}<\dots<i_{r}\leq m\). Así, una \(r\)-forma alternada \(\omega\) sobre \(M\)
+tiene como expresión local en \((U,\varphi)\) 
 \[
   \omega=\sum_{1\leq
     i_{1}<\dots<i_{r}\leq m}f_{i_{1}\dots
-    i_{r}}\dif{x_{i_{1}}}\wedge\dots\wedge\dif{x_{i_{r}}}
+    i_{r}}\dif{x_{i_{1}}}\wedge\dots\wedge\dif{x_{i_{r}}},
 \]
+con \(f_{i_{1}\dots i_{r}}\colon\varphi(U)\to\RealSet\) diferenciable.
 
 Habitualmente se denota por \(\Omega^{r}(M)\) el espacio vectorial de las
-r-formas diferenciables alternadas sobre \(M\) para \(r\geq 0\).
+\(r\)-formas diferenciables alternadas sobre \(M\) para \(r\geq 0\).
 
-Para \(r=0,\ \Omega^{0}(M)=\mathcal{F}(M)\) las funciones diferenciables
-sobre \(M\). Para \(r=1,\ \Omega^{1}(M)\) son las 1-formas sobre \(M\).
+Para \(r=0\) se toma \(\Omega^{0}(M)=\mathcal{F}(M)\) las funciones diferenciables
+sobre \(M\). Para \(r=1,\ \Omega^{1}(M)\) son las \(1\)-formas sobre \(M\).
 
 Toda aplicación diferenciable \(f\colon M^{m}\to N^{n}\) induce una aplicación
-lineal \(f^{*}\colon\Omega^{r}(N)\to\Omega^{r}(M)\) que lleva la r-forma
-alternada \(\omega\colon\bigotimes^{r}\Tangente{N}\to\RealSet\) en la r-forma
-alternada \(f^{*}\omega\colon\bigotimes^{r}\Tangente{M}\to\RealSet\) dada por
+lineal \(f^{*}\colon\Omega^{r}(N)\to\Omega^{r}(M)\) que lleva la \(r\)-forma
+alternada \(\omega\colon\bigotimes_{r}\Tangente{N}\to\RealSet\) en la \(r\)-forma
+alternada \(f^{*}\omega\colon\bigotimes_{r}\Tangente{M}\to\RealSet\) dada por
 la composición
-\(\bigotimes^{r}\Tangente{M}\overset{\otimes^{r}\dif{f}}{\to}\bigotimes^{r}\Tangente{N}\overset{\omega}{\to}\RealSet\)
-donde \(\otimes^{r}\dif{f}\) es la aplicación que para cada \(p\in M\) y
-\(v_{1},\dotsm,v_{r}\in\Tangente[p]{M}\)
 \[
-  (\otimes^{r}\dif{f})_{p}(v_{1}\otimes\dots\otimes
-  v_{r})=\dif{f_{p}} v_{1}\otimes\dots\otimes\dif{f_{p}} v_{r}
+\bigotimes_{r}\Tangente{M}\overset{\otimes_{r}\dif{f}}{\to}\bigotimes_{r}\Tangente{N}\overset{\omega}{\to}\RealSet
 \]
-
-con \(\dif{f}\colon\Tangente{M}\to\Tangente{N}\) la diferencial de \(f\).
+donde \(\otimes_{r}\dif{f}\) es la aplicación que para cada \(p\in M\) y
+\(v_{1},\dotsm,v_{r}\in\Tangente[p]{M}\) se tiene
+\[
+  (\otimes_{r}\dif{f})_{p}(v_{1}\otimes\dots\otimes
+  v_{r})=\dif{f_{p}} v_{1}\otimes\dots\otimes\dif{f_{p}} v_{r},
+\]
+siendo \(\dif{f}\colon\Tangente{M}\to\Tangente{N}\) la diferencial de \(f\).
 
 Si tomamos cartas \((U,\varphi)\) de \(M\) y \((V,\psi)\) de \(N\) con
-\(f(U)\subseteq V\), entonces si la expresión local de \(\omega\) en
+\(f(U)\subseteq V\), entonces, si la expresión local de \(\omega\) en
 \((V,\psi)\) es
 \[
   \omega=\sum_{1\leq
@@ -949,12 +954,10 @@ la expresión local de \(f^{*}\omega\) en \((U,\varphi)\) es
     i_{r}}(f(x_{1},\dots,x_{m}))
   (\sum_{k=1}^{m}\pderiv{f_{i_{1}}}{x_{k}}\dif{x_{k}})
   \wedge\dots\wedge
-  (\sum_{k=1}^{m}\pderiv{f_{i_{r}}}{x_{k}}\dif{x_{k}})
+  (\sum_{k=1}^{m}\pderiv{f_{i_{r}}}{x_{k}}\dif{x_{k}}),
 \]
 que habría que desarrollar teniendo en cuenta las propiedades del producto
-exterior.
-
-En particular, \(\dif{x_{i}}\wedge\dif{x_{i}}=0\) y
+exterior. En particular, \(\dif{x_{i}}\wedge\dif{x_{i}}=0\) y
 \(\dif{x_{i}}\wedge\dif{x_{j}}=-\dif{x_{j}}\wedge\dif{x_{i}}\) por
 anticonmutatividad.
 
@@ -975,7 +978,7 @@ Por último, una propiedad interesante de la anterior aplicación es que
 \section{Diferencial Exterior}
 
 Una importante propiedad de las formas alternadas sobre una \(m\)-variedad \(M\)
-es que la forma gradiente de una función (\cref{ex:forma-dif})
+es que la forma gradiente de una función (Ejemplo \ref{ex:forma-dif})
 \(\dif\colon\mathcal{F}(M)=\Omega^{0}(M)\to\Omega^{1}(M)\) es el primer eslabón
 de toda una cadena de operadores
 \[
@@ -983,40 +986,38 @@ de toda una cadena de operadores
   \Omega^{1}(M) \overset{\dif[2]{}}{\longrightarrow}
   \Omega^{2}(M) \overset{\dif[3]{}}{\longrightarrow} \dots
 \]
-
-\begin{definition}
 Para \(r\geq 1\) el operador
 \(\dif=\dif[r+1]{}\colon\Omega^{r}(M)\to\Omega^{r+1}(M)\) se llama
 \emph{diferencial exterior}. Damos una definición en los abiertos de
 \(\RealSet^{m}\) y después daremos una idea de cómo extender la definición a
 toda la variedad \(M\).
 
-En un abierto \(V\subseteq\RealSet^{m}\) una r-forma diferenciable alternada se
-escribe como \(\omega=\sum_{I}f_{I}\dif[I]{}\), donde \(I\) recorre todo el
-conjunto de secuencias ordenadas \(I=\{1\leq i_{1}<\dots<i_{r}\leq m\}\), y
-además \(\dif[I]=\dif{x_{i_{1}}}\wedge\dots\wedge\dif{x_{i_{r}}}\) y \(f_{I}\colon
-V\to\RealSet\) diferenciable.
+\begin{definition}
+En un abierto \(V\subseteq\RealSet^{m}\) una \(r\)-forma diferenciable alternada se
+escribe como \(\omega=\sum_{I}f_{I}\dif[I]{}\), variando \(I\) en  el
+conjunto de secuencias ordenadas \(I=\{1\leq i_{1}<\dots<i_{r}\leq m\}\),  donde \(\dif[I]=\dif{x_{i_{1}}}\wedge\dots\wedge\dif{x_{i_{r}}}\) y \(f_{I}\colon V\to\RealSet\) es diferenciable.
 
-Entonces si \(\dif{f_{I}}\) es su forma gradiente se define
+Entonces si \(\dif{f_{I}}\) es la \(1\)-forma gradiente de \(f_I\), se define
 \[
   \dif{\omega}=\sum_{I}\dif{f_{I}}\wedge\dif[I]=
   \sum_{I}(\sum_{i=1}^{m}\pderiv{f_{I}}{x_{i}}\dif{x_{i}})\wedge\dif[I].
 \]
+Desarrolándose esta fórmula de acuerdo con las propiedades del producto exterior. 
 \end{definition}
 
-Ahora dada una r-forma diferenciable alternada \(\omega\) sobre la variedad
+Ahora dada una \(r\)-forma diferenciable alternada \(\omega\) sobre la variedad
 \(M\), tomamos sus restricciones \(i_{U}^{*}\omega=\omega_{U}\) a las cartas
 \((U,\varphi)\) de un atlas de \(M\). Entonces \(\varphi^{-1}\colon\varphi(U)\to
 U\) permite definir la forma \((\varphi^{-1})^{*}\omega_{U}\) sobre el abierto
-\(\varphi(U)\subseteq\RealSet^{m}\), donde está definida la diferencial
+\(\varphi(U)\subseteq\RealSet^{m}\), donde está definida la diferencial exterior
 \(\dif{((\varphi^{-1})^{*}\omega_{U})}\). Entonces pasamos esta diferencial a
 \(U\) por medio de \(\varphi\colon U\to\varphi(U)\) como
 \(\varphi^{*}(\dif{((\varphi^{-1})^{*}\omega_{U})})\).
 
-Quedará ver que todas estas formas son conocidas y definir así la diferencial de
-\(\omega_{U}\) como
+Queda ver que todas estas formas están bien definidas en las intersecciones y definir entonces la diferencial de
+\(\omega\) como la \((r+1)\)-forma $d\omega: \bigotimes_{r+1} TM \to \RealSet$ dada por 
 \[
-  (5)\quad (\dif{\omega})_{p}=\varphi^{*}(\dif{((\varphi^{-1})^{*}\omega_{p})}).
+  (5)\quad (\dif{\omega})_{p}=\varphi^{*}(\dif{((\varphi^{-1})^{*}\omega_{p})}) \mbox{ para todo } p\in M.
 \]
 
 Esto se deja sin demostración. Se puede consultar en \emph{Introduction
@@ -1037,7 +1038,7 @@ demostraciones de las siguientes propiedades de la diferencial exterior:
   \end{enumerate}
 \end{proposition}
 
-A partir del diagrama
+A partir de la secuencia 
 \[
   \mathcal{F}(M)=\Omega^{0}(M) \overset{\dif[1]{}}{\longrightarrow}
   \Omega^{1}(M) \overset{\dif[2]{}}{\longrightarrow}
@@ -1045,22 +1046,18 @@ A partir del diagrama
   \Omega^{r}(M) \overset{\dif[r+1]{}}{\longrightarrow}
   \dots
 \]
- y teniendo en cuenta que \(\dif[r+1]{}\circ\dif[r]{}=0\) se puede considerar el
- espacio vectorial cociente \(\frac{\ker{\dif[r+1]{}}}{\text{Im}\dif[r]{}}\).
-
- De nuevo aparece el álgebra en el estudio de las variedades. Estos cocientes
- definen la llamada \emph{cohomología de De Rham} de la variedad \(M\). El curso
- \textbf{Cálculo en Variedades} trata sobre ello.
-
- Terminamos diciendo que las formas en \(\ker\dif[r+1]{}\), es decir aquellas
+ y teniendo en cuenta que \(\dif[r+1]{}\circ\dif[r]{}=0\) se puede considerar, para todo \(r\geq 0\),  el
+ espacio vectorial cociente \(\frac{\ker{\dif[r+1]{}}}{\text{Im}\dif[r]{}}\). Estos espacios forman 
+ la llamada \emph{cohomología de De Rham} de la variedad \(M\). Las formas en \(\ker\dif[r+1]{}\), es decir aquellas
  con \(\dif{\omega}=0\), se llaman \emph{formas cerradas} y las formas en
- \(\text{Im}\dif[r]{}\), es decir aquellas r-formas \(\omega\) para las que
- existe una (r-1)-forma \(\eta\) con \(\dif{\eta}=\omega\) se llaman
- \emph{formas exactas}.
-
- Así pues, la cohomología de De Rham trata de encontrar aquellas formas cerradas
+ \(\text{Im}\dif[r]{}\), es decir aquellas \(r\)-formas \(\omega\) para las que
+ existe una \((r-1)\)-forma \(\eta\) con \(\dif{\eta}=\omega\) se llaman
+ \emph{formas exactas}. Así pues, la cohomología de De Rham se ocupa del álgebra que determinan aquellas formas cerradas
  sobre \(M\) que no son exactas.
-\end{document}
+
+ El curso
+ \textbf{Cálculo en Variedades} trata sobre todo ello. 
+ \end{document}
 
 %%% Local Variables:
 %%% TeX-master: "../VD_ebook"

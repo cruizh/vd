@@ -13,39 +13,33 @@ El espacio cotangente de una variedad se basa en el \emph{estudio de los
   momentos} de la física.
 
 \begin{definition}
-  Sea \(W\) espacio vectorial, el dual de \(W\) será el conjunto de aplicaciones
-  lineales \(f\colon W\to K\) con \(K\) cuerpo del espacio vectorial. 
+  Sea \(W\) un espacio vectorial sobre un cuerpo \(K\). El \emph{espacio dual} de \(W\) será el conjunto de aplicaciones
+  lineales \(f\colon W\to K\) con las operaciones obvias de suma y multiplicación por un escalar. 
 \end{definition}
 
 \begin{definition}[name=espacio cotangente a \(M\) en el punto \(p\)]
-Sea \(M\) variedad diferenciable, \(p\in M,\
-\Tangente[p]{M}\), entonces
-\(\DualT[p]{M}=\{\omega\colon\Tangente[p]{M}\to\RealSet
-\text{ lineales}\}\)
+Sea \(M\) variedad diferenciable, se llama \emph{espacio cotangente de \(M\) en \(p\in M\)} al espacio dual de \(T_pM\), esto es, \(\DualT[p]{M}=\{\omega\colon\Tangente[p]{M}\to\RealSet
+\text{ lineales}\}\). 
 \end{definition}
 
 \begin{proposition}
-  Si \(M\) es una variedad diferenciable de dimensión \(m\) entonces
-  \(\DualT{M}\) es una variedad diferenciable de dimensión \(2m\).
-
-  Además, la aplicación \(\pi^{*}\colon\DualT{M}\to M\), tal que
-  \(\pi^{*}(\omega)=p\) (\(\omega\in\DualT[p]{M}\)), es submersión. 
+  Si \(M\) es una variedad de dimensión \(m\) entonces
+  \(\DualT{M} = \cup_{p\in M} \DualT{M}\) admite una estructura de variedad diferenciable de dimensión \(2m\).
+Además, la aplicación \(\pi^{*}\colon\DualT{M}\to M\), tal que
+  \(\pi^{*}(\omega)=p\) si \(\omega\in\DualT[p]{M}\), es submersión. 
 \end{proposition}
 
 \begin{proof}
-  Dada \((U,\varphi)\) carta de \(M\), sea \(\DualT{U}=\bigcup_{p\in
+  Sea  \((U,\varphi)\) una carta de \(M\), sea \(\DualT{U}=\bigcup_{p\in
     U}\DualT[p]{M}\). Si \((\RealSet^{m})^{*}\) es el espacio dual de
-  \(\RealSet^{m}\), entonces definimos la aplicación dada por  
+  \(\RealSet^{m}\), sea   
   \(\widetilde{\varphi}^{*}\colon\DualT{U}\to\varphi(U)\times(\RealSet^{m})^{*}\)
-  de la siguiente manera:
-
-  \vline
-  
-  Dada la \textbf{aplicación lineal} \(\omega\in\DualT[p]{M}\),
+  la aplicación que lleva 
+   \(\omega\in\DualT[p]{M}\) en el par 
   \(\widetilde{\varphi}^{*}(\omega)=(\varphi(p),\varphi_{2}^{*}(\omega))\),
-  donde \(\varphi_{2}^{*}(\omega)\colon\RealSet^{m}\to\RealSet\) es la forma
-  lineal que a cada \(y\in\RealSet^{m}\) asocia
-  \(\varphi_{2}^{*}(\omega)(y)=\omega(\widetilde{\varphi}^{-1}(\varphi(p),y))\)
+  donde \(\varphi_{2}^{*}(\omega)\colon\RealSet^{m}\to\RealSet\) es la \(1\)-forma
+  que a cada \(y\in\RealSet^{m}\) le asocia el número real
+  \(\varphi_{2}^{*}(\omega)(y)=\omega(\widetilde{\varphi}^{-1}(\varphi(p),y))\),
   siendo
   \(\widetilde{\varphi}\colon\Tangente{U}\to\varphi(U)\times\RealSet^{m}\) tal
   que \(\widetilde{\varphi}(v)=(\varphi(p),\varphi_{2}(v))\) con
@@ -55,11 +49,9 @@ Sea \(M\) variedad diferenciable, \(p\in M,\
   
   Si ahora fijamos el isomorfismo
   \(\phi\colon\RealSet^{m}\times(\RealSet^{m})^{*}\cong\RealSet^{m}\times\RealSet^{m}\)
-  que lleva los covectores de la
-  base canónica de \((\RealSet^{m})^{*}\), \(e_{i}^{*}\), en los vectores de la base
-  canónica de \(\RealSet^{m}\), \(e_{i}\), entonces la composición
-  \(\phi\circ\varphi^{*}\colon\DualT{U}\to\varphi(U)\times\RealSet^{m}\) (ya no
-  va a \(\varphi(U)\times(\RealSet^{m})^{*}\)).
+  que lleva las formas duales de elementos de la
+  base canónica de \((\RealSet^{m})^{*}\), \(e_{i}^{*}\), en los correspondientes  vectores básicos \(e_{i}\), entonces la composición
+  \(\phi\circ\varphi^{*}\colon\DualT{U}\to\varphi(U)\times\RealSet^{m}\) nos define una carta de \(\DualT{M}\).
 
   \vline
 
@@ -90,22 +82,16 @@ Sea \(M\) variedad diferenciable, \(p\in M,\
   \((x,\lambda_{1},\dots,\lambda_{m})\) en la forma
   \(\sum\limits_{i=1}^{m}\lambda_{i}(e_{i}^{\varphi^{-1}(x)})^{*}\).
 
-  Observamos que \(\widetilde{\varphi}^{*}\) es un homeomorfismo.
-  
+ 
   \vline
   
   Queda ver que si \(\mathcal{A}=\{(U,\varphi)\}\) es un atlas de \(M\) entonces
   \(\{(\DualT{U},\phi\circ\widetilde{\varphi}^{*})\}\) es un atlas para \(\DualT{M}\).
 
-  En primer lugar, la topología de \(\DualT{M}\) es la unión de las topologías
-  en los \(p\in M\), de la misma forma que hacíamos en \(\Tangente{M}\), que son
-  isomorfas a las de \(\RealSet^{m}\). En particular, \(\DualT{U}\) es abierto.
-
   Si consideramos \(\phi\) como una identificación de coordenadas, bastará hacer
   las comprobaciones para las \(\widetilde{\varphi}^{*}\). Es inmediato que
   \(\widetilde{\varphi}^{*}(\Tangente{U})\) es un abierto de
-  \(\RealSet^{m}\times(\RealSet^{m})^{*}\cong_{\phi}\RealSet^{m}\times
-  \RealSet^{m}=\RealSet^{2m}\).
+  \(\RealSet^{m}\times(\RealSet^{m})^{*}\).
 
   Además, si \((U,\varphi),(V,\psi)\) son cartas de \(\mathcal{A}\) con \(U\cap
   V\neq\emptyset\), entonces \(\DualT{U}\cap\DualT{V}=\DualT{(U\cap V)}\) y
@@ -125,7 +111,7 @@ Sea \(M\) variedad diferenciable, \(p\in M,\
   definición
   \[
     \widetilde{\psi}^{*}\circ(\widetilde{\varphi}^{*})^{-1}(x,\eta)=
-    (\psi\circ\varphi^{-1}(x),\psi_{2}^{*}((\widetilde{\varphi}^{*})^{-1}(x,\eta)))
+    (\psi\circ\varphi^{-1}(x),\psi_{2}^{*}((\widetilde{\varphi}^{*})^{-1}(x,\eta))),
     \quad (1)
   \]
 
@@ -141,14 +127,14 @@ Sea \(M\) variedad diferenciable, \(p\in M,\
       \lambda_{i}e_{i}^{\varphi^{-1}(x)})=\\
       \eta(\varphi_{2}(\widetilde{\psi}^{-1}(z,y)))=\eta(
       \J[z]{\varphi\circ\psi^{-1}(y)})=\\
-      (\J[z]{\varphi\circ\psi^{-1}})^{t}(\eta)(y)
+      (\J[z]{\varphi\circ\psi^{-1}})^{t}(\eta)(y).
     \end{array}\]
 
   Luego,
   \[
     \psi_{2}^{*}((\widetilde{\varphi}^{*})^{-1}(x,\eta))=
     (\J[z]{\varphi\circ\psi^{-1}})^{t}(\eta)=
-    ((\J[x]{\psi\circ\varphi^{-1}})^{-1})^{t}\quad(*)
+    ((\J[x]{\psi\circ\varphi^{-1}})^{-1})^{t}. \quad(*)
   \]
 
   Aquí recordamos que si \(A\) es una matriz representando una aplicación lineal
@@ -161,8 +147,8 @@ Sea \(M\) variedad diferenciable, \(p\in M,\
   carta \((\DualT{V},\widetilde{\psi}^{*})\) en \(\DualT{M}\) está representado
   por la traspuesta de la inversa de la matriz jacobiana que representa el
   cambio de la carta \((\Tangente{U},\widetilde{\varphi})\) a la carta
-  \((\Tangente{V},\widetilde{\psi})\), así que los cambios de cartas en
-  \(\DualT{M}\) son diferenciables.
+  \((\Tangente{V},\widetilde{\psi})\) en \(TM\), así que los cambios de cartas en
+  \(\DualT{M}\) son difeomorfismos.
 
   \vline
 
@@ -184,13 +170,11 @@ Sea \(M\) variedad diferenciable, \(p\in M,\
       \varphi(U)
     \end{tikzcd}
   \end{center}
-
-  donde \(\varphi\circ\pi^{*}\circ(\widetilde{\varphi}^{*})^{-1}(x,\eta)=x\) es la
-  proyección natural.
+donde \(\varphi\circ\pi^{*}\circ(\widetilde{\varphi}^{*})^{-1}(x,\eta)=x\) es la proyección natural.
 \end{proof}
 
 \begin{definition}[name=1-forma]\label{def:1-forma}
-  Se llama \emph{1-forma} de \(M\) a cualquier sección \(\omega\) (diferenciable) de
+  Se llama \emph{\(1\)-forma} sobre la variedad  \(M\) a cualquier sección \(\omega\) (diferenciable) de
   \(\pi^{*}\).
 \end{definition}
 
@@ -220,95 +204,82 @@ Sea \(M\) variedad diferenciable, \(p\in M,\
   con \(g^{U}\colon\varphi(U)\to(\RealSet^{m})^{*}\).
 
   A las funciones \(g^{U}\) se las llama \textbf{componentes locales de la
-    1-forma \(\omega\)}.
+    \(1\)-forma \(\omega\)}.
 
   Ahora la relación entre las componentes locales de dos cartas \((U,\varphi)\)
   y \((V,\psi)\) viene dada por la ecuación
-  \[
+  \begin{equation}\label{1forM}
     g^{V}(\psi\circ\varphi^{-1}(x))=(\J[\psi\circ\varphi^{-1}(x)]
-    {\varphi\circ\psi^{-1}})^{t}g^{U}(x)
-  \]
+    {\varphi\circ\psi^{-1}})^{t}g^{U}(x) 
+  \end{equation}
+que sigue del cambio de cartas visto anteriormente.
 
-  que sigue del cambio de cartas visto anteriormente.
-
-  Por tanto, dar una 1-forma es dar una colección de componentes locales para un
+  Por tanto, dar una \(1\)-forma es dar una colección de componentes locales para un
   atlas de \(M\) sujetas a la relación anterior.
 \end{remark}
 
-\section{Ejemplos de 1-formas sobre \(M\)}
+\section{Ejemplos de \(1\)-formas sobre \(M\)}
 
 \begin{example}\label{ex:forma-dif}
-  El ejemplo clásico es la 1-forma conocida como \emph{diferencial o forma
-    gradiente}:
-  asociada a cada \(f\in\mathcal{F}(M)\) hay asociada una 1-forma
+  El ejemplo clásico es la \(1\)-forma conocida como \emph{diferencial o forma
+    gradiente}: cada función diferenciable \(f\in\mathcal{F}(M)\) tiene asociada una \(1\)-forma
   \[
-    p\in M\mapsto((\dif{f})_p\colon\Tangente[p]{M}\to \RealSet)
+    p\in M\mapsto (\dif{f})_p\colon\Tangente[p]{M}\to \RealSet
   \]
   cuyas componentes locales (referidas a carta \((U,\varphi)\) de \(M\)) son
   
-  \[\label{def:grad-1}
+  \begin{equation}\label{def:grad-1}
    (\nabla f)^{U}_{\varphi(p)}=(\Restrict{\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_1}}{\varphi(p)},\ldots,\Restrict{\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_m}}{\varphi(p)})
-\]
+\end{equation}
+
 Localmente, \(e_i^p\) representa los elementos básicos de \(\Tangente[p]{M}\) y
 \((e_i^p)^*\) representa los duales de los \(e_i^p\) y forman una base de
 \(\DualT[p]{M}\). Esto se traduce en 
 \[
 (\dif{f})_p=\Restrict{\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_1}}{\varphi(p)}(e_1^p)^*+\ldots+\Restrict{\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_m}}{\varphi(p)}(e_m^p)^*
 \]
- Si \(U\cap V\neq\emptyset\), dada una 1-forma \(\omega\) con componentes
-locales 
-\begin{enumerate}
-\item \(g^U\colon\varphi(U)\to (\RealSet^m)^*,\text{ para la carta }(U,\varphi)\)
-\item \(g^V\colon \psi(V)\to (\RealSet^m)^*,\text{ para la carta }(V,\psi{})\)
-\end{enumerate}
-ha de cumplirse:
-\[
-g^V(\psi\circ \varphi^{-1}(x))=(\J[\psi\circ \varphi^{-1}(x)]{\varphi\circ
-  \psi^{-1}})^tg^U(x),\quad x\in\varphi(U\cap V)
-\]
-
-Sean \(y\in \psi(U\cap V),\ x=\varphi\circ \psi^{-1}(y)\) se tiene:
+Para comprobar que las relaciones locales anteriores definen una \(1\)-forma sobre toda la variedad \(M\) debemos comprobar que se cumple la relación en 
+ \ref{def:grad-1}  si tenemos dos cartas \((U,\varphi)\) y \((V,\psi)\) con \(U\cap V\neq\emptyset\).  En efecto, si \(y\in \psi(U\cap V)\), se tiene para 
+\(x=\varphi\circ \psi^{-1}(y)\) :
 \begin{align*}
 \Restrict{(\nabla f)^V_i}{y}&=\Restrict{\dfrac{\partial(f\circ \psi^{-1})}{\partial y_i}}{y}\\
 &=\Restrict{\dfrac{\partial(f\circ \varphi^{-1}\circ \varphi \circ \psi^{-1})}{\partial y_i}}{y}\\
 &=\sum_{k=1}^m \Restrict{\dfrac{\partial(f\circ \varphi^{-1})}{\partial x_k}}{x}\cdot\Restrict{\dfrac{\partial(\varphi\circ \psi^{-1})}{\partial y_i}}{y}\\
 &=\text{producto escalar de la i-ésima columna de la matriz jacobiana} \\
                             &\J[y]{\varphi\circ\psi^{-1}} \text{ con el vector } (\nabla f)^U(x)\\
-  &=(\J[y]{\varphi\circ\psi^{-1}})_{\cdot i}\cdot\Restrict{(\nabla f)^{U}}{x}
+  &=\Restrict{(\J[y]{\varphi\circ\psi^{-1}}^{t} \cdot (\nabla f)^{U})_i}{x}.
 \end{align*}
 
-Luego \((\nabla f)^{V}(y)=(\J[y]{\varphi\circ\psi^{-1}})^{t}(\nabla f)^{U}(x)\),
-siendo el gradiente el visto en este \cref{def:grad-1}.
+Luego \((\nabla f)^{V}(y)=(\J[y]{\varphi\circ\psi^{-1}})^{t}(\nabla f)^{U}(x)\). Esto prueba que cumple la propiedad de compatibilidad y tenemos que 
+\(df\) es una \(1\)-forma sobre todo \(M\). 
+\end{example}
 
-Esto probaría que cumple la propiedad de compatibilidad que relaciona las
-componentes locales.
 
-Veamos un caso concreto. Si tenemos una carta \((U,\varphi)\) de \(M\) podemos
-ver la siguiente aplicación localmente:
-\[
+\begin{remark}[name=notación tradicional]
+En el caso concreto de las componentes de la aplicación de coordenadas de una carta \((U, \varphi)\),
+  \[
   \varphi_i\colon U\overset{\varphi}{\longrightarrow}
   \varphi(U)\overset{\pi_i}{\longrightarrow}\RealSet,\
-  \varphi_{i}\in\mathcal{F}(U)
+  \varphi_{i}\in\mathcal{F}(U).
 \]
-Cuyas 1-formas vienen dadas por
+la  \(1\)-forma gradiente de \(\varphi_i\) es 
 \begin{align*}
 (\dif{\varphi_i})_p&=(\Restrict{\dfrac{\partial(\varphi_i\circ \varphi^{-1})}{\partial x_1}}{\varphi(p)},\ldots,\Restrict{\dfrac{\partial(\varphi_i\circ \varphi^{-1})}{\partial x_m}}{\varphi(p)})\\
                    &= \sum_{k=1}^{m} \Restrict{\dfrac{\partial(\overbracket{\varphi_i\circ \varphi^{-1}}^{\pi_{i}})}{\partial x_k}}{\varphi(p)}\cdot (e_k^p)^*\\
-                   & = \sum_{k=1}^{m} \underbracket{\dfrac{\partial x_{i}}{\partial x_k}}_{\delta_{ik}}\cdot (e_k^p)^*=(e_{i}^{p})^{*}\colon T_p M\to \RealSet
+                   & = \sum_{k=1}^{m} \underbracket{\dfrac{\partial x_{i}}{\partial x_k}}_{\delta_{ik}}\cdot (e_k^p)^*=(e_{i}^{p})^{*} \colon T_p M\to \RealSet
 \end{align*}
-\end{example}
 
-\begin{remark}[name=notación tradicional]
-  Localmente, a los elementos básicos \(\{e_{i}^{p}\}_{i=1}^{m}\) de
-  \(\Tangente[p]{M}\)  se les suele denotar \((\pderiv{}{x_{i}})_{\varphi}\).
+Recodemos que a los elementos básicos \(\{e_{i}^{p}\}_{i=1}^{m}\) de
+  \(\Tangente[p]{M}\)  se les suele denotar \((\pderiv{}{x_{i}})_{\varphi}\) o simplemente \((\pderiv{}{x_{i}})\) si se sobreentiende la aplicación de coordenadas \(\varphi\).
 
   De la misma manera, a los duales de esos elementos básicos,
   \(\{(e_{i}^{p})^{*}\}_{i=1}^{m}\) se les suele denotar
-  \(\Restrict{\dif{x_{i}}}{\varphi}\).
+  \(\Restrict{\dif{x_{i}}}{\varphi}\) o \(\dif{x_{i}}\).
 \end{remark}
 
 \begin{example}
-  Si \(M=\RealSet^m\) (\(\mathcal{A}=(\RealSet^m,id)\)), toda 1-forma \(\omega\)
+
+  Si \(M=\RealSet^m\), con la carta identidad, toda \(1\)-forma \(\omega\)
   se expresa con la notación habitual
   \[
     \omega=g_1\dif{x_1}+\ldots+g_m\dif{x_m}.
@@ -318,8 +289,7 @@ Cuyas 1-formas vienen dadas por
     df=\dfrac{\partial f}{\partial x_1}dx_1+\ldots+\dfrac{\partial f}{\partial
       x_m}dx_m
   \]
-  
-  que es la notación usual en cálculo de varias variables.
+que es la notación usual en cálculo de varias variables.
 \end{example}
 
 \begin{example}
@@ -329,35 +299,31 @@ T^*(T^*M)=\text{espacio cotangente a } T^*M
 \]
 variedad diferenciable de dimension \(4m\).
 
-Asociado a \(M\), hay una 1-forma canónica \(\theta_M\) sobre \(T^*M\) (llamada de Liouville) definida de la siguiente manera:
+Asociado a \(M\), hay una \(1\)-forma canónica \(\theta_M\) sobre \(T^*M\) (llamada de Liouville) 
 \[
 \theta_M\colon T^*M\to T^*(T^*M)
 \]
-con \(\theta_M(\omega)\in T^*_\omega(T^*M)\). Si \(\omega\in T^*M\) definimos
+definida de la siguiente manera:  Si \(\omega\in T^*M\) y \(v\in T_{\omega}T^*M$, escribimos 
 \(\theta_M(\omega)(v)=\omega(\dif{\pi^*}(v))\), con
-\(\dif{\pi^{*}}(v)\in\Tangente[p]{M}\) pues:
-\[
-  v\in\Tangente[\omega]{\DualT{M}},\ \pi^{*}\colon\DualT{M}\to M\leadsto
-  \begin{array}{l}\\ \dif{\pi^{*}}\colon\Tangente{\DualT{M}}\to\Tangente{M}\\
-  \quad\quad\quad\quad v\longmapsto\dif{\pi^{*}}(v)\in\Tangente[p]{M}\end{array}
+\(\dif{\pi^{*}}(v)\in\Tangente[p]{M}\). Nótese que para \(\pi^*: T^*M \to M\) tenemos 
+\[ 
+\dif{\pi^{*}}\colon\Tangente{\DualT{M}}\to\Tangente{M}, \ \ v\longmapsto\dif{\pi^{*}}(v)\in\Tangente[p]{M}.
 \]
-
-se prueba que \(\theta_{M}\) es sección diferenciable.
+Queda como ejercicio comprobar que \(\theta_{M}\) es sección diferenciable.
 \end{example}
 
-\section{Una forma alternativa de ver las 1-formas}
 
-Supongamos una 1-forma \(\omega\) tal que \(p\in M
+\section{Descripciones alternativas de las \(1\)-formas}
+
+Supongamos una \(1\)-forma \(\omega\) tal que \(p\in M
 \overset{\omega}{\mapsto}\omega_p\in\DualT[p]{M}\) (a cada punto corresponde un
-covector asociado). Entonces podemos definir una aplicación diferenciable 
+covector asociado). Entonces podemos definir una aplicación diferenciable \(f_\omega\in\mathcal{F}(\Tangente{M})\), 
 \[
-f_\omega\colon\Tangente{M}\to\RealSet,\quad (f_\omega\in\mathcal{F}(\Tangente{M}))
+f_\omega\colon\Tangente{M}\to\RealSet,
 \]
 dada por \(f_\omega(v)=\omega_p(v)\in\RealSet,\quad v\in\Tangente[p]{M}\).
 
-Veamos la diferenciabilidad de \(f_\omega\).
-
-Dada una carta \((U,\varphi)\) de \(M\), se tiene:
+Veamos la diferenciabilidad de \(f_\omega\). Dada una carta \((U,\varphi)\) de \(M\), se tiene:
  \begin{center}
  	\begin{tikzcd}
 	TU
@@ -368,11 +334,8 @@ Dada una carta \((U,\varphi)\) de \(M\), se tiene:
 	\ar[ur, "f_\omega\circ\widetilde{\varphi}^{-1}" ']
 	\end{tikzcd}
 \end{center}
-
-Tendríamos que probar que \(f_\omega\circ
-\widetilde{\varphi}^{-1}(x,y)=\omega_{\varphi^{-1}(x)}(\widetilde{\varphi}^{-1}(x,y))\)
-es diferenciable.\\
-Además tenemos el siguiente diagrama:
+hay que probar que \(f_\omega\circ \widetilde{\varphi}^{-1}(x,y)=\omega_{\varphi^{-1}(x)}(\widetilde{\varphi}^{-1}(x,y))\)
+es diferenciable. Para ello consideramos el siguiente diagrama:
  \begin{center}
 	\begin{tikzcd}
 	U
@@ -385,9 +348,8 @@ Además tenemos el siguiente diagrama:
 	\varphi(U)\times(\RealSet^m)^*
 	\end{tikzcd}
 \end{center}
-
 donde \(\widetilde{\omega}=\widetilde{\varphi}^{*}\circ\omega\circ\varphi^{-1}\)
-es diferenciable por ser \(\omega\) 1-forma.
+es diferenciable por ser \(\omega\) una \(1\)-forma sobre \(M\).
 
 Según las definiciones, 
 \begin{align*}
@@ -403,58 +365,54 @@ obtendremos:
   \varphi^{*}_{2}(\omega_{\varphi^{-1}(x)})=
   \omega_{\varphi^{-1}(x)}(\widetilde{\varphi}^{-1}(x,y))
 \]
-
 que es diferenciable por serlo \((*)\), ya que lo son las \(\lambda_{i}(x)\).
 Luego \(f_{\omega}\circ\widetilde{\varphi}^{-1}\) es diferenciable.
 
 \vline
 
-Así pues, podemos asociar a cada 1-forma \(\omega\) sobre \(M\) una función
+Así pues, podemos asociar a cada \(1\)-forma \(\omega\) sobre \(M\) una función
 \(f_{\omega}\in\mathcal{F}(\Tangente{M})\):
 \[
-  \omega\mapsto f_{\omega}\in\mathcal{F}(\Tangente{M})
+  \omega\mapsto f_{\omega}\in\mathcal{F}(\Tangente{M}).
 \]
 Recíprocamente, dada una \(f\in\mathcal{F}(\Tangente{M})\) tal que para todo
 \(p\in M\) 
 \[
   \Restrict{f}{\Tangente[p]{M}}\colon\Tangente[p]{M}\to\RealSet
 \]
-es lineal, podemos definir una 1-forma que notaremos por \(\omega_f\) de la
+es lineal, podemos definir una \(1\)-forma que notaremos por \(\omega_f\) de la
 siguiente manera:
 \[
   p\in M\overset{\omega_{f}}{\longmapsto}((\omega_f)_p\colon T_pM\to
   \RealSet)\in\DualT{M}
 \]
-
 con \((\omega_f)_p=f|_{T_p(M)}\). Si tomamos ahora \(f_{\omega_{f}}\) se tiene
 \(f_{\omega_{f}}=f\).
+\par
+\medskip
+De acuerdo con la notación habitual, se denota por \(\Omega^{1}(M)\) el conjunto de las \(1\)-formas sobre \(M\). 
+Las observaciones anteriores  llevan al siguiente resultado.
 
-\begin{remark}
-  \(\Omega^{1}(M)=\{\text{1-formas sobre }M\}\).
-\end{remark}
 
 \begin{proposition}
-  \(\Omega^{1}(M)\) es un espacio vectorial, de hecho es subespacio vectorial
-  \(\begin{array}{c}\\ \Omega^{1}(M)\subseteq\mathcal{F}(\Tangente{M})\\
-      \omega\mapsto f_{\omega}\end{array}\).
+El conjunto  \(\Omega^{1}(M)\) es un espacio vectorial, de hecho es subespacio vectorial
+  de \(\mathcal{F}(\Tangente{M})\) si identificamos la \(1\)-forma \(\omega\) con la función \(f_{\omega}\).
 \end{proposition}
   
-\begin{remark}
-  En particular, tenemos una aplicación lineal inyectiva
-  \(\Omega^{1}(M)\to\mathcal{F}(M)\) tal que \(\omega\mapsto f_{\omega}\).
-
-  A partir de esa identificación, toda aplicación
-  \(h\colon M\to N\) diferenciable induce una aplicación lineal
-  \(h^{*}\colon\Omega^{1}(N)\to\Omega^{1}(M)\) dada por
+A partir dela descripción de \(\Omega^1(M)\) anterior, toda aplicación diferenciable 
+  \(h\colon M\to N\) induce una aplicación lineal
+  \(h^{*}\colon\Omega^{1}(N)\to\Omega^{1}(M)\) dada por la composición 
   \(h^{*}(\omega)=\omega\circ\dif{h}\colon\Tangente{M}\to\Tangente{N\to\RealSet}\).
-  Alternativamente, podemos también definirla como sección de
+  Alternativamente, podemos también definirla como la sección de
   \(\pi^{*}\colon\DualT{M}\to M\),
-  \[h^{*}(\omega)(p)(v)=\omega(h(p))(\dif{h}(v)),\ \forall
+  \[h^{*}(\omega)(p)(v)=\omega(h(p))(\dif{h}(v)),\ \mbox{ para todo }
   v\in\Tangente[p]{M}.\]
 
-  Si ahora, \(X\colon M\to\Tangente{M}\) es un campo tangente, \(\omega\colon
-  M\to\DualT{M}\) una 1-forma, tenemos definida una función diferenciable
-  \[\langle\omega,X\rangle\colon M\to\RealSet,\text{ tal que }
+La aplicación \(h^*\) se denota también por \(d^*h\) y se le llama la \emph{codiferencial} de \(h\). 
+
+Pasemos ahora a una tercera descripción más sutil de las \(1\)-formas sobre \(M\). Sea \(X\colon M\to\Tangente{M}\) un campo tangente sobre \(M\) y sea
+\(\omega\colon M\to\DualT{M}\) una \(1\)-forma. Se tiene definida una función diferenciable
+  \[\langle\omega,X\rangle\colon M\to\RealSet,\text{ dada por }
   \langle\omega,X\rangle(p)=\omega_{p}(X(p))\in\RealSet.\]
 
   La diferenciabilidad sigue de que para la carta \((U,\varphi)\),
@@ -465,46 +423,48 @@ con \((\omega_f)_p=f|_{T_p(M)}\). Si tomamos ahora \(f_{\omega_{f}}\) se tiene
     \omega_{\varphi^{-1}(x)}X_{\varphi^{-1}(x)}=
     &(\sum_{i=1}^{m}h_{i}^{U}(x)(e_{i}^{\varphi^{-1}(x)})^{*})
       (\sum_{j=1}^{m}g_{j}^{U}e_{j}^{\varphi^{-1}(x)})\overset{\delta_{ij}}{=}\\
-    &\sum_{i=1}^{m}h_{i}^{U}(x)g_{i}^{U}(x),\text{ diferenciable.}
+    &\sum_{i=1}^{m}h_{i}^{U}(x)g_{i}^{U}(x),
   \end{align*}
-
-  Así pues, tenemos definida una aplicación
-  \(\Omega^{1}(M)\to\text{Hom}(\mathbb{X}(M),\mathcal{F}(M))\) que lleva
-  1-formas \(\omega\) en \(\phi_{\omega}(X)=\langle\omega,X\rangle\), que además
+que obviamente es diferenciable. Así pues, tenemos definida una aplicación
+  \(\phi \colon\Omega^{1}(M)\to\text{Hom}(\mathbb{X}(M),\mathcal{F}(M))\) que lleva
+ la \(1\)-forma \(\omega\) en \(\phi_{\omega}(X)=\langle\omega,X\rangle\), que además
   de ser lineal es homomorfismo de \(\mathcal{F}(M)\)-módulos, pues
   \(\phi_{\omega}(f\cdot X)=f\cdot\phi_{\omega}(X)\), para todo
   \(f\in\mathcal{F}(M)\).
-\end{remark}
 
-\begin{theorem}
-  La aplicación anteriormente descrita, que llamaremos
+
+\begin{theorem}\label{teorprincformas}
+  La aplicación 
   \(\phi\colon\Omega^{1}(M)\to\text{Hom}_{\mathcal{F}(M)}
   (\mathbb{X}(M),\mathcal{F}(M))\), es un isomorfismo.
+\end{theorem}
 
-  De esta manera, tenemos una descripción funcional de las 1-formas sobre una
+  De esta manera, tenemos una descripción funcional de las \(1\)-formas sobre una
   variedad si además cambiamos \(\mathbb{X}(M)\) por \(\mathcal{D}(M)\) el
   espacio de las derivaciones de \(M\) (recordemos que podemos ver los campos
   como derivaciones).
-\end{theorem}
 
-Para demostrar el teorema hacen falta resultados previos:
+
+Para demostrar el teorema hacen falta dos resultados previos.
 
 \begin{lemma}[name=de extensión de campos]\label{lem:ext-campos}
   Si \(X\colon U\to\Tangente{U}\) es un campo definido en un abierto
-  \(U\subseteq M\) con \(p\in U\), entonces \(\exists V\subseteq U\), \(p\in V\)
-  y \(\exists\widetilde{X}\colon M\to\Tangente{M}\) tal que
+  \(U\subseteq M\) con \(p\in U\), entonces existen un abierto \(V\subseteq U\) con \(p\in V\)
+  y un campo \(\widetilde{X}\colon M\to\Tangente{M}\) tal que
   \(\Restrict{\widetilde{X}}{V}=X\). 
 \end{lemma}
 
 \begin{proof}
-  Sea \(f\colon M\to\RealSet\) tal que \(\exists V\subseteq V'\subseteq U\)
-  abierto con \(\Restrict{f}{V}=1,\Restrict{f}{M-V'}=0\). Entonces,
-  \[
-    \widetilde{X}\colon M\to\Tangente{M}\colon p\in M\mapsto\widetilde{X}_{p}=
+  Por el lema de extensión de funciones, podemos encontrar abiertos \(V\subseteq V'\subseteq \overline{V}' \subseteq U\) con \(p\in V\) 
+  y una función diferenciable \(f\colon M\to\RealSet\) tal que 
+  abierto con \(\Restrict{f}{V}=1,\Restrict{f}{M- \overline{V}'}=0\). Como \(U\) y \(\overline{V}'\) son abiertos, es inmediato que 
+   \[
+    \widetilde{X}\colon M\to\Tangente{M}\colon q\in M\mapsto\widetilde{X}(q)=
     \begin{dcases}
-      f(p)X(p) & p\in U \\ 0 & p\in M-V'
+      f(q)X(q) & q\in U, \\ 0 & q\in M-\overline{V}',
     \end{dcases}
   \]
+define un campo sobre todo \(M\) que extiende a \(X\) sobre \(V\).  
 \end{proof}
 
 \begin{corollary}\label{cor:ext-campos}
@@ -513,111 +473,105 @@ Para demostrar el teorema hacen falta resultados previos:
 \end{corollary}
 
 \begin{proof}
-  Sea \((U,\varphi)\) con \(p\in U\), 
-  \(v=\sum_{i=1}^{m}\lambda_{i}e_{i}^{p}\), entonces definimos
-  \(\widetilde{X}(q)=\sum_{i=1}^{m}\lambda_{i}e_{i}^{q}, \ q\in U\) y por el lema
-  \nameref{lem:ext-campos} \(X(p)=\widetilde{X}(p)=v\).
+  Sea \((U,\varphi)\) una carta con \(p\in U\), 
+  \(v=\sum_{i=1}^{m}\lambda_{i}e_{i}^{p}\), entonces definimos \(Y: U \to TU\) por 
+  \( Y(q) =\sum_{i=1}^{m}\lambda_{i}e_{i}^{q}, \ q\in U\). Por el Lema \ref{lem:ext-campos}
+   existe un campo \(X: M \to TM \) con \(X(p) = Y(p) = v\).
 \end{proof}
 
-\begin{lemma}\label{lem:xi-iguales}
-  Si los campos \(X,Y\) coinciden en un entorno de \(p\), entonces
-  \(\forall\xi\in\text{Hom}_{\mathcal{F}(M)}(\mathbb{X}(M),\mathcal{F}(M))\),
-  los gérmenes \(\Clase{\xi(X)},\Clase{\xi(Y)}\) coinciden.
+\begin{lemma}\label{lem:xi-iguales} Sea \(\xi\colon \mathbb{X}(M) \to \mathcal{F}(M)\) un homomorfismo de \(\mathcal{F}(M)\)-módulos. Si los campos \(X,Y\) coinciden en un abierto \(U\) con \(p\in U\), entonces las funciones \(\xi(X)\) y $\xi(Y)\) representan el mismo germen en \(p\).
 \end{lemma}
 
 \begin{proof}
-  Sea \(U\subseteq M\) abierto entorno de \(p\), donde
-  \(\Restrict{X}{U}=\Restrict{Y}{U}\). Sean \(V\subseteq V'\subseteq U\)
-  abiertos, \(V\) entorno de \(p\), y \(f\in\mathcal{F}(M)\) con
-  \(\Restrict{f}{V}=1,\Restrict{f}{M-V'}=0\). Sea \(Z=f\cdot(X-Y)\), este campo
-  es el trivial pues si \(q\in U\), \((X-Y)(q)=0(\Rightarrow Z(q)=0)\) y si
-  \(q\not\in V'\), \(f(q)=0(\Rightarrow Z(q)=0)\). Por tanto \(\xi(Z)=0,\
-  \forall q\in M\). Pero si \(q\in V\),
+ Sean \(V\subseteq V'\subseteq U\) abiertos, \(V\) con \(p \in V\) y \(\overline{V}' \subseteq U\). Sea \(f \in \mathcal{F}(M)\) con  
+ \(\Restrict{f}{V} = 1\) y \(\Restrict{f}{M-\overline{V}'} = 0\). Se define el campo 
+ 
+\[
+    Z\colon M\to\Tangente{M}\colon p\in M\mapsto Z(q)=
+    \begin{dcases}
+      f(q)(X-Y)(q) & q\in U, \\ 0 & q\in M-\overline{V}'.
+    \end{dcases}
+  \] 
+ Nótese que \(Z\) es un campo sobre \(M\) ya que \(U\) y \(M- \overline{V}'$ son abiertos que cubren a \(M\). De hecho \(Z\) es el campo nulo pues si \(q\in U\), \((X-Y)(q)=0\) y si
+  \(q\not\in V'\), \(f(q)=0\). Por tanto \(\xi(Z)\) es la función nula y para todo   \(q\in V\) tenemos 
   \(0=\xi(Z)(q)=\xi(f\cdot(X-Y))(q)=f(q)\xi(X-Y)(q)=1\cdot(\xi(X)-\xi(Y))(q)\)
-  y por tanto \(\xi(X)(q)=\xi(Y)(q),\ \forall q\in V\).
+  y por tanto \(\xi(X)(q) = \xi(Y)(q)\).
 \end{proof}
 
-\begin{proof}
-  \textbf{(del Teorema)}.
+\begin{proof}[Prueba del Teorema \ref{teorprincformas}]
+  
 
-  Probaremos primero la inyectividad: supongamos
-  \(\phi_{\omega}=\phi_{\omega'}\), sean \(p\in M,v\in\Tangente[p]{M}\). Por el
-  corolario \cref{cor:ext-campos}, existe \(X\in\mathbb{X}(M),X(p)=v\).
+  Probaremos primero la inyectividad. Supongamos
+  \(\phi_{\omega}=\phi_{\omega'}\), sean \(p\in M\) y \(v\in\Tangente[p]{M}\). Por el
+  Corolario \ref{cor:ext-campos}, existe \(X\in\mathbb{X}(M)\) con \(X(p)=v\).
   Entonces
   \(\omega_{p}(v)=\omega_{p}(X(p))=\langle\omega,X\rangle(p)=
   \phi_{\omega}(X)(p)=\phi_{\omega'}(X)(p)=\omega'_{p}(X(p))=\omega'_{p}(v)\).
   Luego \(\omega=\omega'\) y \(\phi\) es inyectiva.
+  
+  Para ver que \(\phi\) es sobreyectiva, sea \(\xi: \mathbb{X}(M) \to \mathcal{F}(M)\) un homomorfismo de \(\mathcal{F}(M)\)-módulos. Para una carta cualquiera de un atlas $\mathcal{A}$ de $M$, \((U,\varphi)\), definimos el campo sobre \(U\) $X^U_i = \widetilde{\varphi}\circ Y^U_i \circ \varphi\) definido por medio del diagrama 
+  
+ \begin{center}
+	\begin{tikzcd}
+	U
+	\ar[r, "X^U_i"]
+	\ar[d, "\varphi"] &
+	\DualT{U}
+	\ar[d, "\widetilde{\varphi}"]\\
+	\varphi(U)
+	\ar[r, "Y^U_i"] &
+	\varphi(U)\times \RealSet^m
+	\end{tikzcd}
+\end{center}    
+donde \(Y^U_i(x) = (x,e_i)\) para \(x\in \varphi(U)\) y \(\{e_i\}_{i=1}^m\) la base canónica de \(\mathbb{R}^m\). Esto es, $X^U_i(p)$ está representado por la curva $\varepsilon^p_i(t) = \varphi^{-1}(\varphi(p)+te_i)$ para todo $p \in U$. Además, para todo $v\in T_pM$ se tiene $v = \sum_{i=1}^m \lambda^U_i(p) X^U_i(p)$, donde $\lambda^U_i: U \to \mathbb{R}$ es diferenciable. 
 
-  Sea \(\xi\colon\mathbb{X}(M)\to\mathcal{F}(M)\) homomorfismo de
-  \(\mathcal{F}(M)\)-módulos. Defino para cada \(p\in M,v\in\Tangente[p]{M}\) a
-  \(\omega_{p}(v)=\xi(X_{v})(p)\), donde \(X_{p}\) es un campo con \(X_{v}(p)=v\). 
+Por el lema de extensión de funciones, para cada $p\in U$ podemos encontrar una función diferenciable $\widehat{\lambda}^U_i: M \to \mathbb{R}$ con $\lambda^U_i = \widehat{\lambda}^U_i$ sobre un abierto $U_{p,i}\subseteq U$ con $p\in U_{p,i}$. Análogamente, el Lema  \ref{lem:ext-campos} permite encontrar un campo $\widehat{X}^U_i : M \to TM$ que coincide con $X^U_i$ sobre un abierto $U'_{p,i}\subseteq U$ con $p\in U'_{p,i}$. Sin pérdida de generalidad, podemos suponer $U_p = U_{p,i} = U'_{p,i}$ para todo $i$.     
 
-  Podemos ver que no depende de la elección de \(X_{v}\) por el lema
-  \cref{lem:xi-iguales}.
+Si aplicamos la propiedad de Lindeloff al recubrimiento de $M$ por los abiertos $U_p$, obtenemos  un nuevo atlas $\mathcal{A}'$ tal que para cada carta en él (mantenemos la notación anaterior), $(U,\varphi)$,  el campo $X^U_i$ admite una extensión a un campo  $\widetilde{X}^U_i: M \to TM$ y las funciones 
+$\lambda^U_i$ se extienden  a funciones diferenciables $\widehat{\lambda}^U_i: M \to \mathbb{R}$. 
 
-  Finalmente, queda probar que la definición \(\omega_{p}(v)=\xi(X_{v})(p)\) nos
-  da una 1-forma \(\omega\colon M\to\DualT{M}\).
+A continuación definiremos una $1$-forma como aplicación diferenciable $\omega: TM \to \mathbb{R}$ cuyas restricción a $T_p M$ es lineal para todo $p\in M$.
 
-  Para ello sea \((U,\varphi)\) una carta con \(U\) entorno de \(p\) y elegimos
-  un campo \(X'_{i}\colon M\to\Tangente{M}\) que gracias al lema
-  \nameref{lem:ext-campos} coincida en un 
-  abierto \(V\subseteq U\) entorno de \(p\) con el campo local \(X_{i}\colon
-  U\to\Tangente{U}\) dado por \(X_{i}(q)=\sum_{i=1}^{m}\lambda_{i}e_{i}^{q},\
-  q\in U\).
+Dados $p\in M$ y $v\in T_pM$, sea  $(U,\varphi)$ una carta de $\mathcal{A}'$ con $p\in U$. Entonces $v = \sum_{i=1}^m \lambda^U_i(p) X^U_i(p)$ y definimos $\omega_U: M \to TM$ por   
+  \[
+  \omega_U(v) = \sum_{i=1}^m \widehat{\lambda}^U_i(q) \xi(\widehat{X}^U_i) (q) = \sum_{i=1}^m \xi(\widehat{\lambda}^U_i \widehat{X}^U_i)(q) = \xi(\sum_{i=1}^m \widehat{\lambda}^U_i \widehat{X}^U_i)(q) .   
+  \]
+Obviamente $\omega_U$ es diferenciable y lineal por definición. Queda comprobar que $\omega_U = \omega_V$ sobre los puntos de cada intersección $U\cap V$ para tener una $1$-forma bien definida. 
 
-  Por la diferenciabilidad de \(\xi(X'_{i})\colon M\to\RealSet\) podemos elegir
-  \(W\subseteq V\) con
-  \(\xi(X'_{i})\circ\varphi^{-1}\colon\varphi(W)\to\RealSet\) diferenciable.
+Sea pues $U\cap V\neq \emptyset$, para las cartas $(U,\varphi)$ y $(V,\psi)$ de $\mathcal{A}'$. Para todo $q\in U\cap V$ tenemos la igualdad $X^V_i(q) = \sum_{j=1}^m \alpha_{ij}(q) X^U_j(q)$, donde $J_{\varphi(q)}(\psi\circ \varphi^{-1}) = (\alpha_{ij}(q))$ es la matriz jacobiana  . Esto sigue delas definiciones de los campos $X^U_i$ y $X^V_i$. 
 
-  Entonces para la carta \((W,\Restrict{\varphi}{W})\) tenemos el diagrama
+En particular, para las funciones coordenadas de un vector $v\in T_q M = T_q (U\cap V)$ se tiene 
+$\lambda^U_j(q) = \sum_{i=1}^m \alpha_{ij}(q) \lambda^V_i(q)$. Fijado $q$,  podemos aplicar de nuevo el lema de extensión y encontrar aplicaciones diferenciables $\widehat{\alpha}^q_{ij}: M  \to  \mathbb{R}$ 
+que coinciden con $\alpha_{ij}$ en un abierto $\Omega_q \subseteq U\cap V$.   
 
-  \begin{center}
-    \begin{tikzcd}
-      W
-      \ar[r, "\omega"]
-      \ar[d, "\varphi"] &
-      \DualT{W}
-      \ar[d, "\widetilde{\varphi}^*"]\\
-      \varphi(W)
-      \ar[r, ""] &
-      \varphi(W)\times(\RealSet^m)^*
-    \end{tikzcd}
-  \end{center}
-
-donde para \(x\in\varphi(W),
-\widetilde{\varphi}^{*}\circ\omega\circ\varphi^{-1}(x)=
-\widetilde{\varphi}^{*}\circ\omega\circ_{\varphi^{-1}(x)}=(x,\eta_{x})\) donde
-\(\eta_{x}=\sum_{i=1}^{m}\lambda_{i}(x)e_{i}^{*}\) es la forma que para
-\(e_{i}\) verifica:
-\begin{align*}
-  \lambda_{i}(x)=&\eta(e_{i})=
-  \omega_{\varphi^{-1}(x)}(\widetilde{\varphi}^{-1}(x,e_{i}))=\\
-  &=\omega_{\varphi^{-1}(x)}(e_{i}^{\varphi^{-1}(x)})
-  =\xi(X_{e_{i}^{\varphi^{-1}(x)}})(\varphi^{-1}(x))  
-\end{align*}
-
-con \(X_{e_{i}^{\varphi^{-1}(x)}}\) cualquier campo tal que
-\(X_{e_{i}^{\varphi^{-1}(x)}}(\varphi^{-1}(x))=e_{i}^{\varphi^{-1}(x)}\).
-
-En particular, para todos los \(p\in\varphi^{-1}(W)\) podemos tomar el mismo
-campo \(X'_{i}\) construído más arriba y tenemos que
-\(\lambda_{i}(x)=\xi(X'_{i})(\varphi^{-1}(x))\) es diferenciable.
-
-Esto es,
-\(\widetilde{\varphi}^{*}\circ\omega\circ\varphi^{-1}\colon\varphi(W)
-\to\varphi(W)\times(\RealSet^{m})^{*}\) es diferenciable y por tanto \(\omega\)
-es una 1-forma sobre \(M\).
+Entones los campos $\sum_{i= 1}^m \widehat{\lambda}^V_i \widehat{X}^V_i$ y $\sum_{i= 1}^m \widehat{\lambda}^V_i(\sum_{j=1}^m \widehat {\alpha}^q_{ij}\widehat{X}^U_j)$ coinciden en $\Omega_q$ y por el Lema \ref{lem:xi-iguales} las funciones $\xi(\sum_{i=1}^m\widehat{\lambda}^V_i\widehat{X}^V_i)$ y $\xi(\sum_{i= 1}^m \widehat{\lambda}^V_i(\sum_{j=1}^m \widehat {\alpha}^q_{ij}\widehat{X}^U_j))$ coinciden en un abierto $W\subseteq \Omega_q$ con $q\in W$. Entonces para cualquier $v\in T_q M = T_qW$, se cumplen las igualdades
+\[
+\omega_V(v) = \xi(\sum_{i=1}^m\widehat{\lambda}^V_i\widehat{X}^V_i)(q) = \xi(\sum_{i= 1}^m \widehat{\lambda}^V_i(\sum_{j=1}^m \widehat {\alpha}^q_{ij}\widehat{X}^U_j))(q) =
+\]
+\[ = \sum_{i= 1}^m \widehat{\lambda}^V_i(q)(\sum_{j=1}^m \widehat{\alpha}^q_{ij}(q)\xi(\widehat{X}^U_j)(q))
+= \sum_{i= 1}^m \lambda^V_i(q)(\sum_{j=1}^m \alpha_{ij}(q) \xi(\widehat{X}^U_j)(q)) =
+\]
+\[= \sum_{i=1}^m \lambda^U_i(q) \xi(\widehat{X}^U_j)(q) = \sum_{i=1}^m \widehat{\lambda}^U_i(q) \xi(\widehat{X}^U_j)(q) = \xi(\sum_{i=1}^m \widehat{\lambda}^U_i(q) \widehat{X}^U_j)(q) = \omega_U(v).
+\]
 \end{proof}
 
 \begin{remark}
-  Por tanto, hemos construído 3 maneras de ver el espacio cotangente:
+  Por tanto, hemos construido tres  maneras de ver el espacio cotangente:
   \begin{enumerate}
-  \item \(\DualT{M}=\bigcup_{p\in M}\DualT[p]{M}\)
-  \item \(f\colon\Tangente{M}\to\RealSet\)
-  \item \(\Omega^{1}(M)\to\text{Hom}_{\mathcal{F}(M)}(\mathbb{X}(M),\mathcal{F}(M))\)
+  \item Como unión de los duales de los espacios tangentes en los puntos de $M$, \(\DualT{M}=\bigcup_{p\in M}\DualT[p]{M}\)
+  \item Como funciones diferenciables \(f\colon\Tangente{M}\to\RealSet\) cuyas restricciones  $f: T_pM \to \mathbb{R}$ son lineales. 
+  \item Como homomorfismos de $\mathcal{F}(M)$-módulos entre campos y funciones sobre $M$, 
+  \[\Omega^{1}(M)\cong\text{Hom}_{\mathcal{F}(M)}(\mathbb{X}(M),\mathcal{F}(M)).
+  \]
+Esto es, $\Omega^1(M)$ es el $\mathcal{F}(M)$-módulo dual de $\mathbb{X}(M)$.   
+ 
   \end{enumerate}
 \end{remark}
 \end{document}
+
+
+
+
 
 %%% Local Variables:
 %%% TeX-master: "../VD_ebook"

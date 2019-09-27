@@ -5,60 +5,57 @@
 \begin{document}
 
 \setcounter{chapter}{7}
-\chapter{Álgebra de Lie}\label{chap:algebra}
+\chapter{El álgebra de Lie de una variedad}\label{chap:algebra}
 
-\section{Introducción}
+\section{Álgebras de Lie}
 
 \begin{definition}\label{def:alglie}
   Un \emph{álgebra de Lie}, \(\mathcal{L}\), es un espacio vectorial dotado de
   otra operación interna, que llamaremos \emph{producto corchete},
   \(\ProdC{\cdot}{\cdot} \colon \mathcal{L} \times \mathcal{L} \to \mathcal{L}\)
-  que verifica:
+  que verifica para todo \(a,b,c\in \mathcal{L}\):
   \begin{enumerate}
-  \item Es bilineal
-  \item Es antisimétrica: \(\ProdC{a}{b}=-\ProdC{b}{a}\)
-  \item La identidad de Jacobi (la suma cíclica es nula):
+  \item Es bilineal.
+  \item Es antisimétrica: \(\ProdC{a}{b}=-\ProdC{b}{a}\).
+  \item Cumple la identidad de Jacobi:
     \[
       \ProdC{\ProdC{a}{b}}{c} +
       \ProdC{\ProdC{b}{c}}{a} +
-      \ProdC{\ProdC{c}{a}}{b}
-      = 0 \ \forall a,b,c \in \mathcal{L}
+      \ProdC{\ProdC{c}{a}}{b} = 0.
     \]
   \end{enumerate}
 \end{definition}
 
 \begin{remark}
-  De la antisimetría: \(\ProdC{a}{a}=-\ProdC{a}{a}=0\ \forall a\in\mathcal{L}\)
+  De la antisimetría se sigue la igualdad: \(\ProdC{a}{a}=-\ProdC{a}{a}=0\) 
+  para todo \(a\in\mathcal{L}\).
 
-  Si \(\mathcal{L}\) es un espacio vectorial finito, a los productos corchetes
-  \(\ProdC{e_{i}}{e_{j}}=\sum_{i=1}^{m}c_{ij}^{k}e_{k}\) de cada par de
-  vectores de la base de \(\mathcal{L}\) se les llama constantes de estructura
-  del álgebra con respecto a la base del espacio.
-
-  En nuestro caso, no serán espacios finitos y no se tendrá este resultado.
+  Si \(\mathcal{L}\) es un espacio vectorial de dimensión \(n\) con base \(\{e_i\}_{i=1}^n\), las coordenadas de los productos corchetes de cada par de
+  vectores de la base respecto a esa misma base
+  \(\ProdC{e_{i}}{e_{j}}=\sum_{i=1}^{m}c_{ij}^{k}e_{k}\), se les llama \emph{constantes de estructura}
+  de \(\mathcal{L}\) con respecto a la base dada.
 \end{remark}
 
 \begin{example}
-  Algunos ejemplos de álgebras de Lie:
+Tenemos los dos siguientes ejemplos de álgebras de Lie:
   
   \begin{itemize}
-  \item \((\RealSet^{3},\wedge)\): se tiene que \(\ProdC{i}{j}=i\wedge
+  \item Para el producto vectorial, \((\RealSet^{3},\wedge)\) es un álgebra de Lie. En efecto, se tiene que \(\ProdC{i}{j}=i\wedge
     j=k,\ProdC{j}{k}=i,\ProdC{k}{i}=j\) por lo que se cumple la identidad de
-    Jacobi, \(\ProdC{\ProdC{i}{j}}{k}=\ProdC{k}{k}=0\) y así las otras dos,
-    siendo la suma cíclica nula. 
-  \item \(\mathcal{M}_{n}(\RealSet)\) con \(\ProdC{A}{B}=AB-BA\)
+    Jacobi, \(\ProdC{\ProdC{i}{j}}{k}=\ProdC{k}{k}=0\). Análogamente las otras dos. 
+  \item El espacio vectorial de matrices cuadradas \(\mathcal{M}_{n}(\RealSet)\) es un álgebra de Lie para el producto corchete \(\ProdC{A}{B}=AB-BA\).
   \end{itemize}
 \end{example}
 
 \section{\(\mathbb{X}(M)\) como Álgebra de Lie}
 
-Queremos probar que \(\mathbb{X}(M)\) es un álgebra de Lie. Consideraremos los
-campos como derivaciones:
+Queremos probar que para cualquier variedad \(M\), el espacio vectorial de los campos sobre \(M\), \(\mathbb{X}(M)\), es un álgebra de Lie, llamada el \emph{álgebra de Lie de \(M\)}. Consideraremos los
+campos como derivaciones. Entonces se tiene el siguiente producto corchete sobre \(\mathbb{X}(M)\).
 
 \begin{proposition}
   Sean \(X,Y\in\mathbb{X}(M)\), entonces \(D_{X}D_{Y}-D_{Y}D_{X}\) también es
-  una derivación. Además, \(\ProdC{D_{X}}{D_{Y}}=D_{X}D_{Y}-D_{Y}D_{X}\) es su
-  producto corchete asociado. 
+  una derivación. Además, \(\ProdC{D_{X}}{D_{Y}}=D_{X}D_{Y}-D_{Y}D_{X}\) es un
+  producto corchete. 
 \end{proposition}
 
 \begin{proof}
@@ -67,28 +64,28 @@ campos como derivaciones:
     D_{X}D_{Y}(fg) &= D_{X}(D_{Y}(f)g+fD_{Y}(g))\\
     &=D_{X}(D_{Y}(f)g)+D_{X}(fD_{Y}(g))\\
                    &=(D_{X}D_{Y}(f))g + D_{Y}(f)D_{X}(g)\\
-                   &+ D_{X}(f)D_{Y}(g) + f(D_{X}D_{Y}(g))
+                   &+ D_{X}(f)D_{Y}(g) + f(D_{X}D_{Y}(g)).
   \end{align*}
   A su vez,
   \begin{align*}
     D_{Y}D_{X}(fg) &= (D_{Y}D_{X}(f))g + D_{X}(f)D_{Y}(g)\\
-                   &+ D_{Y}(f)D_{X}(g)+f(D_{Y}D_{X}(g))
+                   &+ D_{Y}(f)D_{X}(g)+f(D_{Y}D_{X}(g)).
   \end{align*}
 
   Si a la primera expresión le restamos la segunda, obtenemos que 
   \begin{align*}
     D_{X}D_{Y}(fg)-D_{Y}D_{X}(fg)
     &= ((D_{X}D_{Y}(f))-(D_{Y}D_{X}(f)))g\\
-    &+ f(D_{X}D_{Y}(g)-D_{Y}D_{X}(g))
+    &+ f(D_{X}D_{Y}(g)-D_{Y}D_{X}(g)).
   \end{align*}
   
-  Luego, es derivación (y por ello bilineal). Además, es antisimétrica:
+  Luego, es derivación (y por ello \([ \ , \ ]\) es bilineal). Además, es antisimétrica:
   
   \[
     \ProdC{D_{Y}}{D_{X}} =
     D_{Y}D_{X}-D_{X}D_{Y} =
     -(D_{X}D_{Y}-D_{Y}D_{X}) =
-    -\ProdC{D_{X}}{D_{Y}}
+    -\ProdC{D_{X}}{D_{Y}}.
   \]
 
   Veamos ahora la identidad de Jacobi: Sean \(D_{X},D_{Y},D_{Z}\). Entonces:
@@ -96,49 +93,49 @@ campos como derivaciones:
   \item
     \(\ProdC{\ProdC{D_{X}}{D_{Y}}}{D_{Z}}=\ProdC{D_{X}D_{Y}-D_{Y}D_{X}}{D_{Z}}\).
 
-    Como es bilineal, lo anterior se corresponde con
+    Desarrollando cada uno de los sumandos, tenemos: 
     \begin{align*}
       \ProdC{D_{X}D_{Y}}{D_{Z}}-\ProdC{D_{Y}D_{X}}{D_{Z}}
       &= D_{X}D_{Y}D_{Z}-D_{Z}D_{X}D_{Y}\\
-      &- D_{Y}D_{X}D_{Z}+D_{Z}D_{Y}D_{X}
+      &- D_{Y}D_{X}D_{Z}+D_{Z}D_{Y}D_{X}.
     \end{align*}
   
   \item
     \begin{align*}
       \ProdC{\ProdC{D_{Y}}{D_{Z}}}{D_{X}}
       &= D_{Y}D_{Z}D_{X} - D_{X}D_{Y}D_{Z}\\
-      &- D_{Z}D_{Y}D_{X} +D_{X}D_{Z}D_{Y}
+      &- D_{Z}D_{Y}D_{X} +D_{X}D_{Z}D_{Y}.
     \end{align*}
   \item
     \begin{align*}
       \ProdC{\ProdC{D_{Z}}{D_{X}}}{D_{Y}}
       &= D_{Z}D_{X}D_{Y} - D_{Y}D_{Z}D_{X}\\
-      &- D_{X}D_{Z}D_{Y} + D_{Y}D_{X}D_{Z}
+      &- D_{X}D_{Z}D_{Y} + D_{Y}D_{X}D_{Z}.
     \end{align*}
   \end{itemize}
-  Claramente, la suma cíclica de las expresiones anteriores se anula.
-
-  Luego nuestra operación es un \emph{corchete de Lie} y entonces
-  \(\mathbb{X}(M)\) es un \emph{álgebra de Lie}.
+  Claramente, la suma de las tres expresiones anteriores se anula. Así pues, la operación anterior es efectivamente un \emph{corchete de Lie}.
 \end{proof}
 
+A partir de ahora, el campo correspondiente al corchete \([D_X,D_Y] = D_XD_Y-D_Y D_X\) se le denota 
+\([X,Y]\) y se llama el \emph{corchete de Lie} de \(X\) e \(Y\). Esto es, \(D_{[X,Y]} = [D_X,D_Y]\). 
+
 \begin{proposition}
-  Sea \(\mathcal{A}=\{(U,\varphi)\}\) atlas de \(M\). Si \(\{f^{U}\},\{g^{U}\}\)
+  Sea \(\mathcal{A}=\{(U,\varphi)\}\) atlas de la variedad \(M\). Si \(\{f^{U}\},\{g^{U}\}\)
   denotan las funciones componentes de los campos \(X,Y\) respectivamente,
-  entonces el campo correspondiente a \(\ProdC{D_{X}}{D_{Y}}(\ProdC{X}{Y})\) tiene
+  entonces el campo \([X,Y]\) tiene
   como funciones componentes locales a
-  \(\ProdC{f^{U}}{g^{U}}\colon\varphi(U)\to\RealSet^{m}\) cuya i-ésima función
-  coordenada es
+  \(\ProdC{f^{U}}{g^{U}}\colon\varphi(U)\to\RealSet^{m}\) con i-ésima función
+  coordenada 
   \(\ProdC{f^{U}}{g^{U}}_{i}=\sum_{j=1}^{m}(f_{j}^{U}\pderiv{g_{i}^{U}}{x_{j}}-
-  \pderiv{f_{i}^{U}}{x_{j}}g_{j}^{U})\)
+  \pderiv{f_{i}^{U}}{x_{j}}g_{j}^{U})\).
 \end{proposition}
 
 \begin{proof}
-  En \((U,\varphi)\),
+  Para la carta \((U,\varphi)\) tenemos, por la Definición \ref{defderivacioper},
 
   \begin{align*}
-    D_{X}(h)&=\sum_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}f_{i}^{U}\\
-    D_{Y}(h)&=\sum_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}g_{i}^{U}
+    D_{X}(h)&=\sum_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}f_{i}^{U} \mbox{ y}\\
+    D_{Y}(h)&=\sum_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}g_{i}^{U}.
   \end{align*}
   
   Entonces,
@@ -149,7 +146,7 @@ campos como derivaciones:
       \sum_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}g_{i}^{U})}{x_{j}}f_{j}^{U}
     \\
     &= \sum_{i,j=1}^{m}\left[ \pderiv{h\circ\varphi^{-1}}{x_{j},x_{i}} g_{i}^{U}f_{j}^{U}+\pderiv{h\circ\varphi^{-1}}{x_{i}}\pderiv{g_{i}^{U}}{x_{j}}
-      f_{j}^{U} \right]
+      f_{j}^{U}. \right]
   \end{align*}
   
   A su vez,
@@ -159,75 +156,84 @@ campos como derivaciones:
       \pderiv{h\circ\varphi^{-1}}{x_{i},x_{j}}
       f_{i}^{U}g_{j}^{U} +
       \pderiv{h\circ\varphi^{-1}}{x_{i}}
-      \pderiv{f_{i}^{U}}{x_{j}}g_{j}^{U}
+      \pderiv{f_{i}^{U}}{x_{j}}g_{j}^{U}.
       \right]
   \]
  
   Por tanto, restando la segunda expresión a la primera,
   \begin{align*}
-    \ProdC{D_{X}}{D_{Y}}(h)
+    \sum_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}\ProdC{f^{U}}{g^{U}}_{i} =\ProdC{D_{X}}{D_{Y}}(h)
     &= (D_{X}D_{Y}-D_{Y}D_{X})(h)\\
     &= \sum_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}\left(\sum_{j=1}^{m}
-      \pderiv{g_{i}^{U}}{x_{j}}f_{j}^{U}-\pderiv{f_{i}^{U}}{x_{j}}g_{j}^{U} \right)\\
-    &= \sum_{i=1}^{m} \pderiv{h\circ\varphi^{-1}}{x_{i}}(\text{coordenada
-      i-ésima})\\
-    &= \sum_{i=1}^{m}\pderiv{h\circ\varphi^{-1}}{x_{i}}\ProdC{f^{U}}{g^{U}}_{i}
-  \end{align*}
+      \pderiv{g_{i}^{U}}{x_{j}}f_{j}^{U}-\pderiv{f_{i}^{U}}{x_{j}}g_{j}^{U} \right).\\
+     \end{align*}
+De aquí se sigue inmediatamente la igualdad requerida. 
 \end{proof}
 
-\section{Campos h-compatibles}
+\section{Corchete de Lie de campos \(h\)-compatibles}
 
-Si \(X,Y\in\mathbb{X}(M),X',Y'\in\mathbb{X}(N)\), \(X,X'\) h-compatibles,
-\(Y,Y'\) también, ¿entonces \(\ProdC{X}{Y}\) h-compatible con \(\ProdC{X'}{Y'}\)?
+Sean \(h: M \to N\) una aplicación diferenciable y \(X,Y\in\mathbb{X}(M),X',Y'\in\mathbb{X}(N)\) campos tales que \(X\) y \(X'\) son \(h\)-compatibles y también lo son \(Y\) e \(Y'\). Se tiene entonces que 
+\(\ProdC{X}{Y}\) es \(h\)-compatible con \(\ProdC{X'}{Y'}\). Para probarlo empezamos con el siguiente lema. 
 
-\begin{lemma}
-  Si \(X\in\mathbb{X}(M),Y\in\mathbb{X}(N)\) son h-compatibles, entonces
-  \(\forall p\in M,\ \forall f\in\mathcal{F}(N)\) se verifica que
-  \(D_{X}(f\circ h)(p)=D_{Y}(f)(h(p))\). Es decir, \(D_{X}(f\circ
-  h)=D_{Y}(f)\circ h\)
+\begin{lemma}\label{lemacomp} 
+Los campos $X\in \mathbb{X}(M)\) e  \(X'\in\mathbb{X}(N)\) son \(h\)-compatibles si y sólo si 
+  para todo \(p\in M\) y para toda \(f\in\mathcal{F}(N)\) se verifica que
+  \(D_{X}(f\circ h)(p)=D_{X'}(f)(h(p))\). Es decir, \(D_{X}(f\circ
+  h)=D_{X'}(f)\circ h\)
 \end{lemma}
 
 \begin{proof}
-  Sean \(X,Y\) campos h-compatibles.
-  Entonces por definición: \(dh_{p}X(p)=Y(h(p))\),
-  donde \(dh_{p}X(p)\) se corresponde con la derivación de gérmenes para el germen
-  determinado por \(f\): \(\delta_{h(p)}(\Clase{f})=D_{X}(\widetilde{f}\circ
-  h)(p)=D_{X}(f\circ h)(p)\) (pues \(f\) está definida en todo \(N\) y no hace
-  falta extenderla).
-
-  También \(Y(h(p))\) se corresponde con
-  \(\delta'_{h(p)}(\Clase{f})=D_{Y}(f)(h(p))\).
-
-  Por tanto, llegamos a que
-  \[\begin{array}{l}
-      D_{X}(f\circ h)(p)=dh_{p}X(p)=Y(h(p))=D_{Y}(f)(h(p))
-    \end{array}\]
+La condición de compatibilidad nos da \(dh_{p}X(p)=X'(h(p))\) para todo \(p\). El vector 
+\(X'(h(p))\) se corresponde con la derivación \(\delta'_{h(p)}\) en \(h(p)\) que vale sobre un germen 
+\([g]\) en \(h(p)\) \(D_{X'}(\widetilde{g})(h(p))\), siendo \(\widetilde{g}: N \to \RealSet\) una extensión del representante  \(g\). En particular, para \(f\) tenemos 
+\(\delta'_{h(p)}([f]) = D_{X'}(f)(h(p))\). 
+\par
+Por otro lado, la derivación \(\delta'_{h(p)}\) es la imagen por la diferencial en \(p\) de la derivación correspondiente al vector \(X(p)\), \(\delta_{p}([\gamma]) = D_X(\widetilde{\gamma})(p)\). Entonces por REFERENCIA BUSCAR EN CAPITULO7 \((dh_p\delta_p)([g])= \delta_p(\widetilde{g}\circ h)\). En particular, para \(f\) tenemos 
+\[
+D_{X'}(f)(h(p)) = \delta'_{h(p)}([f]) = (dh_p\delta_p)([f])= \delta_p(f\circ h) = D_X(f\circ h)(p).
+\]
+El recíproco es similar. 
 \end{proof}
 
-\begin{proposition}
-  Si \(X,X'\) son h-compatibles (es decir, se cumple \(D_{X}(f\circ h)=D_{X'}(f)\circ
-  h\)), e \(Y,Y'\) también (\(D_{Y}(f\circ h)=D_{Y'}(f)\circ h\)), entonces
-  \(\ProdC{X}{Y},\ProdC{X'}{Y'}\) h-compatibles.
+\begin{proposition}\label{corchcomp}
+  Si \(X,X'\) son \(h\)-compatibles  e \(Y,Y'\) también, entonces
+  los corchetes \(\ProdC{X}{Y}\) y \(\ProdC{X'}{Y'}\) son \(h\)-compatibles.
 \end{proposition}
 
 \begin{proof}
-  Aplicando el lema anterior, lo que tenemos que probar es que
-  \(\ProdC{D_{X}}{D_{Y}}(f\circ h)=\ProdC{D_{X'}}{D_{Y'}}(f)\circ h\) para ver que
-  son h-compatibles.
+  Aplicando el Lema \ref{lemacomp}, lo que tenemos que probar es que
+  \(\ProdC{D_{X}}{D_{Y}}(f\circ h)=\ProdC{D_{X'}}{D_{Y'}}(f)\circ h\).
 
-  Por un lado,
+  Ahora bien, tenemos,
   \begin{align*}
     \ProdC{D_{X}}{D_{Y}}(f\circ h)
     &= D_{X}(D_{Y}(f\circ h)) - D_{Y}(D_{X}(f \circ h))\\
     &=D_{X}(D_{Y'}(f)\circ h)-D_{Y}(D_{X'}(f)\circ h)\\
-    &=D_{X}(f^{Y'}\circ h)-D_{Y}(f^{X'}\circ h)\\
-    &=D_{X'}(f^{Y'})\circ h - D_{Y'}(f^{X'})\circ h \\
+    &=D_{X'}(D_{Y'}(f)) \circ h -D_{Y}(D_{X'}(f))\circ h\\
     &=\ProdC{D_{X'}}{D_{Y'}}(f)\circ h
   \end{align*}
-  
-  donde hemos usado que tanto \(D_{Y'}(f)\) como \(D_{X'}(f)\) son a su vez
-  funciones a las que podemos aplicar el resultado anterior de h-compatibilidad.
+ donde hemos usado que tanto \(D_{Y'}(f)\) como \(D_{X'}(f)\) son a su vez
+ funciones a las que podemos aplicar el Lema \ref{lemacomp}.
 \end{proof}
+
+\begin{example}
+Si \(G\) es un grupo de Lie, el subespacio \(\mathbb{X}_L(G) \subseteq \mathbb{X}(G)\) de los campos invariantes a izquierda de \(G\) es cerrado para el corchete de Lie de acuerdo con la Proposición \ref{corchcomp}. A \(\mathbb{X}_L(G)\) se le llama el \emph{álgebra de Lie del grupo  \(G\)}. 
+\par
+Todo homomorfismo de grupos de Lie \(f: G \to H\) induce un homomorfismo de álgebras de Lie
+\(f_*: \mathbb{X}_L(G) \to \mathbb{X}_L(H)\). En efecto, si \(e\in G\) y \(e'\in H\) son los elementos neutros, sea \(df_e: T_eG \to T_{e'}H$ la diferencial en \(e\). Entonces dado \(X\in \mathbb{X}_L(G)\) se define $f_*X$ como el campo \(f_*X(y)= dl_ydf_e(X(e))\) para todo \(y\in H\). Esto es, el campo invariante a izquierda definido por el vector 
+\(df_e(X(e)) \in T_{e'}H\). Además \(X\) y \(f_*X\) son \(f\)-compatibles. En efecto, para todo \(\in G\) 
+\[
+f_*X(f(x)) = dl_{f(x)}df_e(X(e)) = d(l_{f(x)}\circ f)_e(X(e)) \stackrel{(1)}{=} d(f\circ l_x)_e(X(e)) = df_x\circ (dl_x)_e (X(e)) = df_x\circ X(x),    
+\]   
+donde (1) sigue de ser \(f\) homomorfismo. Hemos probado que $X$ y $f_*X$ son $f$-compatibles.
+\par
+Ahora si $Y\in \mathbb{X}(G)$ es otro campo invariante a izquierda, entonces \(Y\) y  \(f_*Y\) son 
+\(f\)-compatibles y, por la Proposición \ref{corchcomp},  \([X,Y]\) y \([f_*X,f_*Y]\) también son \(f\)-compatibles. Por tanto, 
+\[
+f_*[X,Y](e') = df_e([X,Y](e)) = [f_*X,f_*Y](e'). 
+\]    
+Puesto que los campos en \(\mathbb{X}_L(H)$ están determinados por su valor en $e'$, se sigue entonces $f_*[X,Y] = [f_*X,f_* Y]$. 
+\end{example}
 \end{document}
 
 %%% Local Variables:
