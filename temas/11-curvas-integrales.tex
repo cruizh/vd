@@ -1,0 +1,180 @@
+\documentclass[../VD_completo.tex]{subfiles}
+
+\externaldocument{../VD}
+
+\begin{document}
+
+\setcounter{chapter}{10}
+\chapter{Curvas integrales}\label{chap:curvas-integrales}
+
+\begin{definition}[curva integral]
+  \label{def:curva-integral}
+  Dado un campo tangente \(X \colon M \to \Tangente{M}\) sobre una
+  \(m\)-variedad \(M\) se dice que una curva \(\alpha \colon J \to M\) definida
+  sobre un intervalo abierto \(J \subseteq \RealSet\) (posiblemente \(J =
+  \RealSet\)) es una \emph{curva integral} de \(X\) en \(p \in M\) si
+  \(\alpha(0) = p\) y para todo \(t \in J\), \(X(\alpha(t))\) está representado
+  por la curva \(\alpha_{t} \colon (-\delta, \delta) \to M\) definida por
+  \(\alpha_{t}(s) = \alpha(t+s)\) con \(\delta > 0\) (dependiente de \(t\))
+  elegido para que \(t + s \in J\).
+\end{definition}
+
+Si elegimos una carta \((U, \varphi)\) de \(M\) con \(p \in  U\), para \(\delta
+> 0\) con \(\alpha : (-\delta, \delta) \to U\), se tiene \(\widetilde{\varphi}
+\circ X \circ \widetilde{\varphi}^{-1} (\ell(t)) = (\ell(t), g^{U}(\ell(t)))\),
+donde \(\ell \colon \varphi \circ \alpha \colon J \to \varphi(U)\) y \(g^{U}
+\colon \varphi(U) \to \RealSet^{m}\) es la componente del campo \(X\) en la
+carta \((U, \varphi)\). Por otro lado, \(\widetilde{\varphi} \colon \Tangente{U}
+\to \varphi(U) \times \RealSet^{m}\) lleva el vector \([\alpha_{t}] \in
+\Tangente[\alpha(t)]{M}\) en
+\[
+\left( \varphi \left( \alpha(t) \right), \left( \varphi \circ \alpha_{t}
+  \right)'(0) \right) = \left( \ell(t),
+  \Restrict{\D{\left( \varphi(\alpha(t+s))\right)}{s}}{s=0} \right) = \left( \ell(t), \ell'(t) \right)
+\]
+
+Recordemos que
+\[
+\Restrict{\D{\varphi(t+s)}{t}}{s=0} = \lim_{s \to 0}
+\frac{\varphi(t+s)-\varphi(t)}{s} = \varphi'(t)
+\]
+
+Así pues localmente, una curva integral dentro de una carta \((U, \varphi)\)
+está determinada por la igualdad \(g^{U}(\ell(t)) = \ell'(t)\), esto es el sistema
+de ecuaciones diferenciales ordinarias
+
+\begin{equation}
+  \label{eq:edo-curva-integral}
+  \begin{dcases}
+    \ell'_{i}(t) = g^{U}_{i}(\ell_{1}(t), \dots, \ell_{m}(t)) &1 \leq i
+    \leq m\\
+    \ell(0) = \varphi(p)
+  \end{dcases}
+\end{equation}
+
+Esto es: al pasar a coordenadas, una curva integral es aquella que tiene por
+vector tangente en un punto el valor del campo en el mismo.
+
+Las ecuaciones en \eqref{eq:edo-curva-integral} tienen solución única en el
+siguiente sentido: existen abiertos \(\Omega \subseteq \varphi(U)\) y \(J\) de
+\(\varphi(p)\) y \(0\) y una aplicación diferenciable \(\xi \colon \Omega \times
+J \to \varphi(U)\) tal que \(\xi(x,0) = x\) para todo \(x \in \Omega\) y
+\(\Style{DDisplayFunc=outset}\pderiv{\xi(x,t)}{t} = g^{U}(\xi(x,t))\) para todo
+\((x,t) \in \Omega \times J\).
+
+Así pues, \(\gamma^{p}(t) = \xi(\varphi(p), t)\) es la curva integral del
+campo \(X\) con origen en \(p\). Además si \(\xi\) y \(\widehat{\xi}\) son
+funciones cumpliendo las propiedades anteriores con \(\xi(x_{0},0) =
+\widehat{\xi}(x_{0},0)\) entonces \(\xi(x_{0},t) = \widehat{\xi}(x_{0},t)\)
+donde estén definidas ambas.
+
+Es decir, si \(\gamma^{p}\) y \(\widehat{\gamma}^{p}\) son curvas integrales con
+origen en \(p\) entonces \(\gamma^{p} = \widehat{\gamma}^{p}\) en un intervalo
+común de definición alrededor de \(0\).
+
+El sistema de ecuaciones de \eqref{eq:edo-curva-integral} codifica localmente el
+campo \(X\), de forma que \(g^{U}\) es la componente del campo y las soluciones
+del sistema son las curvas integrales del mismo.
+
+Si pensamos los campos como derivaciones \(D \colon \mathcal{F}(M) \to
+\mathcal{F}(M)\), entonces una curva integral de \(D\) es aquella para la que
+\(D(f)(\gamma(t)) = (f \circ \gamma)'(t)\) para todo \(f \in \mathcal{F}(M)\).
+
+En efecto, \(D = D_{X}\) para un campo \(X\) y
+\[
+  \Style{DDisplayFunc=inset}
+  D(f)(x) = D_{X}(f)(p) = \Sum{g^{U}_{i}(\varphi(p)) \Restrict{\pderiv{f \circ \varphi^{-1}}{x_{i}}}{\varphi(p)}}{i,1,m}
+\]
+
+Entonces si \(\gamma(t)\) es curva integral de \(X\),
+\begin{align*}
+  D(f)(\gamma(t))
+  &= \Sum{g^{U}_{i}((\varphi \circ \gamma)(t)) \Restrict{\pderiv{f \circ \varphi^{-1}}{x_{i}}}{\varphi(\gamma(t))}}{i,1,m}\\
+  &= \Sum{(\varphi \circ \gamma)'_{i}(t) \Restrict{\pderiv{f \circ \varphi^{-1}}{x_{i}}}{\varphi(\gamma(t))}}{i,1,m}\\
+  &= \left( f \circ \varphi^{-1} \circ \varphi \circ \gamma \right)'(t)\\
+  &= \left( f \circ \gamma \right)'(t)
+\end{align*}
+
+Una propiedad clave de las curvas integrales es la siguiente:
+
+\begin{lemma}[traslación de curvas integrales]
+  \label{lem:ci-traslacion}
+  Si \(\gamma^{p} \colon J \to M\) es una \nameref{def:curva-integral} con
+  origen \(p \in M\) entonces si \(t \in J\) y \(q = \gamma(t)\), entonces la
+  curva integral de origen q, \(\gamma^{q}\) cumple \(\gamma^{q}(s) =
+  \gamma^{p}(t+s)\) siempre que \(t + s \in J\).
+\end{lemma}
+
+\begin{proof}
+  \(X(\gamma^{q}(s)) = X(\gamma^{p}(t+s)) = [\gamma^{p}_{t+s}]\). Pero
+  \(\gamma^{p}_{t+s}(s') = \gamma^{p}(t+s+s') = \gamma^{q}(s+s') =
+  \gamma^{q}_{s}(s')\).
+
+  Así, \(X(\gamma^{q}(s)) = [\gamma^{p}_{t+s}] = [\gamma^{q}_{s}]\) y por tanto
+  \(\gamma^{q}\) es la curva integral con origen en \(q = \gamma(t)\) en el
+  intervalo \((-\varepsilon, \varepsilon)\) con \(\varepsilon\) adecuado para
+  que \((t - \varepsilon, t + \varepsilon) \subseteq J\).
+\end{proof}
+
+En el caso de campos \(f\)-relacionados o
+\hyperref[def:f-comp]{\(h\)-compatibles}
+por una aplicación diferenciable \(h \colon M \to N\) tenemos
+
+\begin{lemma}
+  Si \(Y\) es \hyperref[def:f-comp]{\(h\)-compatible} con \(X\) y \(\gamma\) es
+  la curva integral de \(X\) en \(p\), entonces \(h \circ \gamma\) es la curva
+  integral de \(Y\) en \(h(p)\).
+\end{lemma}
+
+\begin{proof}
+  En efecto,
+
+  \begin{centering}
+    \begin{tikzcd}
+      M \ar[d, "X"'] \ar[r, "h"] & N \ar[d, "Y"]\\
+      \Tangente{M} \ar[r, "\mathrm{d} h"'] & \Tangente{N}
+    \end{tikzcd}
+  \end{centering}
+
+  Tenemos \(Y(h(p)) = \mathrm{d} h X(p)\), por lo que \(Y(h(\gamma(t))) =
+  \mathrm{d} h X(\gamma(t)) = \mathrm{d} h [\gamma_{t}] = [h \circ \gamma_{t}] =
+  [ (h \circ \gamma)_{t}]\).
+
+  Por tanto si \(h \colon X \to X\) y \(X\) es un campo
+  \hyperref[def:f-invariante]{\(h\)-invariante}, tenemos que \(\mathrm{d} h X =
+  X h\), por lo que la curva integral de \(X\) en \(h(p)\) es \(h \circ \gamma\)
+  si \(\gamma\) es la curva integral en \(p\).
+
+  En particular si \(h\) es un difeomorfismo y \(\gamma\) es la curva integral
+  de \(X\) en \(p\), entonces \(h \circ \gamma\) es la curva integral del campo
+  \(h * X = \mathrm{d} h X h^{-1}\) en \(h(p)\)
+\end{proof}
+
+\begin{definition}[name=flujo]
+  \label{def:flujo}
+  Se llama \emph{flujo} o \emph{sistema dinámico} sobre una variedad \(M\) a una
+  aplicación diferenciable \(\Phi \colon \RealSet \times M \to M\) cumpliendo
+  \(\Phi(0,p) = p\) y \(\Phi(s+t, p) = \Phi(s, \Phi(t, p))\) para todo \(p \in
+  M\) y \(t, s \in \RealSet\).
+\end{definition}
+
+Si fijamos \(\Phi(0,p) = p\), \(\Phi_{t} \colon M \to M\) cumple \(\Phi_{0} =
+\Id{M}\) y \(\Phi_{t} \circ \Phi_{s} = \Phi_{t+s}\). En particular \(\Phi_{t}\)
+es difeomorfismo con inversa \(\Phi_{-t}\).
+
+\begin{definition}[name={línea del flujo}]
+\label{def:linea-flujo}
+  En las condiciones anteriores, fijado \(p \in M\), \(\Phi_{p} \colon \RealSet \to M\) se
+convierte en una curva en \(M\) con origen en \(x\). A \(\Phi_{p}\) se le llama
+\emph{línea del flujo} \(\Phi\) en \(p\).
+\end{definition}
+
+\begin{definition}[name=órbita]
+\label{def:orbita}
+A la imagen \(\Phi_{p}(\RealSet)\) se le llama \emph{órbita} de \(p\) para el flujo \(\Phi\).
+\end{definition}
+
+\end{document}
+%%% Local Variables:
+%%% TeX-master: "../VD_ebook"
+%%% End:
