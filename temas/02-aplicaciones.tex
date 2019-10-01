@@ -282,34 +282,33 @@ que es diferenciable en \(\varphi(p)\).
 \label{sec:partial}
 
 \begin{definition}
-  Llamamos \(\Fdif{U}\) al conjunto de funciones (infinitamente)
-  diferenciables del tipo \(f \colon U \to \RealSet\), i.e. \(\Fdif{U}
-  \coloneqq C^{\infty}(U; \RealSet)\).
+  Para todo abierto \(U \subseteq M\) de la variedad \(M\),
+  llamamos \(\Fdif{U}\) al conjunto de funciones (infinitamente)
+  diferenciables \(f \colon U \to \RealSet\). (i.e. \(\Fdif{U}
+  = C^{\infty}(U; \RealSet)\)).
 \end{definition}
 
 \begin{definition}[función coordenada]
-  Sea \((U,\varphi)\) carta de \(M\). Consideramos el diagrama de la
-  \cref{fig:fact-coord}.
-
-  \begin{figure}[h]
-    \centering
-    \begin{tikzcd}
-      U \ar[r,"\varphi"] \ar[dr, "x_{i}"'] &
-      \varphi(U) \ar[r, symbol=\subseteq] \ar[d, "\pi_{i}"] & \RealSet^{m}\\
-      & \RealSet
-    \end{tikzcd}
-    \caption{Función coordenada}
-    \label{fig:fact-coord}
-  \end{figure}
-
-  Consideramos la función \(x_{i} \colon U \to \RealSet\), que actúa de la
+  Sea \((U,\varphi)\) carta de \(M^{m}\).
+  Si componemos \(\varphi \colon U \to \RealSet^{m}\) con la \(i\)-ésima
+  proyección \(\pi_{i} \colon \RealSet^{m} \to \RealSet\)
+  tenemos la función \(x_{i} \colon U \to \RealSet\), que actúa de la
   siguiente forma:
   \[
     p \mapsto (\varphi_{i}(p), \dots, \varphi_{m}(p)) \mapsto \varphi_{i}(p)
   \]
+
+  \begin{equation}
+    \label{eq:cd-coord}
+    \begin{tikzcd}
+      U \ar[d, "\varphi"'] \ar[rd, "x_{i}"]\\
+      \varphi(U) \ar[r, "\pi_{i}"'] & \RealSet
+    \end{tikzcd}
+  \end{equation}
   
-  A esta función se le llama \emph{función coordenada} de la carta
-  \((U,\varphi)\).
+  A esta función se le llama \emph{\(i\)-ésima función coordenada} de la carta
+  \((U,\varphi)\). Es decir, \((x_{1}(p), \dots, x_{m}(p))\) son las
+  ``coordenadas'' de \(p \in M\) respecto a la carta \((U, \varphi)\).
 \end{definition}
 
 \begin{proposition}
@@ -327,6 +326,7 @@ que es diferenciable en \(\varphi(p)\).
 es diferenciable por serlo el cambio de carta.
 \end{proof}
 
+% TODO: Sustituir por 34-1
 \begin{definition}[derivada parcial]
 Sea \(\pderiv{}{x_{i}} \colon \mathcal{F}(U)\to\mathcal{F}(U)\), \(1 \leq i\leq
 m \coloneqq \dim{M}\), con \((U,\varphi)\) carta de \(M\), el operador tal
@@ -353,6 +353,7 @@ que si \(f \in \mathcal{F}(U),\ p\in U\), entonces:
   \end{align*}
   que es diferenciable.
 \end{proof}
+% END TODO
 
 \begin{note}
   Si \((U,\varphi)\) es una carta y \(U' \subseteq U\) es un abierto, tenemos
