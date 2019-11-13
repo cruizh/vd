@@ -129,12 +129,12 @@ por una aplicación diferenciable \(h \colon M \to N\) tenemos
 \begin{proof}
   En efecto,
 
-  \begin{centering}
+  \begin{center}
     \begin{tikzcd}
       M \ar[d, "X"'] \ar[r, "h"] & N \ar[d, "Y"]\\
       \Tangente{M} \ar[r, "\mathrm{d} h"'] & \Tangente{N}
     \end{tikzcd}
-  \end{centering}
+  \end{center}
 
   Tenemos \(Y(h(p)) = \mathrm{d} h X(p)\), por lo que \(Y(h(\gamma(t))) =
   \mathrm{d} h X(\gamma(t)) = \mathrm{d} h [\gamma_{t}] = [h \circ \gamma_{t}] =
@@ -173,6 +173,543 @@ convierte en una curva en \(M\) con origen en \(x\). A \(\Phi_{p}\) se le llama
 \label{def:orbita}
 A la imagen \(\Phi_{p}(\RealSet)\) se le llama \emph{órbita} de \(p\) para el flujo \(\Phi\).
 \end{definition}
+
+\begin{lemma}
+  Se define la relación de equivalencia \(p \sim q\) sii existe \(t \in
+  \RealSet\) con \(\Phi(t,p) = q\).
+
+  Esta relación es dde equivalencia y la clase de \(p \in M\) es justamente su
+  órbita \(\Phi_{p}(\RealSet)\). Así pues las órbitas forman una partición de \(M\).
+\end{lemma}
+
+\begin{proof}\item
+  \begin{subproof}[Reflexiva]
+    \(\Phi(0,p) = p\).
+  \end{subproof}
+  
+  \begin{subproof}[Simétrica]
+    Si \(q = \Phi(t,p) = \Phi_{t}(p)\), entonces \(p = \Phi_{t}^{-1}(q) =
+    \Phi_{-t}(q) = \Phi(-t, q)\).
+  \end{subproof}
+
+  \begin{subproof}[Transitiva]
+    Si \(q = \Phi(t,p)\), \(q' = \Phi(t', q)\), entonces
+    \[q' = \Phi(t', \Phi(t, p)) = \Phi(t'+t, p).\]
+  \end{subproof}
+\end{proof}
+
+\begin{note}
+  Nótese que si un campo \(X\) es nulo sobre una curva integral \(\gamma(t)\)
+  entonces esta es nula. En efecto, \(0 = X(\gamma(t)) = \Clase{\gamma_{t}}\) para
+  todo \(t\). Entonces para toda carta \((U, \varphi)\) con \(\gamma(t) \in U\),
+  si \(\gamma \colon (-\varepsilon, \varepsilon) \to U\), tenemos que
+  \[
+    \widehat{\varphi} X \gamma(s) = \left( \varphi \gamma(s), (\varphi \circ
+    \gamma_{s})'(0) \right) = \left( \varphi \gamma(s), (\varphi \gamma)'(s)
+  \right)
+  = \left( \varphi \gamma(s), 0 \right).
+\]
+
+Luego \(\varphi \gamma\) es constante en \((-\varepsilon, \varepsilon)\) así que
+\(\gamma\) es constante en \((-\varepsilon, \varepsilon)\) y por tanto todo su
+intervalo de definición.
+\end{note}
+
+Todo flujo sobre \(M\) determina de manera natural un campo tangente sobre
+\(M\).
+
+\begin{proposition}
+  Dado un flujo \(\Phi \colon \RealSet \to M\), \(X_{\Phi} \colon M \to
+  \Tangente{M}\) que asigna a \(p \in M\) el vector \(X_{\Phi}(p)\) representado
+  por la curva \(\Phi_{p} \colon \RealSet \to M\) es un campo tangente sobre
+  \(M\) llamado el \emph{campo de velocidades} del flujo \(\Phi\).
+
+  Además \(X_{\Phi}\) es un campo \(\Phi_{t}\)-invariante para todo \(t \in
+  \RealSet\) y \(\Phi_{p}\) es la curva integral de \(X_{\Phi}\) en \(p\).
+\end{proposition}
+
+\begin{proof}
+  Para ver que es \(\Phi_{t}\)-invariante hay que ver que el siguiente diagrama conmuta.
+  \begin{centering}
+    \begin{tikzcd}
+      M \ar[d, "X_{\Phi}"'] \ar[r, "\Phi_{t}"] & M \ar[d, "X_{\Phi}"]\\
+      \Tangente{M} \ar[r, "\mathrm{d} \Phi_{t}"'] & \Tangente{M}
+    \end{tikzcd}
+  \end{centering}
+
+  En efecto, \(X_{\Phi} \left( \Phi_{t}(p) \right)\) % \(= X_{\Phi} \left(
+  % \Phi_{t}(p) \right)\) % (???)
+  es el vector representado por la curva
+  \[
+    \Phi_{\Phi_{t}(p)}(s) = \Phi \left( s, \Phi_{t}(p) \right)
+    = \Phi \left( s, \Phi(t,p) \right)
+    = \Phi \left( s+t, p \right).
+  \]
+
+  Análogamente,
+  \[
+    \dif{\Phi_{t} X_{\Phi}(p)} = \dif{\Phi_{t} \Clase{\Phi_{p}}} =
+    \Clase{\Phi_{t} \circ \Phi_{p}}
+  \]
+  pero
+  \[
+    \Phi_{t} \circ \Phi_{p}(s) = \Phi_{t} \left( \Phi(s,p) \right)
+    = \Phi \left( t, \Phi(s, p) \right)
+    = \Phi (t+s, p)
+  \]
+
+  Observar que se ha usado la continuidad de la norma de \(\RealSet\).
+
+  Por otro lado, la curva integral de \(X_{\Phi}\) en \(p\) será una curva
+  \(\gamma\) tal que \(X_{\Phi} \left( \gamma(t) \right) = \Clase{\gamma_{t}}\)
+  con \(\gamma_{t}(s) = \gamma(s+t)\). Si tomamos \(\gamma = \Phi_{p}\), tenemos
+  \[
+    \left( \Phi_{p} \right)_{t}(s)
+    = \Phi_{p}(s+t)
+    = \Phi(s+t, p)
+    = \Phi \left(s, \Phi(t,p) \right)
+  \]
+
+  Por otro lado \(X_{\Phi}(\Phi_{p}(t))\) está representada por la curva
+  \(\Phi_{\Phi_{p}(t)}(s) = \Phi(s, \Phi_{p}(t)) = \Phi(s, \Phi(t, p)) = \left(
+    \Phi_{p} \right)_{t}(s)\).
+  Es decir, \(X_{\Phi} \left( \Phi_{p}(t) \right) = \Clase{\left( \Phi_{p}
+    \right)_{t}}\) y \(\Phi_{p}\) es la curva integral de \(X_{\Phi}\) en \(p\).
+
+  Queda verificar la diferenciabilidad de \(X_{\Phi}\).
+  Por ser \(\Phi\) diferenciable, encontramos cartas \((U, \varphi)\) y \((W,
+  \psi)\) de \(p\) y \(\varepsilon > 0\) tales que \(f = \varphi \circ \Phi
+  \circ \left( \Id{} \times \psi \right)^{-1}\) es diferenciable en el diagrama
+
+  \begin{center}
+    \begin{tikzcd}
+      (-\varepsilon, \varepsilon) \times W
+      \ar[r, "\Phi"]
+      \ar[d, "\Id{} \times \psi"']
+      & U
+      \ar[d, "\varphi"]\\
+      (-\varepsilon, \varepsilon) \times \psi(W)
+      \ar[r, dashed]
+      & \varphi(U)
+    \end{tikzcd}
+  \end{center}
+
+  Obsérvese que \(f(t, x) = \varphi \circ \Phi_{\psi^{-1}(x)}(t)\).
+
+  Es inmediato comprobar que \(X_{\Phi}(W) \subseteq \Tangente{U}\):
+  ya que si \(q \in W\), \(X_{\Phi}(q) = \Clase{\Phi_{q}} =
+  \Clase{\overline{\Phi_{q}}}\) para \(\overline{{\Phi_{q}}} =
+  \Restrict{\Phi_{q}}{(-\varepsilon, \varepsilon)}\) y para \(\Abs{t} <
+  \varepsilon\) \(\overline{\Phi_{q}}(t) = \Phi(q, t) \in U\).
+
+  Tenemos así el diagrama
+
+  \begin{center}
+    \begin{tikzcd}
+      W
+      \ar[r, "X_{\Phi}"]
+      \ar[d, "\psi"']
+      & \Tangente{U}
+      \ar[d, "\widetilde{\varphi}"]\\
+      \psi(W)
+      \ar[r, dashed]
+      & \varphi(U) \times \RealSet^{m}
+    \end{tikzcd}
+  \end{center}
+
+  Entonces para \(g = \widetilde{\varphi} \circ X_{\Phi} \circ \psi^{-1}\)
+  tenemos
+  \begin{align*}
+    g(x)
+    &= \widetilde{\varphi} \left( \Clase{\Phi_{\psi^{-1}(x)}} \right)\\
+    &= \widetilde{\varphi} \left( \Clase{\overline{\Phi}_{\psi^{-1}(x)}} \right)\\
+    &= \left( \varphi \circ \overline{\Phi}_{\psi^{-1}(x)}(0), \left( \varphi
+        \circ \overline{\Phi}_{\psi^{-1}(x)} \right)'(0) \right)\\
+    &= \left( \varphi \circ \psi^{-1}(x), \Restrict{\D{f(x,t)}{t}}{t=0} \right)
+  \end{align*}
+
+  Siendo ambas funciones diferenciables en \(x\).
+\end{proof}
+
+A continuación veremos que hay tres tipos de órbitas de cualquier flujo.
+
+\begin{proposition}
+  Sea \(\Phi \colon \RealSet \times M \to M\) un flujo en \(M\). Para \(p \in
+  M\), si \(\Phi_{p} \colon \RealSet \to M\) es la línea de flujo de \(\Phi\)
+  en \(p\), se cumple una de las siguientes condiciones:
+  \begin{enumerate}
+  \item \(\Phi_{p}\) es constante.
+  \item \(\Phi_{p}\) es una inmersión inyectiva.
+  \item \(\Phi_{p}\) es una inmersión periódica, i.e. existe \(t_{0} \in
+    \RealSet\) (el periodo) tal que \(\Phi_{p}(s) = \Phi_{p}(t)\) si y solo si
+    existe un entero \(k \in \IntegerSet\) con \(s - t = k t_{0}\).
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  Como \(\Phi_{t}\) es difeomorfismo para todo \(t\), \(\dif{\Phi_{t}} \colon
+  \Tangente[p]{M} \to \Tangente[\Phi_{t}(p)]{}\) es isomorfismo y tenemos
+  \(\dif{\Phi_{t}}(X_{\Phi}(p)) = \Clase{\Phi_{t} \circ \Phi_{p}}\), donde
+  \(\Phi_{t} \Phi_{p}(s) = \left( \Phi_{p}(s) \right)_{t}\) por lo que
+  \(\Clase{\Phi_{t} \circ \Phi_{p}} = X_{\Phi} \left( \Phi_{p}(t) \right)\).
+  Así pues si el campo \(X_{\Phi}\) es nulo para algún punto \(\Phi_{p}(t)\),
+  entonces \(\Phi_{\Phi}(p) = 0\) y cambiando arriba \(t\) por \(t'\), lo es en
+  todos los puntos de la curva \(\Phi_{p}\). Por ser \(\Phi_{p}\) la curva
+  integral del campo \(X_{\Phi}\) en \(p\), entonces esa curva sería constante.
+
+  En caso contrario \(X_{\Phi}\) no es nulo en ningún punto de la curva
+  \(\Phi_{p}\) y, en particular, \(\Clase{\Phi_{p}} = X_{\Phi} \left(
+    \Phi_{p}(0) \right) \neq 0\), y por tanto \(\dif{\Phi_{p}} \colon
+  \Tangente[0]{\RealSet} \to \Tangente[p]{M}\) lleva la clase de la curva
+  \(\varepsilon(t) = t\) en la clase de \(\Clase{\Phi_{p}} \neq 0\).
+  Así pues, \(\dif{\Phi_{p}}\) es inyectiva y \(\Phi_{p}\) es una inmersión.
+
+  Queda ver qué ocurre si \(\Phi_{p}\) no es inyectiva. Sean \(s < s'\) con
+  \(\Phi_{p}(s) = \Phi(s, p) = \Phi(s', p) = \Phi_{p}(s')\). Entonces
+  \[
+    \Phi_{p}(s'-s) = \Phi(s'-s, p) = \Phi \left( -s, \Phi(s', p) \right) = \Phi
+    \left( -s, \Phi(s, p) \right) = \Phi(0, p) = p
+  \]
+
+  Además, de la continuidad de \(\Phi_{p}\) se sigue que \(\Phi_{p}^{-1}(p)
+  \subseteq \RealSet\) es cerrado y contiene a \(0\) y a \(s'-s > 0\).
+
+  Como \(\Phi_{p}\) es una inmersión, es localmente inyectiva alrededor del
+  \(0\) por el teorema del valor medio aplicado a las composiciones \(\pi_{i}
+  \circ \varphi \circ \Phi_{p} \colon (-\delta, \delta) \to U \to \varphi(U) \to
+  \RealSet\), donde \((U, \varphi)\) es una carta con \(p \in U\).
+
+  Entonces, existe \(\varepsilon > 0\) tal que \(\Phi_{p}^{-1}(p) \cap
+  (-\varepsilon, \varepsilon) = \Set{0}\).
+
+  Sea el conjunto \(S = \Set{t > 0 : \Phi_{p}(t) = p}\). Como para \(0 < t <
+  \varepsilon\), \(\Phi_{p}(t) \neq 0\), \(S \subseteq \Set{t \in \RealSet, t
+    \geq \varepsilon}\) y por tanto \(S = \Phi_{p}^{-1}(p) \cap [0, +\infty)\)
+  es cerrado y acotado inferiormente.
+  Por tanto, existe un mínimo \(t_{0} \in S\). Tenemos \(\Phi_{p}(t_{0}) = p\) y
+  para todo entero \(k \geq 0\) tenemos \(\Phi_{p}(t + k t_{0}) = \Phi_{p}(t +
+  t_{0} + \dotsb + t_{0}) = \Phi \left( t, \Phi(t_{0} + \dotsb + t_{0}, p)
+  \right) = \Phi(t, p) = \Phi_{p}(t)\). Igual si \(k \leq 0\).
+
+  Ahora si \(t - t' \neq k t_{0}\) para todo entero \(k \in \IntegerSet\) y
+  \(\Phi_{p}(t) = \Phi_{p}(t')\), sea \(k_{0}\) el entero con \((k_{0}-1) t_{0}
+  < t - t' < k_{0} t_{0}\).
+
+  Entonces
+  \begin{align*}
+    \Phi_{p} \left( k_{0}t_{0} - (t-t') \right)
+    &= \Phi \left(k_{0} t_{0} - t + t', p \right)\\
+    &= \Phi \left( t' - t + (k_{0}-1) t_{0}, \Phi(t_{0}, p) \right)\\
+    &= \Phi \left( t' - t + (k_{0}-1) t_{0}, p \right)\\
+    &= \dots =\\
+    &= \Phi(t-t', p)\\
+    &= \Phi \left( -t', \Phi(t, p) \right)\\
+    &= \Phi \left( -t', \Phi(t', p) \right)\\
+    &= \Phi_{p}(0) = p
+  \end{align*}
+
+  Pero \(0 < k_{0} t_{0} - (t-t') < t_{0}\), lo que nos da una contradicción con
+  la minimalidad de \(t_{0}\).
+\end{proof}
+
+\begin{note}
+  En el tercer caso de la proposición anterior, las órbitas son difeomorfas a
+  \(S^{1}\) pues \(\Phi_{p} \colon \RealSet \to M\) factoriza a
+  \(\widetilde{\Phi}_{p} \colon S^{1} \to M\) por la aplicación \(\RealSet \to
+  S^{1}\), \(t \mapsto e^{\sfrac{2 \pi i t}{t_{0}}}\).
+\end{note}
+
+\begin{example}
+  La norma en \(\RealSet\) nos da un flujo canónico \(L \colon \RealSet \times
+  \RealSet \to \RealSet\), \(L(x,y) = x+y\), cuyo campo asociado es \(X_{L}
+  \colon \RealSet \to \Tangente{\RealSet} = \RealSet \times \RealSet\),
+  \(X_{L}(t) = \Clase{L_{t}}\), \(L_{t}(s) = t+s\).
+
+  Además, si \(X\) es un campo y \(\gamma\) una curva integral del mismo,
+  tenemos
+  \[
+    X \left( \gamma(t) \right) = \Clase{\gamma_{t}} = \dif{\gamma} \Clase{L_{t}}
+  \]
+
+  El campo \(L\) solo tiene una órbita.
+\end{example}
+
+\begin{example}
+  Sea
+  \begin{align*}
+    \Phi \colon \RealSet \times \RealSet^{2}
+    &\to \RealSet^{2}\\
+    \left( t,
+    \begin{pmatrix}
+      p \\ q
+    \end{pmatrix}
+    \right)
+    &\mapsto e^{-\sfrac{t}{2}}
+      \begin{pmatrix}
+        \cos t & \sin t\\
+        -\sin t & \cos t
+      \end{pmatrix}
+      \begin{pmatrix}
+        p \\ q
+      \end{pmatrix}
+  \end{align*}
+
+  Es un flujo pues
+  \begin{align*}
+    \Phi \left( 0,
+    \begin{pmatrix}
+      p \\ q
+    \end{pmatrix} \right)
+    &=
+      \begin{pmatrix}
+        p \\ q
+      \end{pmatrix}\\
+    \Phi \left( t + s,
+    \begin{pmatrix}
+      p \\ q
+    \end{pmatrix} \right)
+    &=
+      e^{\left( - \sfrac{t}{2} - \sfrac{s}{2} \right)}
+      \begin{pmatrix}
+        \cos (t+s) & \sin (t+s)\\
+        -\sin (t+s) & \cos (t+s)
+      \end{pmatrix}
+      \begin{pmatrix}
+        p \\ q
+      \end{pmatrix} =\\
+    &=
+      e^{-\sfrac{t}{2}}
+      \begin{pmatrix}
+        \cos t & \sin t\\
+        -\sin t & \cos t
+      \end{pmatrix}
+      e^{-\sfrac{s}{2}}
+      \begin{pmatrix}
+        \cos s & \sin s\\
+        -\sin s & \cos s
+      \end{pmatrix}
+      \begin{pmatrix}
+        p \\ q
+      \end{pmatrix}\\
+    &= \Phi \left( t, \Phi \left( s,
+      \begin{pmatrix}
+        p \\ q
+      \end{pmatrix}
+\right) \right)
+  \end{align*}
+
+  Aquí se usan las fórmulas del seno y coseno de la suma de ángulos o el hecho
+  de que la matriz cuadrada representa el giro de ángulo \(t\) o \(s\) del
+  plano.
+
+  En este flujo la órbita del origen se reduce al punto y las órbitas de los
+  demás puntos son de tipo espiral pues cuando \(t \to \infty\) se va acercando
+  al origen y cuando \(t \to -\infty\) se va girando hacia el infinito.
+\end{example}
+
+\begin{example}
+  Si en el caso anterior eliminamos el coeficiente exponencial, entonces el
+  flujo resultante tiene todas sus órbitas circunferencias salvo el origen que
+  se reduce a un punto.
+\end{example}
+
+Ahora se plantea el problema de determinar si todo campo tangente \(X \colon M
+\to \Tangente{M}\) da lugar a un flujo.
+
+Si todas las curvas integrales de \(X\) estuvieran definidas en todo
+\(\RealSet\) entonces \(\Phi_{X} \colon \RealSet \times M \to M\) dada por
+\(\Phi_{X}(t, p) = \gamma_{p}(t)\) donde \(\gamma_{p}\) es la curva integral de
+\(X\) con origen en \(p\) sería una buena opción.
+
+Desafortunadamente no todas las curvas integrales están definidas en todo
+\(\RealSet\) y por ello se hace necesario definir un flujo local:
+
+\begin{definition}[name={flujo local}, label={def:flujo-local}]
+  Definimos un \emph{flujo local} como una aplicación diferenciable \(\Phi \colon U \to M\),
+  donde \(U\) es un abierto de \(\RealSet \times M\) con \(\Set{0} \times M
+  \subseteq U\) y cada intersección \(\RealSet \times \Set{0} \cap U\) es un
+  intervalo abierto \((a_{p}, b_{p})\) conteniendo al \(0\).
+\end{definition}
+Ahora se exigen las propiedades
+\begin{enumerate}
+\item \(\Phi(0,p) = p\) para todo \(p\).
+\item \(\Phi \left( t, \Phi(s,p) \right) = \Phi(t+s, p)\) siempre que tenga
+  sentido, i.e. \((t+s, p) \in U\), \(\left( t, \Phi(s,p) \right) \in U\) y
+  \((s,p) \in U\).
+\end{enumerate}
+
+
+\begin{definition}[name={flujo local maximal}]
+  Un \nameref{def:flujo-local} se dice \emph{maximal} si no existe otro flujo
+  \(\psi \colon V \to M\) con \(U \subseteq V\), \(U \neq V\) y
+  \(\Restrict{\psi}{U} = \Phi\).
+\end{definition}
+
+El siguiente teorema da la equivalencia entre flujos y campos tangentes sobre
+una variedad \(M\). Una demostración se puede encontrar en el tema 9. % TODO [REF Lee 9.12]
+
+\begin{theorem}[name={equivalencia entre campos tangentes y flujos},label={thm:campos-tangentes-flujos}]
+  Existe una biyección entre campos tangentes y flujos maximales sobre \(M\).
+
+  Si \(\Phi\) es un flujo, el campo asociado \(X_{\Phi}\) tiene a las curvas
+  \(\Phi_{p}\) por curvas integrales.
+
+  Recíprocamente, si \(X \colon M \to \Tangente{M}\) es un campo, el flujo
+  asociado \(\Phi^{X} \colon U \to M\) es tal que \(\Phi^{X}_{p}\) es la curva
+  integral maximal con origen en \(p\).
+\end{theorem}
+
+\begin{definition}[name={completo}, label={def:campo-tangente-completo}]
+  Un campo tangente se dice \emph{completo} si todas sus curvas integrales
+  maximales están definidas en todo \(\RealSet\).
+\end{definition}
+
+Si un campo tangente es completo, el teorema anterior da el siguiente caso
+particular:
+
+\begin{theorem}
+  Existe una biyección entre campos tangentes completos y flujos sobre la
+  variedad \(M\).
+\end{theorem}
+
+\begin{proposition}
+  \label{prop:compacta-completo}
+  Si \(M\) es compacta, todo campo sobre \(M\) es completo.
+\end{proposition}
+
+La demostración es consecuencia del siguiente lema:
+
+\begin{lemma}
+  Sea \(X \colon M \to \Tangente{M}\) un campo tangente tal que existe
+  \(\varepsilon > 0\) tal que para toda curva integral \(\gamma\) de \(X\),
+  \((-\varepsilon, \varepsilon)\) está en el dominio de definición de
+  \(\gamma\). Entonces \(X\) es un campo completo.
+\end{lemma}
+
+\begin{proof}
+  Supongamos que para \(p \in M\), la curva integral con origen en \(p\),
+  \(\gamma^{p} \colon J \to M\) tiene un dominio acotado superiormente, i.e.
+  existe \(b = \sup J \in \RealSet\).
+
+  Sea \(t_{0}\) con \(b - \varepsilon < t_{0} < b\). Nótese que \((-\varepsilon,
+  \varepsilon) \subseteq J\). Sea \(q = \gamma^{p}(t_{0})\). Entoncess, si
+  \(\gamma^{q}\) es la curva integral con origen en \(q\), \(\gamma^{q}\) está
+  definida en \((-\varepsilon, \varepsilon)\) por hipótesis y tiene sentido
+  \(\gamma^{q}(t-t_{0})\) si \(t \in (t_{0} - \varepsilon, t_{0} +
+  \varepsilon)\).
+
+  Además por el \hyperref[lem:ci-traslacion]{lema de traslación}
+  (\cref{lem:ci-traslacion}),
+  \(\gamma^{q}(t-t_{0}) = \gamma^{p}(t)\) ya que \(q = \gamma^{p}(t_{0})\).
+  Por tanto \(\widehat{\gamma} \colon J \cup (t_{0} - \varepsilon, t_{0} +
+  \varepsilon) \to M\) dada por \(\widehat{\gamma}(t) = \gamma^{p}(t)\) si \(t
+  \in J\) y \(\widehat{\gamma}(t) = \gamma^{q}(t-t_{0})\) si \(\Abs{t-t_{0}} <
+  \varepsilon\) es una curva diferenciable para la que
+  \[
+    X \left(\widehat{\gamma}(t) \right) =
+    \begin{cases}
+      X \left( \gamma^{p}(t) \right) = \Clase{\gamma^{p}_{t}} &\text{si } t \in J\\
+      X \left( \gamma^{q}(t) \right) = \Clase{\gamma^{q}_{t}} &\text{si }
+      \Abs{t-t_{0}} < \varepsilon
+    \end{cases}
+  \]
+  y para \(s\) con \(\Abs{s} < \delta\) de forma que \(t+s \in J\) si \(t \in
+  J\) y \(t+s \in (t_{0}-\varepsilon, t_{0}+\varepsilon)\) si \(\Abs{t-t_{0}} <
+  \varepsilon\), tenemos que \(\gamma^{p}_{t}(s) = \gamma^{p}(s+t) =
+  \widehat{\gamma}_{t}(s)\) y \(\gamma^{q}_{t}(s) = \gamma^{q}(s+t) =
+  \widehat{\gamma}_{t}(s)\).
+
+  Por tanto \(\widehat{\gamma}\) es curva integral de \(X\) con origen en
+  \(\widehat{\gamma}(0) = \gamma^{p}(0) = p\) y definida en puntos como \(t_{0}
+  + \frac{\varepsilon}{2}\) fuera de \(J\). Esto contradice la maximalidad.
+\end{proof}
+
+\begin{proof}[Prueba de la \cref{prop:compacta-completo}]
+  Dado \(p \in M\) y una carta \((U_{p}, \varphi_{p})\) con \(p \in U\), sabemos
+  por la ecuación diferencial que define a las curvas integrales que existe un
+  abierto \(\Omega_{p}\) y otro \(J_{p}\) de \(0\) y una función \(\xi_{p}
+  \colon \Omega_{p} \times J_{p} \to \varphi_{p}(U_{p})\) tal que
+  \(\gamma^{q}(t) = \xi_{p} \left( \varphi(q), t \right)\) es la curva integral
+  de \(X\) en el intervalo \(J_{p}\).
+
+  Ahora por compacidad podemos encontrar una cantidad finita \(\Omega_{p_{1}},
+  \dots, \Omega_{p_{k}}\) con \(M = \bigcup_{j=1}^{k} \Omega_{p_{j}}\). Sea
+  \(\varepsilon = \max \Set{\varepsilon_{p_{1}}, \dots, \varepsilon_{p_{k}}}\)
+  con \((-\varepsilon_{p_{j}}, \varepsilon_{p_{j}}) \subseteq J_{p_{j}}\).
+  De esta manera para todo \(q \in M\), \(\gamma^{q}\) está definida en el
+  intervalo \((-\varepsilon, \varepsilon)\) y se puede aplicar el lema anterior
+  para obtener que todas las curvas \(\gamma^{q}\) están definidas en todo \(\RealSet\).
+\end{proof}
+
+\begin{example}
+  Sea el campo sobre \(\RealSet\) \(V = x^{2} \pderiv{}{x}\). Entonces para
+  saber la curva integral \(\phi\) en el punto \(x_{0}\) debemos resolver la
+  ecuación diferencial \(\gamma(t)^{2} = \gamma'(t)\) con \(\gamma(0) = x_{0}\).
+  Entonces llegamos a \(\frac{-1}{\gamma(t)} = t + k\), de donde \(\gamma(t) =
+  \frac{-1}{t+k}\) y para \(\gamma(0) = x_{0}\), \(k = - \frac{1}{x_{0}}\).
+
+  Así pues \(\gamma(t) = \frac{-1}{t - \frac{1}{x_{0}}} = \frac{x_{0}}{1-t}\).
+
+  Por tanto las curvas no están definidas en todo \(\RealSet\) sino solo en
+  \((-\infty, 1)\).
+\end{example}
+
+\begin{example}
+  Para \(M = \GL{n}{\RealSet}\) hemos visto que los campos invariantes(?) a la
+  izquierda pueden ser identificados con las matrices de
+  \(\Tangente[I_{n}]{\GL{n}{\RealSet}} = \Matrices{n}{n}{\RealSet}\) el campo
+  \(f_{A} \colon \GL{n}{\RealSet} \to \Tangente{\GL{n}{\RealSet}}\) con
+  \(f_{A}(I_{n}) = A\) está dado por el producto \(f_{A}(X) = X A\). Por tanto
+  la curva integral en \(X\) será una curva \(\gamma^{X} \colon (-\varepsilon,
+  \varepsilon) \to \GL{n}{\RealSet}\) tal que \(\gamma^{X}(t) A = \left(
+    \gamma^{X} \right)'(t)\) pues solo tenemos una carta.
+
+  Si derivamos de nuevo \(\gamma = \gamma^{X}\), tenemos \(\gamma''(t) =
+  \gamma'(t) A = \gamma(t) A^{2}\) (pues \(A\) está fija). Reiterando las
+  derivadas llegamos a
+  \begin{equation}
+    \label{eq:derivada-gamma-gl}
+    \gamma^{n)}(t) = \gamma(t) A^{n}
+  \end{equation}
+
+  Además, \(\gamma'(0) = I_{n}\) por lo que \(\gamma^{n)}(0) = A^{n}\). Si
+  escribimos \(a_{ij}\) para las entradas de \(A\) y \(a_{nij}\) para las de
+  \(A^{n}\), de \eqref{eq:derivada-gamma-gl} llegamos a la siguiente relación
+  para las entradas de \(b_{ij}(t)\) de \(\gamma(t)\):
+  \[
+    b_{ij}^{n)}(t) = \Sum{b_{ik}(t) a_{nkj}}{k,1,n}
+  \]
+  con \(b_{ij}^{n)}(0) = a_{nij}\). El desarrollo de Taylor alrededor del origen
+  de \(b_{ij}(t)\) nos da
+  \[
+    b_{ij}(t) = \Sum{\frac{b_{ij}^{n)}(0)}{n!} t^{n}}{n,0,\infty}
+    = \Sum{\frac{a_{nij}}{n!} t^{n}}{n,0,\infty}
+  \]
+
+  Esto es, matricialmente,
+  \[
+    \gamma(t) = \Sum{\frac{A^{n} \cdot t^{n}}{n!}}{n,0,\infty} = \Sum{\frac{(At)^{n}}{n!}}{n,0,\infty}
+  \]
+
+  El término de la derecha se escribe de manera abreviada \(e^{At}\) por su
+  similitud con la función exponencial clásica.
+
+  Tenemos así que \(\gamma^{A}(t) = e^{At}\) es la curva exponencial con origen
+  en \(I_{n}\) del campo invariante %(a i+giente(???))
+  asociado a \(A\).
+
+  Si \(G \subseteq \GL{n}{\RealSet}\) es un subgrupo de Lie de matrices tenemos
+  la misma construcción pues sólo varía que la matriz \(A\) está en el
+  subespacio \(\Tangente[I]{G} \subseteq \Tangente[I]{\GL{n}{\RealSet}} =
+  \Matrices{n}{n}{\RealSet}\).
+
+  Nótese que como \(\gamma^{A}\) es una curva en \(\GL{n}{\RealSet}\) (o más
+  generalmente en \(G\)), \(\gamma^{A}(1) = e^{A}\) es una matriz de
+  \(\GL{n}{\RealSet}\) (generalmente \(G\)).
+  Tenemoss así una aplicación llamada \emph{exponencial}
+  \(\mathcal{G} \to G\) del
+  álgebra de Lie al grupo de Lie.
+\end{example}
 
 \end{document}
 %%% Local Variables:
